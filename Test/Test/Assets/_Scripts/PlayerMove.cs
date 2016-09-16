@@ -13,6 +13,9 @@ public class PlayerMove : MonoBehaviour
 
     public float moveSpeedInc = 0.5f;
     public float maxMoveSpeed = 2;
+    [Range(0, 1)] public float percentOfMoveSpeedToDrift = 1;
+    public bool allowDrifting = false;
+
     public float slowFactor = 0.01f;
     public float rotateSpeed = 4;
     public float rotateSlow = 1;
@@ -23,6 +26,9 @@ public class PlayerMove : MonoBehaviour
     private float maxRotate;
     private float xC;
     private float yC;
+
+    public float previousAngle;
+    public float angleThisFrame;
 
     // Use this for initialization
     void Start ()
@@ -60,9 +66,9 @@ public class PlayerMove : MonoBehaviour
         float xRot = Input.GetAxis("LeftJoystickX");
         float yRot = Input.GetAxis("LeftJoystickY");
 
-        if (xRot != 0 || yRot != 0)
+        if ((xRot != 0 || yRot != 0))// && movementVector.magnitude != 0)
         { 
-            targetAngle = Mathf.Atan2(yRot, -1 * xRot) * Mathf.Rad2Deg + 90;
+            targetAngle = Mathf.Atan2(yRot, xRot) * Mathf.Rad2Deg + 90;
 
             float distance = targetAngle - currentAngle;
             if(currentAngle < 90 && targetAngle > currentAngle + 180)
@@ -79,7 +85,7 @@ public class PlayerMove : MonoBehaviour
             currentAngle += distance * rotateSpeed * Time.deltaTime;
             transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.up);
 
-            xC = Mathf.Cos((currentAngle + 90) * Mathf.Deg2Rad);
+            xC = Mathf.Cos((currentAngle - 90) * Mathf.Deg2Rad);
             yC = Mathf.Sin((currentAngle + 90) * Mathf.Deg2Rad);
             movementVector.x = movementVector.magnitude * xC;
             movementVector.z = movementVector.magnitude * yC;
@@ -94,6 +100,59 @@ public class PlayerMove : MonoBehaviour
             if (rotateSpeed < 0) rotateSpeed = 0;
         }
 
+
+        bool brakePressed = Input.GetButtonDown("B");
+        bool brakeHeld = Input.GetButton("B");
+
+        if (brakePressed)
+        {
+            movementVector.x -= moveSpeedInc * xC;
+            movementVector.z -= moveSpeedInc * yC;
+            if (dynamicRotation) rotateSpeed -= rotateSlow;
+            if (rotateSpeed < 0) rotateSpeed = 0;
+        }
+
+        if (brakeHeld)
+        {
+            movementVector.x -= (moveSpeedInc * xC) / 10;
+            movementVector.z -= (moveSpeedInc * yC) / 10;
+            if (dynamicRotation) rotateSpeed -= rotateSlow;
+            if (rotateSpeed < 0) rotateSpeed = 0;
+        }
+
+        bool drift = Input.GetButton("A");
+
+        // You can drift if you're going half as fast as the maximum move speed
+        if (allowDrifting)
+        {
+            if (drift && movementVector.magnitude >= percentOfMoveSpeedToDrift)
+            {
+                angleThisFrame = transform.rotation.y;
+
+                print("You would be drifting if it were correctly implemented.");
+
+                // Drift Left
+                if (angleThisFrame < previousAngle)
+                {
+                    print("Drifting Left");
+                }
+                // Drift Right
+
+                else if (angleThisFrame > previousAngle)
+                {
+                    print("Drifting Right");
+                }
+                else
+                {
+                    print("Wasn't Caught: " + angleThisFrame + " Last Frame: " + previousAngle);
+                }
+            }
+            else if (drift)
+            {
+                print("You're not going fast enough to drift.");
+            }
+        }
+
         movementVector.x = movementVector.x - slowFactor * xC;
         if (Mathf.Sign(xC) != Mathf.Sign(movementVector.x)) movementVector.x = 0;
         if (Mathf.Abs(movementVector.x) > Mathf.Abs(maxMoveSpeed * xC)) movementVector.x = maxMoveSpeed * xC;
@@ -103,6 +162,13 @@ public class PlayerMove : MonoBehaviour
         if (dynamicRotation) rotateSpeed += rotateSlow * Time.deltaTime;
         if (rotateSpeed > maxRotate) rotateSpeed = maxRotate;
 
-        charCon.Move(movementVector * Time.deltaTime);
+        //charCon.Move(movementVector * Time.deltaTime);
+
+        previousAngle = transform.rotation.y; // Used in comparison for drift to decide left or right
 	}
+
+    void FixedUpdate()
+    {
+        GetComponent<Rigidbody>().velocity = movementVector;
+    }
 }
