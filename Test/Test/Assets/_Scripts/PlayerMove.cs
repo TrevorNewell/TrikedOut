@@ -120,7 +120,7 @@ public class PlayerMove : MonoBehaviour
             if (rotateSpeed < 0) rotateSpeed = 0;
         }
 
-        bool drift = Input.GetButton("A");
+        bool drift = Input.GetButton("X");
 
         // You can drift if you're going half as fast as the maximum move speed
         if (allowDrifting)

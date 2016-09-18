@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 697cdadac91e61244bdba6bec040b9b8
-timeCreated: 1473890493
+guid: d6a9cbefe17dd14439e9a2f902269f24
+timeCreated: 1474152955
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: polySurface1
-    100002: //RootNode
-    400000: polySurface1
-    400002: //RootNode
-    2300000: polySurface1
-    3300000: polySurface1
-    4300000: polySurface1
+    100000: //RootNode
+    100002: initialShadingGroup_pCylinder2
+    400000: //RootNode
+    400002: initialShadingGroup_pCylinder2
+    2300000: initialShadingGroup_pCylinder2
+    3300000: initialShadingGroup_pCylinder2
+    4300000: initialShadingGroup_pCylinder2
   materials:
     importMaterials: 1
     materialName: 0
