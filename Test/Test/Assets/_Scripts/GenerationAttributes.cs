@@ -40,8 +40,8 @@ public class GenerationAttributes : MonoBehaviour
             numOpenings++;
         }
 
-        position.x = (int)(transform.position.x / FindObjectOfType<RandomGeneration>().offset);
-        position.z = (int)(transform.position.z / FindObjectOfType<RandomGeneration>().offset);
+       // position.x = (int)(transform.position.x / FindObjectOfType<RandomGeneration>().offset);
+       // position.z = (int)(transform.position.z / FindObjectOfType<RandomGeneration>().offset);
     }
 
     Point calculateNextPosition(Point lastSection, int orientation)

@@ -74,7 +74,7 @@ public class WanderChaseAI : MonoBehaviour
             alertLevel++;
             if (alertLevel == FLEE_STATE)
             {
-                targetAngle = transform.eulerAngles + 45f * Vector3.up;
+                targetAngle = transform.eulerAngles + 60f * Vector3.up;
                 agent.velocity = Quaternion.Euler(0, 45, 0) * Vector3.Normalize(agent.velocity) * agent.speed;
                 hitRotating = true;
             }
