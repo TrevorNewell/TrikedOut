@@ -8,7 +8,7 @@ public class PlayerAttributes : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-	
+        transform.tag = "Player";
 	}
 	
     void OnCollisionEnter(Collision collision)
