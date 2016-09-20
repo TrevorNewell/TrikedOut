@@ -65,11 +65,13 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Bullet.cs" />
     <Compile Include="Assets\_Scripts\EnemyAttributes.cs" />
+    <Compile Include="Assets\_Scripts\GenerationAttributes.cs" />
     <Compile Include="Assets\_Scripts\PlayerAttributes.cs" />
     <Compile Include="Assets\_Scripts\PlayerFollow.cs" />
     <Compile Include="Assets\_Scripts\PlayerFollow2.cs" />
     <Compile Include="Assets\_Scripts\PlayerMove.cs" />
     <Compile Include="Assets\_Scripts\PlayerShoot.cs" />
+    <Compile Include="Assets\_Scripts\RandomGeneration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />

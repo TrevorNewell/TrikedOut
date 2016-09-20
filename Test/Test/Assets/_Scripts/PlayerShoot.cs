@@ -9,7 +9,7 @@ public class PlayerShoot : MonoBehaviour
     public int aimSpeed = 2;
     public float currentAngle = 0;
     public GameObject bullet;
-    public Vector3 spawnLocation;
+    //public Vector3 spawnLocation;  Now uses the pivot of the aimcone as it's spawn point.
 
     public GameObject aimCone;
     public GameObject aimArrow;
@@ -35,18 +35,6 @@ public class PlayerShoot : MonoBehaviour
             // Reset the cooldown
             timeToShoot = cooldown;
 
-            // This should spawn the bullet at the location described by the offset.  You can adjust this and see exactly where it is, by childing a bullet to the 
-            // player and adjusting the position.  Once you have where you want it to spawn, just enter those coordinates into the PlayerShoot script in "Spawn Location".
-            // *Not implemented right now*
-
-            //Vector3 offsetSpawnLocation = new Vector3();
-            //offsetSpawnLocation.x = gameObject.transform.position.x + spawnLocation.x;
-            //offsetSpawnLocation.y = gameObject.transform.position.y + spawnLocation.y;
-            //offsetSpawnLocation.z = gameObject.transform.position.z + spawnLocation.z;
-
-            //Transform t = gameObject.transform;
-            //t.position = offsetSpawnLocation;
-
             GameObject spawnedBullet = Instantiate(bullet, aimCone.transform.TransformPoint(Vector3.zero), gameObject.transform.rotation) as GameObject;
 
             // We want the bullet to have it's own collider and we don't want it to be a trigger, so ignore all colliders on the player object so the bullet can travel as it should and not disrupt the player.
@@ -57,7 +45,6 @@ public class PlayerShoot : MonoBehaviour
             }
 
             // Give the bullet some velocity (described by bullet speed on the bullet prefab
-            
             spawnedBullet.GetComponent<Rigidbody>().velocity = aimArrow.transform.TransformDirection(Vector3.left * spawnedBullet.GetComponent<Bullet>().moveSpeed);
 
             //print("Shoot!");

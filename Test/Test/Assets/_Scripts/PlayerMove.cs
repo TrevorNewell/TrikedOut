@@ -125,20 +125,19 @@ public class PlayerMove : MonoBehaviour
         // You can drift if you're going half as fast as the maximum move speed
         if (allowDrifting)
         {
-            if (drift && movementVector.magnitude >= percentOfMoveSpeedToDrift)
+            if (drift && movementVector.magnitude >= percentOfMoveSpeedToDrift * maxMoveSpeed)
             {
-                angleThisFrame = transform.rotation.y;
-
-                print("You would be drifting if it were correctly implemented.");
+                //print("Cur: " + currentAngle + " Tar: " + targetAngle);
+                //print("You would be drifting if it were correctly implemented.");
 
                 // Drift Left
-                if (angleThisFrame < previousAngle)
+                if (currentAngle < previousAngle)
                 {
                     print("Drifting Left");
                 }
                 // Drift Right
 
-                else if (angleThisFrame > previousAngle)
+                else if (currentAngle > previousAngle)
                 {
                     print("Drifting Right");
                 }
@@ -164,7 +163,7 @@ public class PlayerMove : MonoBehaviour
 
         //charCon.Move(movementVector * Time.deltaTime);
 
-        previousAngle = transform.rotation.y; // Used in comparison for drift to decide left or right
+        previousAngle = currentAngle; // Used in comparison for drift to decide left or right
 	}
 
     void FixedUpdate()
