@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -46,6 +47,29 @@ public class RandomGeneration : MonoBehaviour
 
         sections = new GameObject[numSections];
         Spawn();
+        NavMeshBuilder.BuildNavMesh();
+        for (int i = 1; i < sections.Length; i++)
+        {
+            GameObject section = sections[i];
+            // Spawn Enemies
+            foreach (Transform child in section.GetComponentsInChildren<Transform>())
+            {
+                if (child.gameObject.CompareTag("EnemySpawn"))
+                {
+                    int r = Random.Range(0, enemies.Length);
+
+                    GameObject tempEnemy = Instantiate(enemies[r], child.position, child.rotation, section.transform) as GameObject;
+
+                    // This should be removed later on, but it's a simple way to scale the enemies health as the level goes on.
+                    double percent = (sectionsSpawned / numSections); // Unity is a fucker and isn't capturing this as it should be.  Evaluates to 0.  Cool.
+                    double increaseBy = tempEnemy.GetComponent<EnemyAttributes>().enemyHealth * percent;
+
+                    double tempHealth = tempEnemy.GetComponent<EnemyAttributes>().enemyHealth + increaseBy;
+                    tempEnemy.GetComponent<EnemyAttributes>().IncreaseHealth(tempHealth);
+                    //tempEnemy.GetComponent<EnemyAttributes>().enemyHealth = tempHealth;
+                }
+            }
+        }
 	}
 
     // Begins the process of randomly generating a map.
@@ -79,30 +103,9 @@ public class RandomGeneration : MonoBehaviour
 
                 // Now we need to orient the newly spawned section, to connect with the last section spawned
                 section.GetComponent<GenerationAttributes>().OrientTo(lastSection);
-
                 sections[sectionsSpawned] = section;
-
                 // Every section built after the first will be connecting another section, so always reduce openEnds right here
                 openEnds -= 2; // 2: 1 for the brand new section that was connected, 1 for the old section it was connected to
-
-                // Spawn Enemies
-                foreach(Transform child in section.GetComponentsInChildren<Transform>())
-                {
-                    if (child.gameObject.CompareTag("EnemySpawn"))
-                    {
-                        int r = Random.Range(0, enemies.Length);
-
-                        GameObject tempEnemy = Instantiate(enemies[r], child.position, child.rotation, section.transform) as GameObject;
-
-                        // This should be removed later on, but it's a simple way to scale the enemies health as the level goes on.
-                        double percent = (sectionsSpawned / numSections); // Unity is a fucker and isn't capturing this as it should be.  Evaluates to 0.  Cool.
-                        double increaseBy = tempEnemy.GetComponent<EnemyAttributes>().enemyHealth * percent;
-
-                        double tempHealth = tempEnemy.GetComponent<EnemyAttributes>().enemyHealth + increaseBy;
-                        tempEnemy.GetComponent<EnemyAttributes>().IncreaseHealth(tempHealth);
-                        //tempEnemy.GetComponent<EnemyAttributes>().enemyHealth = tempHealth;
-                    }
-                }
             }
             else
             {
