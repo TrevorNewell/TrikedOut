@@ -94,6 +94,13 @@ public class RandomGeneration : MonoBehaviour
 
                         GameObject tempEnemy = Instantiate(enemies[r], child.position, child.rotation, section.transform) as GameObject;
 
+                        // This should be removed later on, but it's a simple way to scale the enemies health as the level goes on.
+                        double percent = (sectionsSpawned / numSections); // Unity is a fucker and isn't capturing this as it should be.  Evaluates to 0.  Cool.
+                        double increaseBy = tempEnemy.GetComponent<EnemyAttributes>().enemyHealth * percent;
+
+                        double tempHealth = tempEnemy.GetComponent<EnemyAttributes>().enemyHealth + increaseBy;
+                        tempEnemy.GetComponent<EnemyAttributes>().IncreaseHealth(tempHealth);
+                        //tempEnemy.GetComponent<EnemyAttributes>().enemyHealth = tempHealth;
                     }
                 }
             }

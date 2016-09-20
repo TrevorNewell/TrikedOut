@@ -37,6 +37,12 @@ public class EnemyAttributes : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().material.color = color;
     }
 
+    public void IncreaseHealth(double newHealth)
+    {
+        maxHealth = (float)newHealth;
+        enemyHealth = (float)newHealth;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
