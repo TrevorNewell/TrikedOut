@@ -10,27 +10,35 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     //public Vector3 spawnLocation;  Now uses the pivot of the aimcone as it's spawn point.
 
-    public GameObject aimCone;
-    public GameObject aimArrow;
+    public bool isEnemyWeapon = false;
 
     internal float timeToShoot = 0;
     internal float currentAngle = 0;
 
-    public virtual void Start ()
+    private WanderChaseAI ai;
+    private Transform parent;
+
+    public virtual void Start()
     {
         currentAngle = 0; // I just want to see what this angle is.  The user shouldn't be able to change it from the editor
         timeToShoot = 0;
+        parent = transform.parent;
         transform.localPosition = new Vector3(1.06f, 1.841f, 1.91f);
+        if (isEnemyWeapon) transform.localPosition = new Vector3(1.06f, -0.2f, 0f);
         transform.localRotation = Quaternion.Euler(90, 0, 0);
     }
 	
 	// Update is called once per frame
 	public virtual void Update ()
     {
+        if(ai == null && isEnemyWeapon) ai = parent.GetComponent<WanderChaseAI>();
         timeToShoot -= Time.deltaTime;
+        bool tests;
+        if (!isEnemyWeapon) tests = (Input.GetButton("A") || Input.GetButtonDown("A")) && timeToShoot < 0;
+        else tests = ai.Shoot() && timeToShoot < 0;
 
         // If we have pressed A or are holding A and our cooldown is up, we can shoot.
-        if ((Input.GetButtonDown("A") || Input.GetButton("A")) && timeToShoot < 0)
+        if (tests)
         {
             // Reset the cooldown
             timeToShoot = cooldown;
@@ -38,17 +46,17 @@ public class Weapon : MonoBehaviour
             GameObject spawnedBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
 
             // We want the bullet to have it's own collider and we don't want it to be a trigger, so ignore all colliders on the player object so the bullet can travel as it should and not disrupt the player.
-            Collider[] colliders = gameObject.GetComponents<Collider>();
-            Collider[] pcolliders = transform.parent.gameObject.GetComponents<Collider>();
-            foreach (Collider c in colliders)
+            Collider[] pcolliders = transform.root.GetComponents<Collider>();
+            foreach (Collider c in pcolliders)
             {
                 Physics.IgnoreCollision(spawnedBullet.GetComponent<Collider>(), c);
             }
 
             // Give the bullet some velocity (described by bullet speed on the bullet prefab
             spawnedBullet.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.up * spawnedBullet.GetComponent<Bullet>().moveSpeed) + transform.parent.GetComponent<Rigidbody>().velocity;
+            spawnedBullet.GetComponent<Bullet>().enemyBullet = isEnemyWeapon;
         }
-
+        /*
         float x = Input.GetAxis("RightJoystickX");
 
         if (x != 0)
@@ -64,5 +72,6 @@ public class Weapon : MonoBehaviour
                 currentAngle += aimSpeed;
             }
         }
+        */
     }
 }
