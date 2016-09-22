@@ -1,31 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerShoot : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public int damage = 20;
     public float cooldown = 5;
     public float coneSizeInAngles = 60;
     public int aimSpeed = 2;
-    public float currentAngle = 0;
     public GameObject bullet;
     //public Vector3 spawnLocation;  Now uses the pivot of the aimcone as it's spawn point.
 
     public GameObject aimCone;
     public GameObject aimArrow;
 
-    private float timeToShoot = 0;
-    //private float currentAngle = 0;
+    internal float timeToShoot = 0;
+    internal float currentAngle = 0;
 
-    // Use this for initialization
-    void Start()
+    public virtual void Start ()
     {
         currentAngle = 0; // I just want to see what this angle is.  The user shouldn't be able to change it from the editor
         timeToShoot = 0;
     }
-
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+	public virtual void Update ()
     {
         timeToShoot -= Time.deltaTime;
 
@@ -46,17 +44,13 @@ public class PlayerShoot : MonoBehaviour
 
             // Give the bullet some velocity (described by bullet speed on the bullet prefab
             spawnedBullet.GetComponent<Rigidbody>().velocity = aimArrow.transform.TransformDirection(Vector3.left * spawnedBullet.GetComponent<Bullet>().moveSpeed);
-
-            //print("Shoot!");
         }
 
         float x = Input.GetAxis("RightJoystickX");
 
-        //print(x);
-
         if (x != 0)
         {
-            if (x < 0 && currentAngle > (coneSizeInAngles/2) * -1)
+            if (x < 0 && currentAngle > (coneSizeInAngles / 2) * -1)
             {
                 aimArrow.transform.RotateAround(aimCone.transform.position, aimCone.transform.up, -aimSpeed);
                 currentAngle -= aimSpeed;
@@ -67,5 +61,5 @@ public class PlayerShoot : MonoBehaviour
                 currentAngle += aimSpeed;
             }
         }
-	}
+    }
 }

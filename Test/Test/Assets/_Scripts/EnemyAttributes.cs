@@ -28,13 +28,7 @@ public class EnemyAttributes : MonoBehaviour
 	
     void OnCollisionEnter(Collision collision)
     {
-        percLeft = enemyHealth / maxHealth;
-
-        color = new Color(1 - percLeft, 1 - percLeft, color.b, color.a);
-
-        //print("R: " + color.r + " G: " + color.g + " B: " + color.b + " A: " + color.a + " t: " + (enemyHealth/maxHealth) + " Max: " + maxHealth + " Cur: " + enemyHealth);
-
-        gameObject.GetComponent<MeshRenderer>().material.color = color;
+        
     }
 
     public void IncreaseHealth(double newHealth)
@@ -46,10 +40,17 @@ public class EnemyAttributes : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //print(enemyHealth);
+        //print(enemyHealth);percLeft = enemyHealth / maxHealth;
+        percLeft = enemyHealth / maxHealth;
+
+        color = new Color(1 - percLeft, 1 - percLeft, color.b, color.a);
+
+        //print("R: " + color.r + " G: " + color.g + " B: " + color.b + " A: " + color.a + " t: " + (enemyHealth/maxHealth) + " Max: " + maxHealth + " Cur: " + enemyHealth);
+
+        gameObject.GetComponent<MeshRenderer>().material.color = color;
 
         // Enemy is dead.
-	    if (enemyHealth <= 0)
+        if (enemyHealth <= 0)
         {
             Destroy(gameObject);
         }
