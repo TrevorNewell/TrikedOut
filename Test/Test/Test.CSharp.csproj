@@ -80,6 +80,7 @@
     <Compile Include="Assets\_Scripts\_Weapons\Bullet.cs" />
     <Compile Include="Assets\_Scripts\_Weapons\MarshmallowGun.cs" />
     <Compile Include="Assets\_Scripts\_Weapons\Weapon.cs" />
+    <Compile Include="Assets\_Scripts\_Weapons\WeaponSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />

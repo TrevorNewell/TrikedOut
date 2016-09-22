@@ -20,6 +20,8 @@ public class Weapon : MonoBehaviour
     {
         currentAngle = 0; // I just want to see what this angle is.  The user shouldn't be able to change it from the editor
         timeToShoot = 0;
+        transform.localPosition = new Vector3(1.06f, 1.841f, 1.91f);
+        transform.localRotation = Quaternion.Euler(90, 0, 0);
     }
 	
 	// Update is called once per frame
@@ -33,17 +35,18 @@ public class Weapon : MonoBehaviour
             // Reset the cooldown
             timeToShoot = cooldown;
 
-            GameObject spawnedBullet = Instantiate(bullet, aimCone.transform.TransformPoint(Vector3.zero), gameObject.transform.rotation) as GameObject;
+            GameObject spawnedBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
 
             // We want the bullet to have it's own collider and we don't want it to be a trigger, so ignore all colliders on the player object so the bullet can travel as it should and not disrupt the player.
             Collider[] colliders = gameObject.GetComponents<Collider>();
+            Collider[] pcolliders = transform.parent.gameObject.GetComponents<Collider>();
             foreach (Collider c in colliders)
             {
                 Physics.IgnoreCollision(spawnedBullet.GetComponent<Collider>(), c);
             }
 
             // Give the bullet some velocity (described by bullet speed on the bullet prefab
-            spawnedBullet.GetComponent<Rigidbody>().velocity = aimArrow.transform.TransformDirection(Vector3.left * spawnedBullet.GetComponent<Bullet>().moveSpeed);
+            spawnedBullet.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.up * spawnedBullet.GetComponent<Bullet>().moveSpeed) + transform.parent.GetComponent<Rigidbody>().velocity;
         }
 
         float x = Input.GetAxis("RightJoystickX");
@@ -52,12 +55,12 @@ public class Weapon : MonoBehaviour
         {
             if (x < 0 && currentAngle > (coneSizeInAngles / 2) * -1)
             {
-                aimArrow.transform.RotateAround(aimCone.transform.position, aimCone.transform.up, -aimSpeed);
+                transform.RotateAround(transform.position, Vector3.up, -aimSpeed);
                 currentAngle -= aimSpeed;
             }
             else if (x > 0 && currentAngle < (coneSizeInAngles / 2))
             {
-                aimArrow.transform.RotateAround(aimCone.transform.position, aimCone.transform.up, aimSpeed);
+                transform.RotateAround(transform.position, Vector3.up, aimSpeed);
                 currentAngle += aimSpeed;
             }
         }

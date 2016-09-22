@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Bat : Weapon
 {
-    public GameObject player;
     internal Vector3[] locP;
     internal Vector3[] locR;
     internal int locCounter;
@@ -13,7 +12,7 @@ public class Bat : Weapon
 	// Use this for initialization
 	public override void Start ()
     {
-        damage = 10;
+        damage = 50;
         cooldown = 10;
         coneSizeInAngles = 60;
         aimSpeed = 20;
@@ -35,6 +34,9 @@ public class Bat : Weapon
 
         backswing = false;
         swinging = false;
+
+        transform.localPosition = locP[0];
+        transform.localRotation = Quaternion.Euler(locR[0]);
     }
 	
 	// Update is called once per frame
@@ -65,20 +67,18 @@ public class Bat : Weapon
         }
     }
 
-    void OnTriggerEnter(Collider obj)
+    void OnTriggerStay(Collider obj)
     {
         // If we collided with the enemy, they have the enemy attributes script, so subtract the damage of this bullet from their health.
         if (obj.transform.tag == "Enemy")
         {
-            float dx = Mathf.Abs(player.transform.position.x - obj.transform.position.x);
-            float dy = Mathf.Abs(player.transform.position.y - obj.transform.position.y);
-            float dz = Mathf.Abs(player.transform.position.z - obj.transform.position.z);
+            float dx = Mathf.Abs(transform.parent.transform.position.x - obj.transform.position.x);
+            float dy = Mathf.Abs(transform.parent.transform.position.y - obj.transform.position.y);
+            float dz = Mathf.Abs(transform.parent.transform.position.z - obj.transform.position.z);
 
             float rad = 5;
 
-            print(dx + " " + dz);
-
-            if(dx < rad && dy < rad && dz < rad && swinging) obj.gameObject.GetComponent<EnemyAttributes>().enemyHealth -= damage;
+            if(dx < rad && dy < rad && dz < rad && swinging) obj.gameObject.GetComponent<EnemyAttributes>().enemyHealth -= damage * Time.deltaTime;
         }
     }
 }
