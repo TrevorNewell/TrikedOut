@@ -50,7 +50,7 @@ public class PlayerAttributes : MonoBehaviour
 
         gameObject.GetComponent<MeshRenderer>().material.color = color;
 
-        // Enemy is dead.
+        // Player is dead.
         if (health <= 0)
         {
             gameObject.SetActive(false);

@@ -15,7 +15,7 @@ public class WeaponSelector : MonoBehaviour {
         loadout[0] = bat;
         loadout[1] = mmlgun;
         selector = 0;
-        currentWeapon = Instantiate(loadout[selector]);
+        currentWeapon = Instantiate(loadout[selector], gameObject.transform.position, transform.rotation) as GameObject;
         currentWeapon.transform.parent = gameObject.transform;
 	}
 
@@ -24,12 +24,12 @@ public class WeaponSelector : MonoBehaviour {
         selector++;
         if (selector == loadout.Length) selector = 0;
         Destroy(currentWeapon);
-        currentWeapon = Instantiate(loadout[selector]);
+        currentWeapon = Instantiate(loadout[selector], transform.position, transform.rotation) as GameObject;
         currentWeapon.transform.parent = gameObject.transform;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
 	    if(Input.GetButtonDown("Y"))
         {
