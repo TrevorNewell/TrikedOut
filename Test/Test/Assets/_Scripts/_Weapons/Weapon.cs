@@ -14,6 +14,8 @@ public class Weapon : MonoBehaviour
 
     internal float timeToShoot = 0;
     internal float currentAngle = 0;
+    internal bool equipped = false;
+    internal bool pickup = false;
 
     private WanderChaseAI ai;
     private Transform parent;
@@ -23,14 +25,25 @@ public class Weapon : MonoBehaviour
         currentAngle = 0; // I just want to see what this angle is.  The user shouldn't be able to change it from the editor
         timeToShoot = 0;
         parent = transform.parent;
-        transform.localPosition = new Vector3(0.7f, 1.45f, 1.5f);
+        if(!pickup) transform.localPosition = new Vector3(0.7f, 1.45f, 1.5f);
         //if (isEnemyWeapon) transform.localPosition = new Vector3(1.06f, 1.61f, 1.91f);
         transform.localRotation = Quaternion.Euler(90, 0, 0);
+    }
+
+    public virtual void SetPickup(bool p)
+    {
+        pickup = p;
+    }
+
+    public virtual void Equip()
+    {
+        equipped = true;
     }
 	
 	// Update is called once per frame
 	public virtual void Update ()
     {
+        if (!equipped && !isEnemyWeapon) return;
         if(ai == null && isEnemyWeapon) ai = parent.GetComponent<WanderChaseAI>();
         timeToShoot -= Time.deltaTime;
         bool tests;

@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyAttributes : MonoBehaviour
 {
     public float enemyHealth = 150;
+    public GameObject drop;
 
     private Color color;
     private float maxHealth;
@@ -52,6 +53,15 @@ public class EnemyAttributes : MonoBehaviour
         // Enemy is dead.
         if (enemyHealth <= 0)
         {
+            if(drop != null)
+            {
+                drop.transform.position = transform.position;
+                GameObject newDrop = Instantiate(drop, transform.position, transform.rotation) as GameObject;
+                newDrop.tag = "Pickup";
+                newDrop.transform.position = transform.position;
+                newDrop.GetComponent<Weapon>().SetPickup(true);
+
+            }
             Destroy(gameObject);
         }
 	}

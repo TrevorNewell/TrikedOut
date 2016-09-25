@@ -4,20 +4,30 @@ using System.Collections;
 public class WeaponSelector : MonoBehaviour {
 
     GameObject currentWeapon;
-    public GameObject mmlgun;
     public GameObject bat;
     GameObject[] loadout;
     int selector;
 
 	// Use this for initialization
 	void Start () {
-        loadout = new GameObject[2];
+        loadout = new GameObject[1];
         loadout[0] = bat;
-        loadout[1] = mmlgun;
         selector = 0;
         currentWeapon = Instantiate(loadout[selector], gameObject.transform.position, transform.rotation) as GameObject;
         currentWeapon.transform.parent = gameObject.transform;
 	}
+
+    void AddWeapon(GameObject newWeapon)
+    {
+        GameObject[] newLoadout = new GameObject[loadout.Length + 1];
+        for(int i = 0; i < loadout.Length; i++)
+        {
+            newLoadout[i] = loadout[i];
+        }
+        newLoadout[loadout.Length] = Instantiate(newWeapon, gameObject.transform.position, transform.rotation) as GameObject;
+        newLoadout[loadout.Length].SetActive(false);
+        loadout = newLoadout;
+    }
 
     void SwitchWeapon()
     {
@@ -25,6 +35,8 @@ public class WeaponSelector : MonoBehaviour {
         if (selector == loadout.Length) selector = 0;
         Destroy(currentWeapon);
         currentWeapon = Instantiate(loadout[selector], transform.position, transform.rotation) as GameObject;
+        currentWeapon.SetActive(true);
+        currentWeapon.GetComponent<Weapon>().Equip();
         currentWeapon.transform.parent = gameObject.transform;
     }
 
@@ -36,4 +48,15 @@ public class WeaponSelector : MonoBehaviour {
             SwitchWeapon();
         }
 	}
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.tag == "Pickup")
+        {
+            collider.tag = "Weapon";
+            collider.gameObject.GetComponent<Weapon>().SetPickup(false);
+            AddWeapon(collider.gameObject);
+            Destroy(collider.gameObject);
+        }
+    }
 }
