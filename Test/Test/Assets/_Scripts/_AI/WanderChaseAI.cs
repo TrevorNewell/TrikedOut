@@ -95,6 +95,7 @@ public class WanderChaseAI : MonoBehaviour
             if (alertLevel == FLEE_STATE)
             {
                 retreating = retreatTime;
+                GetCircle();
                 agent.destination = destinations[0];
                 agent.velocity = agent.velocity.normalized;
             }

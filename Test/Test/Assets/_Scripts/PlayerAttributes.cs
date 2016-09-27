@@ -16,7 +16,7 @@ public class PlayerAttributes : MonoBehaviour
     {
         transform.tag = "Player";
         maxHealth = health;
-        color = gameObject.GetComponent<MeshRenderer>().material.color;
+        /*color = gameObject.GetComponent<MeshRenderer>().material.color;
 
         //print("R: " + color.r + " G: " + color.g + " B: " + color.b + " A: " + color.a + " t: " + (enemyHealth / maxHealth) + " Max: " + maxHealth + " Cur: " + enemyHealth);
 
@@ -24,7 +24,7 @@ public class PlayerAttributes : MonoBehaviour
 
         color = new Color(color.r, 1 - percLeft, 1 - percLeft, color.a);
 
-        gameObject.GetComponent<MeshRenderer>().material.color = color;
+        gameObject.GetComponent<MeshRenderer>().material.color = color;*/
     }
 
     void OnCollisionEnter(Collision collision)
@@ -42,13 +42,13 @@ public class PlayerAttributes : MonoBehaviour
     void Update()
     {
         //print(enemyHealth);percLeft = enemyHealth / maxHealth;
-        percLeft = health / maxHealth;
+        /*percLeft = health / maxHealth;
 
         color = new Color(color.r, 1 - percLeft, 1 - percLeft, color.a);
 
         //print("R: " + color.r + " G: " + color.g + " B: " + color.b + " A: " + color.a + " t: " + (enemyHealth/maxHealth) + " Max: " + maxHealth + " Cur: " + enemyHealth);
 
-        gameObject.GetComponent<MeshRenderer>().material.color = color;
+        gameObject.GetComponent<MeshRenderer>().material.color = color;*/
 
         // Player is dead.
         if (health <= 0)

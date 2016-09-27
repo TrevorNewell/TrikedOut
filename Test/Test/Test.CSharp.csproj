@@ -73,6 +73,7 @@
     <Compile Include="Assets\_Scripts\GenerationAttributes.cs" />
     <Compile Include="Assets\_Scripts\PlayerAttributes.cs" />
     <Compile Include="Assets\_Scripts\PlayerFollow2.cs" />
+    <Compile Include="Assets\_Scripts\PlayerHPUI.cs" />
     <Compile Include="Assets\_Scripts\PlayerMove.cs" />
     <Compile Include="Assets\_Scripts\RandomGeneration.cs" />
     <Compile Include="Assets\_Scripts\_AI\WanderChaseAI.cs" />
