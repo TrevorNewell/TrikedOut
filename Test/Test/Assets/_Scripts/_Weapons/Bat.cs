@@ -12,7 +12,7 @@ public class Bat : Weapon
 	// Use this for initialization
 	public override void Start ()
     {
-        damage = 50;
+        damage = 100;
         cooldown = 10;
         coneSizeInAngles = 60;
         aimSpeed = 20;

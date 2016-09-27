@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     public float coneSizeInAngles = 60;
     public int aimSpeed = 2;
     public GameObject bullet;
+    public GameObject shootPoint;
     //public Vector3 spawnLocation;  Now uses the pivot of the aimcone as it's spawn point.
 
     public bool isEnemyWeapon = false;
@@ -28,6 +29,7 @@ public class Weapon : MonoBehaviour
         if(!pickup) transform.localPosition = new Vector3(0.7f, 1.45f, 1.5f);
         //if (isEnemyWeapon) transform.localPosition = new Vector3(1.06f, 1.61f, 1.91f);
         transform.localRotation = Quaternion.Euler(90, 0, 0);
+        if (shootPoint == null) shootPoint = gameObject;
     }
 
     public virtual void SetPickup(bool p)
@@ -55,8 +57,7 @@ public class Weapon : MonoBehaviour
         {
             // Reset the cooldown
             timeToShoot = cooldown;
-
-            GameObject spawnedBullet = Instantiate(bullet, transform.position, transform.rotation) as GameObject;
+            GameObject spawnedBullet = Instantiate(bullet, shootPoint.transform.position, transform.rotation) as GameObject;
 
             // We want the bullet to have it's own collider and we don't want it to be a trigger, so ignore all colliders on the player object so the bullet can travel as it should and not disrupt the player.
             Collider[] pcolliders = transform.root.GetComponents<Collider>();

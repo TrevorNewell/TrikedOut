@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float lifeSpan = 5;
-    public int damage = 20 ;
+    public int damage = 50 ;
     public bool enemyBullet = false;
     public float slowFactor = 0.75f;
     private GameObject hitObject;
@@ -61,7 +61,7 @@ public class Bullet : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Player") && enemyBullet)
         {
-            collision.gameObject.GetComponent<PlayerAttributes>().health -= damage;
+            collision.gameObject.GetComponent<PlayerAttributes>().health -= (damage - 30);
             hitObject = collision.gameObject;
             hitObject.GetComponent<PlayerMove>().maxMoveSpeed *= slowFactor;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
