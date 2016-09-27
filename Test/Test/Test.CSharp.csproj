@@ -61,22 +61,19 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\EnemyAttributes.cs" />
-    <Compile Include="Assets\_Scripts\GenerationAttributes.cs" />
+    <Compile Include="Assets\_Scripts\LoadLevel.cs" />
     <Compile Include="Assets\_Scripts\PlayerAttributes.cs" />
     <Compile Include="Assets\_Scripts\PlayerFollow2.cs" />
     <Compile Include="Assets\_Scripts\PlayerHPUI.cs" />
     <Compile Include="Assets\_Scripts\PlayerMove.cs" />
-    <Compile Include="Assets\_Scripts\RandomGeneration.cs" />
+    <Compile Include="Assets\_Scripts\SpawnPortalOnDeath.cs" />
     <Compile Include="Assets\_Scripts\_AI\WanderChaseAI.cs" />
+    <Compile Include="Assets\_Scripts\_RandomGeneration\GenerateLevel.cs" />
+    <Compile Include="Assets\_Scripts\_RandomGeneration\GenerationAttributes.cs" />
+    <Compile Include="Assets\_Scripts\_RandomGeneration\RandomGeneration.cs" />
     <Compile Include="Assets\_Scripts\_Weapons\Bat.cs" />
     <Compile Include="Assets\_Scripts\_Weapons\Bullet.cs" />
     <Compile Include="Assets\_Scripts\_Weapons\MarshmallowGun.cs" />

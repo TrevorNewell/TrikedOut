@@ -53,6 +53,7 @@ public class PlayerAttributes : MonoBehaviour
         // Player is dead.
         if (health <= 0)
         {
+            health = 0;
             gameObject.SetActive(false);
         }
     }

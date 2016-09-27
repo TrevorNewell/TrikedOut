@@ -5,17 +5,25 @@ public class WeaponSelector : MonoBehaviour {
 
     GameObject currentWeapon;
     public GameObject bat;
+    public GameObject gun;
     GameObject[] loadout;
     int selector;
 
 	// Use this for initialization
 	void Start () {
+
         loadout = new GameObject[1];
         loadout[0] = bat;
+
         selector = 0;
         currentWeapon = Instantiate(loadout[selector], gameObject.transform.position, transform.rotation) as GameObject;
         currentWeapon.transform.parent = gameObject.transform;
-	}
+
+        if (gun != null)
+        {
+            AddWeapon(gun);
+        }
+    }
 
     void AddWeapon(GameObject newWeapon)
     {
