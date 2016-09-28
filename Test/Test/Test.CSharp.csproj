@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\EnemyAttributes.cs" />
     <Compile Include="Assets\_Scripts\LoadLevel.cs" />
+    <Compile Include="Assets\_Scripts\OffsetPlanesOfSameType.cs" />
     <Compile Include="Assets\_Scripts\PlayerAttributes.cs" />
     <Compile Include="Assets\_Scripts\PlayerFollow2.cs" />
     <Compile Include="Assets\_Scripts\PlayerHPUI.cs" />
