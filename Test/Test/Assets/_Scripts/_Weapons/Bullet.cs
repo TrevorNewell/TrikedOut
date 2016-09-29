@@ -75,4 +75,9 @@ public class Bullet : MonoBehaviour
         // If we collided with anything, destroy the bullet.
         //Destroy(gameObject);
     }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }

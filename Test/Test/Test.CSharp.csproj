@@ -68,6 +68,7 @@
     <Compile Include="Assets\_Scripts\OffsetPlanesOfSameType.cs" />
     <Compile Include="Assets\_Scripts\PlayerAttributes.cs" />
     <Compile Include="Assets\_Scripts\PlayerFollow2.cs" />
+    <Compile Include="Assets\_Scripts\PlayerFollow3.cs" />
     <Compile Include="Assets\_Scripts\PlayerHPUI.cs" />
     <Compile Include="Assets\_Scripts\PlayerMove.cs" />
     <Compile Include="Assets\_Scripts\SpawnPortalOnDeath.cs" />
