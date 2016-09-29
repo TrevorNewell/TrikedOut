@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerMove : MonoBehaviour
 {
+    public bool leftToRightSteering = true;
+    public int rotateMult = 10;
 
     private Vector3 movementVector;
     private CharacterController charCon;
@@ -33,6 +35,10 @@ public class PlayerMove : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        if (leftToRightSteering)
+        {
+            rotateSpeed = rotateSpeed * rotateMult;
+        }
         currentAngle = transform.rotation.y;
 
         charCon = GetComponent<CharacterController>();
@@ -63,34 +69,57 @@ public class PlayerMove : MonoBehaviour
         int leftPedal = Mathf.CeilToInt(Input.GetAxis("LeftTrigger")) * 1;
         int rightPedal = Mathf.CeilToInt(Input.GetAxis("RightTrigger")) * 2;
 
+        // Steering
         float xRot = Input.GetAxis("LeftJoystickX");
         float yRot = Input.GetAxis("LeftJoystickY");
 
-        if ((xRot != 0 || yRot != 0))// && movementVector.magnitude != 0)
-        { 
-            targetAngle = Mathf.Atan2(yRot, xRot) * Mathf.Rad2Deg + 90;
-
-            float distance = targetAngle - currentAngle;
-            if(currentAngle < 90 && targetAngle > currentAngle + 180)
+        if (leftToRightSteering)
+        {
+            if (xRot < 0)// && currentAngle > (coneSizeInAngles / 2) * -1)
             {
-                currentAngle += 360;
-                distance = targetAngle - currentAngle;
+                //transform.Rotate(Vector3.up, -rotateSpeed*2);
+
+                //transform.RotateAround(transform.position, Vector3.up, -aimSpeed);
+                currentAngle -= rotateSpeed * Time.deltaTime;
             }
-            else if(targetAngle < 90 && currentAngle > targetAngle + 180)
+            else if (xRot > 0)// && currentAngle < (coneSizeInAngles / 2))
             {
-                currentAngle -= 360;
-                distance = currentAngle - targetAngle;
+                //transform.Rotate(Vector3.up, rotateSpeed*2);
+                //transform.RotateAround(transform.position, Vector3.up, aimSpeed);
+                currentAngle += rotateSpeed * Time.deltaTime;
             }
+        }
+        else
+        {
+            if ((xRot != 0 || yRot != 0))// && movementVector.magnitude != 0)
+            {
+                targetAngle = Mathf.Atan2(yRot, xRot) * Mathf.Rad2Deg + 90;
 
-            currentAngle += distance * rotateSpeed * Time.deltaTime;
-            transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.up);
+                float distance = targetAngle - currentAngle;
+                if (currentAngle < 90 && targetAngle > currentAngle + 180)
+                {
+                    currentAngle += 360;
+                    distance = targetAngle - currentAngle;
+                }
+                else if (targetAngle < 90 && currentAngle > targetAngle + 180)
+                {
+                    currentAngle -= 360;
+                    distance = currentAngle - targetAngle;
+                }
 
-            xC = Mathf.Cos((currentAngle - 90) * Mathf.Deg2Rad);
-            yC = Mathf.Sin((currentAngle + 90) * Mathf.Deg2Rad);
-            movementVector.x = movementVector.magnitude * xC;
-            movementVector.z = movementVector.magnitude * yC;
+                currentAngle += distance * rotateSpeed * Time.deltaTime;
+                //transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.up);
+            }
         }
 
+        transform.rotation = Quaternion.AngleAxis(currentAngle, Vector3.up);
+
+        xC = Mathf.Cos((currentAngle - 90) * Mathf.Deg2Rad);
+        yC = Mathf.Sin((currentAngle + 90) * Mathf.Deg2Rad);
+        movementVector.x = movementVector.magnitude * xC;
+        movementVector.z = movementVector.magnitude * yC;
+
+        // Pedalling
         if (ic((leftPedal | rightPedal) + lastAction))
         {
             lastAction = leftPedal | rightPedal;
@@ -101,6 +130,7 @@ public class PlayerMove : MonoBehaviour
         }
 
 
+        // Braking
         bool brakePressed = Input.GetButtonDown("B");
         bool brakeHeld = Input.GetButton("B");
 
@@ -120,6 +150,8 @@ public class PlayerMove : MonoBehaviour
             if (rotateSpeed < 0) rotateSpeed = 0;
         }
 
+
+        // Drifting
         bool drift = Input.GetButton("X");
 
         // You can drift if you're going half as fast as the maximum move speed
@@ -152,6 +184,8 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+
+        // Movement
         movementVector.x = movementVector.x - slowFactor * xC;
         if (Mathf.Sign(xC) != Mathf.Sign(movementVector.x)) movementVector.x = 0;
         if (Mathf.Abs(movementVector.x) > Mathf.Abs(maxMoveSpeed * xC)) movementVector.x = maxMoveSpeed * xC;
