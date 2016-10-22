@@ -21,8 +21,8 @@ public class InputHandler : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        bool leftPedal = Input.GetAxis("LeftTrigger") == 1;
-        bool rightPedal = Input.GetAxis("RightTrigger") == 1;
+        int leftPedal = (Input.GetAxis("LeftTrigger") == 1) ? 1 : 0;
+        int rightPedal = (Input.GetAxis("RightTrigger") == 1) ? 2 : 0;
         float turnFactor = Input.GetAxis("LeftJoystickX");
 
         move.SetFactors(leftPedal, rightPedal, turnFactor);
