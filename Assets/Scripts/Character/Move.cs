@@ -1,20 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Move : MonoBehaviour
+public class Move
 {
-    public Vector3 position;
-    public Vector3 velocity;
-    private Car thisCharactersCar;  // We need access to the attributes of this characters car so we can update the location of the car accordingly
+    private Vector3 position;
+    private Vector3 velocity;
+    private Character character;
+    private Car car;
+    private Rigidbody body;
 
-	// Use this for initialization
-	void Start ()
+    public Move(Character c)
     {
-        position = gameObject.transform.position;
+        character = c;
+        car = character.GetCar();
+        position = character.transform.position; // might not be needed
+        body = character.GetComponent<Rigidbody>();
+        velocity = Vector3.zero;
+    }
 
-        // How to disable attaching this script to a GameObject if a Character script isn't present? This way we can freely and safely interact with the car object attached to the same GameObject as Character requires both the Move and the Car scripts.
-        thisCharactersCar = GetComponent<Car>();
+    public void SetFactors(bool lP, bool rP, float tF)
+    {
 
-        // Require RigidBody on any GameObject that has this component for its velocity component
     }
 }

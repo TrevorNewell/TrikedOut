@@ -35,4 +35,14 @@ public class Character : MonoBehaviour
     {
 	    // Update is based off the respective scripts that inherit from this class.  There may be some things that need updated regardless of which class inherits it, but the two classes that inherit this script currently (AI and Player) vary wildly
 	}
+
+    public Car GetCar()
+    {
+        return ourCar;
+    }
+
+    public Move GetMove()
+    {
+        return ourMove;
+    }
 }
