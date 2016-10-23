@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+//[RequireComponent(typeof(Car))]
 // Note, you won't want to attach this script to the gameObject.  You will want to attach a script that inherits from this one
 public class Character : MonoBehaviour
 {
     public GameObject characterModel; // Should the Character mesh be included here as a GameObject?
-    private Move ourMove;
-    private Car ourCar;
+    protected Move ourMove;
+    protected Car ourCar;
 
     // Status Effects
     public int health = 100; // When 0, the character dies, drops an item/weapon, then respawns shortly after at last checkpoint or close to where it was killed.
@@ -22,12 +22,14 @@ public class Character : MonoBehaviour
     public GameObject super; // Part of the loadout?  Charge this by pedaling.  Should be used sparingly as it takes a while to charge and is pretty strong (it'd be as powerful as a blue shell)
 
 	// Use this for initialization
-	void Start ()
+	protected void Start ()
     {
         // Force the game object this is attached to to require the move script as well as the car script.  I remember there's a way to add a script which then causes other components to be automatically added.. 
         // I can find out later or you can try if I don't get around to it before then.  Keep this in mind when referring to other scripts where I've made a similar note.  I don't think it'sAddComponent, you can do it so it does it from the editor
-        ourMove = gameObject.GetComponent<Move>();
-        ourCar = gameObject.GetComponent<Car>();
+
+        //Eventually this car will be a part of a prefab and will be pulled as a GetComponent<Car>() from that GameObject
+        ourCar = new Car();//gameObject.GetComponent<Car>();
+        ourMove = new Move(this);
     }
 
     // Update is called once per frame

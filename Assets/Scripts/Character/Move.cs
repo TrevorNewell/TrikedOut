@@ -3,11 +3,12 @@ using System.Collections;
 
 public class Move
 {
-    private Vector3 position;
-    private Vector3 velocity;
     private Character character;
     private Car car;
     private Rigidbody body;
+    
+    private float velocity;
+    private float rotation;
 
     private int leftPedal;
     private int rightPedal;
@@ -20,9 +21,9 @@ public class Move
     {
         character = c;
         car = character.GetCar();
-        position = character.transform.position; // might not be needed
         body = character.GetComponent<Rigidbody>();
-        velocity = Vector3.zero;
+        velocity = 0.0f;
+        rotation = 0.0f;
         timer = 0.0f;
     }
 
@@ -40,17 +41,24 @@ public class Move
         timer += Time.deltaTime;
 
         //decay velocity
-
-        //turn character and velocity
+        if (velocity > 0.0f) velocity -= car.slowRate * Time.deltaTime;
+        else velocity = 0.0f;
 
         if (leftPedal + rightPedal != 0 && timer > car.pedalDelay)
         {
             int nextPedal = rightPedal;
             if (leftPedal + lastPedal == 3) nextPedal = leftPedal;
 
+            lastPedal = nextPedal;
             timer = 0.0f;
 
             //add velocity
+            velocity += car.acceleration;
         }
+
+        //turn character and velocity
+        rotation += turnFactor;
+        character.transform.eulerAngles = new Vector3(0, rotation, 0);
+        body.velocity = new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation));
     }
 }
