@@ -10,7 +10,7 @@ public class Car
     public float acceleration = 2.0f;
     public float turnRate = 2.0f;
     public float slowRate = 1.0f;
-    public float pedalDelay = 0.5f;
+    public float pedalDelay = 2.0f;
 
     [Range(0, 1)]private float slowResistance = 0; // This is a possible variable.  Based on the wheels of the car it can be more resistant towards slowing effects.  
     // For instance a hoverTrike wouldn't make contact with the ground so marshmallows would have no effect on the speed of that car.  1 indicates 100% resistant to slows.  0 indicates slows act as normal.

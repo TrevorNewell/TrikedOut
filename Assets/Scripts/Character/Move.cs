@@ -21,7 +21,7 @@ public class Move
     {
         character = c;
         car = character.GetCar();
-        body = character.GetComponent<Rigidbody>();
+        body = (character as MonoBehaviour).GetComponent<Rigidbody>();
         velocity = 0.0f;
         rotation = 0.0f;
         timer = 0.0f;
@@ -58,7 +58,7 @@ public class Move
 
         //turn character and velocity
         rotation += turnFactor;
-        character.transform.eulerAngles = new Vector3(0, rotation, 0);
+        (character as MonoBehaviour).transform.eulerAngles = new Vector3(0, rotation, 0);
         body.velocity = new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation));
     }
 }
