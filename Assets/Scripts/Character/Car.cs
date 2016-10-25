@@ -8,8 +8,8 @@ public class Car : MonoBehaviour
     public double maxSpeed = 20;
     private bool isPedaling = false; // Based on our variable stated directly below, if the left trigger is pressed within the specified time after the right trigger was pressed, this is true.  Else false
     public float acceleration = 2.0f;
-    public float turnRate = 2.0f;
-    public float slowRate = 1.0f;
+    public float turnRate = 3.0f;
+    public float slowRate = 5.0f;
     public float pedalDelay = 2.0f;
 
     [Range(0, 1)]private float slowResistance = 0; // This is a possible variable.  Based on the wheels of the car it can be more resistant towards slowing effects.  
