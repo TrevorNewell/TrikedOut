@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Car
+public class Car : MonoBehaviour
 {
     public GameObject carModel; // Should the Car mesh be included here as a GameObject?
 

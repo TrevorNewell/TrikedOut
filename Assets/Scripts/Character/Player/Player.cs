@@ -23,14 +23,20 @@ public class Player : MonoBehaviour, Character
     public void Start ()
     {
         //Eventually this car will be a part of a prefab and will be pulled as a GetComponent<Car>() from that GameObject
-        ourCar = new Car();//gameObject.GetComponent<Car>();
-        ourMove = new Move(this);
+        //ourCar = new Car();//gameObject.GetComponent<Car>();
+        //ourMove = new Move(this);
+
+        ourCar = gameObject.GetComponent<Car>();
+        ourMove = gameObject.GetComponent<Move>();
+
+        //gameObject.AddComponent<Car>();
+        //gameObject.AddComponent<Move>();
     }
 	
 	// Update is called once per frame
 	public void Update ()
     {
-        ourMove.Update();
+        //ourMove.Update();
         // Because this script inherits from Character and we've required Character to have a Move and Car script on any GameObject it's attached to, 
         // we can safely update the variables of Move within this script based on the Input coming from the user as well as the attributes of the car.
 	}

@@ -14,21 +14,24 @@ public class InputHandler : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-
+        player = gameObject.GetComponent<Player>();
+        move = gameObject.GetComponent<Move>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(player == null)
-        {
-            player = GetComponent<Player>();
-            move = player.GetMove();
-        }
+        //if(player == null)
+        //{
+        //player = GetComponent<Player>();
+        //move = player.GetMove();
+        //}
+
         int leftPedal = (Input.GetAxis("LeftTrigger") == 1) ? 1 : 0;
         int rightPedal = (Input.GetAxis("RightTrigger") == 1) ? 2 : 0;
         float turnFactor = Input.GetAxis("LeftJoystickX");
 
+        //print(leftPedal + " " + rightPedal);
         move.SetFactors(leftPedal, rightPedal, turnFactor);
 	}
 }
