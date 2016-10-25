@@ -25,6 +25,7 @@ public class Move : MonoBehaviour
         velocity = 0.0f;
         rotation = 0.0f;
         timer = 0.0f;
+        lastPedal = 1;
     }
 
     // This is used when the player finishes the race
@@ -65,34 +66,13 @@ public class Move : MonoBehaviour
 
         if (leftPedal + rightPedal != 0)
         {
-            Debug.Log("Left: " + leftPedal + " Right: " + rightPedal);
-
-            //Debug.Log("In First Check.");
-
             int nextPedal = 0;
 
             if (rightPedal + lastPedal == 3) nextPedal = 1;
             else if (leftPedal + lastPedal == 3) nextPedal = 2;
 
-
-
-            if (leftPedal != 0 && rightPedal == 0 && lastPedal == 2)
-            {
-                //Debug.Log("Left Pedal Pressed");
-                //nextPedal = 1;
-
-            }
-            else if (leftPedal == 0 && rightPedal != 0 && lastPedal == 1)
-            {
-                //Debug.Log("Right Pedal Pressed");
-            }
-
-            //Debug.Log("Next Pedal: " + nextPedal + " Last Pedal: " + lastPedal);
-
             if (nextPedal != 0)
             {
-                //Debug.Log("In Second Check.");
-
                 lastPedal = nextPedal;
                 float modifier = timer / car.pedalDelay;
                 if (modifier > 1.0f) modifier = 1.0f;
@@ -103,21 +83,7 @@ public class Move : MonoBehaviour
 
                 if (velocity > car.maxSpeed) velocity = (float)car.maxSpeed;
             }
-
-            if (leftPedal != 0 && rightPedal == 0)
-            {
-                //Debug.Log("Left Pedal Pressed");
-                lastPedal = 1;
-
-            }
-            else if (leftPedal == 0 && rightPedal != 0)
-            {
-                //Debug.Log("Right Pedal Pressed");
-                lastPedal = 2;
-            }
         }
-
-        //Debug.Log("Velocity: " + velocity);
 
         //turn character and velocity
         rotation += turnFactor;
