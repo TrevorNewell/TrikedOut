@@ -64,12 +64,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Character\AI\AI.cs" />
@@ -81,6 +75,8 @@
     <Compile Include="Assets\Scripts\Race\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
     <Compile Include="Assets\Scripts\Race\RaceManager.cs" />
+    <Compile Include="Assets\Scripts\Screen\Screen.cs" />
+    <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Bangers\OFL.txt" />
@@ -88,6 +84,10 @@
     <None Include="Assets\Fonts\Gochi_Hand\OFL.txt" />
     <None Include="Assets\Fonts\Permanent_Marker\LICENSE.txt" />
     <None Include="Assets\Fonts\Rock_Salt\LICENSE.txt" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
