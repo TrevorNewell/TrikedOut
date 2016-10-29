@@ -14,6 +14,9 @@ public class Screen : MonoBehaviour
 
     public Button firstActive;
 
+    public bool isRoot;
+    public bool disableRootOnBack;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -29,7 +32,7 @@ public class Screen : MonoBehaviour
 	
     void OnEnable()
     {
-        //ScreenManager.instance.eventHandler.firstSelectedGameObject = firstActive.gameObject;
+        //ScreenManager.instance.eventHandler.SetSelectedGameObject(firstActive.gameObject);
     }
 
     void OnDisable()

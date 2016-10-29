@@ -20,11 +20,13 @@ public class RaceManager : MonoBehaviour
     public int countdownAtStart = 5; // This divided by 4 is how long each number will stay on screen at the start of the game.
 
     public bool isStarting = true;
-    public int originalFontSize;
-    public float countdownPerNumber;
-    public int currentDisplay = 0;
-    public string[] ourStringsToDisplay;
+    private int originalFontSize;
+    private float countdownPerNumber;
+    private int currentDisplay = 0;
+    private string[] ourStringsToDisplay;
     public float tempTime;
+
+    public float pauseTime;
 
     [Header("UI Variables")]
     public Text leftText;
@@ -38,7 +40,7 @@ public class RaceManager : MonoBehaviour
     public string lapsString;
     private string statusString;
 
-    private float overallTime;
+    public float overallTime;
     private float currentTime;
     private float lastTime;
 
@@ -335,23 +337,30 @@ public class RaceManager : MonoBehaviour
 
     void Update ()
     {
-        if (!raceOver && !isStarting) // Time the race!
+        if (StateManager.instance.isPaused)
         {
-            overallTime = Time.time - countdownAtStart + countdownPerNumber;
+            pauseTime += Time.deltaTime;
+        }
+
+        // Using Time.timeSinceLevelLoad is not the best approach.  May want to update later.
+
+        if (!raceOver && !isStarting && !StateManager.instance.isPaused) // Time the race!
+        {
+            overallTime = Time.timeSinceLevelLoad - countdownAtStart + countdownPerNumber - pauseTime;
             currentTime = overallTime - allButThisLapTime;
 
             UpdateText();
         }
         else if (isStarting && tempTime < countdownAtStart) // Countdown to start the race!
         {
-            tempTime = Time.time;
+            tempTime = Time.timeSinceLevelLoad;
 
             DisplayStartText();
         }
 
         if (tempTime > countdownAtStart - countdownPerNumber && tempTime < countdownAtStart) // Allows the player to start on the last string that's displayed
         {
-            tempTime = Time.time;
+            tempTime = Time.timeSinceLevelLoad;
             GameObject.FindObjectOfType<InputHandler>().enabled = true;
             isStarting = false;
             DisplayStartText();

@@ -8,8 +8,12 @@ public class ScreenManager : MonoBehaviour
 {
     public static ScreenManager instance;
     public EventSystem eventHandler;
+
+    // These two parameters work great if the screen only goes one level deep.  However, if I go say 3 levels deep and I navigate back (Using "B" on the controller) it just swaps between the last two screens.  I need to update this but right now it isn't a serious issue..
     public GameObject lastScreen;
     public GameObject currentScreen;
+
+    public GameObject pauseScreen;
 
     //public float delay = 0.2f;
 
@@ -21,15 +25,52 @@ public class ScreenManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        instance = this;
         eventHandler = FindObjectOfType<EventSystem>();
     }
 
     // Update is called once per frame
     void Update ()
     {
-	
+        if (Input.GetButtonUp("B") && (StateManager.instance.isPaused || StateManager.instance.isMainMenu))
+        {
+            if (currentScreen != null)
+            {
+                if (currentScreen.GetComponent<Screen>().isRoot && currentScreen.GetComponent<Screen>().disableRootOnBack)
+                {
+                    DisableCurrentScreen();
+                }
+                else if (currentScreen.GetComponent<Screen>().isRoot && !currentScreen.GetComponent<Screen>().disableRootOnBack)
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    SwitchScreens(currentScreen, lastScreen);
+                }
+            }
+        }
 	}
+
+
+    public void Pause()
+    {
+        StateManager.instance.isPaused = true;
+        pauseScreen.SetActive(true);
+        currentScreen = pauseScreen;
+        ScreenManager.instance.eventHandler.SetSelectedGameObject(pauseScreen.GetComponent<Screen>().firstActive.gameObject);
+    }
+
+    public void Unpause()
+    {
+        StateManager.instance.isPaused = false;
+        pauseScreen.SetActive(false);
+    }
+
+
+    public void DisableCurrentScreen()
+    {
+        DisableScreen(currentScreen);
+    }
 
     public void SwitchScreens(GameObject from, GameObject to)
     {
@@ -41,12 +82,13 @@ public class ScreenManager : MonoBehaviour
         from.SetActive(false);
     }
 
-    public void EnableObject(GameObject enable)
+    public void EnableScreen(GameObject enable)
     {
         enable.SetActive(true);
+        currentScreen = enable;
     }
 
-    public void DisableObject(GameObject disable)
+    public void DisableScreen(GameObject disable)
     {
         disable.SetActive(true);
     }

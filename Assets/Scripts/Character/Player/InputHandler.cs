@@ -11,8 +11,6 @@ public class InputHandler : MonoBehaviour
     private Player player;
     private Move move;
 
-    public bool paused = false;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -29,19 +27,7 @@ public class InputHandler : MonoBehaviour
         //move = player.GetMove();
         //}
 
-        if(Input.GetButtonUp("Submit")) // Which button is start?!
-        {
-            if (paused)
-            {
-                //paused = false;
-            }
-            else
-            {
-                //paused = true;
-            }
-        }
-
-        if (!paused)
+        if (!StateManager.instance.isPaused)
         {
             int leftPedal = (Input.GetAxis("LeftTrigger") == 1) ? 1 : 0;
             int rightPedal = (Input.GetAxis("RightTrigger") == 1) ? 2 : 0;
