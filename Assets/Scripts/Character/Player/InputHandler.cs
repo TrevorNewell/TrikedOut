@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour
     private Player player;
     private Move move;
 
+    public bool paused = false;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -27,11 +29,26 @@ public class InputHandler : MonoBehaviour
         //move = player.GetMove();
         //}
 
-        int leftPedal = (Input.GetAxis("LeftTrigger") == 1) ? 1 : 0;
-        int rightPedal = (Input.GetAxis("RightTrigger") == 1) ? 2 : 0;
-        float turnFactor = Input.GetAxis("LeftJoystickX");
+        if(Input.GetButtonUp("Submit")) // Which button is start?!
+        {
+            if (paused)
+            {
+                //paused = false;
+            }
+            else
+            {
+                //paused = true;
+            }
+        }
 
-        //print(leftPedal + " " + rightPedal);
-        move.SetFactors(leftPedal, rightPedal, turnFactor);
+        if (!paused)
+        {
+            int leftPedal = (Input.GetAxis("LeftTrigger") == 1) ? 1 : 0;
+            int rightPedal = (Input.GetAxis("RightTrigger") == 1) ? 2 : 0;
+            float turnFactor = Input.GetAxis("LeftJoystickX");
+
+            //print(leftPedal + " " + rightPedal);
+            move.SetFactors(leftPedal, rightPedal, turnFactor);
+        }
 	}
 }
