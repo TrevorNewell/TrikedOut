@@ -13,7 +13,7 @@ public class StateManager : MonoBehaviour
 
     public Material[] charSelection;
     public static Material[] GlobalCharSelection;
-    public static int charSelIndex;
+    public static int charSelIndex = -1;
 
     public Screen[] screensInScene;
 
@@ -21,7 +21,7 @@ public class StateManager : MonoBehaviour
 
     void Awake()
     {
-        if (charSelection.Length == 0)
+        if (charSelIndex != -1)
         {
             charSelection = new Material[GlobalCharSelection.Length];
             charSelection = GlobalCharSelection;
@@ -69,7 +69,7 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetButtonUp("Submit") && !isMainMenu) // Which button is start?!
+        if (Input.GetButtonUp("Submit") && !isMainMenu)
         {
             if (isPaused)
             {

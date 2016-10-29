@@ -24,9 +24,17 @@ public class RaceManager : MonoBehaviour
     private float countdownPerNumber;
     private int currentDisplay = 0;
     private string[] ourStringsToDisplay;
-    public float tempTime;
 
+    public float tempTime;
     public float pauseTime;
+    public float overallTime;
+
+    private float currentTime;
+    private float lastTime;
+
+    private float allButThisLapTime = 0;
+
+    private float t;
 
     [Header("UI Variables")]
     public Text leftText;
@@ -39,14 +47,6 @@ public class RaceManager : MonoBehaviour
     public string lastString;
     public string lapsString;
     private string statusString;
-
-    public float overallTime;
-    private float currentTime;
-    private float lastTime;
-
-    private float allButThisLapTime = 0;
-
-    private float t;
 
 	// Use this for initialization
 	void Start ()
@@ -341,29 +341,31 @@ public class RaceManager : MonoBehaviour
         {
             pauseTime += Time.deltaTime;
         }
-
-        // Using Time.timeSinceLevelLoad is not the best approach.  May want to update later.
-
-        if (!raceOver && !isStarting && !StateManager.instance.isPaused) // Time the race!
+        else
         {
-            overallTime = Time.timeSinceLevelLoad - countdownAtStart + countdownPerNumber - pauseTime;
-            currentTime = overallTime - allButThisLapTime;
+            // Using Time.timeSinceLevelLoad is not the best approach.  May want to update later.
 
-            UpdateText();
-        }
-        else if (isStarting && tempTime < countdownAtStart) // Countdown to start the race!
-        {
-            tempTime = Time.timeSinceLevelLoad;
+            if (!raceOver && !isStarting) // Time the race!
+            {
+                overallTime = Time.timeSinceLevelLoad - countdownAtStart + countdownPerNumber - pauseTime;
+                currentTime = overallTime - allButThisLapTime;
 
-            DisplayStartText();
-        }
+                UpdateText();
+            }
+            else if (isStarting && tempTime < countdownAtStart) // Countdown to start the race!
+            {
+                tempTime = Time.timeSinceLevelLoad - pauseTime;
 
-        if (tempTime > countdownAtStart - countdownPerNumber && tempTime < countdownAtStart) // Allows the player to start on the last string that's displayed
-        {
-            tempTime = Time.timeSinceLevelLoad;
-            GameObject.FindObjectOfType<InputHandler>().enabled = true;
-            isStarting = false;
-            DisplayStartText();
+                DisplayStartText();
+            }
+
+            if (tempTime > countdownAtStart - countdownPerNumber && tempTime < countdownAtStart) // Allows the player to start on the last string that's displayed
+            {
+                tempTime = Time.timeSinceLevelLoad - pauseTime;
+                GameObject.FindObjectOfType<InputHandler>().enabled = true;
+                isStarting = false;
+                DisplayStartText();
+            }
         }
     }
 }

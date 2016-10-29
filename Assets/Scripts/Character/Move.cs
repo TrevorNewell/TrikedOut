@@ -17,6 +17,9 @@ public class Move : MonoBehaviour
     private int lastPedal;
     private float timer = 0.0f;
 
+    private float savedVelocity = 0.0f;
+    private float savedRotation = 0.0f;
+    private float savedTurnFactor = 0.0f;
     void Start()
     {
         character = gameObject.GetComponent<Player>();
@@ -53,10 +56,28 @@ public class Move : MonoBehaviour
         turnFactor = tF;
     }
 
+    public void SaveMomentum()
+    {
+        savedVelocity = velocity;
+        savedRotation = rotation;
+        savedTurnFactor = turnFactor;
+
+        velocity = 0;
+        //rotation = 0; // Don't set to 0. 
+        turnFactor = 0;
+        //gameObject.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    public void RestoreMomentum()
+    {
+        //gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        velocity = savedVelocity;
+        rotation = savedRotation;
+        turnFactor = savedTurnFactor;
+    }
+
     public void Update()
     {
-        //Debug.Log("Velocity Before: " + velocity);
-
         timer += Time.deltaTime;
 
         //decay velocity

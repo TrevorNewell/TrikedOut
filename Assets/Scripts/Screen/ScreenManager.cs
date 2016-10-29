@@ -15,6 +15,8 @@ public class ScreenManager : MonoBehaviour
 
     public GameObject pauseScreen;
 
+    public GameObject HUD;
+
     //public float delay = 0.2f;
 
     void Awake()
@@ -55,6 +57,8 @@ public class ScreenManager : MonoBehaviour
     public void Pause()
     {
         StateManager.instance.isPaused = true;
+        HUD.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().SaveMomentum();
         pauseScreen.SetActive(true);
         currentScreen = pauseScreen;
         ScreenManager.instance.eventHandler.SetSelectedGameObject(pauseScreen.GetComponent<Screen>().firstActive.gameObject);
@@ -63,6 +67,8 @@ public class ScreenManager : MonoBehaviour
     public void Unpause()
     {
         StateManager.instance.isPaused = false;
+        HUD.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().RestoreMomentum();
         pauseScreen.SetActive(false);
     }
 
