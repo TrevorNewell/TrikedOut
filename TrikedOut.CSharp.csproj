@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Race\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
     <Compile Include="Assets\Scripts\Race\RaceManager.cs" />
+    <Compile Include="Assets\Scripts\Screen\EnableDisableOnHighlight.cs" />
     <Compile Include="Assets\Scripts\Screen\Screen.cs" />
     <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
     <Compile Include="Assets\Scripts\StateManager.cs" />
