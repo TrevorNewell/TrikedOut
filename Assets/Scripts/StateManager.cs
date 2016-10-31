@@ -69,7 +69,7 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetButtonUp("Submit") && !isMainMenu)
+        if (Input.GetButtonUp("Start") && !isMainMenu)
         {
             if (isPaused)
             {

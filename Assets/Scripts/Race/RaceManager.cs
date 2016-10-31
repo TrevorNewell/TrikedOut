@@ -4,6 +4,10 @@ using System.Collections;
 
 public class RaceManager : MonoBehaviour
 {
+    [Header("Player")]
+    public GameObject player;
+    public bool isActive = true;
+
     [Header("Checkpoint Variables")]
     public bool disableCheckpointsOnStart = true;
 
@@ -48,10 +52,15 @@ public class RaceManager : MonoBehaviour
     public string lapsString;
     private string statusString;
 
+    public int GetID()
+    {
+        return player.GetComponent<Character>().GetID();
+    }
+
 	// Use this for initialization
 	void Start ()
     {
-        GameObject.FindObjectOfType<InputHandler>().enabled = false;
+        player.GetComponent<InputHandler>().enabled = false;
 
         bottomLeftText.text = "";
         directMiddleText.text = "";
@@ -129,14 +138,15 @@ public class RaceManager : MonoBehaviour
         // If we have only passed the last checkpoint, it means the race is just starting and we need to reset the variables for the end checkpoint.
         bool endPassed = false;
         bool anyOtherPassed = false;
-        
+        int id = player.GetComponent<Character>().GetID();
+
         foreach (Checkpoint c in checkpoints)
         {
-            if (c.hasPassed == true && c.isEnd == false)
+            if (c.hasPassed(id) == true && c.isEnd == false)
             {
                 anyOtherPassed = true;
             }
-            else if (c.hasPassed == true && c.isEnd == true)
+            else if (c.hasPassed(id) == true && c.isEnd == true)
             {
                 endPassed = true;
             }
@@ -144,14 +154,14 @@ public class RaceManager : MonoBehaviour
 
         if (anyOtherPassed == false && endPassed == true)
         {
-            checkpoints[checkpoints.Length - 1].NewLap();
+            checkpoints[checkpoints.Length - 1].NewLap(id);
         }
 
         bool nextLap = true;
         // Make sure we've passed all checkpoints
         foreach (Checkpoint c in checkpoints)
         {
-            if (c.hasPassed == false)
+            if (c.hasPassed(id) == false)
             {
                 nextLap = false;
             }
@@ -183,15 +193,15 @@ public class RaceManager : MonoBehaviour
 
                 UpdateText();
                 // This is temp for now, just disable input to player for now.  We'll call a different method to do other stuff like stop the player while others finish, or if a solo race we'll show stats for the player.
-                GameObject.FindObjectOfType<InputHandler>().enabled = false;
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().SlowCharacter();
+                player.GetComponent<InputHandler>().enabled = false;
+                player.GetComponent<Move>().SlowCharacter();
             }
 
             foreach (Checkpoint c in checkpoints)
             {
-                if (c.hasPassed == false)
+                if (c.hasPassed(id) == false)
                 {
-                    c.NewLap();
+                    c.NewLap(id);
                 }
             }
 
@@ -362,7 +372,7 @@ public class RaceManager : MonoBehaviour
             if (tempTime > countdownAtStart - countdownPerNumber && tempTime < countdownAtStart) // Allows the player to start on the last string that's displayed
             {
                 tempTime = Time.timeSinceLevelLoad - pauseTime;
-                GameObject.FindObjectOfType<InputHandler>().enabled = true;
+                player.GetComponent<InputHandler>().enabled = true;
                 isStarting = false;
                 DisplayStartText();
             }

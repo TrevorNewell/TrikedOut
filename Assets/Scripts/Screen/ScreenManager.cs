@@ -15,7 +15,10 @@ public class ScreenManager : MonoBehaviour
 
     public GameObject pauseScreen;
 
-    public GameObject HUD;
+    public GameObject HUD1;
+    public GameObject HUD2;
+    public GameObject HUD3;
+    public GameObject HUD4;
 
     //public float delay = 0.2f;
 
@@ -33,7 +36,7 @@ public class ScreenManager : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetButtonUp("B") && (StateManager.instance.isPaused || StateManager.instance.isMainMenu))
+        if (Input.GetButtonUp("P1_B") && (StateManager.instance.isPaused || StateManager.instance.isMainMenu))
         {
             if (currentScreen != null)
             {
@@ -57,18 +60,32 @@ public class ScreenManager : MonoBehaviour
     public void Pause()
     {
         StateManager.instance.isPaused = true;
-        HUD.SetActive(false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().SaveMomentum();
+        HUD1.SetActive(false);
+        HUD2.SetActive(false);
+       //// HUD3.SetActive(false);
+        //HUD4.SetActive(false);
+        GameObject[] cs = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject c in cs)
+        {
+            c.GetComponent<Move>().SaveMomentum();
+        }
         pauseScreen.SetActive(true);
         currentScreen = pauseScreen;
-        ScreenManager.instance.eventHandler.SetSelectedGameObject(pauseScreen.GetComponent<Screen>().firstActive.gameObject);
+        instance.eventHandler.SetSelectedGameObject(pauseScreen.GetComponent<Screen>().firstActive.gameObject);
     }
 
     public void Unpause()
     {
         StateManager.instance.isPaused = false;
-        HUD.SetActive(true);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Move>().RestoreMomentum();
+        HUD1.SetActive(true);
+        HUD2.SetActive(true);
+        //HUD3.SetActive(true);
+        //HUD4.SetActive(true);
+        GameObject[] cs = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject c in cs)
+        {
+            c.GetComponent<Move>().RestoreMomentum();
+        }
         pauseScreen.SetActive(false);
     }
 

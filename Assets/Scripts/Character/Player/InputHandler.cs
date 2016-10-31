@@ -10,30 +10,25 @@ public class InputHandler : MonoBehaviour
      **/
     private Player player;
     private Move move;
+    private string prefix;
 
 	// Use this for initialization
 	void Start ()
     {
         player = gameObject.GetComponent<Player>();
         move = gameObject.GetComponent<Move>();
+        prefix = player.prefix;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //if(player == null)
-        //{
-        //player = GetComponent<Player>();
-        //move = player.GetMove();
-        //}
-
         if (!StateManager.instance.isPaused)
         {
-            int leftPedal = (Input.GetAxis("LeftTrigger") == 1) ? 1 : 0;
-            int rightPedal = (Input.GetAxis("RightTrigger") == 1) ? 2 : 0;
-            float turnFactor = Input.GetAxis("LeftJoystickX");
+            int leftPedal = (Input.GetAxis(prefix + "_LeftTrigger") == 1) ? 1 : 0;
+            int rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? 2 : 0;
+            float turnFactor = Input.GetAxis(prefix + "_LeftJoystickX");
 
-            //print(leftPedal + " " + rightPedal);
             move.SetFactors(leftPedal, rightPedal, turnFactor);
         }
 	}

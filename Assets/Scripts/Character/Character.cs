@@ -26,4 +26,6 @@ public interface Character
     Car GetCar ();
 
     Move GetMove();
+
+    int GetID();
 }

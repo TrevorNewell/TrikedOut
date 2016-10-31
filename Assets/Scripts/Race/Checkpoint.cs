@@ -7,37 +7,53 @@ public class Checkpoint : MonoBehaviour
     public bool isEnd = false;
     public MeshCollider frontCheck;
     public MeshCollider backCheck;
-      
-    [Header("Read Only *")]
-    public bool hasPassedBack = false;
-    public bool hasPassedFront = false;
-    public bool hasPassed = false;
-    public bool goingWrongWay = false;
+    
+    //public bool hasPassedBack = false;
+    //public bool hasPassedFront = false;
+    //public bool hasPassed = false;
+    //public bool goingWrongWay = false;
 
-	// Use this for initialization
-	void Start ()
+    // players 1 through 4
+    // 0 - hasPassedBack
+    // 1 - hasPassedFront
+    // 2 - hasPassed
+    // 3 - goingWrongWay
+    private bool[,] playerbools;
+
+    public bool hasPassed(int pNum)
     {
-	    
-	}
+        return playerbools[pNum, 2];
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        playerbools = new bool[4, 4];
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-	
+	    
 	}
 
     // Resets our variables to prepare for a new lap.
-    public void NewLap()
+    public void NewLap(int pNum)
     {
-        hasPassedBack = false;
+        /*hasPassedBack = false;
         hasPassedFront = false;
         hasPassed = false;
-        goingWrongWay = false;
+        goingWrongWay = false;*/
+
+        playerbools[pNum, 0] = false;
+        playerbools[pNum, 1] = false;
+        playerbools[pNum, 2] = false;
+        playerbools[pNum, 3] = false;
     }
 
-    public void UpdateFront()
+    public void UpdateFront(int pNum)
     {
-        if (hasPassedBack)
+        /*if (hasPassedBack)
         {
             hasPassedFront = true;
             hasPassed = true;
@@ -47,12 +63,24 @@ public class Checkpoint : MonoBehaviour
             {
                 SendMessageUpwards("CheckForLap");
             }
+        }*/
+
+        if (playerbools[pNum, 0])
+        {
+            playerbools[pNum, 1] = true;
+            playerbools[pNum, 2] = true;
+            playerbools[pNum, 3] = false;
+
+            if (isEnd)
+            {
+                SendMessageUpwards("CheckForLap", pNum);
+            }
         }
     }
 
-    public void UpdateBack()
+    public void UpdateBack(int pNum)
     {
-        if (hasPassedFront)
+        /*if (hasPassedFront)
         {
             hasPassed = false;
             goingWrongWay = true;
@@ -60,6 +88,16 @@ public class Checkpoint : MonoBehaviour
         else
         {
             hasPassedBack = true;
+        }*/
+
+        if (playerbools[pNum, 1])
+        {
+            playerbools[pNum, 2] = false;
+            playerbools[pNum, 3] = true;
+        }
+        else
+        {
+            playerbools[pNum, 0] = true;
         }
     }
 }

@@ -26,4 +26,9 @@ public class AI : Character
     {
         throw new NotImplementedException();
     }
+
+    public int GetID()
+    {
+        return -1;
+    }
 }

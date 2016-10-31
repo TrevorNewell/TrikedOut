@@ -23,13 +23,14 @@ public class CheckpointStatus : MonoBehaviour
         if (other.CompareTag("Player")) // || other.CompareTag AI!
         {
             hasTriggered = true;
+            int pNum = other.GetComponent<Character>().GetID();
             if (isFront)
             {
-                gameObject.GetComponentInParent<Checkpoint>().UpdateFront();
+                gameObject.GetComponentInParent<Checkpoint>().UpdateFront(pNum);
             }
             else
             {
-                gameObject.GetComponentInParent<Checkpoint>().UpdateBack();
+                gameObject.GetComponentInParent<Checkpoint>().UpdateBack(pNum);
             }
         }
     }

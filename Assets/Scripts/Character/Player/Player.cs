@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, Character
     public GameObject weapon; // Has ammo that can be collected from killing other players, from crates, or at the pit stop (or regenerates).  OR, like the hierarchy says, it would be collected and one the ammo's gone it's gone.  
                               // I do suggest, however, when you kill a player and they happen to drop their weapon, depending on the strength of the weapon, you can have it restocked with ammo for the player who killed it, or retain the amount of ammo it had on death.
     public GameObject super; // Part of the loadout?  Charge this by pedaling.  Should be used sparingly as it takes a while to charge and is pretty strong (it'd be as powerful as a blue shell)
+    public string prefix;
                   
     // Use this for initialization
     public void Start ()
@@ -49,5 +50,10 @@ public class Player : MonoBehaviour, Character
     public Move GetMove()
     {
         return ourMove;
+    }
+
+    public int GetID()
+    {
+        return int.Parse(prefix.Substring(1));
     }
 }
