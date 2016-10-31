@@ -341,7 +341,7 @@ public class RaceManager : MonoBehaviour
         }
         else
         {
-            directMiddleText.text = "";
+            directMiddleText.text = "";//player.GetComponent<Player>().GetID() + "";
         }
     }
 
