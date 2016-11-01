@@ -8,8 +8,9 @@ public class SelectCharacter : MonoBehaviour
 
     public GameObject[] objectsToNavigate;
 
-    private int currentObject = 0;
-    private bool isActive = false;
+    public int currentObject = 0;
+    public bool hasPicked = false;
+    public bool isActive = false;
     public float timeBetweenClicks = 0.2f;
     public bool canClick = false;
     private float timer = 0.0f;
@@ -45,40 +46,53 @@ public class SelectCharacter : MonoBehaviour
             canClick = true;
         }
 
-        float leftRight = 0;
+        //if (Input.GetButtonUp("P" + playerNumber + "_A"))
+        //{
+        //    hasPicked = true;
+        //}
 
-        if (isActive)
-        {
-            leftRight = Input.GetAxis(navName);
-        }
+        //if (Input.GetButtonUp("P" + playerNumber + "_B"))
+        //{
+        //    hasPicked = false;
+        //}
 
-        if (leftRight != 0)
+        if (!hasPicked)
         {
-            if (canClick)
+            float leftRight = 0;
+
+            if (isActive)
             {
-                canClick = false;
+                leftRight = Input.GetAxis(navName);
+            }
 
-                if (leftRight < 0)
+            if (leftRight != 0)
+            {
+                if (canClick)
                 {
-                    if (currentObject > 0)
+                    canClick = false;
+
+                    if (leftRight < 0)
                     {
-                        objectsToNavigate[currentObject].SetActive(false);
-                        currentObject--;
-                        objectsToNavigate[currentObject].SetActive(true);
+                        if (currentObject > 0)
+                        {
+                            objectsToNavigate[currentObject].SetActive(false);
+                            currentObject--;
+                            objectsToNavigate[currentObject].SetActive(true);
+                        }
                     }
-                }
-                else if (leftRight > 0)
-                {
-                    if (currentObject < objectsToNavigate.Length - 1)
+                    else if (leftRight > 0)
                     {
-                        objectsToNavigate[currentObject].SetActive(false);
-                        currentObject++;
-                        objectsToNavigate[currentObject].SetActive(true);
+                        if (currentObject < objectsToNavigate.Length - 1)
+                        {
+                            objectsToNavigate[currentObject].SetActive(false);
+                            currentObject++;
+                            objectsToNavigate[currentObject].SetActive(true);
+                        }
                     }
-                }
-                else
-                {
-                    // leftRight is 0
+                    else
+                    {
+                        // leftRight is 0
+                    }
                 }
             }
         }

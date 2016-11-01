@@ -11,18 +11,15 @@ public class StateManager : MonoBehaviour
 
     public bool raceOver;
 
-    public int numPlayers;
-    public Material player1;
-    public Material player2;
-    public Material player3;
-    public Material player4;
+    public static int numPlayers = 0;
 
     public bool hasPlayer1 = false;
     public bool hasPlayer2 = false;
     public bool hasPlayer3 = false;
     public bool hasPlayer4 = false;
 
-    public Material[] charSelection;
+    public Material[] possibleCharSelection;
+    public Material[] actualCharSelection;
     public static Material[] GlobalCharSelection;
     public static int charSelIndex = -1;
 
@@ -32,27 +29,50 @@ public class StateManager : MonoBehaviour
 
     void Awake()
     {
+        if (GlobalCharSelection != null)
+        {
+            Debug.Log("Material size: " + GlobalCharSelection.Length);
+        }
+
         if (charSelIndex != -1)
         {
-            charSelection = new Material[GlobalCharSelection.Length];
-            charSelection = GlobalCharSelection;
+            //possibleCharSelection = new Material[GlobalCharSelection.Length];
+            //possibleCharSelection = GlobalCharSelection;
+            FindObjectOfType<PlayerSetup>().playerCount = numPlayers;
 
-            GameObject f = FindObjectOfType<Player>().gameObject;
+            Player[] players = FindObjectsOfType<Player>();
 
-            Material[] t = new Material[1];
-            t[0] = charSelection[charSelIndex-1];
-            f.GetComponent<MeshRenderer>().materials = t;
+            Debug.Log("Player Objects: " + players.Length);
+            for (int i = 0; i < numPlayers; i++)
+            {
+                GameObject playerObject = players[i].gameObject;
+
+                Debug.Log("P" + players[i].playerNumber);
+                Material[] t = new Material[1];
+                t[0] = GlobalCharSelection[players[i].playerNumber - 1];
+                playerObject.GetComponent<MeshRenderer>().materials = t;
+            }
+
+            //foreach (Player p in players)
+            //{
+            //    GameObject playerObject = p.gameObject;
+
+            //    Debug.Log("P" + p.playerNumber);
+            //    Material[] t = new Material[1];
+            //    t[0] = GlobalCharSelection[p.playerNumber - 1];
+            //    playerObject.GetComponent<MeshRenderer>().materials = t;
+            //}
         }
         else
         {
-            GlobalCharSelection = charSelection;
+            //GlobalCharSelection = possibleCharSelection;  // reworked, don't need
         }
 
         instance = this;
     }
 
     // Use this for initialization
-	void Start ()
+    void Start ()
     {
         screensInScene = Resources.FindObjectsOfTypeAll<Screen>();
 
@@ -156,31 +176,40 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    public void SaveCharSelection(int index)
+    public void SaveCharSelections()
     {
-        int charNumber = 0;
+        SelectCharacter[] characters = Resources.FindObjectsOfTypeAll<SelectCharacter>();
 
-        if (charNumber == 0)
+        Debug.Log("Character count: " + characters.Length);
+        int playerCount = 0;
+
+        foreach (SelectCharacter c in characters)
         {
-            player1 = charSelection[index];
-        }
-        else if(charNumber == 1)
-        {
-            player2 = charSelection[index];
-        }
-        else if (charNumber == 2)
-        {
-            player3 = charSelection[index];
-        }
-        else if (charNumber == 3)
-        {
-            player4 = charSelection[index];
-        }
-        else
-        {
-            Debug.Log("Invalid Character Number");
+            if (c.isActive)
+            {
+                playerCount++;
+                // Save c.playerNumbers c.currentObject from array of material.  Material, material[c.currentObject].
+            }
         }
 
-        charSelIndex += charSelIndex;
+        numPlayers = playerCount;
+
+        actualCharSelection = new Material[numPlayers];
+
+        foreach (SelectCharacter c in characters)
+        {
+            if (c.isActive) 
+            {
+                // c.playerNumber - 1 may have to changed to an increment.  If there's 2 players but 3 controllers there's a possibility that player 2 will actually be player 3's controller.  We can probably
+                // remedy this by adjusting the prefix of the Player script in the other scene based on which controller player 2 is actually using.
+                actualCharSelection[c.playerNumber - 1] = possibleCharSelection[c.currentObject];
+            }
+        }
+
+        charSelIndex = 0;
+
+        GlobalCharSelection = actualCharSelection;
+
+        Debug.Log("Actual character count: " + playerCount);
     }
 }

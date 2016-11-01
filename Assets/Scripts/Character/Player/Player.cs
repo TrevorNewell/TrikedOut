@@ -19,7 +19,7 @@ public class Player : MonoBehaviour, Character
                               // I do suggest, however, when you kill a player and they happen to drop their weapon, depending on the strength of the weapon, you can have it restocked with ammo for the player who killed it, or retain the amount of ammo it had on death.
     public GameObject super; // Part of the loadout?  Charge this by pedaling.  Should be used sparingly as it takes a while to charge and is pretty strong (it'd be as powerful as a blue shell)
     public string prefix;
-                  
+    public int playerNumber;     
     // Use this for initialization
     public void Start ()
     {
