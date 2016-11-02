@@ -42,15 +42,25 @@ public class StateManager : MonoBehaviour
 
             Player[] players = FindObjectsOfType<Player>();
 
+            Player playerObject = players[0];
+
             Debug.Log("Player Objects: " + players.Length);
             for (int i = 0; i < numPlayers; i++)
             {
-                GameObject playerObject = players[i].gameObject;
+                for (int j = 0; j < players.Length; j++)
+                {
+                    if (players[j].playerNumber == i+1)
+                    {
+                        playerObject = players[j];
+                    }
+                }
 
                 Debug.Log("P" + players[i].playerNumber);
+
                 Material[] t = new Material[1];
-                t[0] = GlobalCharSelection[players[i].playerNumber - 1];
-                playerObject.GetComponent<MeshRenderer>().materials = t;
+                //t[0] = GlobalCharSelection[players[i].playerNumber - 1]; // If for some reason we're P2 P3 or P4 and it's only 1 person playing, this doesn't work.
+                t[0] = GlobalCharSelection[i]; // However, this does  
+                playerObject.theMeshToChange.materials = t;
             }
 
             //foreach (Player p in players)
@@ -210,6 +220,6 @@ public class StateManager : MonoBehaviour
 
         GlobalCharSelection = actualCharSelection;
 
-        Debug.Log("Actual character count: " + playerCount);
+        Debug.Log("Actual character count: " + playerCount + " Size: " + actualCharSelection.Length);
     }
 }

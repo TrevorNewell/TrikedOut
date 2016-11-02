@@ -74,11 +74,11 @@ public class RaceManager : MonoBehaviour
 
         countdownPerNumber = (float)countdownAtStart / ourStringsToDisplay.Length;
 
+        GameObject[] theCheckpointGOs = GameObject.FindGameObjectsWithTag("Checkpoint");
+
         // Disable all renderers for our checkpoints.  We don't want the player to see that.
         if (disableCheckpointsOnStart)
         {
-            GameObject[] theCheckpointGOs = GameObject.FindGameObjectsWithTag("Checkpoint");
-
             foreach (GameObject c in theCheckpointGOs)
             {
                 MeshRenderer[] m = c.GetComponentsInChildren<MeshRenderer>();
