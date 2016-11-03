@@ -22,10 +22,14 @@ public class Player : MonoBehaviour, Character
     public int playerNumber;
 
     public MeshRenderer theMeshToChange;
-        
+
+    private float originalY;
+
     // Use this for initialization
     public void Start ()
     {
+        originalY = gameObject.transform.position.y;
+
         //Eventually this car will be a part of a prefab and will be pulled as a GetComponent<Car>() from that GameObject
         //ourCar = new Car();//gameObject.GetComponent<Car>();
         //ourMove = new Move(this);
@@ -40,6 +44,8 @@ public class Player : MonoBehaviour, Character
 	// Update is called once per frame
 	public void Update ()
     {
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, originalY, gameObject.transform.position.z);
+
         //ourMove.Update();
         // Because this script inherits from Character and we've required Character to have a Move and Car script on any GameObject it's attached to, 
         // we can safely update the variables of Move within this script based on the Input coming from the user as well as the attributes of the car.

@@ -17,11 +17,13 @@ public class Move : MonoBehaviour
     private int lastPedal;
     private float timer = 0.0f;
 
-    public ForceMode typeOfForceToApply;
-
     private float savedVelocity = 0.0f;
     private float savedRotation = 0.0f;
     private float savedTurnFactor = 0.0f;
+
+    public ForceMode typeOfForceToApply;
+    public float decayOnCollisionBy;
+
     void Start()
     {
         character = gameObject.GetComponent<Player>();
@@ -78,6 +80,15 @@ public class Move : MonoBehaviour
         turnFactor = savedTurnFactor;
     }
 
+    public void OnCollisionEnter(Collision other) 
+    {
+        Vector3 orthogonalVector = other.contacts[0].point - transform.position;
+        float angleOfCollision = Vector3.Angle(orthogonalVector, body.velocity);
+        Debug.Log("Angle reduction:" + (decayOnCollisionBy * angleOfCollision)/60);
+        //velocity -= (decayOnCollisionBy*angleOfCollision)/60;
+        velocity -= car.slowRate;
+    }
+
     public void Update()
     {
         timer += Time.deltaTime;
@@ -111,6 +122,8 @@ public class Move : MonoBehaviour
         //turn character and velocity
         rotation += turnFactor;
         gameObject.transform.eulerAngles = new Vector3(0, rotation, 0);
+
+        Debug.Log("Velocity: " + velocity);
 
         //body.AddForce(new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation)), typeOfForceToApply);
         body.velocity = new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation));
