@@ -17,6 +17,8 @@ public class Move : MonoBehaviour
     private int lastPedal;
     private float timer = 0.0f;
 
+    public ForceMode typeOfForceToApply;
+
     private float savedVelocity = 0.0f;
     private float savedRotation = 0.0f;
     private float savedTurnFactor = 0.0f;
@@ -109,6 +111,8 @@ public class Move : MonoBehaviour
         //turn character and velocity
         rotation += turnFactor;
         gameObject.transform.eulerAngles = new Vector3(0, rotation, 0);
+
+        //body.AddForce(new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation)), typeOfForceToApply);
         body.velocity = new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation));
     }
 }

@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
-using UnityEditor.SceneManagement;
+﻿//using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
@@ -86,7 +84,7 @@ public class StateManager : MonoBehaviour
     {
         screensInScene = Resources.FindObjectsOfTypeAll<Screen>();
 
-        if (EditorSceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
         {
             isMainMenu = true;
             foreach (Screen s in screensInScene)
