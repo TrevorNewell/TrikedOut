@@ -29,6 +29,8 @@ public class InputHandler : MonoBehaviour
             int rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? 2 : 0;
             float turnFactor = Input.GetAxis(prefix + "_LeftJoystickX");
 
+            Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
+
             move.SetFactors(leftPedal, rightPedal, turnFactor);
         }
 	}

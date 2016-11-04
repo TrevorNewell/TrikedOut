@@ -11,47 +11,50 @@ public class RaceManager : MonoBehaviour
     [Header("Checkpoint Variables")]
     public bool disableCheckpointsOnStart = true;
 
-    public int numLaps = 0;
-    private int currentLap = 1;
+    public int numLaps = 0; // How many laps does the race have?
+    private int currentLap = 1; // What's the current lap?
 
-    public Checkpoint[] checkpoints; // We only care about the status of hasPassed and isEnd.
-    private int numCheckpoints = 0;
+    public Checkpoint[] checkpoints; // We only care about the status of hasPassed and isEnd in each of these scripts.  This script verifies that each checkpoint has been passed by the player, and if they have they make it to the next lap.
+    private int numCheckpoints = 0; // The number of checkpoints in our race, determined by the size of the checkpoints array.
 
     private bool raceOver = false;
 
-    private float[] laps;
+    private float[] laps; // Contains the time it took the player to complete each lap.  Will be the size of numLaps.
 
     public int countdownAtStart = 5; // This divided by 4 is how long each number will stay on screen at the start of the game.
 
-    public bool isStarting = true;
-    private int originalFontSize;
-    private float countdownPerNumber;
-    private int currentDisplay = 0;
-    private string[] ourStringsToDisplay;
+    public bool isStarting = true; // True for the first countdownAtStart seconds of the game.
+    private int originalFontSize; // Not used yet, intended to shrink down the size of each of ourStringsToDisplay.
+    private float countdownPerNumber; // Determined by the size of ourStringsToDisplay as well as countdownAtStart.  
+    private int currentDisplay = 0; // Current string we're displaying based on how much time has passed and countdownPerNumber.
+    private string[] ourStringsToDisplay; // An array of strings displayed in order.
 
-    public float tempTime;
-    public float pauseTime;
-    public float overallTime;
+    public float tempTime; // Tracks time before the race starts.
+    public float pauseTime; // How much time our game has been paused for.  Used to track actual overallTime.
+    public float overallTime; // How long the race has actually been going.
 
-    private float currentTime;
-    private float lastTime;
+    private float currentTime; // Current lap time.
+    private float lastTime; // Last laps time.
 
-    private float allButThisLapTime = 0;
+    private float allButThisLapTime = 0; // Contains the time for every lap, except this lap.
 
     private float t;
 
     [Header("UI Variables")]
+    // Text components for the appropriately named section of the screen.
     public Text leftText;
     public Text bottomLeftText;
     public Text directMiddleText;
     public Text rightText;
 
+    // Default strings to display as prefixes to each corresponding variable.
     public string overallTimeString;
     public string currentString;
     public string lastString;
     public string lapsString;
     private string statusString;
 
+    // Returns the ID for the "player" game 
     public int GetID()
     {
         return player.GetComponent<Character>().GetID();
@@ -66,14 +69,18 @@ public class RaceManager : MonoBehaviour
         directMiddleText.text = "";
 
         originalFontSize = directMiddleText.fontSize;
+
+        // We manually set these here, just so they are consistent with every other race manager
         ourStringsToDisplay = new string[4];
         ourStringsToDisplay[0] = "3";
         ourStringsToDisplay[1] = "2";
         ourStringsToDisplay[2] = "1";
         ourStringsToDisplay[3] = "GO";
 
+        // Calculate our countdownPerNumber
         countdownPerNumber = (float)countdownAtStart / ourStringsToDisplay.Length;
 
+        // Find all our checkPointGOs to disable all mesh renderers within them
         GameObject[] theCheckpointGOs = GameObject.FindGameObjectsWithTag("Checkpoint");
 
         // Disable all renderers for our checkpoints.  We don't want the player to see that.
@@ -215,6 +222,7 @@ public class RaceManager : MonoBehaviour
 
     }
 
+    // Don't need to know the details of this.  Just that it takes a time (i.e. 543.344, which is 543 seconds and a fraction of another) and converts it to hours minutes seconds and milliseconds for use in our HUD.
     private string GetConvertedTime(float time)
     {
         if (time == 0)
@@ -295,6 +303,7 @@ public class RaceManager : MonoBehaviour
         return hoursS + ":" + minutesS + ":" + secondsS + "." + millisecondsS;
     }
 
+    // Based on the status of our race, our labels will be updated accordingly
     public void UpdateText()
     {
         if (currentLap == numLaps && raceOver == false)
@@ -307,11 +316,13 @@ public class RaceManager : MonoBehaviour
             directMiddleText.text = "Finish!";
         }
 
+        // If the race is starting, don't display laps or overall last and current times
         if (isStarting)
         {
             leftText.text = "";
             rightText.text = "";
         }
+        // Display our text.  This can be modified to display Last Laps time only when we have an actual time to display (i.e. after the first lap).
         else
         {
             leftText.text = overallTimeString + GetConvertedTime(overallTime) + "\n" +
@@ -321,6 +332,7 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    // Handles displayed the countdown text at the start of the race
     public void DisplayStartText()
     {
         if (tempTime <= countdownPerNumber * 1 && tempTime > 0)
@@ -347,6 +359,7 @@ public class RaceManager : MonoBehaviour
 
     void Update ()
     {
+        // If we're paused track how long we're paused for so our overall race time doesn't get screwed up.
         if (StateManager.instance.isPaused)
         {
             pauseTime += Time.deltaTime;

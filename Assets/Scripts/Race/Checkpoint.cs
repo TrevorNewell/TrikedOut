@@ -29,13 +29,14 @@ public class Checkpoint : MonoBehaviour
     void Start ()
     {
         playerbools = new bool[4, 4];
+
+        // Don't render any checkpoint meshes on Start.  We just need the Colliders enabled
+        MeshRenderer[] m = gameObject.GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer r in m)
+        {
+            r.enabled = false;
+        } 
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	    
-	}
 
     // Resets our variables to prepare for a new lap.
     public void NewLap(int pNum)

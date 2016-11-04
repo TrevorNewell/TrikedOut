@@ -18,11 +18,13 @@ public class Player : MonoBehaviour, Character
     public GameObject weapon; // Has ammo that can be collected from killing other players, from crates, or at the pit stop (or regenerates).  OR, like the hierarchy says, it would be collected and one the ammo's gone it's gone.  
                               // I do suggest, however, when you kill a player and they happen to drop their weapon, depending on the strength of the weapon, you can have it restocked with ammo for the player who killed it, or retain the amount of ammo it had on death.
     public GameObject super; // Part of the loadout?  Charge this by pedaling.  Should be used sparingly as it takes a while to charge and is pretty strong (it'd be as powerful as a blue shell)
-    public string prefix;
-    public int playerNumber;
 
-    public MeshRenderer theMeshToChange;
+    public string prefix; // i.e. P1
+    public int playerNumber; // i.e 1
 
+    public MeshRenderer theMeshToChange; // This is a temporary variable and will be removed later.  Just lets me test the Main Menu and Character selection correctly with the Trike model in place.
+
+    // Temp variable until colliders are sorted out.  
     private float originalY;
 
     // Use this for initialization
@@ -36,17 +38,15 @@ public class Player : MonoBehaviour, Character
 
         ourCar = gameObject.GetComponent<Car>();
         ourMove = gameObject.GetComponent<Move>();
-
-        //gameObject.AddComponent<Car>();
-        //gameObject.AddComponent<Move>();
     }
 	
 	// Update is called once per frame
 	public void Update ()
     {
+        // This actually freezes the Y position of the player, unlike the RigidBody's freeze position.
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, originalY, gameObject.transform.position.z);
 
-        //ourMove.Update();
+        //ourMove.Update();  For now this is commented out because Move inherits from MonoBehaviour again.  May want to uncomment later
         // Because this script inherits from Character and we've required Character to have a Move and Car script on any GameObject it's attached to, 
         // we can safely update the variables of Move within this script based on the Input coming from the user as well as the attributes of the car.
 	}

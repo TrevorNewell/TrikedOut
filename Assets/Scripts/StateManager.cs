@@ -16,14 +16,12 @@ public class StateManager : MonoBehaviour
     public bool hasPlayer3 = false;
     public bool hasPlayer4 = false;
 
-    public Material[] possibleCharSelection;
-    public Material[] actualCharSelection;
-    public static Material[] GlobalCharSelection;
-    public static int charSelIndex = -1;
+    public Material[] possibleCharSelection; // Contains possible characters to choose from
+    public Material[] actualCharSelection; // Will hold our actual characters to choose from for this scene only
+    public static Material[] GlobalCharSelection; // Holds our actual characters between scenes.  This is set on the CharacterSelection screen in the Main Menu.
+    public static int charSelIndex = -1; // -1 until SaveCharacterSelection is called.  I should change this to a bool to avoid confusion, but eh.
 
     public Screen[] screensInScene;
-
-    // ? Others ?
 
     void Awake()
     {
@@ -32,44 +30,39 @@ public class StateManager : MonoBehaviour
             Debug.Log("Material size: " + GlobalCharSelection.Length);
         }
 
+        // This will always be -1 unless SaveCharSelections has been called.  And that's only ever called from the main menu, transitioning from the character select screen to the track selection screen.
         if (charSelIndex != -1)
         {
-            //possibleCharSelection = new Material[GlobalCharSelection.Length];
-            //possibleCharSelection = GlobalCharSelection;
+            // Update the playerCount so we can section off the screen appropriately and activate the required game objects.
             FindObjectOfType<PlayerSetup>().playerCount = numPlayers;
 
+            // Just realized, this section below may need to be called after PlayerSetup has done it's thing.  FindObjectsOfType<Player>() only finds "active" game objects.
             Player[] players = FindObjectsOfType<Player>();
-
+            
             Player playerObject = players[0];
 
             Debug.Log("Player Objects: " + players.Length);
             for (int i = 0; i < numPlayers; i++)
             {
+                // Find the correct instance of the player script
                 for (int j = 0; j < players.Length; j++)
                 {
+                    // This may be the best place to "reassign" controllers.  Not sure, just a thought.
                     if (players[j].playerNumber == i+1)
                     {
                         playerObject = players[j];
+                        Debug.Log("P" + players[j].playerNumber);
                     }
                 }
 
-                Debug.Log("P" + players[i].playerNumber);
+                //Debug.Log("P" + players[i].playerNumber);  Moved to the if statement directly above.  May have been incorrectly reporting the players number.
+
 
                 Material[] t = new Material[1];
                 //t[0] = GlobalCharSelection[players[i].playerNumber - 1]; // If for some reason we're P2 P3 or P4 and it's only 1 person playing, this doesn't work.
                 t[0] = GlobalCharSelection[i]; // However, this does  
                 playerObject.theMeshToChange.materials = t;
             }
-
-            //foreach (Player p in players)
-            //{
-            //    GameObject playerObject = p.gameObject;
-
-            //    Debug.Log("P" + p.playerNumber);
-            //    Material[] t = new Material[1];
-            //    t[0] = GlobalCharSelection[p.playerNumber - 1];
-            //    playerObject.GetComponent<MeshRenderer>().materials = t;
-            //}
         }
         else
         {
@@ -84,21 +77,25 @@ public class StateManager : MonoBehaviour
     {
         screensInScene = Resources.FindObjectsOfTypeAll<Screen>();
 
+        // If the current scene name is "Menus" then set the appropriate variables
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
         {
             isMainMenu = true;
             foreach (Screen s in screensInScene)
             {
+                // Find the screen that's the root and enable it.
                 if (s.isRoot)
                 {
                     ScreenManager.instance.EnableScreen(s.gameObject);
                 }
+                // Any screen that isn't the root, is disabled.
                 else
                 {
                     s.gameObject.SetActive(false);
                 }
             }
         }
+        // Any other scene but the main menu will enter this else statement
         else
         {
             isMainMenu = false;
@@ -108,6 +105,7 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        // If ANY controller has pressed start and we aren't on the main menu.  Toggle our pause screen.
         if (Input.GetButtonUp("Start") && !isMainMenu)
         {
             if (isPaused)
@@ -122,11 +120,22 @@ public class StateManager : MonoBehaviour
             }
         }
 
+        // These should be modified to check whether we're on the "CharacterSelection" screen, but for now we'll leave it like this.
+
+        // If we've pressed A on the main menu on the respective controller and the respective player hasn't been activated.  Activate them.
         if (Input.GetButtonUp("P1_A") && isMainMenu && !hasPlayer1)
         {
             hasPlayer1 = true;
+
+
+            // A player has joined the race! make note of it.
             numPlayers++;
+
             Debug.Log("Player 1 Joystick");
+
+
+            // Find the appropriate SelectCharacter script and activate it to accept new input!
+
             SelectCharacter[] items = FindObjectsOfType<SelectCharacter>();
 
             foreach (SelectCharacter s in items)
@@ -184,11 +193,14 @@ public class StateManager : MonoBehaviour
         }
     }
 
+    // Called when we move from the CharacterSelect screen to the Track screen.
     public void SaveCharSelections()
     {
+        // Find all our SelectCharacter scripts to retrieve relevant data from them
         SelectCharacter[] characters = Resources.FindObjectsOfTypeAll<SelectCharacter>();
 
         Debug.Log("Character count: " + characters.Length);
+
         int playerCount = 0;
 
         foreach (SelectCharacter c in characters)
@@ -196,14 +208,15 @@ public class StateManager : MonoBehaviour
             if (c.isActive)
             {
                 playerCount++;
-                // Save c.playerNumbers c.currentObject from array of material.  Material, material[c.currentObject].
             }
         }
 
+        // This will hold our actual player count, and it's coded this way in case a player decides to back out of the race (which isn't currently supported).
         numPlayers = playerCount;
 
         actualCharSelection = new Material[numPlayers];
 
+        // Assign the correct "character" to our player based on their selection
         foreach (SelectCharacter c in characters)
         {
             if (c.isActive) 
@@ -214,8 +227,10 @@ public class StateManager : MonoBehaviour
             }
         }
 
+        // Make note of the fact that we've been through this method. Used in future scenes.  Should be changed to a bool.
         charSelIndex = 0;
 
+        // Save our players character selections for use in later scenes.
         GlobalCharSelection = actualCharSelection;
 
         Debug.Log("Actual character count: " + playerCount + " Size: " + actualCharSelection.Length);

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-// Attach to a button, and set the parameter to enable when highlighted and disable when not highlighted
+// Attach to a button, and set the parameter to enable when highlighted and disable when not highlighted.  I used this to activate a spotlight when a player had moved the cursor to a button indicating he wanted trike 1.
 public class EnableDisableOnHighlight : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
     public GameObject objectToTurnOnOff;
