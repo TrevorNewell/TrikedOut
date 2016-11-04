@@ -66,12 +66,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HandleRotation.cs" />
     <Compile Include="Assets\Scripts\Character\AI\AI.cs" />
     <Compile Include="Assets\Scripts\Character\Car.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\Move.cs" />
     <Compile Include="Assets\Scripts\Character\Player\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Character\Wheels\TrikeController.cs" />
     <Compile Include="Assets\Scripts\Race\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
     <Compile Include="Assets\Scripts\Race\PlayerSetup.cs" />
