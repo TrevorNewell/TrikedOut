@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrikedOut.CSharp.Plugins", "TrikedOut.CSharp.Plugins.csproj", "{F8923B7D-C863-8E94-2E83-3C78E0F2AC03}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrikedOut.CSharp", "TrikedOut.CSharp.csproj", "{9C2ECAAE-2209-320D-43EA-E246A96592D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrikedOut.CSharp.Editor", "TrikedOut.CSharp.Editor.csproj", "{10ED7657-7C0A-8C11-6CAD-83A34C27CE37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8923B7D-C863-8E94-2E83-3C78E0F2AC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8923B7D-C863-8E94-2E83-3C78E0F2AC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8923B7D-C863-8E94-2E83-3C78E0F2AC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8923B7D-C863-8E94-2E83-3C78E0F2AC03}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9C2ECAAE-2209-320D-43EA-E246A96592D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C2ECAAE-2209-320D-43EA-E246A96592D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C2ECAAE-2209-320D-43EA-E246A96592D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C2ECAAE-2209-320D-43EA-E246A96592D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10ED7657-7C0A-8C11-6CAD-83A34C27CE37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10ED7657-7C0A-8C11-6CAD-83A34C27CE37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10ED7657-7C0A-8C11-6CAD-83A34C27CE37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10ED7657-7C0A-8C11-6CAD-83A34C27CE37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
