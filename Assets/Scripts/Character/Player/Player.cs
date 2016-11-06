@@ -51,6 +51,16 @@ public class Player : MonoBehaviour, Character
         // we can safely update the variables of Move within this script based on the Input coming from the user as well as the attributes of the car.
 	}
 
+    public void FireWeapon()
+    {
+        weapon.GetComponent<Item>().Activate();
+    }
+
+    public void CeaseFire()
+    {
+        weapon.GetComponent<Item>().Deactivate();
+    }
+
     public Car GetCar ()
     {
         return ourCar;

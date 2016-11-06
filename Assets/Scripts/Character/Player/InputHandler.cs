@@ -50,10 +50,14 @@ public class InputHandler : MonoBehaviour
             int leftPedal = (XCI.GetAxis(XboxAxis.LeftTrigger, playerNumber) == 1) ? 1 : 0;
             int rightPedal = (XCI.GetAxis(XboxAxis.RightTrigger, playerNumber) == 1) ? 2 : 0;
             float turnFactor = XCI.GetAxis(XboxAxis.LeftStickX, playerNumber);
+            bool fire = XCI.GetButtonDown(XboxButton.A, playerNumber);
+            bool ceaseFire = XCI.GetButtonUp(XboxButton.A, playerNumber);
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
 
             move.SetFactors(leftPedal, rightPedal, turnFactor);
+            if (fire) player.FireWeapon();
+            else if (ceaseFire) player.CeaseFire();
         }
 	}
 }

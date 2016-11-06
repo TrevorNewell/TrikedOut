@@ -101,8 +101,6 @@ public class Move : MonoBehaviour
         {
             int nextPedal = 0;
 
-            print(rightPedal + " " + lastPedal);
-
             if (rightPedal + lastPedal == 3) nextPedal = 2;
             else if (leftPedal + lastPedal == 3) nextPedal = 1;
 
