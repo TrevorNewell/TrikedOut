@@ -101,8 +101,10 @@ public class Move : MonoBehaviour
         {
             int nextPedal = 0;
 
-            if (rightPedal + lastPedal == 3) nextPedal = 1;
-            else if (leftPedal + lastPedal == 3) nextPedal = 2;
+            print(rightPedal + " " + lastPedal);
+
+            if (rightPedal + lastPedal == 3) nextPedal = 2;
+            else if (leftPedal + lastPedal == 3) nextPedal = 1;
 
             if (nextPedal != 0)
             {
@@ -116,6 +118,9 @@ public class Move : MonoBehaviour
 
                 if (velocity > car.maxSpeed) velocity = (float)car.maxSpeed;
             }
+
+            leftPedal = 0;
+            rightPedal = 0;
         }
 
         //turn character and velocity
