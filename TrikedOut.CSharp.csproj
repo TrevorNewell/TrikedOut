@@ -85,7 +85,8 @@
     <Compile Include="Assets\Scripts\Character\AI\AI.cs" />
     <Compile Include="Assets\Scripts\Character\Car.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
-    <Compile Include="Assets\Scripts\Character\Items\Bat.cs" />
+    <Compile Include="Assets\Scripts\Character\Items\Bat\Bat.cs" />
+    <Compile Include="Assets\Scripts\Character\Items\Bat\BatCollider.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Item.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Weapon.cs" />
     <Compile Include="Assets\Scripts\Character\Move.cs" />

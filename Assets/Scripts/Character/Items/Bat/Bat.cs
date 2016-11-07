@@ -6,7 +6,7 @@ public class Bat : MonoBehaviour, Item
 {
     [Header("Weapon Values. Should be -1 if not applicable (ie uses for a bat)")]
     public float swingRate;
-    public float damage;
+    public int damage;
     public bool defaultRightSwing;
     public float maxSwingAngle;
 
@@ -26,6 +26,11 @@ public class Bat : MonoBehaviour, Item
         startRot = transform.localRotation.eulerAngles;
         anglesPerSecond = maxSwingAngle / swingRate;
 	}
+
+    public bool Swinging()
+    {
+        return swinging;
+    }
 
 	// Update is called once per frame
 	void Update ()
