@@ -28,7 +28,7 @@ public class Checkpoint : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        playerbools = new bool[4, 4];
+        playerbools = new bool[5, 4];
 
         // Don't render any checkpoint meshes on Start.  We just need the Colliders enabled
         MeshRenderer[] m = gameObject.GetComponentsInChildren<MeshRenderer>();

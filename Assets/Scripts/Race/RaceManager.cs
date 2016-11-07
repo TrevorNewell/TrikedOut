@@ -151,6 +151,7 @@ public class RaceManager : MonoBehaviour
         bool endPassed = false;
         bool anyOtherPassed = false;
         int id = player.GetComponent<Character>().GetID();
+        print(id);
 
         foreach (Checkpoint c in checkpoints)
         {
@@ -333,7 +334,7 @@ public class RaceManager : MonoBehaviour
             leftText.text = overallTimeString + GetConvertedTime(overallTime) + "\n" +
                             lastString + GetConvertedTime(lastTime) + "\n" +
                             currentString + GetConvertedTime(currentTime);
-            rightText.text = lapsString + " " + currentLap + " / " + numLaps + "\n" + hpString;
+            rightText.text = lapsString + " " + currentLap + " / " + numLaps + "\n" + hpString + player.GetComponent<Player>().health.ToString();
         }
     }
 
@@ -377,7 +378,6 @@ public class RaceManager : MonoBehaviour
             {
                 overallTime = Time.timeSinceLevelLoad - countdownAtStart + countdownPerNumber - pauseTime;
                 currentTime = overallTime - allButThisLapTime;
-                hpString = "HP: " + player.GetComponent<Player>().health.ToString();
                 UpdateText();
             }
             else if (isStarting && tempTime < countdownAtStart) // Countdown to start the race!
