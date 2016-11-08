@@ -7,15 +7,15 @@ public class TrikeController : MonoBehaviour
     public float xRotOfHandle = 0.0f;
 
     public bool applyDownForce; // Whether or not to apply a down force based on the current velocity
-    public float downForce = 1000.0f; // How much down force to apply
+    public float downForce = 100.0f; // How much down force to apply
     public GameObject backWheels; // The back wheels of our trike
     public GameObject frontWheel; // The front wheels of our trike
     public GameObject handleBar; // The handlebar of our trike.  It's important to note, that this should be a game object with a pivot that rotates the handlebar in a natural fashion.
     public List<AxleInfoDual> dualAxleInfos; // the information about each individual axle
     public List<AxleInfoSingle> singleAxleInfos; // the information about each individual axle
-    public float maxMotorTorque; // maximum torque the motor can apply to wheel
-    public float maxSteeringAngle; // maximum steer angle the wheel can have
-    public float antiRollFactor = 10.0f;
+    public float maxMotorTorque = 300; // maximum torque the motor can apply to wheel
+    public float maxSteeringAngle = 45; // maximum steer angle the wheel can have
+    public float antiRollFactor = 10.0f; // Balances force on the wheels when turning
 
     public bool manualCOM; // Whether to use Unitys calculated center of mass (which is based on the volume of the colliders) or our custom COM
     public Vector3 centerOfMass;
@@ -29,6 +29,7 @@ public class TrikeController : MonoBehaviour
         //handleBar.AddComponent<HandleRotation>();
         //handleBar.GetComponent<HandleRotation>().maxAngle = maxSteeringAngle;
 
+        /*
         foreach (AxleInfoDual axleInfo in dualAxleInfos)
         {
             axleInfo.antiRoll = gameObject.AddComponent<AntiRoll>();
@@ -36,6 +37,7 @@ public class TrikeController : MonoBehaviour
             axleInfo.antiRoll.wheelR = axleInfo.rightWheel;
             axleInfo.antiRoll.antiRoll = antiRollFactor;
         }
+        */
 
         /*
         foreach (AxleInfoSingle axleInfo in singleAxleInfos)
