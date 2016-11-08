@@ -4,30 +4,49 @@ using System.Collections.Generic;
 
 public class TrikeController : MonoBehaviour
 {
-    public GameObject newCenterOfMass;
-    public GameObject backWheels;
-    public GameObject frontWheel;
-    public GameObject handleBar;
+    public float xRotOfHandle = 0.0f;
+
+    public bool applyDownForce; // Whether or not to apply a down force based on the current velocity
+    public float downForce = 1000.0f; // How much down force to apply
+    public GameObject backWheels; // The back wheels of our trike
+    public GameObject frontWheel; // The front wheels of our trike
+    public GameObject handleBar; // The handlebar of our trike.  It's important to note, that this should be a game object with a pivot that rotates the handlebar in a natural fashion.
     public List<AxleInfoDual> dualAxleInfos; // the information about each individual axle
     public List<AxleInfoSingle> singleAxleInfos; // the information about each individual axle
     public float maxMotorTorque; // maximum torque the motor can apply to wheel
     public float maxSteeringAngle; // maximum steer angle the wheel can have
-    public float antiRollFactor = 5000.0f;
+    public float antiRollFactor = 10.0f;
+
+    public bool manualCOM; // Whether to use Unitys calculated center of mass (which is based on the volume of the colliders) or our custom COM
+    public Vector3 centerOfMass;
+
+    private float originalX; // Rotation of X on Trike handlebar.  Saving this allows us to rotate at a natural angle (for a trike)
 
     public void Start()
     {
-        //gameObject.GetComponent<Rigidbody>().centerOfMass = newCenterOfMass.transform.position;
+        if (manualCOM) gameObject.GetComponent<Rigidbody>().centerOfMass = centerOfMass;
 
-        handleBar.AddComponent<HandleRotation>();
-        handleBar.GetComponent<HandleRotation>().maxAngle = maxSteeringAngle;
+        //handleBar.AddComponent<HandleRotation>();
+        //handleBar.GetComponent<HandleRotation>().maxAngle = maxSteeringAngle;
 
         foreach (AxleInfoDual axleInfo in dualAxleInfos)
         {
-            axleInfo.antiRoll = gameObject.AddComponent<AntiRoll>();// AntiRoll(axleInfo.leftWheel, axleInfo.rightWheel);
+            axleInfo.antiRoll = gameObject.AddComponent<AntiRoll>();
             axleInfo.antiRoll.wheelL = axleInfo.leftWheel;
             axleInfo.antiRoll.wheelR = axleInfo.rightWheel;
             axleInfo.antiRoll.antiRoll = antiRollFactor;
         }
+
+        /*
+        foreach (AxleInfoSingle axleInfo in singleAxleInfos)
+        {
+            axleInfo.antiRoll = gameObject.AddComponent<AntiRoll>();
+            axleInfo.antiRoll.wheelL = axleInfo.frontWheelLeft;
+            axleInfo.antiRoll.wheelR = axleInfo.frontWheelRight;
+            axleInfo.antiRoll.antiRoll = antiRollFactor;
+        }
+        */
+        
     }
 
     public void ApplyLocalPositionToVisuals(WheelCollider collider, bool isFront)
@@ -36,15 +55,14 @@ public class TrikeController : MonoBehaviour
         Quaternion rotation;
         collider.GetWorldPose(out position, out rotation);
 
-        //visualWheel.transform.position = position;  //This should be uncommented but it won't be until we have each wheel separately.  This snaps the wheel directly
+        //visualWheel.transform.position = position;  This is for the regular cube.  Script's been modified for the trike
         //visualWheel.transform.rotation = rotation;
 
         if (isFront)
         {
-            //handleBar.GetComponent<HandleRotation>().SetRotation(collider.steerAngle); //handleBar.transform.Rotate(new Vector3(0, collider.steerAngle, 0), Space.Self);
-
-            //handleBar.transform.rotation = rotation;
-            //handleBar.transform.rotation = Quaternion.AngleAxis(collider.steerAngle, handleBar.transform.rotation.eulerAngles); //new Quaternion(handleBar.transform.rotation.x, collider.steerAngle, handleBar.transform.rotation.z, handleBar.transform.rotation.w);
+            frontWheel.transform.position = position;
+            frontWheel.transform.rotation = rotation;
+            handleBar.transform.localRotation = Quaternion.Euler(xRotOfHandle, collider.steerAngle, 0);
         }
         else
         {
@@ -54,6 +72,7 @@ public class TrikeController : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (!manualCOM) centerOfMass = gameObject.GetComponent<Rigidbody>().centerOfMass;
         float motor = 0;
         float steering = 0;
 
@@ -73,8 +92,9 @@ public class TrikeController : MonoBehaviour
                 axleInfo.rightWheel.motorTorque = motor;
             }
 
-            ApplyLocalPositionToVisuals(axleInfo.leftWheel, axleInfo.hasHandleBar);
-            ApplyLocalPositionToVisuals(axleInfo.rightWheel, axleInfo.hasHandleBar);
+            // Only called on leftWheel because that will apply the proper rotation for our object.
+            ApplyLocalPositionToVisuals(axleInfo.leftWheel, false);
+            //ApplyLocalPositionToVisuals(axleInfo.rightWheel, false);
         }
 
         foreach (AxleInfoSingle axleInfo in singleAxleInfos)
@@ -82,12 +102,21 @@ public class TrikeController : MonoBehaviour
             if (axleInfo.steering && steering != 0)
             {
                 axleInfo.frontWheel.steerAngle = steering;
+
             }
             if (axleInfo.motor && motor != 0)
             {
                 axleInfo.frontWheel.motorTorque = motor;
             }
-            ApplyLocalPositionToVisuals(axleInfo.frontWheel, axleInfo.hasHandleBar);
+
+            ApplyLocalPositionToVisuals(axleInfo.frontWheel, true);
+        }
+
+        // Apply a "down force" to prevent our vehicle from flipping at high speeds.
+        if (applyDownForce)
+        {
+            float lift = (-1) * downForce * gameObject.GetComponent<Rigidbody>().velocity.sqrMagnitude;
+            gameObject.GetComponent<Rigidbody>().AddForceAtPosition(lift * transform.up, transform.position);
         }
     }
 }
@@ -100,18 +129,15 @@ public class AxleInfoDual
     [System.NonSerialized] public AntiRoll antiRoll;
     public bool motor; // is this wheel attached to motor?
     public bool steering; // does this wheel apply steer angle?
-    public bool hasHandleBar; // Does this wheel have a handlebar that also needs rotated? (or other game object)
     //public GameObject handleBarPivot;
 }
 
 [System.Serializable]
 public class AxleInfoSingle
 {
-    // Need to include handlebars somewhere.  They will rotate at the same rate as the front wheel does.
     public WheelCollider frontWheel;
     public bool motor; // is this wheel attached to motor?
     public bool steering; // does this wheel apply steer angle?
-    public bool hasHandleBar;
 }
 
 [System.Serializable]
@@ -141,14 +167,18 @@ public class AntiRoll : MonoBehaviour
         if (groundedR)
             travelR = (-wheelR.transform.InverseTransformPoint(hit.point).y - wheelR.radius) / wheelR.suspensionDistance;
 
-        float antiRollForce = (travelL - travelR) * antiRoll;
+        float antiRollForce = (travelL - travelR) * antiRoll * 5000;
 
         if (groundedL)
-            gameObject.GetComponent<Rigidbody>().AddForceAtPosition(wheelL.transform.up * -antiRollForce,
+        {
+            gameObject.GetComponentInParent<Rigidbody>().AddForceAtPosition(wheelL.transform.up * -antiRollForce,
                    wheelL.transform.position);
+        }
         if (groundedR)
-            gameObject.GetComponent<Rigidbody>().AddForceAtPosition(wheelR.transform.up * antiRollForce,
+        {
+            gameObject.GetComponentInParent<Rigidbody>().AddForceAtPosition(wheelR.transform.up * antiRollForce,
                    wheelR.transform.position);
+        }
     }
 }
 

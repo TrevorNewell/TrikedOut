@@ -66,6 +66,15 @@ public class SelectCharacter : MonoBehaviour
         //    hasPicked = false;
         //}
 
+        if (Input.GetButtonUp("P" + playerNumber + "_A") && StateManager.instance.isMainMenu && !isActive)
+        {
+            //StateManager.instance.numPlayers++;
+            Debug.Log("Player " + playerNumber + " Joystick");
+            SelectCharacter[] items = FindObjectsOfType<SelectCharacter>();
+
+            Activate();
+        }
+
         if (!hasPicked)
         {
             float leftRight = 0;
