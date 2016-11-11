@@ -24,6 +24,7 @@ namespace UnityStandardAssets.Vehicles.Car
             float v = Input.GetAxis("Vertical");
 
             float handbrake = Input.GetAxis("P1_RightJoystickX");
+            print(handbrake);
             m_Car.Move(h, v, v, handbrake);
         }
     }

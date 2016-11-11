@@ -32,6 +32,29 @@ public class Bat : MonoBehaviour, Item
         return swinging;
     }
 
+    int NearestNeighbor()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        GameObject nearest = players[0];
+
+        for (int i = 1; i < players.Length; i++)
+        {
+            if (Vector3.Distance(transform.parent.position, nearest.transform.position) > Vector3.Distance(transform.parent.position, players[i].transform.position))
+            {
+                nearest = players[i];
+            }
+        }
+
+        int dir = 0;
+        float xAx = nearest.transform.position.x - transform.parent.position.x;
+        float yAx = nearest.transform.position.y - transform.parent.position.y;
+
+        float rot = transform.parent.GetComponent<Move>().GetRotation();
+
+        return dir;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {

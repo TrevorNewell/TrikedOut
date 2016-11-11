@@ -44,9 +44,9 @@ public class Player : MonoBehaviour, Character
 	public void Update ()
     {
         // This actually freezes the Y position of the player, unlike the RigidBody's freeze position.
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, originalY, gameObject.transform.position.z);
+        // gameObject.transform.position = new Vector3(gameObject.transform.position.x, originalY, gameObject.transform.position.z);
 
-        //ourMove.Update();  For now this is commented out because Move inherits from MonoBehaviour again.  May want to uncomment later
+        // ourMove.Update();  For now this is commented out because Move inherits from MonoBehaviour again.  May want to uncomment later
         // Because this script inherits from Character and we've required Character to have a Move and Car script on any GameObject it's attached to, 
         // we can safely update the variables of Move within this script based on the Input coming from the user as well as the attributes of the car.
 	}

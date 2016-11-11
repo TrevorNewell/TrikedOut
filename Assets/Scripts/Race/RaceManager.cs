@@ -143,15 +143,17 @@ public class RaceManager : MonoBehaviour
     /// <summary>
     ///     A message is sent upward from the final checkpoint to check for a valid lap.  We'll make sure the player has been through every checkpoint before putting him on the next lap.
     /// </summary>
-    public bool CheckForLap()
+    public bool CheckForLap(int pNum)
     {
         //print("Checking for Lap.");
-
+        
+        int id = player.GetComponent<Character>().GetID();
+        if (pNum != id)
+            return false;
         // If we have only passed the last checkpoint, it means the race is just starting and we need to reset the variables for the end checkpoint.
         bool endPassed = false;
         bool anyOtherPassed = false;
-        int id = player.GetComponent<Character>().GetID();
-        print(id);
+        //print(id);
 
         foreach (Checkpoint c in checkpoints)
         {

@@ -123,11 +123,17 @@ public class Move : MonoBehaviour
 
         //turn character and velocity
         rotation += turnFactor;
+        print(rotation);
         gameObject.transform.eulerAngles = new Vector3(0, rotation, 0);
 
         //Debug.Log("Velocity: " + velocity);
 
         //body.AddForce(new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation)), typeOfForceToApply);
         body.velocity = new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation));
+    }
+
+    public float GetRotation()
+    {
+        return rotation;
     }
 }
