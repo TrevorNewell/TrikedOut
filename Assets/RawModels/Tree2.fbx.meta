@@ -50,8 +50,11 @@ ModelImporter:
     400040: Tree2_decim_Group46460
     400042: Tree2_decim_Group46461
     2300000: Tree2_decim_Group46461
+    2300002: //RootNode
     3300000: Tree2_decim_Group46461
+    3300002: //RootNode
     4300000: Tree2_decim_Group46461
+    4300002: Tree
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -10,11 +10,13 @@ ModelImporter:
     100004: pCylinder3
     100006: pCylinder4
     100008: pTorus1
+    100010: _UNKNOWN_REF_NODE_fosterParent1
     400000: //RootNode
     400002: pCylinder2
     400004: pCylinder3
     400006: pCylinder4
     400008: pTorus1
+    400010: _UNKNOWN_REF_NODE_fosterParent1
     2300000: pCylinder2
     2300002: pCylinder3
     2300004: pCylinder4
