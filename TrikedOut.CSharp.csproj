@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Character\Move.cs" />
     <Compile Include="Assets\Scripts\Character\Player\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Character\PlayerTell.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\EasySuspension.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\HandleRotation.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\RearWheelDrive.cs" />

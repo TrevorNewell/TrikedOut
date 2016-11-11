@@ -123,7 +123,9 @@ public class Move : MonoBehaviour
 
         //turn character and velocity
         rotation += turnFactor;
-        print(rotation);
+        //print(rotation);
+        if (rotation > 359) rotation -= 360;
+        else if (rotation < 0) rotation += 360;
         gameObject.transform.eulerAngles = new Vector3(0, rotation, 0);
 
         //Debug.Log("Velocity: " + velocity);

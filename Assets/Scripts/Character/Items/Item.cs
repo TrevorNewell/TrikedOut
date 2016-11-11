@@ -6,4 +6,6 @@ public interface Item
     void Activate();
 
     void Deactivate();
+
+    void TellDirectional(int d);
 }

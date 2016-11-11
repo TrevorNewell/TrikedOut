@@ -16,16 +16,21 @@ public class Bat : MonoBehaviour, Item
     private float currentAngle;
     private float anglesPerSecond;
     private Vector3 startRot;
+    private float[] swingAngles;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         swinging = false;
         backswing = false;
         endSwing = false;
         startRot = transform.localRotation.eulerAngles;
         anglesPerSecond = maxSwingAngle / swingRate;
-	}
+        swingAngles = new float[3];
+        swingAngles[0] = 0f;
+        swingAngles[1] = -60f;
+        swingAngles[2] = 180f;
+    }
 
     public bool Swinging()
     {
@@ -35,24 +40,41 @@ public class Bat : MonoBehaviour, Item
     int NearestNeighbor()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        if (players == null)
+            return 0;
 
         GameObject nearest = players[0];
-
+        int pid = transform.parent.GetComponent<Player>().GetID();
         for (int i = 1; i < players.Length; i++)
         {
-            if (Vector3.Distance(transform.parent.position, nearest.transform.position) > Vector3.Distance(transform.parent.position, players[i].transform.position))
+            int nnid = nearest.GetComponent<Player>().GetID();
+            if (Vector3.Distance(transform.parent.position, nearest.transform.position) > Vector3.Distance(transform.parent.position, players[i].transform.position) || nnid == pid)
             {
-                nearest = players[i];
+                int nid = players[i].GetComponent<Player>().GetID();
+                if (nid != pid) nearest = players[i];
             }
         }
 
-        int dir = 0;
-        float xAx = nearest.transform.position.x - transform.parent.position.x;
-        float yAx = nearest.transform.position.y - transform.parent.position.y;
-
+        float dist = Vector3.Distance(transform.parent.position, nearest.transform.position);
+        float zAx = nearest.transform.position.z - transform.parent.position.z;
+        float neighborAngleFromX = Mathf.Rad2Deg * Mathf.Acos(zAx / dist);
         float rot = transform.parent.GetComponent<Move>().GetRotation();
+        float zeroAxis = rot - 90;
+        float neighborAngleFromZeroAxis = neighborAngleFromX - zeroAxis;
 
-        return dir;
+        if (neighborAngleFromZeroAxis < 0) neighborAngleFromZeroAxis += 360;
+        else if (neighborAngleFromZeroAxis > 359) neighborAngleFromZeroAxis -= 360;
+
+        //print(neighborAngleFromZeroAxis);
+
+        if (neighborAngleFromZeroAxis > 40 && neighborAngleFromZeroAxis < 110)
+            return 1;
+        else if (neighborAngleFromZeroAxis > 110 && neighborAngleFromZeroAxis < 230)
+            return 0;
+        else if (neighborAngleFromZeroAxis < 40 || (neighborAngleFromZeroAxis > 230 && neighborAngleFromZeroAxis < 360))
+            return 2;
+
+        return 0;
     }
 
 	// Update is called once per frame
@@ -90,13 +112,18 @@ public class Bat : MonoBehaviour, Item
         }
     }
 
+    public void TellDirectional(int d)
+    {
+        startRot.y = swingAngles[d];
+        print("CHANGED");
+    }
+
     public void Activate()
     {
         swinging = true;
         backswing = false;
         endSwing = false;
         currentAngle = 0;
-
     }
 
     public void Deactivate()
