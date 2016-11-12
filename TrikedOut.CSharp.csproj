@@ -96,6 +96,8 @@
     <Compile Include="Assets\Scripts\Character\Wheels\HandleRotation.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\RearWheelDrive.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\TrikeController.cs" />
+    <Compile Include="Assets\Scripts\ControlManager.cs" />
+    <Compile Include="Assets\Scripts\InputValues.cs" />
     <Compile Include="Assets\Scripts\Race\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
     <Compile Include="Assets\Scripts\Race\PlayerSetup.cs" />
@@ -108,6 +110,10 @@
     <Compile Include="Assets\Scripts\StateManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Controls\P1controls.txt" />
+    <None Include="Assets\Controls\P2controls.txt" />
+    <None Include="Assets\Controls\P3controls.txt" />
+    <None Include="Assets\Controls\P4controls.txt" />
     <None Include="Assets\Fonts\Bangers\OFL.txt" />
     <None Include="Assets\Fonts\Freckle_Face\OFL.txt" />
     <None Include="Assets\Fonts\Gochi_Hand\OFL.txt" />

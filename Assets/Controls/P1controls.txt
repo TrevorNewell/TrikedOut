@@ -1,0 +1,13 @@
+[XboxAxis]
+leftPedal=LeftTrigger
+rightPedal=RightTrigger
+steerX=LeftStickX
+steerY=LeftStickY
+cameraX=RightStickX
+cameraY=RightStickY
+[XboxButton]
+switchWeapon=Y
+activateWeapon=A
+activatePickup=X
+pause=Start
+map=RightBumper
