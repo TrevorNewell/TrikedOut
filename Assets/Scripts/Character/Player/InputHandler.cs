@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using XboxCtrlrInput;
-using System.Collections;
+using System.Collections.Generic;
 
 public class InputHandler : MonoBehaviour
 {
@@ -13,6 +13,10 @@ public class InputHandler : MonoBehaviour
     private Move move;
     private string prefix;
     private XboxController playerNumber;
+    private bool useController;
+    private Dictionary<string, XboxAxis> xba;
+    private Dictionary<string, XboxButton> xbb;
+    private Dictionary<string, KeyCode> kbc;
 
 	// Use this for initialization
 	void Start ()
@@ -37,21 +41,42 @@ public class InputHandler : MonoBehaviour
                 break;
         }
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    public void ReceiveDefinitions(bool uc, Dictionary<string, XboxAxis> xa, Dictionary<string, XboxButton> xb, Dictionary<string, KeyCode> kb)
+    {
+        useController = uc;
+        xba = xa;
+        xbb = xb;
+        kbc = kb;
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (!StateManager.instance.isPaused)
         {
-            /*int leftPedal = (Input.GetAxis(prefix + "_LeftTrigger") == 1) ? 1 : 0;
-             int rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? 2 : 0;
-             float turnFactor = Input.GetAxis(prefix + "_LeftJoystickX");*/
+            int leftPedal;
+            int rightPedal;
+            float turnFactor;
+            bool fire;
+            bool ceaseFire;
 
-            int leftPedal = (XCI.GetAxis(XboxAxis.LeftTrigger, playerNumber) == 1) ? 1 : 0;
-            int rightPedal = (XCI.GetAxis(XboxAxis.RightTrigger, playerNumber) == 1) ? 2 : 0;
-            float turnFactor = XCI.GetAxis(XboxAxis.LeftStickX, playerNumber);
-            bool fire = XCI.GetButtonDown(XboxButton.A, playerNumber);
-            bool ceaseFire = XCI.GetButtonUp(XboxButton.A, playerNumber);
+            if (useController)
+            {
+                leftPedal = (XCI.GetAxis(xba["leftPedal"], playerNumber) == 1) ? 1 : 0;
+                rightPedal = (XCI.GetAxis(xba["rightPedal"], playerNumber) == 1) ? 2 : 0;
+                turnFactor = XCI.GetAxis(xba["steerX"], playerNumber);
+                fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
+                ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
+            }
+            else
+            {
+                leftPedal = (Input.GetKeyDown(kbc["leftPedal"]) == true) ? 1 : 0;
+                rightPedal = (Input.GetKeyDown(kbc["rightPedal"]) == true) ? 2 : 0;
+                turnFactor = (Input.GetKey(kbc["steerX"]) == true) ? -1 : (Input.GetKey(kbc["steerY"]) == true) ? 1 : 0;
+                fire = Input.GetKeyDown(kbc["activateWeapon"]);
+                ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
+            }
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
 

@@ -18,6 +18,8 @@ public class ControlManager : MonoBehaviour
     public Dictionary<string, InputValues> playerControls;
     public Dictionary<string, string> files;
 
+    private string[] prefixes;
+
     void Awake()
     {
         instance = this;
@@ -35,20 +37,18 @@ public class ControlManager : MonoBehaviour
         playerControls = new Dictionary<string, InputValues>();
         files = new Dictionary<string, string>();
 
-        playerControls.Add("P1", new InputValues("P1"));
-        playerControls.Add("P2", new InputValues("P2"));
-        playerControls.Add("P3", new InputValues("P3"));
-        playerControls.Add("P4", new InputValues("P4"));
+        prefixes = new string[4]{ "P1", "P2", "P3", "P4"};
 
-        ReadInputOptions("P1");
-        ReadInputOptions("P2");
-        ReadInputOptions("P3");
-        ReadInputOptions("P4");
+        foreach (string p in prefixes)
+        {
+            playerControls.Add(p, new InputValues(p));
+            ReadInputOptions(p);
+        }
     }
 
     void WriteInputOptions(string prefix)
     {
-        string file = playerControls[prefix].GetXboxValues(xboxAxisToString, xboxButtonToString);
+        string file = playerControls[prefix].GetXboxValues(xboxAxisToString, xboxButtonToString) + playerControls[prefix].GetKeyboardValues(keyboardKeyToString);
 
         StreamWriter sw = new StreamWriter(Application.dataPath + "/Controls/" + prefix + "controls.txt");
         sw.Write(file.ToCharArray());
@@ -64,7 +64,7 @@ public class ControlManager : MonoBehaviour
         {
             file = new StreamReader(Application.dataPath + "/Controls/" + prefix + "controls.txt");
         }
-        catch(FileNotFoundException e)
+        catch(FileNotFoundException)
         {
             playerControls[prefix].SetDefaultValues();
             WriteInputOptions(prefix);
@@ -75,21 +75,27 @@ public class ControlManager : MonoBehaviour
         while (!file.EndOfStream)
         {
             string line = file.ReadLine();
-            if (line.Equals("[XboxAxis]") || line.Equals("[XboxButton]"))
+            if (line.Equals("[XboxAxis]") || line.Equals("[XboxButton]") || line.Equals("[KeyboardKeys]"))
             {
                 state++;
                 continue;
             }
             string[] lines = line.Split("=".ToCharArray());
-            if (state == 1) playerControls[prefix].xboxAxisValues.Add(lines[0], xboxStringToAxis[lines[1]]);
+            if (lines[0].Equals("useController")) playerControls[prefix].useController = lines[1].Equals("True");
+            else if (state == 1) playerControls[prefix].xboxAxisValues.Add(lines[0], xboxStringToAxis[lines[1]]);
             else if (state == 2) playerControls[prefix].xboxButtonValues.Add(lines[0], xboxStringToButton[lines[1]]);
+            else if (state == 3) playerControls[prefix].keyboardButtonValues.Add(lines[0], keyboardStringToKey[lines[1]]);
         }
 
         file.Close();
     }
     
-	void Start () {
-	
+	void Start ()
+    {
+	    foreach (string p in prefixes)
+        {
+            playerControls[p].SetValues();
+        }
 	}
 	
 
@@ -167,6 +173,7 @@ public class ControlManager : MonoBehaviour
         keyboardStringToKey.Add("DownArrow", KeyCode.DownArrow);
         keyboardStringToKey.Add("LeftArrow", KeyCode.LeftArrow);
         keyboardStringToKey.Add("RightArrow", KeyCode.RightArrow);
+        keyboardStringToKey.Add("Escape", KeyCode.Escape);
 
         //InputToString
 
@@ -236,5 +243,6 @@ public class ControlManager : MonoBehaviour
         keyboardKeyToString.Add(KeyCode.DownArrow, "DownArrow");
         keyboardKeyToString.Add(KeyCode.LeftArrow, "LeftArrow");
         keyboardKeyToString.Add(KeyCode.RightArrow, "RightArrow");
+        keyboardKeyToString.Add(KeyCode.Escape, "Escape");
     }
 }

@@ -47,6 +47,8 @@ ModelImporter:
     100078: Group8
     100080: Group9
     100082: ZBrush_defualt_group
+    100084: Group49269
+    100086: Group65535
     400000: //RootNode
     400002: Group1
     400004: Group10
@@ -89,6 +91,8 @@ ModelImporter:
     400078: Group8
     400080: Group9
     400082: ZBrush_defualt_group
+    400084: Group49269
+    400086: Group65535
     2300000: Group1
     2300002: Group10
     2300004: Group11
@@ -130,6 +134,8 @@ ModelImporter:
     2300076: Group8
     2300078: Group9
     2300080: ZBrush_defualt_group
+    2300082: Group49269
+    2300084: Group65535
     3300000: Group1
     3300002: Group10
     3300004: Group11
@@ -171,6 +177,8 @@ ModelImporter:
     3300076: Group8
     3300078: Group9
     3300080: ZBrush_defualt_group
+    3300082: Group49269
+    3300084: Group65535
     4300000: Group1
     4300002: Group10
     4300004: Group11
@@ -212,6 +220,8 @@ ModelImporter:
     4300076: Group8
     4300078: Group9
     4300080: ZBrush_defualt_group
+    4300082: Group49269
+    4300084: Group65535
   materials:
     importMaterials: 1
     materialName: 0

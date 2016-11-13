@@ -1,4 +1,5 @@
 [XboxAxis]
+useController=False
 leftPedal=LeftTrigger
 rightPedal=RightTrigger
 steerX=LeftStickX
@@ -11,3 +12,15 @@ activateWeapon=A
 activatePickup=X
 pause=Start
 map=RightBumper
+[KeyboardKeys]
+leftPedal=A
+rightPedal=D
+steerX=LeftArrow
+steerY=RightArrow
+cameraX=Tab
+cameraY=LeftShift
+switchWeapon=UpArrow
+activateWeapon=W
+activatePickup=S
+pause=Escape
+map=M

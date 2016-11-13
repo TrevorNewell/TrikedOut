@@ -40,6 +40,8 @@ public class InputValues
     {
         string retVal = "[XboxAxis]" + System.Environment.NewLine;
 
+        retVal += "useController=";
+        retVal += useController.ToString() + System.Environment.NewLine;
         retVal += "leftPedal=";
         retVal += xbA2S[xboxAxisValues["leftPedal"]] + System.Environment.NewLine;
         retVal += "rightPedal=";
@@ -68,11 +70,48 @@ public class InputValues
         return retVal;
     }
 
+    public string GetKeyboardValues(Dictionary<KeyCode, string> kbK2S)
+    {
+        string retVal = "";
+
+        retVal += "[KeyboardKeys]" + System.Environment.NewLine;
+        retVal += "leftPedal=";
+        retVal += kbK2S[keyboardButtonValues["leftPedal"]] + System.Environment.NewLine;
+        retVal += "rightPedal=";
+        retVal += kbK2S[keyboardButtonValues["rightPedal"]] + System.Environment.NewLine;
+        retVal += "steerX=";
+        retVal += kbK2S[keyboardButtonValues["steerX"]] + System.Environment.NewLine;
+        retVal += "steerY=";
+        retVal += kbK2S[keyboardButtonValues["steerY"]] + System.Environment.NewLine;
+        retVal += "cameraX=";
+        retVal += kbK2S[keyboardButtonValues["cameraX"]] + System.Environment.NewLine;
+        retVal += "cameraY=";
+        retVal += kbK2S[keyboardButtonValues["cameraY"]] + System.Environment.NewLine;
+        retVal += "switchWeapon=";
+        retVal += kbK2S[keyboardButtonValues["switchWeapon"]] + System.Environment.NewLine;
+        retVal += "activateWeapon=";
+        retVal += kbK2S[keyboardButtonValues["activateWeapon"]] + System.Environment.NewLine;
+        retVal += "activatePickup=";
+        retVal += kbK2S[keyboardButtonValues["activatePickup"]] + System.Environment.NewLine;
+        retVal += "pause=";
+        retVal += kbK2S[keyboardButtonValues["pause"]] + System.Environment.NewLine;
+        retVal += "map=";
+        retVal += kbK2S[keyboardButtonValues["map"]] + System.Environment.NewLine;
+
+        return retVal;
+    }
+
     public void ClearDefinitions()
     {
         xboxAxisValues.Clear();
         xboxButtonValues.Clear();
         keyboardButtonValues.Clear();
+    }
+
+    public void SetValues()
+    {
+        GameObject player = GameObject.Find(prefix);
+        player.GetComponent<InputHandler>().ReceiveDefinitions(useController, xboxAxisValues, xboxButtonValues, keyboardButtonValues);
     }
 
     public void SetDefaultValues()
@@ -93,18 +132,18 @@ public class InputValues
         xboxButtonValues.Add("map", XboxButton.RightBumper);
 
         //KEYBOARD
-        keyboardButtonValues.Add("leftPedalK", KeyCode.A);
-        keyboardButtonValues.Add("rightPedalK", KeyCode.D);
+        keyboardButtonValues.Add("leftPedal", KeyCode.A);
+        keyboardButtonValues.Add("rightPedal", KeyCode.D);
         //Breaking is leftPedal && rightPedal
-        keyboardButtonValues.Add("switchWeaponK", KeyCode.UpArrow);
-        keyboardButtonValues.Add("activateWeaponK", KeyCode.W);
-        keyboardButtonValues.Add("activatePickupK", KeyCode.S);
+        keyboardButtonValues.Add("switchWeapon", KeyCode.UpArrow);
+        keyboardButtonValues.Add("activateWeapon", KeyCode.W);
+        keyboardButtonValues.Add("activatePickup", KeyCode.S);
         //Drifting is leftPedal || rightPedal
-        keyboardButtonValues.Add("pauseK", KeyCode.Escape);
-        keyboardButtonValues.Add("mapK", KeyCode.M);
-        keyboardButtonValues.Add("steerXK", KeyCode.LeftArrow);
-        keyboardButtonValues.Add("steerYK", KeyCode.RightArrow);
-        keyboardButtonValues.Add("cameraXK", KeyCode.Tab);
-        keyboardButtonValues.Add("cameraYK", KeyCode.LeftShift);
+        keyboardButtonValues.Add("pause", KeyCode.Escape);
+        keyboardButtonValues.Add("map", KeyCode.M);
+        keyboardButtonValues.Add("steerX", KeyCode.LeftArrow);
+        keyboardButtonValues.Add("steerY", KeyCode.RightArrow);
+        keyboardButtonValues.Add("cameraX", KeyCode.Tab);
+        keyboardButtonValues.Add("cameraY", KeyCode.LeftShift);
     }
 }
