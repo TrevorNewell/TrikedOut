@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Editor\SetPivot.cs" />
     <Compile Include="Assets\Editor\XboxCtrlrInput\InputManagerReplacer.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -39,9 +39,25 @@ public class ControlManager : MonoBehaviour
 
         prefixes = new string[4]{ "P1", "P2", "P3", "P4"};
 
+        DirectoryInfo di = new DirectoryInfo(Application.dataPath + "\\Controls");
+        bool create = false;
+        if (!di.Exists)
+        {
+            di.Create();
+            create = true;
+        }
+
+
         foreach (string p in prefixes)
         {
             playerControls.Add(p, new InputValues(p));
+
+            if (create)
+            {
+                playerControls[p].SetDefaultValues();
+                WriteInputOptions(p);
+            }
+
             ReadInputOptions(p);
         }
     }
@@ -50,9 +66,10 @@ public class ControlManager : MonoBehaviour
     {
         string file = playerControls[prefix].GetXboxValues(xboxAxisToString, xboxButtonToString) + playerControls[prefix].GetKeyboardValues(keyboardKeyToString);
 
-        StreamWriter sw = new StreamWriter(Application.dataPath + "/Controls/" + prefix + "controls.txt");
-        sw.Write(file.ToCharArray());
-        sw.Close();
+        //StreamWriter sw = new StreamWriter(Application.persistentDataPath + "\\" + /*"/Controls/" +*/ prefix + "controls.txt");
+        //sw.Write(file.ToCharArray());
+        //sw.Close();
+        File.WriteAllText(Application.dataPath + "\\Controls\\" + prefix + "controls.txt", file);
     }
 
     void ReadInputOptions(string prefix)
@@ -60,16 +77,7 @@ public class ControlManager : MonoBehaviour
         StreamReader file = null;
         playerControls[prefix].ClearDefinitions();
 
-        try
-        {
-            file = new StreamReader(Application.dataPath + "/Controls/" + prefix + "controls.txt");
-        }
-        catch(FileNotFoundException)
-        {
-            playerControls[prefix].SetDefaultValues();
-            WriteInputOptions(prefix);
-            return;
-        }
+        file = new StreamReader(Application.dataPath + "\\Controls\\" + prefix + "controls.txt");
 
         int state = 0;
         while (!file.EndOfStream)

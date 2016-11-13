@@ -106,7 +106,6 @@
     <Compile Include="Assets\Scripts\Screen\Screen.cs" />
     <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
     <Compile Include="Assets\Scripts\Screen\SelectCharacter.cs" />
-    <Compile Include="Assets\Scripts\SetPivot.cs" />
     <Compile Include="Assets\Scripts\StateManager.cs" />
   </ItemGroup>
   <ItemGroup>
