@@ -10,13 +10,13 @@ public class Move : MonoBehaviour
     //private Car car;
     private Rigidbody body;
 
-    [Range(0,1)][SerializeField] private float driftStrength;
-    [SerializeField]
-    private float driftTime = 0.5f; // If leftPedal or rightPedal are held for this amount of time, begin drifting
-    [SerializeField]
-    private float brakeTime = 0.5f; // If leftPedal and rightPedal are held for this amount of time, begin braking
-    [SerializeField]
-    private float pedalingTime = 1.0f; // If leftPedal was pressed after rightPedal within this amount of time, begin accelerating
+    [SerializeField] private bool fadeToZero = true;
+    [Range(0,1)][SerializeField] private float driftStrength = 0.5f;
+    //[Range(10, 100)][SerializeField] private float rotationRate = 15; // The bigger the number the slower the rotation
+    [SerializeField] private float driftTime = 0.5f; // If leftPedal or rightPedal are held for this amount of time, begin drifting
+    [SerializeField] private float brakeTime = 0.5f; // If leftPedal and rightPedal are held for this amount of time, begin braking
+    [SerializeField] private float pedalingTime = 1.0f; // If leftPedal was pressed after rightPedal within this amount of time, begin accelerating
+
 
     private float velocity = 0.0f;
     private float rotation = 0.0f;
@@ -31,6 +31,7 @@ public class Move : MonoBehaviour
     [SerializeField] private bool leftPedal; // Left pedal is being pressed
     [SerializeField] private bool rightPedal; // Right pedal is being pressed
     [SerializeField] private float turnFactor;
+    //[SerializeField] private float forward;
 
     [SerializeField] private bool lastPedalLeft = false; // Last pedal pressed was the left pedal
     [SerializeField] private bool lastPedalRight = false; // Last pedal pressed was the right pedal
@@ -46,6 +47,8 @@ public class Move : MonoBehaviour
     private float savedVelocity = 0.0f;
     private float savedRotation = 0.0f;
     private float savedTurnFactor = 0.0f;
+
+    private float currentRotation = 0.0f;
 
     void Start()
     {
@@ -69,11 +72,12 @@ public class Move : MonoBehaviour
 
     // lP is only ever 0 or 1
     // rP is only ever 0 or 2
-    public void SetFactors(bool lP, bool rP, float tF)
+    public void SetFactors(bool lP, bool rP, float tF)//, float fwd)
     {
         leftPedal = lP;
         rightPedal = rP;
         turnFactor = tF;
+        //forward = fwd;
     }
 
     // Will need to update this (and RestoreMomentum) to account for the wheel collider.  Will do it later though, pft.
@@ -252,7 +256,7 @@ public class Move : MonoBehaviour
         float drifting = 0.0f;
         if (isDriftingLeft) drifting = driftStrength; // We don't want a full 1
         if (isDriftingRight) drifting = -driftStrength;
-        
+
         /*
         if (isPedaling)
         {
@@ -268,7 +272,17 @@ public class Move : MonoBehaviour
         }
         */
 
-        carController.Move(steering, acceleration, reverse, drifting);
+        // This adds angles to the rotation incrementally instead of simply setting the angles.  Much smoother.
+        // For some reason, when I put 10 in a variable, it gives me an error :/ 10 is good though :)
+        currentRotation += (steering / 10);
+
+        if (steering == 0 && fadeToZero) currentRotation -= currentRotation/10;
+
+        if (currentRotation < -1) currentRotation = -1;
+        if (currentRotation > 1) currentRotation = 1;
+
+        // Move our trike
+        carController.Move(currentRotation, acceleration, reverse, drifting);
 
 
         /* Old Implementation

@@ -157,7 +157,7 @@ namespace UnityStandardAssets.Vehicles.Car
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 
             //Set the steer on the front wheels.
-            //Assuming that wheels 0 and 1 are the front wheels.  Not anymore.  Triked Out bitch.
+            //Assuming that wheels 0 and 1 are the front wheels.  Not anymore.  Triked Out bitch. [2] is the front wheel
             m_SteerAngle = steering*m_MaximumSteerAngle;
             m_WheelColliders[2].steerAngle = m_SteerAngle;
 

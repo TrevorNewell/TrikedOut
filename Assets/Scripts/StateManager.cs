@@ -18,7 +18,7 @@ public class StateManager : MonoBehaviour
 
     public Material[] possibleCharSelection; // Contains possible characters to choose from
     public Material[] actualCharSelection; // Will hold our actual characters to choose from for this scene only
-    public static Material[] GlobalCharSelection; // Holds our actual characters between scenes.  This is set on the CharacterSelection screen in the Main Menu.
+    [SerializeField]public static Material[] GlobalCharSelection; // Holds our actual characters between scenes.  This is set on the CharacterSelection screen in the Main Menu.
     public static int charSelIndex = -1; // -1 until SaveCharacterSelection is called.  I should change this to a bool to avoid confusion, but eh.
 
     public Screen[] screensInScene;
