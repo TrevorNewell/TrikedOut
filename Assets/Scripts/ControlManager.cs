@@ -5,7 +5,7 @@ using System.IO;
 
 public class ControlManager : MonoBehaviour
 {
-    public ControlManager instance;
+    public static ControlManager instance;
 
     private Dictionary<string, XboxAxis> xboxStringToAxis;
     private Dictionary<string, XboxButton> xboxStringToButton;
@@ -106,10 +106,11 @@ public class ControlManager : MonoBehaviour
         }
 	}
 	
-
-	void Update () {
+	void Update ()
+    {
 
     }
+
     void SetDefinitions()
     {
         //String to Input

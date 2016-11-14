@@ -18,8 +18,8 @@ public class InputHandler : MonoBehaviour
     private Dictionary<string, XboxButton> xbb;
     private Dictionary<string, KeyCode> kbc;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         player = gameObject.GetComponent<Player>();
         move = gameObject.GetComponent<Move>();
@@ -51,28 +51,28 @@ public class InputHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (!StateManager.instance.isPaused)
         {
-            int leftPedal;
-            int rightPedal;
+            bool leftPedal;
+            bool rightPedal;
             float turnFactor;
             bool fire;
             bool ceaseFire;
 
             if (useController)
             {
-                leftPedal = (XCI.GetAxis(xba["leftPedal"], playerNumber) == 1) ? 1 : 0;
-                rightPedal = (XCI.GetAxis(xba["rightPedal"], playerNumber) == 1) ? 2 : 0;
+                leftPedal = (XCI.GetAxis(xba["leftPedal"], playerNumber) == 1) ? true : false;
+                rightPedal = (XCI.GetAxis(xba["rightPedal"], playerNumber) == 1) ? true : false;
                 turnFactor = XCI.GetAxis(xba["steerX"], playerNumber);
                 fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
                 ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
             }
             else
             {
-                leftPedal = (Input.GetKeyDown(kbc["leftPedal"]) == true) ? 1 : 0;
-                rightPedal = (Input.GetKeyDown(kbc["rightPedal"]) == true) ? 2 : 0;
+                leftPedal = (Input.GetKeyDown(kbc["leftPedal"]) == true) ? true : false;
+                rightPedal = (Input.GetKeyDown(kbc["rightPedal"]) == true) ? true : false;
                 turnFactor = (Input.GetKey(kbc["steerX"]) == true) ? -1 : (Input.GetKey(kbc["steerY"]) == true) ? 1 : 0;
                 fire = Input.GetKeyDown(kbc["activateWeapon"]);
                 ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
@@ -84,5 +84,5 @@ public class InputHandler : MonoBehaviour
             if (fire) player.FireWeapon();
             else if (ceaseFire) player.CeaseFire();
         }
-	}
+    }
 }

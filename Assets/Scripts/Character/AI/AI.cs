@@ -17,7 +17,7 @@ public class AI : Character
         // we can safely update the variables of Move within this script based on the behavior we'ved defined for NPC racers  as well as the attributes of the car.
     }
 
-    public Car GetCar()
+    public Trike GetTrike()
     {
         throw new NotImplementedException();
     }

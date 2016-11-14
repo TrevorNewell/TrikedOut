@@ -18,13 +18,17 @@ namespace UnityStandardAssets.Vehicles.Car
 
     public class CarController : MonoBehaviour
     {
+        // NOT ENFORCED but our meshes and wheel colliders will be in the array in the following order:
+        //  Left Wheel, Right Wheel, Front Wheel
         public GameObject handleBar;
         public float xRotOfHandle;
+        //public GameObject frontWheelPivot;
+        //public float xRotOfPivot;
 
         [SerializeField] private CarDriveType m_CarDriveType = CarDriveType.FourWheelDrive;
-        [SerializeField] private WheelCollider[] m_WheelColliders = new WheelCollider[4];
-        [SerializeField] private GameObject[] m_WheelMeshes = new GameObject[4];
-        [SerializeField] private WheelEffects[] m_WheelEffects = new WheelEffects[4];
+        [SerializeField] private WheelCollider[] m_WheelColliders = new WheelCollider[3];
+        [SerializeField] private GameObject[] m_WheelMeshes = new GameObject[3];
+        [SerializeField] private WheelEffects[] m_WheelEffects = new WheelEffects[3];
         [SerializeField] private Vector3 m_CentreOfMassOffset;
         [SerializeField] private float m_MaximumSteerAngle;
         [Range(0, 1)] [SerializeField] private float m_SteerHelper; // 0 is raw physics , 1 the car will grip in the direction it is facing
@@ -68,9 +72,15 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             m_WheelColliders[0].attachedRigidbody.centerOfMass = m_CentreOfMassOffset;
 
+            // This is a must! Forces our wheelCollider to be centered on our mesh
+            for (int i = 0; i < 3; i++)
+            {
+                m_WheelColliders[i].transform.position = m_WheelMeshes[i].transform.position;
+            }
+
             m_MaxHandbrakeTorque = float.MaxValue;
 
-            m_Rigidbody = GetComponent<Rigidbody>();
+            m_Rigidbody = GetComponentInParent<Rigidbody>();
             m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
         }
 
@@ -152,20 +162,36 @@ namespace UnityStandardAssets.Vehicles.Car
             m_WheelColliders[2].steerAngle = m_SteerAngle;
 
             handleBar.transform.localRotation = Quaternion.Euler(xRotOfHandle, m_SteerAngle, 0);
+            //frontWheelPivot.transform.localRotation = Quaternion.Euler(xRotOfPivot, m_SteerAngle, 0);
 
             SteerHelper();
             ApplyDrive(accel, footbrake);
             CapSpeed();
 
+            /*
+            //Assuming that wheels 0 and 1 are the rear wheels.
+            if (handbrake > 0f) // Handbrake Right
+            {
+                var hbTorque = handbrake * m_MaxHandbrakeTorque;
+                m_WheelColliders[1].brakeTorque = hbTorque;
+                m_WheelColliders[0].brakeTorque = hbTorque;
+
+            }
+            */
+            
+            // This shouldn't be all we need to set in order for this to work properly, we need to be turning left or right as well and we can "force" that here.
             //Set the handbrake.
-            //Assuming that wheels 2 and 3 are the rear wheels.
-            if (handbrake > 0f)
+            if (handbrake > 0f) // Handbrake Right
             {
                 var hbTorque = handbrake*m_MaxHandbrakeTorque;
-                m_WheelColliders[0].brakeTorque = hbTorque;
                 m_WheelColliders[1].brakeTorque = hbTorque;
             }
 
+            if (handbrake < 0f) // Handbrake Left
+            {
+                var hbTorque = handbrake * m_MaxHandbrakeTorque;
+                m_WheelColliders[0].brakeTorque = hbTorque;
+            }
 
             CalculateRevs();
             GearChanging();
@@ -262,6 +288,7 @@ namespace UnityStandardAssets.Vehicles.Car
         // this is used to add more grip in relation to speed
         private void AddDownForce()
         {
+            // Should this be applied to all tires?
             m_WheelColliders[0].attachedRigidbody.AddForce(-transform.up*m_Downforce*
                                                          m_WheelColliders[0].attachedRigidbody.velocity.magnitude);
         }

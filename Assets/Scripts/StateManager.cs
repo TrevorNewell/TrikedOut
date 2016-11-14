@@ -110,15 +110,45 @@ public class StateManager : MonoBehaviour
         {
             if (isPaused)
             {
-                isPaused = false;
-                ScreenManager.instance.Unpause();
+                Unpause();
             }
             else
             {
-                isPaused = true;
-                ScreenManager.instance.Pause();
+                Pause();
             }
         }
+    }
+
+    public void Pause()
+    {
+        isPaused = true;
+
+        // Store the momentum of each player, so we can continue with that momentum when we unpause.
+        GameObject[] cs = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject c in cs)
+        {
+            c.GetComponent<Move>().SaveMomentum();
+        }
+
+        SoundManager.instance.Pause();
+        ScreenManager.instance.Pause();
+
+    }
+
+    public void Unpause()
+    {
+        isPaused = false;
+
+        // Restore the momentum of each player
+        GameObject[] cs = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject c in cs)
+        {
+            c.GetComponent<Move>().RestoreMomentum();
+        }
+
+        SoundManager.instance.Unpause();
+        ScreenManager.instance.Unpause();
+
     }
 
     // Called when we move from the CharacterSelect screen to the Track screen.

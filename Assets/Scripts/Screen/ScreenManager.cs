@@ -9,10 +9,7 @@ public class ScreenManager : MonoBehaviour
     public static ScreenManager instance;
     public EventSystem eventHandler;
 
-
-    // All the game objects below are assumed to have the "Screen" tag.
-
-
+    // *All the game objects below are assumed to have the "Screen" tag.
     // These two parameters work great if the screen only goes one level deep.  However, if I go say 3 levels deep and I navigate back (Using "B" on the controller) it just swaps between the last two screens.  I need to update this but right now it isn't a serious issue..
     public GameObject lastScreen; // The last screen we displayed
     public GameObject currentScreen; // The current screen we're displaying
@@ -67,21 +64,11 @@ public class ScreenManager : MonoBehaviour
 
     public void Pause()
     {
-        // Update the state to be paused
-        StateManager.instance.isPaused = true;
-
         // Hide all the HUDs
         HUD1.SetActive(false);
         HUD2.SetActive(false);
         HUD3.SetActive(false);
         HUD4.SetActive(false);
-
-        // Store the momentum of each player, so we can continue with that momentum when we unpause.
-        GameObject[] cs = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject c in cs)
-        {
-            c.GetComponent<Move>().SaveMomentum();
-        }
 
         // Enable our pause screen.
         pauseScreen.SetActive(true);
@@ -95,21 +82,11 @@ public class ScreenManager : MonoBehaviour
 
     public void Unpause()
     {
-        // Update the state to be unpaused.
-        StateManager.instance.isPaused = false;
-
         // Reactivate the HUD's for each player.
         HUD1.SetActive(true);
         HUD2.SetActive(true);
         HUD3.SetActive(true);
         HUD4.SetActive(true);
-
-        // Restore the momentum of each player
-        GameObject[] cs = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject c in cs)
-        {
-            c.GetComponent<Move>().RestoreMomentum();
-        }
 
         // Hide the pauseScreen
         pauseScreen.SetActive(false);
@@ -139,7 +116,7 @@ public class ScreenManager : MonoBehaviour
 
     public void DisableScreen(GameObject disable)
     {
-        disable.SetActive(true);
+        disable.SetActive(false);
     }
 
     public void LoadScene(string sceneName)

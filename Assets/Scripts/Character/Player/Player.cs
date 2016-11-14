@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Move))]
+[RequireComponent(typeof(InputHandler))]
+[RequireComponent(typeof(Trike))]
 public class Player : MonoBehaviour, Character
 {
     protected Move ourMove;
-    protected Car ourCar;
+    protected Trike ourTrike;
 
     // Status Effects
     public int health = 100; // When 0, the character dies, drops an item/weapon, then respawns shortly after at last checkpoint or close to where it was killed.
@@ -36,7 +39,7 @@ public class Player : MonoBehaviour, Character
         //ourCar = new Car();//gameObject.GetComponent<Car>();
         //ourMove = new Move(this);
 
-        ourCar = gameObject.GetComponent<Car>();
+        ourTrike = gameObject.GetComponent<Trike>();
         ourMove = gameObject.GetComponent<Move>();
     }
 	
@@ -64,6 +67,9 @@ public class Player : MonoBehaviour, Character
     public void FireWeapon()
     {
         weapon.GetComponent<Item>().Activate();
+
+        // Not implemented yet
+        SoundManager.instance.PlayShootSound();
     }
 
     public void CeaseFire()
@@ -71,9 +77,9 @@ public class Player : MonoBehaviour, Character
         weapon.GetComponent<Item>().Deactivate();
     }
 
-    public Car GetCar ()
+    public Trike GetTrike ()
     {
-        return ourCar;
+        return ourTrike;
     }
 
     public Move GetMove()
@@ -83,6 +89,7 @@ public class Player : MonoBehaviour, Character
 
     public int GetID()
     {
-        return int.Parse(prefix.Substring(1));
+        return playerNumber;
+        //return int.Parse(prefix.Substring(1));
     }
 }

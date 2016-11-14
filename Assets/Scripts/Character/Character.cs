@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//[RequireComponent(typeof(Car))]
+//[RequireComponent(typeof(Trike))]
 // Note, you won't want to attach this script to the gameObject.  You will want to attach a script that implements this one
 public interface Character
 {
@@ -23,7 +23,7 @@ public interface Character
 
     void Update ();
 
-    Car GetCar ();
+    Trike GetTrike ();
 
     Move GetMove();
 

@@ -4,18 +4,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Vehicles.Car
 {
-    [RequireComponent(typeof (CarController))]
     public class CarUserControl : MonoBehaviour
     {
-        private CarController m_Car; // the car controller we want to use
-
-
-        private void Awake()
-        {
-            // get the car controller
-            m_Car = GetComponent<CarController>();
-        }
-
+        public CarController m_Car; // the car controller we want to use
 
         private void FixedUpdate()
         {
@@ -23,9 +14,10 @@ namespace UnityStandardAssets.Vehicles.Car
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
 
-            float handbrake = Input.GetAxis("P1_RightJoystickX");
-            print(handbrake);
-            m_Car.Move(h, v, v, handbrake);
+            //float handbrake = Input.GetAxis("P1_RightJoystickX");
+            //print(handbrake);
+            //m_Car.Move(h, v, v, handbrake);
+            m_Car.Move(h, v, v, 0);
         }
     }
 }
