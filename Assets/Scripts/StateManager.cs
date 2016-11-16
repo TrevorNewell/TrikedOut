@@ -34,7 +34,7 @@ public class StateManager : MonoBehaviour
         if (charSelIndex != -1)
         {
             // Update the playerCount so we can section off the screen appropriately and activate the required game objects.
-            FindObjectOfType<PlayerSetup>().playerCount = numPlayers;
+            FindObjectOfType<RaceSetup>().playerCount = numPlayers;
 
             // Just realized, this section below may need to be called after PlayerSetup has done it's thing.  FindObjectsOfType<Player>() only finds "active" game objects.
             Player[] players = FindObjectsOfType<Player>();

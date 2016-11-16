@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 4e23b9e832c812240aa1164376a30bbf
+timeCreated: 1479318662
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Chest
+    100004: Head
+    100006: Left_Inner_Foot
+    100008: Left_Inner_Knee
+    100010: Left_Inner_Lower_Knee
+    100012: Left_Lower_Elbow
+    100014: Left_Lower_Hand
+    100016: Left_Lower_Shoulder
+    100018: Left_Lower_Wrist
+    100020: Left_Outer_Foot
+    100022: Left_Outer_Knee
+    100024: Left_Outer_Lower_Knee
+    100026: Left_Shoulder
+    100028: Left_Thigh
+    100030: Left_Upper_Elbow
+    100032: Left_Upper_hand
+    100034: Left_Upper_Knee
+    100036: Left_Upper_Shoulder
+    100038: Left_Upper_Wrist
+    100040: Neck
+    100042: Pelvis
+    100044: Right_Inner_Foot
+    100046: Right_Inner_Knee
+    100048: Right_Inner_Lower_Knee
+    100050: Right_Lower_Elbow
+    100052: Right_Lower_Hand
+    100054: Right_Lower_Shoulder
+    100056: Right_Lower_Wrist
+    100058: Right_Outer_Foot
+    100060: Right_Outer_Knee
+    100062: Right_Outer_Lower_Knee
+    100064: Right_Shoulder
+    100066: Right_Thigh
+    100068: Right_Upper_Elbow
+    100070: Right_Upper_Hand
+    100072: Right_Upper_Knee
+    100074: Right_Upper_Shoulder
+    100076: Right_Upper_Wrist
+    100078: Stomach
+    400000: //RootNode
+    400002: Chest
+    400004: Head
+    400006: Left_Inner_Foot
+    400008: Left_Inner_Knee
+    400010: Left_Inner_Lower_Knee
+    400012: Left_Lower_Elbow
+    400014: Left_Lower_Hand
+    400016: Left_Lower_Shoulder
+    400018: Left_Lower_Wrist
+    400020: Left_Outer_Foot
+    400022: Left_Outer_Knee
+    400024: Left_Outer_Lower_Knee
+    400026: Left_Shoulder
+    400028: Left_Thigh
+    400030: Left_Upper_Elbow
+    400032: Left_Upper_hand
+    400034: Left_Upper_Knee
+    400036: Left_Upper_Shoulder
+    400038: Left_Upper_Wrist
+    400040: Neck
+    400042: Pelvis
+    400044: Right_Inner_Foot
+    400046: Right_Inner_Knee
+    400048: Right_Inner_Lower_Knee
+    400050: Right_Lower_Elbow
+    400052: Right_Lower_Hand
+    400054: Right_Lower_Shoulder
+    400056: Right_Lower_Wrist
+    400058: Right_Outer_Foot
+    400060: Right_Outer_Knee
+    400062: Right_Outer_Lower_Knee
+    400064: Right_Shoulder
+    400066: Right_Thigh
+    400068: Right_Upper_Elbow
+    400070: Right_Upper_Hand
+    400072: Right_Upper_Knee
+    400074: Right_Upper_Shoulder
+    400076: Right_Upper_Wrist
+    400078: Stomach
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

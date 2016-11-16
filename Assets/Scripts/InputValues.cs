@@ -111,6 +111,7 @@ public class InputValues
     public void SetValues()
     {
         GameObject player = GameObject.Find(prefix);
+        if (player == null) return;
         player.GetComponent<InputHandler>().ReceiveDefinitions(useController, xboxAxisValues, xboxButtonValues, keyboardButtonValues);
     }
 

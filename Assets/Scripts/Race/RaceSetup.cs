@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerSetup : MonoBehaviour
+public class RaceSetup : MonoBehaviour
 {
     public int playerCount = 2;
 
@@ -67,5 +67,7 @@ public class PlayerSetup : MonoBehaviour
                 hud.SetActive(false);
             }
         }
+
+        GameObject.Find("CheckPoints").transform.parent = transform;
 	}
 }

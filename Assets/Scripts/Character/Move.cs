@@ -116,7 +116,7 @@ public class Move : MonoBehaviour
         // Both pedals were pressed.
         if (leftPedal && rightPedal)
         {
-            Debug.Log("Start count to Braking");
+            //Debug.Log("Start count to Braking");
             brakeCounter += Time.fixedDeltaTime;
 
             driftCounter = 0;
@@ -136,7 +136,7 @@ public class Move : MonoBehaviour
             }
 
 
-            Debug.Log("Start count to LeftPedal Drift");
+            //Debug.Log("Start count to LeftPedal Drift");
 
             if (lastPedalLeft)
             {
@@ -166,7 +166,7 @@ public class Move : MonoBehaviour
 
             brakeCounter = 0;
 
-            Debug.Log("Start count to RightPedal Drift");
+            //Debug.Log("Start count to RightPedal Drift");
 
             if (lastPedalRight)
             {
@@ -318,7 +318,7 @@ public class Move : MonoBehaviour
 
         //turn character and velocity
         rotation += turnFactor;
-        //print(rotation);
+        //(rotation);
         if (rotation > 359) rotation -= 360;
         else if (rotation < 0) rotation += 360;
         gameObject.transform.eulerAngles = new Vector3(0, rotation, 0);
