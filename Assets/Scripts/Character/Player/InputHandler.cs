@@ -71,7 +71,7 @@ public class InputHandler : MonoBehaviour
                 cameraFactor = XCI.GetAxis(xba["cameraX"], playerNumber);
                 fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
                 ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
-                switchWeapon = XCI.GetButtonUp(xbb["switchWeapon"], playerNumber);
+                switchWeapon = XCI.GetButtonDown(xbb["switchWeapon"], playerNumber);
             }
             else
             {
