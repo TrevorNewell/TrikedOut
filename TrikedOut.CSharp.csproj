@@ -88,7 +88,9 @@
     <Compile Include="Assets\Scripts\Character\Items\Item.cs" />
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\Marshmallow.cs" />
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\MarshmallowGun.cs" />
+    <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\MarshmallowRot.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Character\Items\WeaponHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Move.cs" />
     <Compile Include="Assets\Scripts\Character\Player\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />

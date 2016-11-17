@@ -64,12 +64,17 @@ public class Player : MonoBehaviour, Character
         health -= d;
     }
 
+    public void SwitchWeapon()
+    {
+        GetComponentInChildren<WeaponHandler>().SwitchItem();
+    }
+
     public void FireWeapon()
     {
         weapon.GetComponent<Item>().Activate();
 
         // Not implemented yet
-        SoundManager.instance.PlayShootSound();
+        //SoundManager.instance.PlayShootSound();
     }
 
     public void CeaseFire()

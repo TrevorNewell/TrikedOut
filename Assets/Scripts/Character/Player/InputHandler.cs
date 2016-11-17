@@ -61,6 +61,7 @@ public class InputHandler : MonoBehaviour
             float forward;
             bool fire;
             bool ceaseFire;
+            bool switchWeapon;
 
             if (useController)
             {
@@ -70,6 +71,7 @@ public class InputHandler : MonoBehaviour
                 //forward = XCI.GetAxis(xba["steerY"], playerNumber);
                 fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
                 ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
+                switchWeapon = XCI.GetButtonUp(xbb["switchWeapon"], playerNumber);
             }
             else
             {
@@ -79,6 +81,7 @@ public class InputHandler : MonoBehaviour
                 fire = Input.GetKeyDown(kbc["activateWeapon"]);
                 //forward = (Input.GetKey(kbc["steerY"]) == true) ? 1 : 0;
                 ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
+                switchWeapon = Input.GetKeyDown(kbc["switchWeapon"]);
             }
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
@@ -86,6 +89,7 @@ public class InputHandler : MonoBehaviour
             move.SetFactors(leftPedal, rightPedal, turnFactor);//, forward);
             if (fire) player.FireWeapon();
             else if (ceaseFire) player.CeaseFire();
+            if (switchWeapon) player.SwitchWeapon();
         }
     }
 }

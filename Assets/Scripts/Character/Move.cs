@@ -57,6 +57,11 @@ public class Move : MonoBehaviour
         body = gameObject.GetComponent<Rigidbody>();
     }
 
+    public float GetSpeed()
+    {
+        return carController.CurrentSpeed;
+    }
+
     // This is used when the player finishes the race
     public void SlowCharacter()
     {

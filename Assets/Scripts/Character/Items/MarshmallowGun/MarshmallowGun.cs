@@ -20,6 +20,7 @@ public class MarshmallowGun : MonoBehaviour, Item
     void Start()
     {
         startRot = transform.localRotation.eulerAngles;
+        currentTime = fireDelay;
     }
 
     public bool Firing()
@@ -30,6 +31,7 @@ public class MarshmallowGun : MonoBehaviour, Item
     // Update is called once per frame
     void Update()
     {
+        currentTime += Time.deltaTime;
         //autoaim code goes in here probably
     }
 
@@ -37,13 +39,14 @@ public class MarshmallowGun : MonoBehaviour, Item
     {
         if (!firing || automatic)
         {
-            if (currentTime > fireDelay || !automatic)
+            if (currentTime > fireDelay)
             {
                 firing = true;
                 //launch bullet
                 GameObject b = Instantiate(bullet);
                 b.GetComponent<Marshmallow>().SetForward(transform.rotation.eulerAngles);
                 b.transform.position = launchPoint.transform.position;
+                currentTime = 0;
             }
         }
     }

@@ -33,6 +33,7 @@ public class Marshmallow : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
+        print("triggered");
         if (c.CompareTag("Player"))
         {
             c.GetComponent<Player>().Damage(damage);
