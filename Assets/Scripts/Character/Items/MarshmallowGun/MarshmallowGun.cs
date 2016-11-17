@@ -33,6 +33,7 @@ public class MarshmallowGun : MonoBehaviour, Item
     {
         currentTime += Time.deltaTime;
         //autoaim code goes in here probably
+        if (firing && automatic) Activate();
     }
 
     public void Activate()
