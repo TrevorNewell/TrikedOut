@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Vehicles.Car;
+using System;
 
 public class Move : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class Move : MonoBehaviour
     [SerializeField] private bool leftPedal; // Left pedal is being pressed
     [SerializeField] private bool rightPedal; // Right pedal is being pressed
     [SerializeField] private float turnFactor;
-    //[SerializeField] private float forward;
+    [SerializeField] private float cameraFactor;
 
     [SerializeField] private bool lastPedalLeft = false; // Last pedal pressed was the left pedal
     [SerializeField] private bool lastPedalRight = false; // Last pedal pressed was the right pedal
@@ -77,12 +78,12 @@ public class Move : MonoBehaviour
 
     // lP is only ever 0 or 1
     // rP is only ever 0 or 2
-    public void SetFactors(bool lP, bool rP, float tF)//, float fwd)
+    public void SetFactors(bool lP, bool rP, float tF, float cf)
     {
         leftPedal = lP;
         rightPedal = rP;
         turnFactor = tF;
-        //forward = fwd;
+        cameraFactor = cf;
     }
 
     // Will need to update this (and RestoreMomentum) to account for the wheel collider.  Will do it later though, pft.
@@ -118,6 +119,8 @@ public class Move : MonoBehaviour
 
     public void FixedUpdate()
     {
+        GameObject cam = GameObject.Find("CameraBoom" + GetComponent<Player>().prefix.Substring(1, 1));
+        cam.transform.localRotation = Quaternion.Euler(new Vector3(cam.transform.localRotation.eulerAngles.x, cam.transform.localRotation.eulerAngles.y + cameraFactor * 50f * Time.deltaTime, cam.transform.localRotation.eulerAngles.z));
         // Both pedals were pressed.
         if (leftPedal && rightPedal)
         {

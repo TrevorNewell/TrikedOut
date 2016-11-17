@@ -58,7 +58,7 @@ public class InputHandler : MonoBehaviour
             bool leftPedal;
             bool rightPedal;
             float turnFactor;
-            float forward;
+            float cameraFactor;
             bool fire;
             bool ceaseFire;
             bool switchWeapon;
@@ -68,7 +68,7 @@ public class InputHandler : MonoBehaviour
                 leftPedal = (XCI.GetAxis(xba["leftPedal"], playerNumber) == 1) ? true : false;
                 rightPedal = (XCI.GetAxis(xba["rightPedal"], playerNumber) == 1) ? true : false;
                 turnFactor = XCI.GetAxis(xba["steerX"], playerNumber);
-                //forward = XCI.GetAxis(xba["steerY"], playerNumber);
+                cameraFactor = XCI.GetAxis(xba["cameraX"], playerNumber);
                 fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
                 ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
                 switchWeapon = XCI.GetButtonUp(xbb["switchWeapon"], playerNumber);
@@ -79,14 +79,14 @@ public class InputHandler : MonoBehaviour
                 rightPedal = (Input.GetKeyDown(kbc["rightPedal"]) == true) ? true : false;
                 turnFactor = (Input.GetKey(kbc["steerX"]) == true) ? -1 : (Input.GetKey(kbc["steerY"]) == true) ? 1 : 0;
                 fire = Input.GetKeyDown(kbc["activateWeapon"]);
-                //forward = (Input.GetKey(kbc["steerY"]) == true) ? 1 : 0;
+                cameraFactor = (Input.GetKey(kbc["cameraX"]) == true) ? -1 : (Input.GetKey(kbc["cameraY"]) == true) ? 1 : 0;
                 ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
                 switchWeapon = Input.GetKeyDown(kbc["switchWeapon"]);
             }
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
 
-            move.SetFactors(leftPedal, rightPedal, turnFactor);//, forward);
+            move.SetFactors(leftPedal, rightPedal, turnFactor, cameraFactor);//, forward);
             if (fire) player.FireWeapon();
             else if (ceaseFire) player.CeaseFire();
             if (switchWeapon) player.SwitchWeapon();
