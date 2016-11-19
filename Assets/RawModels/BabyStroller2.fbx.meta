@@ -54,7 +54,9 @@ ModelImporter:
     400044: transform27
     400046: transform28
     2300000: pSphere19
+    2300002: //RootNode
     3300000: pSphere19
+    3300002: //RootNode
     4300000: pSphere19
     9500000: //RootNode
   materials:
