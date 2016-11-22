@@ -225,7 +225,7 @@ public class Move : MonoBehaviour
             Debug.Log("Begin Drifting Left");
 
             isDriftingLeft = true;
-            //isPedaling = false;
+            isPedaling = false;
         }
         else
         {
@@ -238,7 +238,7 @@ public class Move : MonoBehaviour
             Debug.Log("Begin Drifting Right");
 
             isDriftingRight = true;
-            //isPedaling = false;
+            isPedaling = false;
         }
         else
         {
@@ -282,8 +282,17 @@ public class Move : MonoBehaviour
 
         //Debug.Log("Rotate: " + currentRotation + " Accelerate: " + acceleration +  " Drift: " + drifting);
         // Move our trike
-        if (isBraking) trikeController.Move(-currentRotation, reverse, drifting);
-        else trikeController.Move(currentRotation, acceleration, drifting);
+        if (isBraking) trikeController.Move(currentRotation, reverse, drifting);
+        //else (isPedaling) trikeController.Move(currentRotation, acceleration, drifting); // This is bad, we need to be able to rotate our handle bars even if we aren't "pedaling"
+        //else if (isDriftingLeft) trikeController.Move(-driftRotation, driftAcceleration, drifting);
+        //else if (isDriftingRight) trikeController.Move(driftRotation, driftAcceleration, drifting);
+        else trikeController.Move(currentRotation, acceleration, drifting); // This is good, we can rotate when not pedaling
+
+        // For the commented else ifs above, the driftRotation and driftAcceleration could just be between 0 and 2, and then scale the turn and acceleration in the ArcadeTrikeController.
+        // For example,  say driftRotation was 1.5.  In ArcadeTrikeController, this means we can turn 50% faster than normal.  0.5 would mean we turn 50% slower.  
+        // Implemented this way, the third variable just acts like a bool.  If it isn't 0, we're drifting, so scale turn and acceleration within ArcadeTrikeController.
+
+        // Make sure any variable you modify within ArcadeTrikeController is restored to it's original value if we are no longer drifting (groundedDrag, turnStrength, forwardAcceleration)
 
     }
 

@@ -9,8 +9,14 @@ public class ArcadeTrikeController : MonoBehaviour
     public GameObject handleBars;
     public GameObject handlePivot;
     public Vector3 originalOrientation;
+    public GameObject frontWheel;
+    public float frontRotationRate = 1.06f; // May vary based on individual trike 1.06 is a good value for this
+    public GameObject backLeftWheel;
+    public GameObject backRightWheel;
+    public float backRotationRate = 2.12f; // May vary based on individual trike 2.12 is a good value for this
 
     public float currentAngle;
+    public Vector3 localVelocity;
 
     [Range(10, 90)] public int maxTurnAngle;
     public float deadZone = 0.1f; // Filters out small movements so the controller isn't as sensitive
@@ -25,6 +31,8 @@ public class ArcadeTrikeController : MonoBehaviour
     public float forwardAcceleration = 8000f;
     public float reverseAcceleration = 4000f;
     float thrust = 0f;
+
+    private bool isReverse = false;
 
     public float turnStrength = 1000f;
     float turnValue = 0f;
@@ -76,9 +84,15 @@ public class ArcadeTrikeController : MonoBehaviour
         //thrust = 0.0f;
         //acceleration = Input.GetAxis("Vertical");
         if (acceleration > deadZone)
+        {
             thrust = acceleration * forwardAcceleration;
+            isReverse = false;
+        }
         else if (acceleration < -deadZone)
+        {
             thrust = acceleration * reverseAcceleration;
+            isReverse = true;
+        }
 
         // Get turning input
         turnValue = 0.0f;
@@ -160,30 +174,63 @@ public class ArcadeTrikeController : MonoBehaviour
             }
         }
 
-        // localVelocity = transform.InverseTransformDirection(body.velocity);  // This tells us which if we're moving forward or backwards.  We can use this to determine how to rotate the trike and handlebars when going backwards.
+        localVelocity = transform.InverseTransformDirection(body.velocity);  // This tells us which if we're moving forward or backwards.  We can use this to determine how to rotate the trike and handlebars when going backwards.
+
+        // Rotate front and back wheels based on velocity
+        frontWheel.transform.Rotate(new Vector3(frontRotationRate * localVelocity.z, 0, 0));
+        backLeftWheel.transform.Rotate(new Vector3(backRotationRate * localVelocity.z, 0, 0));
+        backRightWheel.transform.Rotate(new Vector3(backRotationRate * localVelocity.z, 0, 0));
 
         // Handle Forward and Reverse forces
         if (Mathf.Abs(thrust) > 0)
             body.AddForce(transform.forward * thrust);
 
         // Handle Turn forces
+
+        if (isReverse)
+        {
+            turnValue *= -1;
+        }
+
         // Turning Right
         if (turnValue > 0)
         {
             body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
 
+            // Going Backwards
+            if (isReverse)
+            {
+                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y - (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+            }
+            // Going forward
+            else
+            {
+                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+            }
+
             //handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
 
-            handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
+            //handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
         }
         // Turning Left
         else if (turnValue < 0)
         {
             body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
 
+            // Going Backwards
+            if (isReverse)
+            {
+                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y - (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+            }
+            // Going forward
+            else
+            {
+                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+            }
+
             //handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
 
-            handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
+            //handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
 
             
             Debug.Log(handleBars.transform.localEulerAngles.y);
