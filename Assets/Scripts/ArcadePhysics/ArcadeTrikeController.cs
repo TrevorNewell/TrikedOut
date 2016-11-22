@@ -107,13 +107,6 @@ public class ArcadeTrikeController : MonoBehaviour
             turnValue = turnAxis;
 
         // TODO: Add drifting logic
-        if (drifting != 0 && !isReverse && Mathf.Abs(turnAxis) > deadZone && acceleration > deadZone)
-        {
-            turnValue = turnAxis * 1.5f;
-            thrust = acceleration * (forwardAcceleration / 1.5f);
-            isReverse = false;
-            groundedDrag = 100f;
-        }
     }
 
     void Update()
