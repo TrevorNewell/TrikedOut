@@ -8,4 +8,6 @@ public interface Item
     void Deactivate();
 
     void TellDirectional(int d);
+
+    void SetDefaultScale();
 }

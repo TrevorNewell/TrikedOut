@@ -100,10 +100,11 @@ public class RaceManager : MonoBehaviour
         // If we haven't specified our checkpoints, find them in the scene
         if (checkpoints.Length == 0)
         {
-            checkpoints = gameObject.GetComponentsInChildren<Checkpoint>(); 
+            checkpoints = gameObject.GetComponentsInChildren<Checkpoint>();
         }
 
         numCheckpoints = checkpoints.Length;
+        print(numCheckpoints + " " + GetID());
 
 	    if (numLaps == 0)
         {
@@ -145,8 +146,6 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     public bool CheckForLap(int pNum)
     {
-        //print("Checking for Lap.");
-        
         int id = player.GetComponent<Character>().GetID();
         if (pNum != id)
             return false;

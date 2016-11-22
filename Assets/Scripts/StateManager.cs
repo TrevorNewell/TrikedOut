@@ -130,7 +130,7 @@ public class StateManager : MonoBehaviour
             c.GetComponent<Move>().SaveMomentum();
         }
 
-        SoundManager.instance.Pause();
+        //SoundManager.instance.Pause();
         ScreenManager.instance.Pause();
 
     }
@@ -146,7 +146,7 @@ public class StateManager : MonoBehaviour
             c.GetComponent<Move>().RestoreMomentum();
         }
 
-        SoundManager.instance.Unpause();
+        //SoundManager.instance.Unpause();
         ScreenManager.instance.Unpause();
 
     }

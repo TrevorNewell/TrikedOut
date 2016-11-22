@@ -6,7 +6,7 @@ public class RaceSetup : MonoBehaviour
     public int playerCount = 2;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
@@ -68,6 +68,6 @@ public class RaceSetup : MonoBehaviour
             }
         }
 
-        //GameObject.Find("CheckPoints").transform.parent = transform;
+        GameObject.Find("CheckPoints").transform.parent = transform;
 	}
 }

@@ -209,7 +209,7 @@ public class Move : MonoBehaviour
         // Both pedals were held for "brakeTime" seconds.  Let's brake.
         if (brakeCounter >= brakeTime)
         {
-            Debug.Log("Begin Braking");
+            //Debug.Log("Begin Braking");
 
             isBraking = true;
         }
@@ -222,7 +222,7 @@ public class Move : MonoBehaviour
         // Left pedal was held for "driftTime" seconds.  Let's drift left
         if (driftCounter >= driftTime && lastPedalLeft)
         {
-            Debug.Log("Begin Drifting Left");
+            //Debug.Log("Begin Drifting Left");
 
             isDriftingLeft = true;
             isPedaling = false;
@@ -235,7 +235,7 @@ public class Move : MonoBehaviour
         // Right pedal was held for "driftTime" seconds. Let's drift right
         if (driftCounter >= driftTime && lastPedalRight)
         {
-            Debug.Log("Begin Drifting Right");
+            //Debug.Log("Begin Drifting Right");
 
             isDriftingRight = true;
             isPedaling = false;
@@ -284,8 +284,8 @@ public class Move : MonoBehaviour
         // Move our trike
         if (isBraking) trikeController.Move(currentRotation, reverse, drifting);
         //else (isPedaling) trikeController.Move(currentRotation, acceleration, drifting); // This is bad, we need to be able to rotate our handle bars even if we aren't "pedaling"
-        //else if (isDriftingLeft) trikeController.Move(-driftRotation, driftAcceleration, drifting);
-        //else if (isDriftingRight) trikeController.Move(driftRotation, driftAcceleration, drifting);
+        else if (isDriftingLeft) trikeController.Move(currentRotation, acceleration, drifting);
+        else if (isDriftingRight) trikeController.Move(currentRotation, acceleration, drifting);
         else trikeController.Move(currentRotation, acceleration, drifting); // This is good, we can rotate when not pedaling
 
         // For the commented else ifs above, the driftRotation and driftAcceleration could just be between 0 and 2, and then scale the turn and acceleration in the ArcadeTrikeController.

@@ -5,12 +5,19 @@ public class PlayerTell : MonoBehaviour
 {
 
     public int directionalID;
+    private int playerID;
+
+    void Start()
+    {
+        playerID = transform.parent.GetComponentInParent<Player>().GetID();
+    }
 
     void OnTriggerEnter(Collider c)
     {
         if (c.CompareTag("Player"))
         {
-            transform.parent.GetComponent<Player>().TellItemDirectional(directionalID);
+            if (c.GetComponent<Player>().GetID() != playerID)
+                transform.parent.GetComponentInParent<Player>().TellItemDirectional(directionalID);
         }
     }
 }

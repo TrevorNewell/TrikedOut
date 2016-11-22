@@ -30,6 +30,7 @@ public class ArcadeTrikeController : MonoBehaviour
     public float speed;
     public float forwardAcceleration = 8000f;
     public float reverseAcceleration = 4000f;
+    public float slowFactor = 100f;
     float thrust = 0f;
 
     private bool isReverse = false;
@@ -93,6 +94,11 @@ public class ArcadeTrikeController : MonoBehaviour
             thrust = acceleration * reverseAcceleration;
             isReverse = true;
         }
+        else if (thrust != 0)
+        {
+            if (isReverse) thrust += slowFactor;
+            else thrust -= slowFactor;
+        }
 
         // Get turning input
         turnValue = 0.0f;
@@ -101,6 +107,13 @@ public class ArcadeTrikeController : MonoBehaviour
             turnValue = turnAxis;
 
         // TODO: Add drifting logic
+        if (drifting != 0 && !isReverse && Mathf.Abs(turnAxis) > deadZone && acceleration > deadZone)
+        {
+            turnValue = turnAxis * 1.5f;
+            thrust = acceleration * (forwardAcceleration / 1.5f);
+            isReverse = false;
+            groundedDrag = 100f;
+        }
     }
 
     void Update()
@@ -233,7 +246,7 @@ public class ArcadeTrikeController : MonoBehaviour
             //handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
 
             
-            Debug.Log(handleBars.transform.localEulerAngles.y);
+            //Debug.Log(handleBars.transform.localEulerAngles.y);
         }
 
         // Limit max velocity

@@ -33,6 +33,11 @@ public class Bat : MonoBehaviour, Item
         swingAngles[2] = 180f;
     }
 
+    public void SetDefaultScale()
+    {
+        transform.localScale = new Vector3(6.84975f, 6.84975f, 6.84975f);
+    }
+
     public bool Swinging()
     {
         return swinging;
@@ -115,8 +120,9 @@ public class Bat : MonoBehaviour, Item
 
     public void TellDirectional(int d)
     {
-        startRot.y = swingAngles[d];
-        print("CHANGED");
+        if (swingAngles != null)
+            startRot.y = swingAngles[d];
+        //print("CHANGED");
     }
 
     public void Activate()

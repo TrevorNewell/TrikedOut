@@ -24,6 +24,11 @@ public class MarshmallowGun : MonoBehaviour, Item
         transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
+    public void SetDefaultScale()
+    {
+        transform.localScale = Vector3.one;
+    }
+
     public bool Firing()
     {
         return firing;
@@ -48,6 +53,7 @@ public class MarshmallowGun : MonoBehaviour, Item
                 GameObject b = Instantiate(bullet);
                 b.GetComponent<Marshmallow>().SetForward(transform.rotation.eulerAngles);
                 b.transform.position = launchPoint.transform.position;
+                b.transform.localScale = b.transform.localScale / 2;
                 currentTime = 0;
             }
         }

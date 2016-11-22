@@ -43,5 +43,6 @@ public class WeaponHandler : MonoBehaviour
         currentItem.transform.parent = gameObject.transform;
         currentItem.transform.localPosition = Vector3.zero;
         GetComponentInParent<Player>().weapon = currentItem;
+        currentItem.GetComponent<Item>().SetDefaultScale();
     }
 }
