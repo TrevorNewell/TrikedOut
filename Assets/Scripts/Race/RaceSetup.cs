@@ -68,6 +68,6 @@ public class RaceSetup : MonoBehaviour
             }
         }
 
-        GameObject.Find("CheckPoints").transform.parent = transform;
+        //GameObject.Find("CheckPoints").transform.parent = transform;
 	}
 }

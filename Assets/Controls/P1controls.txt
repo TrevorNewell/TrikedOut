@@ -1,5 +1,5 @@
 [XboxAxis]
-useController=False
+useController=True
 leftPedal=LeftTrigger
 rightPedal=RightTrigger
 steerX=LeftStickX

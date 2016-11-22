@@ -5,7 +5,7 @@ using System;
 
 public class Move : MonoBehaviour
 {
-    public CarController carController; // the car controller we want to use, this is at the root of one of our trikes.
+    public ArcadeTrikeController trikeController; // the car controller we want to use, this is at the root of one of our trikes.
     public float cameraSnapAngle;
 
     private Character character;
@@ -57,11 +57,12 @@ public class Move : MonoBehaviour
         character = gameObject.GetComponent<Player>();
         //car = gameObject.GetComponent<Car>();
         body = gameObject.GetComponent<Rigidbody>();
+        trikeController = gameObject.GetComponentInChildren<ArcadeTrikeController>();
     }
 
     public float GetSpeed()
     {
-        return carController.CurrentSpeed;
+        return trikeController.CurrentSpeed;
     }
 
     // This is used when the player finishes the race
@@ -118,10 +119,10 @@ public class Move : MonoBehaviour
         */
     }
 
-    public void FixedUpdate()
+    public void Update()
     {
         GameObject cam = GameObject.Find("CameraBoom" + GetComponent<Player>().prefix.Substring(1, 1));
-        print(cameraFactor * cameraSnapAngle);
+        //print(cameraFactor * cameraSnapAngle);
         cam.transform.localRotation = Quaternion.Euler(new Vector3(cam.transform.localRotation.eulerAngles.x, 
             /*cam.transform.localRotation.eulerAngles.y + cameraFactor * 50f * Time.deltaTime*/cameraFactor * cameraSnapAngle, cam.transform.localRotation.eulerAngles.z));
         // Both pedals were pressed.
@@ -224,6 +225,7 @@ public class Move : MonoBehaviour
             Debug.Log("Begin Drifting Left");
 
             isDriftingLeft = true;
+            //isPedaling = false;
         }
         else
         {
@@ -236,6 +238,7 @@ public class Move : MonoBehaviour
             Debug.Log("Begin Drifting Right");
 
             isDriftingRight = true;
+            //isPedaling = false;
         }
         else
         {
@@ -265,23 +268,8 @@ public class Move : MonoBehaviour
         float acceleration = (isPedaling == true) ? 1 : 0;  // This is between - 1 and 1 as well, and if we aren't pedaling we can be slowing down i.e. set to something other than 0
         float reverse = (isBraking == true) ? -1 : 0;
         float drifting = 0.0f;
-        if (isDriftingLeft) drifting = driftStrength; // We don't want a full 1
-        if (isDriftingRight) drifting = -driftStrength;
-
-        /*
-        if (isPedaling)
-        {
-            carController.Move(steering, acceleration, acceleration, drifting);
-        }
-        else if (isBraking)
-        {
-            carController.Move(steering, reverse, reverse, drifting);
-        }
-        else
-        {
-            carController.Move(steering, acceleration, reverse, drifting);
-        }
-        */
+        if (isDriftingLeft) drifting = -driftStrength; // We don't want a full 1
+        if (isDriftingRight) drifting = driftStrength;
 
         // This adds angles to the rotation incrementally instead of simply setting the angles.  Much smoother.
         // For some reason, when I put 10 in a variable, it gives me an error :/ 10 is good though :)
@@ -292,53 +280,11 @@ public class Move : MonoBehaviour
         if (currentRotation < -1) currentRotation = -1;
         if (currentRotation > 1) currentRotation = 1;
 
+        //Debug.Log("Rotate: " + currentRotation + " Accelerate: " + acceleration +  " Drift: " + drifting);
         // Move our trike
-        carController.Move(currentRotation, acceleration, reverse, drifting);
+        if (isBraking) trikeController.Move(-currentRotation, reverse, drifting);
+        else trikeController.Move(currentRotation, acceleration, drifting);
 
-
-        /* Old Implementation
-        timer += Time.deltaTime;
-
-        //decay velocity and prevent it from becoming less than 0
-        if (velocity > 0.0f) velocity -= car.slowRate * Time.deltaTime;
-        else velocity = 0.0f;
-
-        if (leftPedal + rightPedal != 0)
-        {
-            int nextPedal = 0;
-
-            if (rightPedal + lastPedal == 3) nextPedal = 2;
-            else if (leftPedal + lastPedal == 3) nextPedal = 1;
-
-            if (nextPedal != 0)
-            {
-                lastPedal = nextPedal;
-                float modifier = timer / car.pedalDelay;
-                if (modifier > 1.0f) modifier = 1.0f;
-                timer = 0.0f;
-
-                //add velocity
-                velocity += car.acceleration * modifier;
-
-                if (velocity > car.maxSpeed) velocity = (float)car.maxSpeed;
-            }
-
-            leftPedal = 0;
-            rightPedal = 0;
-        }
-
-        //turn character and velocity
-        rotation += turnFactor;
-        //(rotation);
-        if (rotation > 359) rotation -= 360;
-        else if (rotation < 0) rotation += 360;
-        gameObject.transform.eulerAngles = new Vector3(0, rotation, 0);
-
-        //Debug.Log("Velocity: " + velocity);
-
-        //body.AddForce(new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation)), typeOfForceToApply);
-        body.velocity = new Vector3(velocity * Mathf.Sin(Mathf.Deg2Rad * rotation), 0.0f, velocity * Mathf.Cos(Mathf.Deg2Rad * rotation));
-        */
     }
 
     public float GetRotation()
