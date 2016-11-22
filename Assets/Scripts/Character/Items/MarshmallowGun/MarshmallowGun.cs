@@ -21,6 +21,7 @@ public class MarshmallowGun : MonoBehaviour, Item
     {
         startRot = transform.localRotation.eulerAngles;
         currentTime = fireDelay;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     public bool Firing()

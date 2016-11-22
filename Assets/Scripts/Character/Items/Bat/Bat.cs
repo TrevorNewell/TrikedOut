@@ -24,6 +24,7 @@ public class Bat : MonoBehaviour, Item
         swinging = false;
         backswing = false;
         endSwing = false;
+        transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, 0, 0);
         startRot = transform.localRotation.eulerAngles;
         anglesPerSecond = maxSwingAngle / swingRate;
         swingAngles = new float[3];
