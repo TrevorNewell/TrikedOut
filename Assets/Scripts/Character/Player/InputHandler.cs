@@ -62,6 +62,7 @@ public class InputHandler : MonoBehaviour
             bool fire;
             bool ceaseFire;
             bool switchWeapon;
+            bool pause;
 
             if (useController)
             {
@@ -72,6 +73,7 @@ public class InputHandler : MonoBehaviour
                 fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
                 ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
                 switchWeapon = XCI.GetButtonDown(xbb["switchWeapon"], playerNumber);
+                pause = XCI.GetButtonDown(xbb["pause"], playerNumber);
             }
             else
             {
@@ -82,6 +84,7 @@ public class InputHandler : MonoBehaviour
                 cameraFactor = (Input.GetKey(kbc["cameraX"]) == true) ? -1 : (Input.GetKey(kbc["cameraY"]) == true) ? 1 : 0;
                 ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
                 switchWeapon = Input.GetKeyDown(kbc["switchWeapon"]);
+                pause = Input.GetKeyDown(kbc["pause"]);
             }
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
@@ -90,6 +93,7 @@ public class InputHandler : MonoBehaviour
             if (fire) player.FireWeapon();
             else if (ceaseFire) player.CeaseFire();
             if (switchWeapon) player.SwitchWeapon();
+            if (pause) StateManager.instance.SetPauseUser(int.Parse(prefix.Substring(1, 1)));
         }
     }
 }

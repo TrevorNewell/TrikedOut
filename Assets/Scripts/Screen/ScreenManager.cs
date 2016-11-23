@@ -14,13 +14,15 @@ public class ScreenManager : MonoBehaviour
     public GameObject lastScreen; // The last screen we displayed
     public GameObject currentScreen; // The current screen we're displaying
 
-    public GameObject pauseScreen; // Our pauseScreen.  This is stored as a variable so in the StateManager when "Pause" is pressed on a controller, we can activate this menu.
+    private GameObject[] pauseScreens; // Our pauseScreen.  This is stored as a variable so in the StateManager when "Pause" is pressed on a controller, we can activate this menu.
 
     // The individaul HUDs for each player.
     public GameObject HUD1;
     public GameObject HUD2;
     public GameObject HUD3;
     public GameObject HUD4;
+
+    public bool isPaused = false;
 
 
     void Awake()
@@ -33,12 +35,20 @@ public class ScreenManager : MonoBehaviour
     {
         // This finds the event system in our scene.  If we have more than one, we need to assign this manually.
         eventHandler = FindObjectOfType<EventSystem>();
+        pauseScreens = new GameObject[4];
+
+        for(int i = 1; i < 5; i++)
+        {
+            pauseScreens[i - 1] = GameObject.Find("InGameMenuP" + i.ToString());
+            pauseScreens[i - 1].SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetButtonUp("P1_B") && (StateManager.instance.isPaused || StateManager.instance.isMainMenu))
+        string cb = GetComponent<StandaloneInputModule>().cancelButton;
+        if (Input.GetButtonUp(cb) && (StateManager.instance.isPaused || StateManager.instance.isMainMenu))
         {
             if (currentScreen != null)
             {
@@ -61,8 +71,7 @@ public class ScreenManager : MonoBehaviour
         }
 	}
 
-
-    public void Pause()
+    public void Pause(int p)
     {
         // Hide all the HUDs
         HUD1.SetActive(false);
@@ -71,16 +80,16 @@ public class ScreenManager : MonoBehaviour
         HUD4.SetActive(false);
 
         // Enable our pause screen.
-        pauseScreen.SetActive(true);
+        pauseScreens[p-1].SetActive(true);
 
         // Our currentScreen is now the pauseScreen.
-        currentScreen = pauseScreen;
+        currentScreen = pauseScreens[p-1];
 
         // Set the currently selected object to the "firstActive" parameter on our pauseScreen
-        instance.eventHandler.SetSelectedGameObject(pauseScreen.GetComponent<Screen>().firstActive.gameObject);
+        instance.eventHandler.SetSelectedGameObject(pauseScreens[p-1].GetComponent<Screen>().firstActive.gameObject);
     }
 
-    public void Unpause()
+    public void Unpause(int p)
     {
         // Reactivate the HUD's for each player.
         HUD1.SetActive(true);
@@ -89,7 +98,7 @@ public class ScreenManager : MonoBehaviour
         HUD4.SetActive(true);
 
         // Hide the pauseScreen
-        pauseScreen.SetActive(false);
+        pauseScreens[p-1].SetActive(false);
     }
 
 

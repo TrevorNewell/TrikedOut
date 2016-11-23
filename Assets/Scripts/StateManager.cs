@@ -1,5 +1,6 @@
 ﻿//using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StateManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class StateManager : MonoBehaviour
 
     public Screen[] screensInScene;
 
+    private int pauseUser;
+
     void Awake()
     {
         if (GlobalCharSelection != null)
@@ -34,7 +37,7 @@ public class StateManager : MonoBehaviour
         if (charSelIndex != -1)
         {
             // Update the playerCount so we can section off the screen appropriately and activate the required game objects.
-            FindObjectOfType<RaceSetup>().playerCount = numPlayers;
+            //FindObjectOfType<RaceSetup>().playerCount = numPlayers;
 
             // Just realized, this section below may need to be called after PlayerSetup has done it's thing.  FindObjectsOfType<Player>() only finds "active" game objects.
             Player[] players = FindObjectsOfType<Player>();
@@ -77,6 +80,8 @@ public class StateManager : MonoBehaviour
     {
         screensInScene = Resources.FindObjectsOfTypeAll<Screen>();
 
+        pauseUser = 0;
+
         // If the current scene name is "Menus" then set the appropriate variables
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
         {
@@ -102,24 +107,29 @@ public class StateManager : MonoBehaviour
         }
     }
 
+    public void SetPauseUser(int p)
+    {
+        pauseUser = p;
+    }
+
     // Update is called once per frame
     void Update ()
     {
         // If ANY controller has pressed start and we aren't on the main menu.  Toggle our pause screen.
-        if (Input.GetButtonUp("Start") && !isMainMenu)
+        if (pauseUser != 0 && !isMainMenu)
         {
             if (isPaused)
             {
-                Unpause();
+                Unpause(pauseUser);
             }
             else
             {
-                Pause();
+                Pause(pauseUser);
             }
         }
     }
 
-    public void Pause()
+    public void Pause(int p)
     {
         isPaused = true;
 
@@ -131,11 +141,18 @@ public class StateManager : MonoBehaviour
         }
 
         //SoundManager.instance.Pause();
-        ScreenManager.instance.Pause();
+        EventSystem e = EventSystem.current;
+        StandaloneInputModule s = e.gameObject.GetComponent<StandaloneInputModule>();
+        s.submitButton = "P" + p.ToString() + "_A";
+        s.cancelButton = "P" + p.ToString() + "_B";
+        s.horizontalAxis = "P" + p.ToString() + "_Horizontal";
+        s.verticalAxis = "P" + p.ToString() + "_Vertical";
+        ScreenManager.instance.Pause(p);
+        pauseUser = 0;
 
     }
 
-    public void Unpause()
+    public void Unpause(int p)
     {
         isPaused = false;
 
@@ -147,7 +164,8 @@ public class StateManager : MonoBehaviour
         }
 
         //SoundManager.instance.Unpause();
-        ScreenManager.instance.Unpause();
+        ScreenManager.instance.Unpause(p);
+        pauseUser = 0;
 
     }
 
