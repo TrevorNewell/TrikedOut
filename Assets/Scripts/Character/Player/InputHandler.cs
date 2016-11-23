@@ -17,6 +17,8 @@ public class InputHandler : MonoBehaviour
     private Dictionary<string, XboxAxis> xba;
     private Dictionary<string, XboxButton> xbb;
     private Dictionary<string, KeyCode> kbc;
+    private float currentTime;
+    private float delay = 0.2f;
 
     // Use this for initialization
     void Start()
@@ -24,6 +26,7 @@ public class InputHandler : MonoBehaviour
         player = gameObject.GetComponent<Player>();
         move = gameObject.GetComponent<Move>();
         prefix = player.prefix;
+        currentTime = 0f;
 
         switch (prefix)
         {
@@ -94,6 +97,40 @@ public class InputHandler : MonoBehaviour
             else if (ceaseFire) player.CeaseFire();
             if (switchWeapon) player.SwitchWeapon();
             if (pause) StateManager.instance.SetPauseUser(int.Parse(prefix.Substring(1, 1)));
+        }
+        else if (StateManager.instance.RequestPausePermission(int.Parse(prefix.Substring(1, 1))))
+        {
+            ButtonSelect bs = ScreenManager.instance.currentScreen.GetComponent<ButtonSelect>();
+            currentTime -= Time.deltaTime;
+            if (useController)
+            {
+                if (XCI.GetAxis(xba["steerX"], playerNumber) == -1 && currentTime <= 0)
+                {
+                    bs.SelectLeft();
+                    currentTime = delay;
+                }
+                else if (XCI.GetAxis(xba["steerX"], playerNumber) == 1 && currentTime <= 0)
+                {
+                    bs.SelectRight();
+                    currentTime = delay;
+                }
+
+                if (XCI.GetAxis(xba["steerY"], playerNumber) == -1 && currentTime <= 0)
+                {
+                    bs.SelectDown();
+                    currentTime = delay;
+                }
+                else if (XCI.GetAxis(xba["steerY"], playerNumber) == 1 && currentTime <= 0)
+                {
+                    bs.SelectUp();
+                    currentTime = delay;
+                }
+
+                if (XCI.GetButtonDown(xbb["activateWeapon"]))
+                {
+                    bs.Click();
+                }
+            }
         }
     }
 }

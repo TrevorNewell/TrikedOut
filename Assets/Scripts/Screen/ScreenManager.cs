@@ -50,6 +50,7 @@ public class ScreenManager : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        //FIX
         string cb = GetComponent<StandaloneInputModule>().cancelButton;
         if (Input.GetButtonUp(cb) && (StateManager.instance.isPaused || StateManager.instance.isMainMenu))
         {

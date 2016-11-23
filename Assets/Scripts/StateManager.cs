@@ -25,6 +25,7 @@ public class StateManager : MonoBehaviour
     public Screen[] screensInScene;
 
     private int pauseUser;
+    private int pauseUserID;
 
     void Awake()
     {
@@ -110,6 +111,12 @@ public class StateManager : MonoBehaviour
     public void SetPauseUser(int p)
     {
         pauseUser = p;
+        pauseUserID = p;
+    }
+
+    public bool RequestPausePermission(int p)
+    {
+        return pauseUserID == p;
     }
 
     // Update is called once per frame

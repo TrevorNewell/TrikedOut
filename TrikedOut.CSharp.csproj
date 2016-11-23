@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
     <Compile Include="Assets\Scripts\Race\RaceManager.cs" />
     <Compile Include="Assets\Scripts\Race\RaceSetup.cs" />
+    <Compile Include="Assets\Scripts\Screen\ButtonSelect.cs" />
     <Compile Include="Assets\Scripts\Screen\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Screen\EnableDisableOnHighlight.cs" />
     <Compile Include="Assets\Scripts\Screen\Screen.cs" />
