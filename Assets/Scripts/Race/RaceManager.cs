@@ -213,7 +213,7 @@ public class RaceManager : MonoBehaviour
 
             foreach (Checkpoint c in checkpoints)
             {
-                if (c.hasPassed(id) == false)
+                if (c.hasPassed(id) == true)
                 {
                     c.NewLap(id);
                 }

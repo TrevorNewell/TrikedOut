@@ -12,7 +12,7 @@ public class RaceSetup : MonoBehaviour
 
         Vector2 rectSize = new Vector2(1.0f, 1.0f);
         bool vert = true;
-        //playerCount = StateManager.numPlayers;
+        if (StateManager.numPlayers != 0) playerCount = StateManager.numPlayers;
         int divides = playerCount;
 
         while (divides / 2 != 0)

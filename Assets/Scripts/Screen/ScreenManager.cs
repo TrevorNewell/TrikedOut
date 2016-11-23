@@ -15,7 +15,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject currentScreen; // The current screen we're displaying
 
     private GameObject[] pauseScreens; // Our pauseScreen.  This is stored as a variable so in the StateManager when "Pause" is pressed on a controller, we can activate this menu.
-
+    private GameObject[] optionScreens;
     // The individaul HUDs for each player.
     public GameObject HUD1;
     public GameObject HUD2;
@@ -36,11 +36,14 @@ public class ScreenManager : MonoBehaviour
         // This finds the event system in our scene.  If we have more than one, we need to assign this manually.
         eventHandler = FindObjectOfType<EventSystem>();
         pauseScreens = new GameObject[4];
+        optionScreens = new GameObject[4];
 
         for(int i = 1; i < 5; i++)
         {
             pauseScreens[i - 1] = GameObject.Find("InGameMenuP" + i.ToString());
             pauseScreens[i - 1].SetActive(false);
+            optionScreens[i - 1] = GameObject.Find("OptionsMenuP" + i.ToString());
+            optionScreens[i - 1].SetActive(false);
         }
     }
 
