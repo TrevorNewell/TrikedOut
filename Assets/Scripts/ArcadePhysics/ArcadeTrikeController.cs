@@ -5,6 +5,7 @@ using System.Collections;
 
 public class ArcadeTrikeController : MonoBehaviour
 {
+    public bool grounded = false;
     Rigidbody body;
     public GameObject handleBars;
     public GameObject handlePivot;
@@ -96,8 +97,18 @@ public class ArcadeTrikeController : MonoBehaviour
         }
         else if (thrust != 0)
         {
-            if (isReverse) thrust += slowFactor;
-            else thrust -= slowFactor;
+            if (isReverse)
+            {
+                thrust += slowFactor;
+
+                if (thrust > 0) isReverse = false;
+            }
+            else
+            {
+                thrust -= slowFactor;
+
+                if (thrust < 0) isReverse = true;
+            }
         }
 
         // Get turning input
@@ -135,7 +146,6 @@ public class ArcadeTrikeController : MonoBehaviour
         speed = body.velocity.magnitude;
         //  Do hover/bounce force
         RaycastHit hit;
-        bool grounded = false;
         for (int i = 0; i < hoverPoints.Length; i++)
         {
             var hoverPoint = hoverPoints[i];
@@ -146,6 +156,7 @@ public class ArcadeTrikeController : MonoBehaviour
             }
             else
             {
+                grounded = false;
                 // Self levelling - returns the vehicle to horizontal when not grounded and simulates gravity
                 if (transform.position.y > hoverPoint.transform.position.y)
                 {
