@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 840be3badb351c64faca385c0c2715d3
+timeCreated: 1480632535
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Chest
+    100002: ikHandle1
+    100004: ikHandle2
+    100006: joint1
+    100008: Left_Ankle
+    100010: Left_Ankle_IK
+    100012: Left_Elbow
+    100014: Left_Foot
+    100016: Left_Foot_Control
+    100018: Left_Foot_IK
+    100020: Left_Foot_Swivel
+    100022: Left_Heel_Pivot
+    100024: Left_Hip
+    100026: Left_Knee
+    100028: Left_Knee_Curve
+    100030: Left_Shoulder
+    100032: Left_Toe_IK
+    100034: Left_Toe_Pivot
+    100036: Left_Upper_Shoulder
+    100038: Left_Wrist_Control
+    100040: Pelvis
+    100042: //RootNode
+    100044: Right_Ankle
+    100046: Right_Ankle_IK
+    100048: Right_Ankle_Pivot
+    100050: Right_Foot
+    100052: Right_Foot_Control
+    100054: Right_Foot_IK
+    100056: Right_Heel_Pivot
+    100058: Right_Hip
+    100060: Right_Knee
+    100062: Right_Knee_Curve
+    100064: Right_Shoulder
+    100066: Right_Toe_IK
+    100068: Right_Toe_Pivot
+    100070: Right_Upper_Shoulder
+    100072: Right_Wrist_Control
+    100074: Stomach
+    400000: Chest
+    400002: ikHandle1
+    400004: ikHandle2
+    400006: joint1
+    400008: Left_Ankle
+    400010: Left_Ankle_IK
+    400012: Left_Elbow
+    400014: Left_Foot
+    400016: Left_Foot_Control
+    400018: Left_Foot_IK
+    400020: Left_Foot_Swivel
+    400022: Left_Heel_Pivot
+    400024: Left_Hip
+    400026: Left_Knee
+    400028: Left_Knee_Curve
+    400030: Left_Shoulder
+    400032: Left_Toe_IK
+    400034: Left_Toe_Pivot
+    400036: Left_Upper_Shoulder
+    400038: Left_Wrist_Control
+    400040: Pelvis
+    400042: //RootNode
+    400044: Right_Ankle
+    400046: Right_Ankle_IK
+    400048: Right_Ankle_Pivot
+    400050: Right_Foot
+    400052: Right_Foot_Control
+    400054: Right_Foot_IK
+    400056: Right_Heel_Pivot
+    400058: Right_Hip
+    400060: Right_Knee
+    400062: Right_Knee_Curve
+    400064: Right_Shoulder
+    400066: Right_Toe_IK
+    400068: Right_Toe_Pivot
+    400070: Right_Upper_Shoulder
+    400072: Right_Wrist_Control
+    400074: Stomach
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

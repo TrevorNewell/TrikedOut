@@ -1,0 +1,292 @@
+fileFormatVersion: 2
+guid: f7f12b2cee1bfb8438371c3b3b84ee34
+timeCreated: 1480632539
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Chest
+    100002: Finger_1
+    100004: Finger_1 1
+    100006: Finger_2
+    100008: Finger_2 1
+    100010: Finger_3
+    100012: Finger_3 1
+    100014: Finger_4
+    100016: Finger_4 1
+    100018: Fingers
+    100020: Hand
+    100022: Head
+    100024: ikHandle1
+    100026: ikHandle2
+    100028: joint1
+    100030: joint10
+    100032: joint11
+    100034: joint12
+    100036: joint13
+    100038: joint14
+    100040: joint15
+    100042: joint17
+    100044: joint18
+    100046: joint19
+    100048: joint20
+    100050: joint21
+    100052: joint22
+    100054: joint23
+    100056: joint24
+    100058: joint3
+    100060: joint4
+    100062: joint5
+    100064: joint6
+    100066: joint7
+    100068: joint8
+    100070: joint9
+    100072: Left_Ankle
+    100074: Left_Ankle_IK
+    100076: Left_Elbow
+    100078: Left_Foot
+    100080: Left_Foot_Control
+    100082: Left_Foot_IK
+    100084: Left_Foot_Swivel
+    100086: Left_Hand
+    100088: Left_Heel_Pivot
+    100090: Left_Hip
+    100092: Left_Knee
+    100094: Left_Knee_Curve
+    100096: Left_Shoulder
+    100098: Left_Toe
+    100100: Left_Toe_IK
+    100102: Left_Toe_Pivot
+    100104: Left_Upper_Shoulder
+    100106: Left_Wrist
+    100108: Left_Wrist_Control
+    100110: Neck
+    100112: nurbsCircle1
+    100114: pasted__joint25
+    100116: pasted__joint26
+    100118: pasted__joint27
+    100120: pasted__joint28
+    100122: pasted__joint29
+    100124: pasted__joint30
+    100126: pasted__joint31
+    100128: pasted__joint32
+    100130: pasted__joint33
+    100132: pasted__joint34
+    100134: pasted__joint35
+    100136: pasted__joint36
+    100138: pasted__joint37
+    100140: pasted__joint38
+    100142: pasted__joint39
+    100144: pasted__joint40
+    100146: pasted__joint41
+    100148: pasted__joint42
+    100150: pasted__joint43
+    100152: pasted__joint44
+    100154: pasted__joint45
+    100156: pasted__joint46
+    100158: pasted__Left_Wrist1
+    100160: Pelvis
+    100162: polySurface4
+    100164: polySurface5
+    100166: Princess
+    100168: Princess 1
+    100170: //RootNode
+    100172: Right_Ankle
+    100174: Right_Ankle_IK
+    100176: Right_Ankle_Pivot
+    100178: Right_Foot
+    100180: Right_Foot_Control
+    100182: Right_Foot_IK
+    100184: Right_Foot_Swivel_Pivot
+    100186: Right_Heel_Pivot
+    100188: Right_Hip
+    100190: Right_Knee
+    100192: Right_Knee_Curve
+    100194: Right_Shoulder
+    100196: Right_Toe
+    100198: Right_Toe_IK
+    100200: Right_Toe_Pivot
+    100202: Right_Toe_Tip_Pivot
+    100204: Right_Upper_Shoulder
+    100206: Right_Wrist_Control
+    100208: Stomach
+    100210: Thumb
+    100212: Thumb 1
+    100214: transform1
+    100216: transform2
+    400000: Chest
+    400002: Finger_1
+    400004: Finger_1 1
+    400006: Finger_2
+    400008: Finger_2 1
+    400010: Finger_3
+    400012: Finger_3 1
+    400014: Finger_4
+    400016: Finger_4 1
+    400018: Fingers
+    400020: Hand
+    400022: Head
+    400024: ikHandle1
+    400026: ikHandle2
+    400028: joint1
+    400030: joint10
+    400032: joint11
+    400034: joint12
+    400036: joint13
+    400038: joint14
+    400040: joint15
+    400042: joint17
+    400044: joint18
+    400046: joint19
+    400048: joint20
+    400050: joint21
+    400052: joint22
+    400054: joint23
+    400056: joint24
+    400058: joint3
+    400060: joint4
+    400062: joint5
+    400064: joint6
+    400066: joint7
+    400068: joint8
+    400070: joint9
+    400072: Left_Ankle
+    400074: Left_Ankle_IK
+    400076: Left_Elbow
+    400078: Left_Foot
+    400080: Left_Foot_Control
+    400082: Left_Foot_IK
+    400084: Left_Foot_Swivel
+    400086: Left_Hand
+    400088: Left_Heel_Pivot
+    400090: Left_Hip
+    400092: Left_Knee
+    400094: Left_Knee_Curve
+    400096: Left_Shoulder
+    400098: Left_Toe
+    400100: Left_Toe_IK
+    400102: Left_Toe_Pivot
+    400104: Left_Upper_Shoulder
+    400106: Left_Wrist
+    400108: Left_Wrist_Control
+    400110: Neck
+    400112: nurbsCircle1
+    400114: pasted__joint25
+    400116: pasted__joint26
+    400118: pasted__joint27
+    400120: pasted__joint28
+    400122: pasted__joint29
+    400124: pasted__joint30
+    400126: pasted__joint31
+    400128: pasted__joint32
+    400130: pasted__joint33
+    400132: pasted__joint34
+    400134: pasted__joint35
+    400136: pasted__joint36
+    400138: pasted__joint37
+    400140: pasted__joint38
+    400142: pasted__joint39
+    400144: pasted__joint40
+    400146: pasted__joint41
+    400148: pasted__joint42
+    400150: pasted__joint43
+    400152: pasted__joint44
+    400154: pasted__joint45
+    400156: pasted__joint46
+    400158: pasted__Left_Wrist1
+    400160: Pelvis
+    400162: polySurface4
+    400164: polySurface5
+    400166: Princess
+    400168: Princess 1
+    400170: //RootNode
+    400172: Right_Ankle
+    400174: Right_Ankle_IK
+    400176: Right_Ankle_Pivot
+    400178: Right_Foot
+    400180: Right_Foot_Control
+    400182: Right_Foot_IK
+    400184: Right_Foot_Swivel_Pivot
+    400186: Right_Heel_Pivot
+    400188: Right_Hip
+    400190: Right_Knee
+    400192: Right_Knee_Curve
+    400194: Right_Shoulder
+    400196: Right_Toe
+    400198: Right_Toe_IK
+    400200: Right_Toe_Pivot
+    400202: Right_Toe_Tip_Pivot
+    400204: Right_Upper_Shoulder
+    400206: Right_Wrist_Control
+    400208: Stomach
+    400210: Thumb
+    400212: Thumb 1
+    400214: transform1
+    400216: transform2
+    4300000: Princess
+    9500000: //RootNode
+    13700000: Princess 1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

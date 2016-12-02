@@ -6,6 +6,7 @@ using System.Collections;
 public class ArcadeTrikeController : MonoBehaviour
 {
     public bool grounded = false;
+    public bool canTurn = true;
     Rigidbody body;
     public GameObject handleBars;
     public GameObject handlePivot;
@@ -89,11 +90,13 @@ public class ArcadeTrikeController : MonoBehaviour
         {
             thrust = acceleration * forwardAcceleration;
             isReverse = false;
+            canTurn = true;
         }
         else if (acceleration < -deadZone)
         {
             thrust = acceleration * reverseAcceleration;
             isReverse = true;
+            canTurn = true;
         }
         else if (thrust != 0)
         {
@@ -109,6 +112,12 @@ public class ArcadeTrikeController : MonoBehaviour
 
                 if (thrust < 0) isReverse = true;
             }
+            canTurn = true;
+        }
+        else
+        {
+            isReverse = false;
+            canTurn = false;
         }
 
         // Get turning input
@@ -146,17 +155,32 @@ public class ArcadeTrikeController : MonoBehaviour
         speed = body.velocity.magnitude;
         //  Do hover/bounce force
         RaycastHit hit;
+
+        bool anyGrounded = false;
+
+        for (int i = 0; i < hoverPoints.Length; i++)
+        {
+            var hoverPoint = hoverPoints[i];
+            if (Physics.Raycast(hoverPoint.transform.position, -Vector3.up, out hit, hoverHeight, layerMask))
+            {
+                anyGrounded = true;
+                grounded = true;
+                break;
+            }
+        }
+
+        if (anyGrounded == false) grounded = false;
         for (int i = 0; i < hoverPoints.Length; i++)
         {
             var hoverPoint = hoverPoints[i];
             if (Physics.Raycast(hoverPoint.transform.position, -Vector3.up, out hit, hoverHeight, layerMask))
             {
                 body.AddForceAtPosition(Vector3.up * hoverForce * (1.0f - (hit.distance / hoverHeight)), hoverPoint.transform.position);
-                grounded = true;
+                //grounded = true;
             }
-            else
+            else// if (!anyGrounded)
             {
-                grounded = false;
+                //grounded = false;
                 // Self levelling - returns the vehicle to horizontal when not grounded and simulates gravity
                 if (transform.position.y > hoverPoint.transform.position.y)
                 {
@@ -167,6 +191,17 @@ public class ArcadeTrikeController : MonoBehaviour
                     body.AddForceAtPosition(hoverPoint.transform.up * -gravityForce, hoverPoint.transform.position);
                 }
             }
+            /*else if (anyGrounded)
+            {
+                if (transform.position.y > hoverPoint.transform.position.y)
+                {
+                    body.AddForceAtPosition(hoverPoint.transform.up * -gravityForce, hoverPoint.transform.position);
+                }
+                else
+                {
+                    body.AddForceAtPosition(hoverPoint.transform.up * gravityForce, hoverPoint.transform.position);
+                }
+            }*/
         }
 
         var emissionRate = 0;
@@ -204,24 +239,26 @@ public class ArcadeTrikeController : MonoBehaviour
 
         // Handle Turn forces
 
-        if (isReverse)
+        if (isReverse && thrust == 0)
         {
-            turnValue *= -1;
+            //turnValue *= -1;
         }
 
         // Turning Right
         if (turnValue > 0)
         {
-            body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
-
             // Going Backwards
             if (isReverse)
             {
-                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y - (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+                if (canTurn) body.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
+
+                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
             // Going forward
             else
             {
+                if (canTurn) body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
+
                 handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
 
@@ -232,16 +269,19 @@ public class ArcadeTrikeController : MonoBehaviour
         // Turning Left
         else if (turnValue < 0)
         {
-            body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
 
             // Going Backwards
             if (isReverse)
             {
-                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y - (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+                if (canTurn) body.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
+
+                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
             // Going forward
             else
             {
+                if (canTurn) body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
+
                 handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
 
@@ -249,7 +289,7 @@ public class ArcadeTrikeController : MonoBehaviour
 
             //handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
 
-            
+
             //Debug.Log(handleBars.transform.localEulerAngles.y);
         }
 
