@@ -9,6 +9,7 @@ public class ArcadeTrikeController : MonoBehaviour
     [Header("Boolean Variables")]
     public bool canTurnWhenStopped = false;
     public bool emitDust = true; // Should we emit dust if our wheel are touching the ground?  Yes, but we need some good particle effects!
+    public bool slowed = false;
 
     Rigidbody body;
 
