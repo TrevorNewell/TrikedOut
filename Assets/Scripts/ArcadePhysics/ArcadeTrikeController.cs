@@ -2,12 +2,17 @@
 // Expanded upon by: Trevor Newell
 using UnityEngine;
 using System.Collections;
+using System.Timers;
 
 public class ArcadeTrikeController : MonoBehaviour
 {
-    public bool grounded = false;
-    public bool canTurn = true;
+    [Header("Boolean Variables")]
+    public bool canTurnWhenStopped = false;
+    public bool emitDust = true; // Should we emit dust if our wheel are touching the ground?  Yes, but we need some good particle effects!
+
     Rigidbody body;
+
+    [Header("Variables to Setup the Trike (Doesn't effect performance of Trike)")]
     public GameObject handleBars;
     public GameObject handlePivot;
     public Vector3 originalOrientation;
@@ -16,41 +21,52 @@ public class ArcadeTrikeController : MonoBehaviour
     public GameObject backLeftWheel;
     public GameObject backRightWheel;
     public float backRotationRate = 2.12f; // May vary based on individual trike 2.12 is a good value for this
-
-    public float currentAngle;
-    public Vector3 localVelocity;
-
     [Range(10, 90)] public int maxTurnAngle;
+    public ParticleSystem[] dustTrails = new ParticleSystem[2];
+    public GameObject[] hoverPoints;
+
+    [Header("Performance Modifiers")]
+    public float timeTilDecay = 0.5f;
     public float deadZone = 0.1f; // Filters out small movements so the controller isn't as sensitive
-    public float groundedDrag = 3f;  // Changes RigidBody drag factor depending on whether the buggy is grounded or in the air
+    public float groundedDrag = 3f;  // Changes RigidBody drag factor depending on whether the trike is grounded or in the air.  Should leave at 3
     public float maxVelocity = 50;
     public float hoverForce = 1000;
     public float gravityForce = 1000f;
     public float hoverHeight = 1.5f;
-    public GameObject[] hoverPoints;
-    public float CurrentSpeed { get { return body.velocity.magnitude; } }
-    public float speed;
+
     public float forwardAcceleration = 8000f;
     public float reverseAcceleration = 4000f;
     public float slowFactor = 100f;
-    float thrust = 0f;
-
-    private bool isReverse = false;
 
     public float turnStrength = 1000f;
     float turnValue = 0f;
 
-    public bool emitDust = true;
-    public ParticleSystem[] dustTrails = new ParticleSystem[2];
+    [Header("Visible to Debug")]
+    public float thrust = 0f;
+    public float currentAngle;
+    public Vector3 localVelocity;
+    public float actualSpeed;
+    public int maxPedals;
+    public int currentPedals;
+    public bool grounded = false; // Are we on the ground?
+    public bool canTurn = true; // Can we turn our trike?  No when stopped
+    public float CurrentSpeed { get { return body.velocity.magnitude; } }
+    public float speed;
+    public float temp;
+    private bool isReverse = false;  // Are we going forward or backward?
 
     int layerMask;
+
+    public void SetRigidBodyAndPedals(int maxNumPedals)
+    {
+        body = gameObject.GetComponentInParent<Rigidbody>();
+        body.centerOfMass = Vector3.down;
+        maxPedals = maxNumPedals;
+    }
 
     void Start()
     {
         originalOrientation = handleBars.transform.localEulerAngles;
-
-        body = gameObject.GetComponentInParent<Rigidbody>();
-        body.centerOfMass = Vector3.down;
 
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
@@ -81,14 +97,34 @@ public class ArcadeTrikeController : MonoBehaviour
     //    }
     //  }
 
-    public void Move(float turnAxis, float acceleration, float drifting)
+    public void Move(float turnAxis, float acceleration, float drifting, bool increasePedalCount)
     {
+        if (increasePedalCount)
+        {
+            if (currentPedals < maxPedals)
+            {
+                currentPedals++;
+            }
+
+            temp = 0;
+        }
+        else
+        {
+            temp += Time.deltaTime;
+
+            if (temp >= timeTilDecay)
+            {
+                if (currentPedals - 1 != -1) currentPedals--;
+                temp = 0;
+            }
+        }
+
+
         // Get thrust input
-        //thrust = 0.0f;
-        //acceleration = Input.GetAxis("Vertical");
         if (acceleration > deadZone)
         {
-            thrust = acceleration * forwardAcceleration;
+            thrust = Mathf.Pow(currentPedals, 2) / Mathf.Pow(maxPedals, 2) * forwardAcceleration;
+            //thrust = acceleration * forwardAcceleration;
             isReverse = false;
             canTurn = true;
         }
@@ -97,6 +133,8 @@ public class ArcadeTrikeController : MonoBehaviour
             thrust = acceleration * reverseAcceleration;
             isReverse = true;
             canTurn = true;
+
+            currentPedals = 0;
         }
         else if (thrust != 0)
         {
@@ -104,14 +142,26 @@ public class ArcadeTrikeController : MonoBehaviour
             {
                 thrust += slowFactor;
 
-                if (thrust > 0) isReverse = false;
+                if (thrust > 0)
+                {
+                    isReverse = false;
+                    thrust = 0;
+                }
             }
             else
             {
-                thrust -= slowFactor;
+                //currentPedals = (int)(maxPedals * Mathf.Pow(thrust / forwardAcceleration, (1.0f / 2.0f)));
 
-                if (thrust < 0) isReverse = true;
+                thrust -= slowFactor;
+                //currentPedals = (int) (maxPedals * Mathf.Pow(thrust / forwardAcceleration, (1.0f / 2.0f)));
+
+                if (thrust < 0)
+                {
+                    isReverse = true;
+                    thrust = 0;
+                }
             }
+
             canTurn = true;
         }
         else
@@ -122,32 +172,11 @@ public class ArcadeTrikeController : MonoBehaviour
 
         // Get turning input
         turnValue = 0.0f;
-        //turnAxis = Input.GetAxis("Horizontal");
+
         if (Mathf.Abs(turnAxis) > deadZone)
             turnValue = turnAxis;
 
         // TODO: Add drifting logic
-    }
-
-    void Update()
-    {
-        /*
-        // Get thrust input
-        thrust = 0.0f;
-        float acceleration = Input.GetAxis("Vertical");
-        if (acceleration > deadZone)
-            thrust = acceleration * forwardAcceleration;
-        else if (acceleration < -deadZone)
-            thrust = acceleration * reverseAcceleration;
-
-        // Get turning input
-        turnValue = 0.0f;
-        float turnAxis = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(turnAxis) > deadZone)
-            turnValue = turnAxis;
-
-        Debug.Log(acceleration + " " + turnAxis);
-        */
     }
 
     void FixedUpdate()
@@ -191,17 +220,6 @@ public class ArcadeTrikeController : MonoBehaviour
                     body.AddForceAtPosition(hoverPoint.transform.up * -gravityForce, hoverPoint.transform.position);
                 }
             }
-            /*else if (anyGrounded)
-            {
-                if (transform.position.y > hoverPoint.transform.position.y)
-                {
-                    body.AddForceAtPosition(hoverPoint.transform.up * -gravityForce, hoverPoint.transform.position);
-                }
-                else
-                {
-                    body.AddForceAtPosition(hoverPoint.transform.up * gravityForce, hoverPoint.transform.position);
-                }
-            }*/
         }
 
         var emissionRate = 0;
@@ -214,7 +232,7 @@ public class ArcadeTrikeController : MonoBehaviour
         {
             body.drag = 0.1f;
             thrust /= 100f;
-            turnValue /= 100f;
+            turnValue /= 1f;
         }
 
         if (emitDust)
@@ -227,6 +245,22 @@ public class ArcadeTrikeController : MonoBehaviour
         }
 
         localVelocity = transform.InverseTransformDirection(body.velocity);  // This tells us which if we're moving forward or backwards.  We can use this to determine how to rotate the trike and handlebars when going backwards.
+        actualSpeed = localVelocity.z;
+
+        //if (actualSpeed > 0 )
+        //{
+        //    //if (body.velocity.sqrMagnitude > (body.velocity.normalized * maxVelocity).sqrMagnitude)
+        //    int temp = Mathf.CeilToInt(maxPedals * Mathf.Pow((localVelocity.sqrMagnitude / (body.velocity.normalized * maxVelocity).sqrMagnitude), (1.0f / 2.0f)));
+
+        //    if (temp <= 0)
+        //    {
+        //        currentPedals = 0;
+        //    }
+        //    else
+        //    {
+        //        currentPedals = temp;
+        //    }
+        //}
 
         // Rotate front and back wheels based on velocity
         frontWheel.transform.Rotate(new Vector3(frontRotationRate * localVelocity.z, 0, 0));
@@ -239,32 +273,25 @@ public class ArcadeTrikeController : MonoBehaviour
 
         // Handle Turn forces
 
-        if (isReverse && thrust == 0)
-        {
-            //turnValue *= -1;
-        }
-
         // Turning Right
         if (turnValue > 0)
         {
             // Going Backwards
             if (isReverse)
             {
-                if (canTurn) body.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
+                if ((canTurn || canTurnWhenStopped) && grounded) body.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
 
                 handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
             // Going forward
             else
             {
-                if (canTurn) body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
+                if ((canTurn || canTurnWhenStopped) && grounded) body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
 
                 handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
 
-            //handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
-
-            //handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
+            currentAngle = (turnValue * maxTurnAngle);
         }
         // Turning Left
         else if (turnValue < 0)
@@ -285,12 +312,7 @@ public class ArcadeTrikeController : MonoBehaviour
                 handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
 
-            //handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
-
-            //handleBars.transform.RotateAround(handlePivot.transform.position, handlePivot.transform.localToWorldMatrix.MultiplyVector(transform.up), turnValue * maxTurnAngle);
-
-
-            //Debug.Log(handleBars.transform.localEulerAngles.y);
+            currentAngle = (turnValue * maxTurnAngle);
         }
 
         // Limit max velocity

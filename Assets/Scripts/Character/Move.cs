@@ -5,7 +5,7 @@ using System;
 
 public class Move : MonoBehaviour
 {
-    public ArcadeTrikeController trikeController; // the car controller we want to use, this is at the root of one of our trikes.
+    [SerializeField]private ArcadeTrikeController trikeController; // the car controller we want to use, this is at the root of one of our trikes.
     public float cameraSnapAngle;
 
     private Character character;
@@ -18,7 +18,7 @@ public class Move : MonoBehaviour
     [SerializeField] private float driftTime = 0.5f; // If leftPedal or rightPedal are held for this amount of time, begin drifting
     [SerializeField] private float brakeTime = 0.5f; // If leftPedal and rightPedal are held for this amount of time, begin braking
     [SerializeField] private float pedalingTime = 1.0f; // If leftPedal was pressed after rightPedal within this amount of time, begin accelerating
-
+    [SerializeField][Range(1, 50)] public int pedalsToMaxSpeed = 10;  // How many pedals does it take to get to the center of a tootsie pop?
 
     private float velocity = 0.0f;
     private float rotation = 0.0f;
@@ -46,9 +46,10 @@ public class Move : MonoBehaviour
     bool timePedalingLeft = false; // Once true you have "pedalingCounter" seconds to press right pedal
     bool timePedalingRight = false; // Once true you have "pedalingCounter" seconds to press left pedal
 
-    private float savedVelocity = 0.0f;
-    private float savedRotation = 0.0f;
+    private Vector3 savedVelocity;
+    private float savedRotation;
     private float savedTurnFactor = 0.0f;
+    private int savedPedals;
 
     private float currentRotation = 0.0f;
 
@@ -57,7 +58,13 @@ public class Move : MonoBehaviour
         character = gameObject.GetComponent<Player>();
         //car = gameObject.GetComponent<Car>();
         body = gameObject.GetComponent<Rigidbody>();
-        trikeController = gameObject.GetComponentInChildren<ArcadeTrikeController>();
+        //trikeController = gameObject.GetComponentInChildren<ArcadeTrikeController>();
+    }
+
+    public void SetTrikeController()
+    {
+        trikeController = GetComponentInChildren<ArcadeTrikeController>();
+        trikeController.SetRigidBodyAndPedals(pedalsToMaxSpeed);
     }
 
     public float GetSpeed()
@@ -91,21 +98,27 @@ public class Move : MonoBehaviour
     // Will need to update this (and RestoreMomentum) to account for the wheel collider.  Will do it later though, pft.
     public void SaveMomentum()
     {
-        savedVelocity = velocity;
-        savedRotation = rotation;
+        /*savedVelocity = body.velocity;
+        savedRotation = currentRotation;
         savedTurnFactor = turnFactor;
+        savedPedals = trikeController.currentPedals;
 
-        velocity = 0;
-        turnFactor = 0;
-        //gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        trikeController.currentPedals = 0;
+        body.velocity = Vector3.zero;
+        turnFactor = 0; */
+        gameObject.GetComponent<Rigidbody>().isKinematic = true; // Needs changed
     }
 
     public void RestoreMomentum()
     {
-        //gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        velocity = savedVelocity;
-        rotation = savedRotation;
+        gameObject.GetComponent<Rigidbody>().isKinematic = false; // Needs changed
+        /*
+        body.velocity = savedVelocity;
+        currentRotation = savedRotation;
         turnFactor = savedTurnFactor;
+
+        trikeController.currentPedals = savedPedals;
+        */
     }
 
     // This should be deprecated - Collision handling for slowing down the car is now handled by the wheel colliders
@@ -121,6 +134,8 @@ public class Move : MonoBehaviour
 
     public void Update()
     {
+        bool pedalledThisFrame = false;
+
         GameObject cam = GameObject.Find("CameraBoom" + GetComponent<Player>().prefix.Substring(1, 1));
         //print(cameraFactor * cameraSnapAngle);
         cam.transform.localRotation = Quaternion.Euler(new Vector3(cam.transform.localRotation.eulerAngles.x, 
@@ -145,8 +160,8 @@ public class Move : MonoBehaviour
             if (timeToPedalLeft <= pedalingTime && timePedalingRight && lastPedalRight)
             {
                 isPedaling = true;
+                pedalledThisFrame = true; // Only set to this true on one of the pedals,  I arbitrarily picked the right pedal.
             }
-
 
             //Debug.Log("Start count to LeftPedal Drift");
 
@@ -174,6 +189,7 @@ public class Move : MonoBehaviour
             if (timeToPedalRight <= pedalingTime && timePedalingLeft && lastPedalLeft)
             {
                 isPedaling = true;
+                pedalledThisFrame = true;
             }
 
             brakeCounter = 0;
@@ -264,7 +280,7 @@ public class Move : MonoBehaviour
             timeToPedalRight = 0;
         }
 
-        float steering = turnFactor;  // This is between - 1 and 1
+        float steering = turnFactor;  // This is between - 1 and 1.  -1 is left, 1 is right.
         float acceleration = (isPedaling == true) ? 1 : 0;  // This is between - 1 and 1 as well, and if we aren't pedaling we can be slowing down i.e. set to something other than 0
         float reverse = (isBraking == true) ? -1 : 0;
         float drifting = 0.0f;
@@ -273,20 +289,22 @@ public class Move : MonoBehaviour
 
         // This adds angles to the rotation incrementally instead of simply setting the angles.  Much smoother.
         // For some reason, when I put 10 in a variable, it gives me an error :/ 10 is good though :)
-        currentRotation += (steering / 10);
+        currentRotation += (steering / 20);
 
-        if (steering == 0 && fadeToZero) currentRotation -= currentRotation/10;
+        if (steering == 0 && fadeToZero) currentRotation -= currentRotation/20;
 
         if (currentRotation < -1) currentRotation = -1;
         if (currentRotation > 1) currentRotation = 1;
 
         //Debug.Log("Rotate: " + currentRotation + " Accelerate: " + acceleration +  " Drift: " + drifting);
+
         // Move our trike
-        if (isBraking) trikeController.Move(currentRotation, reverse, drifting);
+        if (isBraking) trikeController.Move(currentRotation, reverse, drifting, false);
         //else (isPedaling) trikeController.Move(currentRotation, acceleration, drifting); // This is bad, we need to be able to rotate our handle bars even if we aren't "pedaling"
         //else if (isDriftingLeft) trikeController.Move(currentRotation, acceleration, drifting);
         //else if (isDriftingRight) trikeController.Move(currentRotation, acceleration, drifting);
-        else trikeController.Move(currentRotation, acceleration, drifting); // This is good, we can rotate when not pedaling
+        else if (pedalledThisFrame) trikeController.Move(currentRotation, acceleration, drifting, true); // This is good, we can rotate when not pedaling
+        else trikeController.Move(currentRotation, acceleration, drifting, false); // This is good, we can rotate when not pedaling
 
         // For the commented else ifs above, the driftRotation and driftAcceleration could just be between 0 and 2, and then scale the turn and acceleration in the ArcadeTrikeController.
         // For example,  say driftRotation was 1.5.  In ArcadeTrikeController, this means we can turn 50% faster than normal.  0.5 would mean we turn 50% slower.  

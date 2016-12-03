@@ -9,10 +9,11 @@ public class Player : MonoBehaviour, Character
     protected Move ourMove;
     protected Trike ourTrike;
 
-    // Status Effects
-    public int health = 100; // When 0, the character dies, drops an item/weapon, then respawns shortly after at last checkpoint or close to where it was killed.
-    public int itemCount = 2; // Default of 2.  Can control how many items a player can hold at once.  Should be between like 1 and 3.  Tapping RB or something can cycle through your items.  Weapon is always equipped?  LB & RB activates super?      
-    public int sugarTolerance; // Possible variable.  With items you can eat for a speed boost, the child gets a little sicker each time.  When he hits his tolerance he can't eat anymore items and must throw them instead.
+    // Pretty sure we don't need any of these now
+    // Status Effects  
+    //public int health = 100; // When 0, the character dies, drops an item/weapon, then respawns shortly after at last checkpoint or close to where it was killed.
+    //public int itemCount = 2; // Default of 2.  Can control how many items a player can hold at once.  Should be between like 1 and 3.  Tapping RB or something can cycle through your items.  Weapon is always equipped?  LB & RB activates super?      
+    //public int sugarTolerance; // Possible variable.  With items you can eat for a speed boost, the child gets a little sicker each time.  When he hits his tolerance he can't eat anymore items and must throw them instead.
 
     // Other Status effects?
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour, Character
     public int playerNumber; // i.e 1
 
     public MeshRenderer theMeshToChange; // This is a temporary variable and will be removed later.  Just lets me test the Main Menu and Character selection correctly with the Trike model in place.
+    public GameObject theCharacter;
 
     // Temp variable until colliders are sorted out.  
     private float originalY;
@@ -41,10 +43,17 @@ public class Player : MonoBehaviour, Character
 
         ourTrike = gameObject.GetComponent<Trike>();
         ourMove = gameObject.GetComponent<Move>();
+
+        GameObject temp = Instantiate(theCharacter);
+
+        temp.transform.position = gameObject.transform.position;
+        temp.transform.SetParent(gameObject.transform);
+        temp.transform.rotation = gameObject.transform.rotation;
+        ourMove.SetTrikeController();
     }
-	
-	// Update is called once per frame
-	public void Update ()
+
+    // Update is called once per frame
+    public void Update ()
     {
         // This actually freezes the Y position of the player, unlike the RigidBody's freeze position.
         // gameObject.transform.position = new Vector3(gameObject.transform.position.x, originalY, gameObject.transform.position.z);
@@ -61,7 +70,7 @@ public class Player : MonoBehaviour, Character
 
     public void Damage(int d)
     {
-        health -= d;
+        //health -= d;
     }
 
     public void SwitchWeapon()

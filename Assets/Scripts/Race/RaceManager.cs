@@ -335,7 +335,7 @@ public class RaceManager : MonoBehaviour
             leftText.text = overallTimeString + GetConvertedTime(overallTime) + "\n" +
                             lastString + GetConvertedTime(lastTime) + "\n" +
                             currentString + GetConvertedTime(currentTime);
-            rightText.text = lapsString + " " + currentLap + " / " + numLaps + "\n" + hpString + player.GetComponent<Player>().health.ToString();
+            rightText.text = lapsString + " " + currentLap + " / " + numLaps + "\n";// + hpString + player.GetComponent<Player>().health.ToString();
         }
     }
 

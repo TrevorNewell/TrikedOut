@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Screen\Screen.cs" />
     <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
     <Compile Include="Assets\Scripts\Screen\SelectCharacter.cs" />
+    <Compile Include="Assets\Scripts\SmoothFollow.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\StateManager.cs" />
   </ItemGroup>

@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
 	Vector3 camDesiredTarget;
 	float maxDistance = 15f;
 
-	void LateUpdate()
+    void LateUpdate()
 	{
 		transform.position = target.position;
 		Quaternion targetRotation = Quaternion.Euler(0,target.rotation.eulerAngles.y,0);

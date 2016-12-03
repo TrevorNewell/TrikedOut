@@ -7,15 +7,17 @@ public class ButtonSelect : MonoBehaviour
     public Button[] buttons = new Button[10];
     public int columnCount = 1;
     private int columnSize;
-    private int current;
+    private int current = 0;
 
 	// Use this for initialization
 	void Start ()
     {
-        current = 0;
-        buttons[current].Select();
-        columnSize = buttons.Length / columnCount;
-
+        if (!StateManager.instance.isMainMenu)
+        {
+            current = 0;
+            buttons[current].Select();
+            columnSize = buttons.Length / columnCount;
+        }
     }
 
     public void SelectUp()

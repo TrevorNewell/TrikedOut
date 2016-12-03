@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ScreenManager : MonoBehaviour
 {
+    public StandaloneInputModule theModule;
+
     public static ScreenManager instance;
     public EventSystem eventHandler;
 
@@ -14,8 +16,8 @@ public class ScreenManager : MonoBehaviour
     public GameObject lastScreen; // The last screen we displayed
     public GameObject currentScreen; // The current screen we're displaying
 
-    private GameObject[] pauseScreens; // Our pauseScreen.  This is stored as a variable so in the StateManager when "Pause" is pressed on a controller, we can activate this menu.
-    private GameObject[] optionScreens;
+    public GameObject[] pauseScreens; // Our pauseScreen.  This is stored as a variable so in the StateManager when "Pause" is pressed on a controller, we can activate this menu.
+    public GameObject[] optionScreens;
     // The individaul HUDs for each player.
     public GameObject HUD1;
     public GameObject HUD2;
@@ -33,26 +35,32 @@ public class ScreenManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        theModule = gameObject.GetComponent<StandaloneInputModule>();
         // This finds the event system in our scene.  If we have more than one, we need to assign this manually.
         eventHandler = FindObjectOfType<EventSystem>();
-        pauseScreens = new GameObject[4];
-        optionScreens = new GameObject[4];
 
-        for(int i = 1; i < 5; i++)
+
+        /*if (!StateManager.instance.isMainMenu)
         {
-            pauseScreens[i - 1] = GameObject.Find("InGameMenuP" + i.ToString());
-            pauseScreens[i - 1].SetActive(false);
-            optionScreens[i - 1] = GameObject.Find("OptionsMenuP" + i.ToString());
-            optionScreens[i - 1].SetActive(false);
-        }
+            pauseScreens = new GameObject[4];
+            optionScreens = new GameObject[4];
+
+            for (int i = 1; i < 5; i++)
+            {
+                pauseScreens[i - 1] = GameObject.Find("InGameMenuP" + i);
+                pauseScreens[i - 1].SetActive(false);
+                optionScreens[i - 1] = GameObject.Find("OptionsMenuP" + i);
+                optionScreens[i - 1].SetActive(false);
+            }
+        }*/
     }
 
     // Update is called once per frame
     void Update ()
     {
         //FIX
-        string cb = GetComponent<StandaloneInputModule>().cancelButton;
-        if (Input.GetButtonUp(cb) && (StateManager.instance.isPaused || StateManager.instance.isMainMenu))
+        //string cb = theModule.cancelButton;
+        if ((StateManager.instance.isPaused || StateManager.instance.isMainMenu) && Input.GetButtonUp("P1_B")) // && Input.GetButtonUp(cb);
         {
             if (currentScreen != null)
             {
@@ -77,6 +85,7 @@ public class ScreenManager : MonoBehaviour
 
     public void Pause(int p)
     {
+        Debug.Log(p);
         // Hide all the HUDs
         HUD1.SetActive(false);
         HUD2.SetActive(false);

@@ -17,9 +17,9 @@ public class StateManager : MonoBehaviour
     public bool hasPlayer3 = false;
     public bool hasPlayer4 = false;
 
-    public Material[] possibleCharSelection; // Contains possible characters to choose from
-    public Material[] actualCharSelection; // Will hold our actual characters to choose from for this scene only
-    [SerializeField]public static Material[] GlobalCharSelection; // Holds our actual characters between scenes.  This is set on the CharacterSelection screen in the Main Menu.
+    public GameObject[] possibleCharSelection; // Contains possible characters to choose from
+    public GameObject[] actualCharSelection; // Will hold our actual characters to choose from for this scene only
+    [SerializeField]public static GameObject[] GlobalCharSelection; // Holds our actual characters between scenes.  This is set on the CharacterSelection screen in the Main Menu.
     public static int charSelIndex = -1; // -1 until SaveCharacterSelection is called.  I should change this to a bool to avoid confusion, but eh.
 
     public Screen[] screensInScene;
@@ -31,7 +31,7 @@ public class StateManager : MonoBehaviour
     {
         if (GlobalCharSelection != null)
         {
-            Debug.Log("Material size: " + GlobalCharSelection.Length);
+            Debug.Log("Num Characters: " + GlobalCharSelection.Length);
         }
 
         // This will always be -1 unless SaveCharSelections has been called.  And that's only ever called from the main menu, transitioning from the character select screen to the track selection screen.
@@ -60,12 +60,7 @@ public class StateManager : MonoBehaviour
                 }
 
                 //Debug.Log("P" + players[i].playerNumber);  Moved to the if statement directly above.  May have been incorrectly reporting the players number.
-
-
-                Material[] t = new Material[1];
-                //t[0] = GlobalCharSelection[players[i].playerNumber - 1]; // If for some reason we're P2 P3 or P4 and it's only 1 person playing, this doesn't work.
-                t[0] = GlobalCharSelection[i]; // However, this does  
-                playerObject.theMeshToChange.materials = t;
+                playerObject.theCharacter = GlobalCharSelection[i];
             }
         }
         else
@@ -105,6 +100,20 @@ public class StateManager : MonoBehaviour
         else
         {
             isMainMenu = false;
+
+            foreach (Screen s in screensInScene)
+            {
+                // Find the screen that's the root and enable it.
+                if (s.isRoot)
+                {
+                    ScreenManager.instance.EnableScreen(s.gameObject);
+                }
+                // Any screen that isn't the root, is disabled.
+                else
+                {
+                    s.gameObject.SetActive(false);
+                }
+            }
         }
     }
 
@@ -197,7 +206,7 @@ public class StateManager : MonoBehaviour
         // This will hold our actual player count, and it's coded this way in case a player decides to back out of the race (which isn't currently supported).
         numPlayers = playerCount;
 
-        actualCharSelection = new Material[numPlayers];
+        actualCharSelection = new GameObject[numPlayers];
 
         // Assign the correct "character" to our player based on their selection
         foreach (SelectCharacter c in characters)
