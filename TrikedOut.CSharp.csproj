@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\InputValues.cs" />
     <Compile Include="Assets\Scripts\Race\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
+    <Compile Include="Assets\Scripts\Race\PlaceManager.cs" />
     <Compile Include="Assets\Scripts\Race\RaceManager.cs" />
     <Compile Include="Assets\Scripts\Race\RaceSetup.cs" />
     <Compile Include="Assets\Scripts\Screen\ButtonSelect.cs" />
