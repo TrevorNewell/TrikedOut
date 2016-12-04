@@ -71,7 +71,7 @@ public class Checkpoint : MonoBehaviour
             playerbools[pNum, 1] = true;
             playerbools[pNum, 2] = true;
             playerbools[pNum, 3] = false;
-
+            SendMessageUpwards("UpdatePassed", pNum);
             if (isEnd)
             {
                 SendMessageUpwards("CheckForLap", pNum);

@@ -40,6 +40,8 @@ public class RaceManager : MonoBehaviour
 
     private float t;
 
+    private PlaceManager pm;
+
     [Header("UI Variables")]
     // Text components for the appropriately named section of the screen.
     public Text leftText;
@@ -139,6 +141,16 @@ public class RaceManager : MonoBehaviour
 
         // Update our labels
         UpdateText();
+
+        pm = GetComponent<PlaceManager>();
+    }
+
+    public void UpdatePassed(int pNum)
+    {
+        int id = player.GetComponent<Character>().GetID();
+        if (pNum != id)
+            return;
+        pm.UpdatePassed(pNum);
     }
 
     /// <summary>
