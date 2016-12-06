@@ -64,8 +64,11 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\x86_64\XInputDotNetPure.dll</HintPath>
@@ -83,7 +86,6 @@
     <Compile Include="Assets\Scripts\Character\AI\AI.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Bat\Bat.cs" />
-    <Compile Include="Assets\Scripts\Character\Items\Bat\BatCollider.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Item.cs" />
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\Marshmallow.cs" />
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\MarshmallowGun.cs" />
@@ -93,7 +95,6 @@
     <Compile Include="Assets\Scripts\Character\Move.cs" />
     <Compile Include="Assets\Scripts\Character\Player\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\Character\PlayerTell.cs" />
     <Compile Include="Assets\Scripts\Character\Trike.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\EasySuspension.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\HandleRotation.cs" />

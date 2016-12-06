@@ -4,7 +4,6 @@ using System;
 
 public class Marshmallow : MonoBehaviour
 {
-    public int damage;
     public float speed;
     public float slow;
     public float lifeSpan;
@@ -13,6 +12,9 @@ public class Marshmallow : MonoBehaviour
     public float launchAngleFactorMin;
     public float launchAngleFactorMax;
     public float gravity;
+    public float hitCharge;
+    public float myPlayerID;
+    public MarshmallowGun myGun;
 
     public MarshmallowRot mrot;
 
@@ -66,7 +68,6 @@ public class Marshmallow : MonoBehaviour
     {
         if (c.CompareTag("Player") && !stuck)
         {
-            c.GetComponent<Player>().Damage(damage);
             //slow
             ArcadeTrikeController atc = c.GetComponentInChildren<ArcadeTrikeController>();
             if (!atc.slowed)
@@ -77,6 +78,7 @@ public class Marshmallow : MonoBehaviour
                 slowedTrikes.Add(atc);
                 lifeSpan = stickyLifespanPlayer;
                 transform.parent = c.gameObject.transform;
+                if(c.GetComponent<Player>().GetID() != myPlayerID) myGun.SendCharge(hitCharge);
             }
         }
         if (c.CompareTag("Terrain") && !stuck)

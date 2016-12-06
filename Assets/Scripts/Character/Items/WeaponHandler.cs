@@ -8,7 +8,9 @@ public class WeaponHandler : MonoBehaviour
     private int itemCount;
     private GameObject currentItem;
     public GameObject startWeapon1;
-    public GameObject startWeapon2;
+    public GameObject ultimateWeapon;
+    public float unitsToChargeUlti;
+    private float currentCharge;
 
 	// Use this for initialization
 	void Start ()
@@ -18,11 +20,6 @@ public class WeaponHandler : MonoBehaviour
 	    if (startWeapon1 != null)
         {
             items.Add(startWeapon1);
-        }
-
-        if (startWeapon2 != null)
-        {
-            items.Add(startWeapon2);
         }
 
         currentItemIterator = items.Count - 1;
@@ -44,5 +41,28 @@ public class WeaponHandler : MonoBehaviour
         currentItem.transform.localPosition = Vector3.zero;
         GetComponentInParent<Player>().weapon = currentItem;
         currentItem.GetComponent<Item>().SetDefaultScale();
+        currentItem.GetComponent<Item>().SetPlayerID(GetComponentInParent<Player>().GetID());
+    }
+
+    public void ActivateUltimate()
+    {
+        if (currentCharge >= unitsToChargeUlti)
+        {
+            GameObject ulti = Instantiate(ultimateWeapon);
+            ulti.transform.parent = gameObject.transform;
+            ulti.GetComponent<Item>().Activate();
+            ulti.GetComponent<Item>().SetDefaultScale();
+            currentCharge = 0;
+        }
+    }
+
+    public void Charge(float c)
+    {
+        currentCharge += c;
+    }
+
+    void Update()
+    {
+        print(currentCharge);
     }
 }

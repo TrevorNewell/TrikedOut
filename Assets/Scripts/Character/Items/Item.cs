@@ -7,7 +7,7 @@ public interface Item
 
     void Deactivate();
 
-    void TellDirectional(int d);
-
     void SetDefaultScale();
+
+    void SetPlayerID(int id);
 }

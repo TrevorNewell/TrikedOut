@@ -72,11 +72,6 @@ public class Player : MonoBehaviour, Character
         // we can safely update the variables of Move within this script based on the Input coming from the user as well as the attributes of the car.
 	}
 
-    public void TellItemDirectional(int d)
-    {
-        weapon.GetComponent<Item>().TellDirectional(d);
-    }
-
     public void Damage(int d)
     {
         //health -= d;
@@ -85,6 +80,11 @@ public class Player : MonoBehaviour, Character
     public void SwitchWeapon()
     {
         GetComponentInChildren<WeaponHandler>().SwitchItem();
+    }
+
+    public void ActivateUlti()
+    {
+        GetComponentInChildren<WeaponHandler>().ActivateUltimate();
     }
 
     public void FireWeapon()

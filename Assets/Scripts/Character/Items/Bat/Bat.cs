@@ -4,10 +4,9 @@ using System;
 
 public class Bat : MonoBehaviour, Item
 {
-    [Header("Weapon Values. Should be -1 if not applicable (ie uses for a bat)")]
-    public float swingRate;
-    public int damage;
-    public bool defaultRightSwing;
+    public float swingDuration;
+    public float hopDuration;
+    public float hopHeight;
     public float maxSwingAngle;
 
     private bool swinging;
@@ -16,71 +15,19 @@ public class Bat : MonoBehaviour, Item
     private float currentAngle;
     private float anglesPerSecond;
     private Vector3 startRot;
-    private float[] swingAngles;
 
     // Use this for initialization
     void Start()
     {
-        swinging = false;
+        //swinging = false;
         backswing = false;
         endSwing = false;
-        transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x, 0, 0);
-        startRot = transform.localRotation.eulerAngles;
-        anglesPerSecond = maxSwingAngle / swingRate;
-        swingAngles = new float[3];
-        swingAngles[0] = 0f;
-        swingAngles[1] = -60f;
-        swingAngles[2] = 180f;
-    }
-
-    public void SetDefaultScale()
-    {
-        transform.localScale = new Vector3(6.84975f, 6.84975f, 6.84975f);
+        anglesPerSecond = maxSwingAngle / swingDuration;
     }
 
     public bool Swinging()
     {
         return swinging;
-    }
-
-    int NearestNeighbor()
-    {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        if (players == null)
-            return 0;
-
-        GameObject nearest = players[0];
-        int pid = transform.parent.GetComponent<Player>().GetID();
-        for (int i = 1; i < players.Length; i++)
-        {
-            int nnid = nearest.GetComponent<Player>().GetID();
-            if (Vector3.Distance(transform.parent.position, nearest.transform.position) > Vector3.Distance(transform.parent.position, players[i].transform.position) || nnid == pid)
-            {
-                int nid = players[i].GetComponent<Player>().GetID();
-                if (nid != pid) nearest = players[i];
-            }
-        }
-
-        float dist = Vector3.Distance(transform.parent.position, nearest.transform.position);
-        float zAx = nearest.transform.position.z - transform.parent.position.z;
-        float neighborAngleFromX = Mathf.Rad2Deg * Mathf.Acos(zAx / dist);
-        float rot = transform.parent.GetComponent<Move>().GetRotation();
-        float zeroAxis = rot - 90;
-        float neighborAngleFromZeroAxis = neighborAngleFromX - zeroAxis;
-
-        if (neighborAngleFromZeroAxis < 0) neighborAngleFromZeroAxis += 360;
-        else if (neighborAngleFromZeroAxis > 359) neighborAngleFromZeroAxis -= 360;
-
-        //print(neighborAngleFromZeroAxis);
-
-        if (neighborAngleFromZeroAxis > 40 && neighborAngleFromZeroAxis < 110)
-            return 1;
-        else if (neighborAngleFromZeroAxis > 110 && neighborAngleFromZeroAxis < 230)
-            return 0;
-        else if (neighborAngleFromZeroAxis < 40 || (neighborAngleFromZeroAxis > 230 && neighborAngleFromZeroAxis < 360))
-            return 2;
-
-        return 0;
     }
 
 	// Update is called once per frame
@@ -94,7 +41,7 @@ public class Bat : MonoBehaviour, Item
             if (!backswing)
             {
                 currentAngle = currentAngle + anglesPerSecond * Time.deltaTime;
-                if (currentAngle < maxSwingAngle)
+                if (currentAngle >= maxSwingAngle)
                 {
                     backswing = true;
                 }
@@ -102,27 +49,15 @@ public class Bat : MonoBehaviour, Item
             else
             {
                 currentAngle = currentAngle - anglesPerSecond * Time.deltaTime;
-                if (currentAngle > 0)
+                if (currentAngle < 0)
                 {
-                    backswing = false;
-                    if (endSwing)
-                    {
-                        swinging = false;
-                    }
+                    Deactivate();
                 }
             }
-
-            Vector3 newRot = new Vector3(startRot.x, startRot.y + currentAngle, startRot.z);
+            Vector3 newRot = new Vector3(startRot.x + currentAngle, startRot.y, startRot.z);
 
             transform.localRotation = Quaternion.Euler(newRot);
         }
-    }
-
-    public void TellDirectional(int d)
-    {
-        if (swingAngles != null)
-            startRot.y = swingAngles[d];
-        //print("CHANGED");
     }
 
     public void Activate()
@@ -135,6 +70,17 @@ public class Bat : MonoBehaviour, Item
 
     public void Deactivate()
     {
-        endSwing = true;
+        Destroy(gameObject);
+    }
+
+    public void SetDefaultScale()
+    {
+        transform.localScale = new Vector3(100f, 100f, 100f);
+        transform.localPosition = new Vector3(6.2f, 12.3f, 0f);
+    }
+
+    public void SetPlayerID(int id)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -64,7 +64,7 @@ public class InputHandler : MonoBehaviour
             float cameraFactor;
             bool fire;
             bool ceaseFire;
-            bool switchWeapon;
+            bool activateUlti;
             bool pause;
 
             if (useController)
@@ -75,7 +75,7 @@ public class InputHandler : MonoBehaviour
                 cameraFactor = XCI.GetAxis(xba["cameraX"], playerNumber);
                 fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
                 ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
-                switchWeapon = XCI.GetButtonDown(xbb["switchWeapon"], playerNumber);
+                activateUlti = XCI.GetButtonDown(xbb["switchWeapon"], playerNumber);
                 pause = XCI.GetButtonDown(xbb["pause"], playerNumber);
             }
             else
@@ -86,7 +86,7 @@ public class InputHandler : MonoBehaviour
                 fire = Input.GetKeyDown(kbc["activateWeapon"]);
                 cameraFactor = (Input.GetKey(kbc["cameraX"]) == true) ? -1 : (Input.GetKey(kbc["cameraY"]) == true) ? 1 : 0;
                 ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
-                switchWeapon = Input.GetKeyDown(kbc["switchWeapon"]);
+                activateUlti = Input.GetKeyDown(kbc["switchWeapon"]);
                 pause = Input.GetKeyDown(kbc["pause"]);
             }
 
@@ -95,7 +95,7 @@ public class InputHandler : MonoBehaviour
             move.SetFactors(leftPedal, rightPedal, turnFactor, cameraFactor);//, forward);
             if (fire) player.FireWeapon();
             else if (ceaseFire) player.CeaseFire();
-            if (switchWeapon) player.SwitchWeapon();
+            if (activateUlti) player.ActivateUlti();
             if (pause) StateManager.instance.SetPauseUser(int.Parse(prefix.Substring(1, 1)));
         }
         else if (StateManager.instance.RequestPausePermission(int.Parse(prefix.Substring(1, 1))))

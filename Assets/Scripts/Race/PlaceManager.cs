@@ -128,7 +128,7 @@ public class PlaceManager : MonoBehaviour
         
         for (int i = 0; i < places.Length; i++)
         {
-            print((i + 1) + " " + "P" + (places[i] + 1));
+            //print((i + 1) + " " + "P" + (places[i] + 1));
         }
 	}
 }

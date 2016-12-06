@@ -303,7 +303,12 @@ public class Move : MonoBehaviour
         //else (isPedaling) trikeController.Move(currentRotation, acceleration, drifting); // This is bad, we need to be able to rotate our handle bars even if we aren't "pedaling"
         //else if (isDriftingLeft) trikeController.Move(currentRotation, acceleration, drifting);
         //else if (isDriftingRight) trikeController.Move(currentRotation, acceleration, drifting);
-        else if (pedalledThisFrame) trikeController.Move(currentRotation, acceleration, drifting, true); // This is good, we can rotate when not pedaling
+        else if (pedalledThisFrame)
+        {
+            // This is good, we can rotate when not pedaling
+            trikeController.Move(currentRotation, acceleration, drifting, true);
+            GetComponentInChildren<WeaponHandler>().Charge(1);
+        }
         else trikeController.Move(currentRotation, acceleration, drifting, false); // This is good, we can rotate when not pedaling
 
         // For the commented else ifs above, the driftRotation and driftAcceleration could just be between 0 and 2, and then scale the turn and acceleration in the ArcadeTrikeController.
