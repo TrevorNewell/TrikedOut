@@ -166,6 +166,7 @@ public class StateManager : MonoBehaviour
         ScreenManager.instance.Pause(p);
         pauseUser = 0;
 
+        SoundManager.instance.Pause();
     }
 
     public void Unpause(int p)
@@ -183,6 +184,7 @@ public class StateManager : MonoBehaviour
         ScreenManager.instance.Unpause(p);
         pauseUser = 0;
 
+        SoundManager.instance.Unpause();
     }
 
     // Called when we move from the CharacterSelect screen to the Track screen.
