@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class ScreenManager : MonoBehaviour
     // These two parameters work great if the screen only goes one level deep.  However, if I go say 3 levels deep and I navigate back (Using "B" on the controller) it just swaps between the last two screens.  I need to update this but right now it isn't a serious issue..
     public GameObject lastScreen; // The last screen we displayed
     public GameObject currentScreen; // The current screen we're displaying
+
+    public List<GameObject> screenQueue;
 
     public GameObject[] pauseScreens; // Our pauseScreen.  This is stored as a variable so in the StateManager when "Pause" is pressed on a controller, we can activate this menu.
     public GameObject[] optionScreens;
@@ -77,11 +80,18 @@ public class ScreenManager : MonoBehaviour
                 // Otherwise, we have pressed B and we can still go back another level, so switch from the current screen to the last screen we were on.
                 else
                 {
+                    //PopScreen();
                     SwitchScreens(currentScreen, lastScreen);
                 }
             }
         }
 	}
+
+    public void PopScreen()
+    {
+        EnableScreen(screenQueue[screenQueue.Count - 1]);
+        screenQueue.RemoveAt(screenQueue.Count - 1);
+    }
 
     public void Pause(int p)
     {
@@ -131,6 +141,8 @@ public class ScreenManager : MonoBehaviour
         }
 
         lastScreen = from;
+        screenQueue.Add(to);
+
         from.SetActive(false);
     }
 

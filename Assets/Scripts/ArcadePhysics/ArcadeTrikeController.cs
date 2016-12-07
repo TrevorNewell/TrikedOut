@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Timers;
+using UnityEngine.UI;
 
 public class ArcadeTrikeController : MonoBehaviour
 {
@@ -55,8 +56,10 @@ public class ArcadeTrikeController : MonoBehaviour
     public float CurrentSpeed { get { return body.velocity.magnitude; } }
     public float speed;
     public float temp;
+   
     private bool isReverse = false;  // Are we going forward or backward?
-
+    public GameObject playerHUD;
+    private float smoothlyAnimateSpeedMeter = 0;
     int layerMask;
 
     public void SetRigidBodyAndPedals(int maxNumPedals)
@@ -68,6 +71,8 @@ public class ArcadeTrikeController : MonoBehaviour
 
     void Start()
     {
+        playerHUD = GameObject.Find("HUD" + GetComponentInParent<Player>().playerNumber);
+
         originalOrientation = handleBars.transform.localEulerAngles;
 
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
@@ -106,11 +111,14 @@ public class ArcadeTrikeController : MonoBehaviour
 
     public void Move(float turnAxis, float acceleration, float drifting, bool increasePedalCount)
     {
+        bool pedalCountChanged = false;
+
         if (increasePedalCount)
         {
             if (currentPedals < maxPedals)
             {
                 currentPedals++;
+                pedalCountChanged = true;
             }
 
             temp = 0;
@@ -121,11 +129,30 @@ public class ArcadeTrikeController : MonoBehaviour
 
             if (temp >= timeTilDecay)
             {
-                if (currentPedals - 1 != -1) currentPedals--;
+                if (currentPedals - 1 != -1)
+                {
+                    currentPedals--;
+                    pedalCountChanged = true;
+                }
                 temp = 0;
             }
         }
 
+        smoothlyAnimateSpeedMeter += Time.deltaTime;
+
+        //if (smoothlyAnimateSpeedMeter > 1.0f) smoothlyAnimateSpeedMeter = 1.0f;
+
+        if (pedalCountChanged)
+        {
+
+        }
+        else
+        {
+        }
+
+        //playerHUD.GetComponentInChildren<Slider>().value = Mathf.Lerp(playerHUD.GetComponentInChildren<Slider>().value, currentPedals / maxPedals, smoothlyAnimateSpeedMeter);
+
+        playerHUD.GetComponentInChildren<Slider>().value = (float)thrust / forwardAcceleration;
 
         // Get thrust input
         if (acceleration > deadZone)
@@ -254,6 +281,7 @@ public class ArcadeTrikeController : MonoBehaviour
         localVelocity = transform.InverseTransformDirection(body.velocity);  // This tells us which if we're moving forward or backwards.  We can use this to determine how to rotate the trike and handlebars when going backwards.
         actualSpeed = localVelocity.z;
 
+        //localVelocity.sqrMagnitude / (body.velocity.normalized * maxVelocity).sqrMagnitude;
         //if (actualSpeed > 0 )
         //{
         //    //if (body.velocity.sqrMagnitude > (body.velocity.normalized * maxVelocity).sqrMagnitude)

@@ -4,10 +4,13 @@ using System.Collections;
 
 public class ButtonSelect : MonoBehaviour
 {
-    public Button[] buttons = new Button[10];
+    public Selectable[] buttons = new Selectable[10];
     public int columnCount = 1;
+
+    [Range(0, 1)] public float sliderIncrement = 0.05f;
+
     private int columnSize;
-    private int current = 0;
+    public int current = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -36,16 +39,36 @@ public class ButtonSelect : MonoBehaviour
 
     public void SelectLeft()
     {
-
+        if (buttons[current].GetType() == typeof(Slider))
+        {
+            Slider slider = buttons[current] as Slider;
+            if (slider.value - sliderIncrement < slider.minValue) slider.value = slider.minValue;
+            else slider.value -= sliderIncrement;
+        }
     }
 
     public void SelectRight()
     {
+        if (buttons[current].GetType() == typeof(Slider))
+        {
+            Slider slider = buttons[current] as Slider;
+            if (slider.value + sliderIncrement > slider.maxValue) slider.value = slider.maxValue;
+            else slider.value += sliderIncrement;
+        }
 
     }
 
     public void Click()
     {
-        buttons[current].onClick.Invoke();
+        if (buttons[current].GetType() == typeof(Button))
+        {
+            //print("I'm a button");
+            Button temp = buttons[current] as Button;//onClick.Invoke();
+            temp.onClick.Invoke();
+        }
+        else // If we don't have a button selected (as is the case with the sliders on our options menu, then we do nothing when they click), we won't have an onClick property.
+        {
+
+        }
     }
 }
