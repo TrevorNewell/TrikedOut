@@ -161,6 +161,8 @@ public class Move : MonoBehaviour
             {
                 isPedaling = true;
                 pedalledThisFrame = true; // Only set to this true on one of the pedals,  I arbitrarily picked the right pedal.
+
+                SoundManager.instance.PlayLeftPedalSound();
             }
 
             //Debug.Log("Start count to LeftPedal Drift");
@@ -190,6 +192,8 @@ public class Move : MonoBehaviour
             {
                 isPedaling = true;
                 pedalledThisFrame = true;
+
+                SoundManager.instance.PlayRightPedalSound();
             }
 
             brakeCounter = 0;
@@ -225,6 +229,8 @@ public class Move : MonoBehaviour
         // Both pedals were held for "brakeTime" seconds.  Let's brake.
         if (brakeCounter >= brakeTime)
         {
+            // SoundManager.instance.PlayBreakSound();  // We don't have these sounds yet
+
             //Debug.Log("Begin Braking");
 
             isBraking = true;
@@ -238,6 +244,8 @@ public class Move : MonoBehaviour
         // Left pedal was held for "driftTime" seconds.  Let's drift left
         if (driftCounter >= driftTime && lastPedalLeft)
         {
+            // SoundManager.instance.PlayDriftSound();  // We don't have these sounds yet
+
             //Debug.Log("Begin Drifting Left");
 
             isDriftingLeft = true;
@@ -251,6 +259,8 @@ public class Move : MonoBehaviour
         // Right pedal was held for "driftTime" seconds. Let's drift right
         if (driftCounter >= driftTime && lastPedalRight)
         {
+            // SoundManager.instance.PlayDriftSound();  // We don't have these sounds yet
+
             //Debug.Log("Begin Drifting Right");
 
             isDriftingRight = true;

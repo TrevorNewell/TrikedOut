@@ -124,7 +124,11 @@ public class ScreenManager : MonoBehaviour
     {
         to.SetActive(true);
         currentScreen = to;
-        ScreenManager.instance.eventHandler.SetSelectedGameObject(to.GetComponent<Screen>().firstActive.gameObject);
+
+        if (to.GetComponent<Screen>().firstActive != null)
+        {
+            ScreenManager.instance.eventHandler.SetSelectedGameObject(to.GetComponent<Screen>().firstActive.gameObject);
+        }
 
         lastScreen = from;
         from.SetActive(false);

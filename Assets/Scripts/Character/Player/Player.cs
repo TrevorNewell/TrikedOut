@@ -52,14 +52,14 @@ public class Player : MonoBehaviour, Character
         ourMove.SetTrikeController();
     }
 
-/*    void OnCollisionEnter(Collider c)
+    void OnColliderEnter(Collider c)
     {
         if (c.CompareTag("Player") || c.CompareTag("Environment"))
         {
             SoundManager.instance.PlayHitSound();
         }
     }
-    */
+    
 
     // Update is called once per frame
     public void Update ()

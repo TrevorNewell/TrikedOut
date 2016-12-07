@@ -48,6 +48,8 @@ public class MarshmallowGun : MonoBehaviour, Item
         {
             if (currentTime > fireDelay)
             {
+                SoundManager.instance.PlayShootSound();
+
                 firing = true;
                 //launch bullet
                 GameObject b = Instantiate(bullet);

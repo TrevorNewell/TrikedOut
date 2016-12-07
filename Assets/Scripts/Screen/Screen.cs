@@ -11,8 +11,7 @@ public class Screen : MonoBehaviour
     //public Vector3[] originalLocations;
     //public Vector3[] newLocations;
     //public bool onScreen; 
-
-    public Button firstActive;
+    public Selectable firstActive;
 
     public bool isRoot;
     public bool disableRootOnBack;
