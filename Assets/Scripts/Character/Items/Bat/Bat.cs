@@ -8,6 +8,7 @@ public class Bat : MonoBehaviour, Item
     public float hopDuration;
     public float hopHeight;
     public float maxSwingAngle;
+    public float slowFactor;
 
     private bool swinging;
     private bool backswing;
@@ -15,6 +16,8 @@ public class Bat : MonoBehaviour, Item
     private float currentAngle;
     private float anglesPerSecond;
     private Vector3 startRot;
+    private PlaceManager placeManager;
+    private int myPlayerID;
 
     // Use this for initialization
     void Start()
@@ -44,6 +47,14 @@ public class Bat : MonoBehaviour, Item
                 if (currentAngle >= maxSwingAngle)
                 {
                     backswing = true;
+                    int[] trikesAhead = placeManager.GetTrikesAhead(myPlayerID);
+                    if(trikesAhead != null)
+                    {
+                        foreach (int i in trikesAhead)
+                        {
+                            GameObject.Find("P" + i.ToString()).GetComponentInChildren<ArcadeTrikeController>().Pop(slowFactor);
+                        }
+                    }
                 }
             }
             else
@@ -66,6 +77,7 @@ public class Bat : MonoBehaviour, Item
         backswing = false;
         endSwing = false;
         currentAngle = 0;
+        placeManager = GameObject.Find("Race Manager").GetComponent<PlaceManager>();
     }
 
     public void Deactivate()
@@ -81,6 +93,6 @@ public class Bat : MonoBehaviour, Item
 
     public void SetPlayerID(int id)
     {
-        throw new NotImplementedException();
+        myPlayerID = id;
     }
 }

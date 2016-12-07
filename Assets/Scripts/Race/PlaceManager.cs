@@ -21,6 +21,33 @@ public class PlaceManager : MonoBehaviour
         passed[id - 1]++;
     }
 
+    public int GetPlace(int id)
+    {
+        for (int i = 0; i < places.Length; i++)
+        {
+            if (places[i] == id - 1)
+                return i + 1;
+        }
+        return -1;
+    }
+
+    public int[] GetTrikesAhead(int id)
+    {
+        int i;
+        for(i = 0; i < places.Length; i++)
+        {
+            if (places[i] == id - 1)
+                break;
+        }
+        if (i < 1) return null;
+        int[] retVal = new int[i];
+        for(i = 0; i < retVal.Length; i++)
+        {
+            retVal[i] = places[i] + 1;
+        }
+        return retVal;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,7 +62,7 @@ public class PlaceManager : MonoBehaviour
             }
         }
         
-        places = new int[playerCount];
+        int[] tempPlaces = new int[playerCount];
         for (int i = 0; i < playerCount; i++)
         {
             int maxj = 0;
@@ -44,7 +71,7 @@ public class PlaceManager : MonoBehaviour
                 bool starterFound = false;
                 for (int m = 0; m < i; m++)
                 {
-                    if (places[m] == l) starterFound = true;
+                    if (tempPlaces[m] == l) starterFound = true;
                 }
                 if (!starterFound)
                 {
@@ -55,7 +82,7 @@ public class PlaceManager : MonoBehaviour
             for (int j = 0; j < playerCount; j++)
             {
                 bool found = false;
-                for (int k = 0; k < i; k++) if (places[k] == j) found = true;
+                for (int k = 0; k < i; k++) if (tempPlaces[k] == j) found = true;
                 if (passed[j] > passed[maxj])
                 {
                     if (!found) maxj = j;
@@ -63,8 +90,7 @@ public class PlaceManager : MonoBehaviour
                 else if (passed[j] == passed[maxj] && j != maxj)
                 {
                     //compare distances
-                    int cj = passed[j] % checkpoints.Length;
-
+                    int cj = (passed[j] / 2) % checkpoints.Length;
                     Vector2 pl1 = new Vector2(players[j].transform.position.x, players[j].transform.position.z);
                     Vector2 pl2 = new Vector2(players[maxj].transform.position.x, players[maxj].transform.position.z);
                     Vector2 cl = new Vector2(checkpoints[cj].transform.position.x, checkpoints[cj].transform.position.z);
@@ -76,8 +102,9 @@ public class PlaceManager : MonoBehaviour
                 }
             }
 
-            places[i] = maxj;
+            tempPlaces[i] = maxj;
         }
+        places = tempPlaces;
 
         /*places = new LinkedList<int>();
         bool[] placed = new bool[playerCount];
@@ -126,9 +153,9 @@ public class PlaceManager : MonoBehaviour
             lastFromPrev = places.Last;
         }*/
         
-        for (int i = 0; i < places.Length; i++)
+        /*for (int i = 0; i < places.Length; i++)
         {
-            //print((i + 1) + " " + "P" + (places[i] + 1));
-        }
+            print((i + 1) + " " + "P" + (places[i] + 1));
+        }*/
 	}
 }

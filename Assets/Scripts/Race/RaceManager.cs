@@ -327,7 +327,7 @@ public class RaceManager : MonoBehaviour
     {
         if (currentLap == numLaps && raceOver == false)
         {
-            bottomLeftText.text = "Last Lap";
+            //bottomLeftText.text = "Last Lap";
         }
         else if (currentLap == numLaps && raceOver == true)
         {
@@ -348,6 +348,26 @@ public class RaceManager : MonoBehaviour
                             lastString + GetConvertedTime(lastTime) + "\n" +
                             currentString + GetConvertedTime(currentTime);
             rightText.text = lapsString + " " + currentLap + " / " + numLaps + "\n";// + hpString + player.GetComponent<Player>().health.ToString();
+
+            string place = pm.GetPlace(GetID()).ToString();
+            
+            switch (place)
+            {
+                case "1":
+                    place += "st";
+                    break;
+                case "2":
+                    place += "nd";
+                    break;
+                case "3":
+                    place += "rd";
+                    break;
+                case "4":
+                    place += "th";
+                    break;
+            }
+
+            bottomLeftText.text = place;
         }
     }
 

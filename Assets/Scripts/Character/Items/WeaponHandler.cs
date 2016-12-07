@@ -52,6 +52,7 @@ public class WeaponHandler : MonoBehaviour
             ulti.transform.parent = gameObject.transform;
             ulti.GetComponent<Item>().Activate();
             ulti.GetComponent<Item>().SetDefaultScale();
+            ulti.GetComponent<Item>().SetPlayerID(GetComponentInParent<Player>().GetID());
             currentCharge = 0;
         }
     }
@@ -63,6 +64,6 @@ public class WeaponHandler : MonoBehaviour
 
     void Update()
     {
-        print(currentCharge);
+        //print(currentCharge);
     }
 }

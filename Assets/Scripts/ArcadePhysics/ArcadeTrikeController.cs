@@ -38,6 +38,7 @@ public class ArcadeTrikeController : MonoBehaviour
     public float forwardAcceleration = 8000f;
     public float reverseAcceleration = 4000f;
     public float slowFactor = 100f;
+    private float previousSlowFactor = 100f;
 
     public float turnStrength = 1000f;
     float turnValue = 0f;
@@ -97,6 +98,11 @@ public class ArcadeTrikeController : MonoBehaviour
     //      }
     //    }
     //  }
+
+   public void Pop(float slow)
+    {
+        body.AddForce(new Vector3(0f, 100000f, 0f));
+    }
 
     public void Move(float turnAxis, float acceleration, float drifting, bool increasePedalCount)
     {
@@ -232,7 +238,7 @@ public class ArcadeTrikeController : MonoBehaviour
         else
         {
             body.drag = 0.1f;
-            thrust /= 100f;
+            thrust /= 1000f;
             turnValue /= 1f;
         }
 
