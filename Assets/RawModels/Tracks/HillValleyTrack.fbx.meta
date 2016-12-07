@@ -14,6 +14,7 @@ ModelImporter:
     2300000: StraightShort:pCube1
     3300000: StraightShort:pCube1
     4300000: StraightShort:pCube1
+    6400000: StraightShort:pCube1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -41,7 +42,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
