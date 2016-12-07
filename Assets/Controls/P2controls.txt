@@ -9,7 +9,7 @@ cameraY=RightStickY
 [XboxButton]
 switchWeapon=Y
 activateWeapon=A
-activatePickup=X
+activatePickup=B
 pause=Start
 map=RightBumper
 [KeyboardKeys]

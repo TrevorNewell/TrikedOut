@@ -78,6 +78,11 @@ public class Move : MonoBehaviour
         //car.slowRate = car.slowRate * 3.5f;
     }
 
+    public bool IsPedalling()
+    {
+        return isPedaling;
+    }
+
     public Move(Character c)
     {
         character = c;

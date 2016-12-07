@@ -128,7 +128,7 @@ public class InputValues
 
         xboxButtonValues.Add("switchWeapon", XboxButton.Y);
         xboxButtonValues.Add("activateWeapon", XboxButton.A);
-        xboxButtonValues.Add("activatePickup", XboxButton.X);
+        xboxButtonValues.Add("activatePickup", XboxButton.B);
         xboxButtonValues.Add("pause", XboxButton.Start);
         xboxButtonValues.Add("map", XboxButton.RightBumper);
 

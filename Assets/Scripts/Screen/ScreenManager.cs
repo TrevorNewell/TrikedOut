@@ -63,7 +63,7 @@ public class ScreenManager : MonoBehaviour
     {
         //FIX
         //string cb = theModule.cancelButton;
-        if ((StateManager.instance.isPaused || StateManager.instance.isMainMenu) && Input.GetButtonUp("P1_B")) // && Input.GetButtonUp(cb);
+        /*if ((StateManager.instance.isPaused || StateManager.instance.isMainMenu) && Input.GetButtonUp("P1_B")) // && Input.GetButtonUp(cb);
         {
             if (currentScreen != null)
             {
@@ -84,8 +84,31 @@ public class ScreenManager : MonoBehaviour
                     SwitchScreens(currentScreen, lastScreen);
                 }
             }
-        }
+        }*/
 	}
+
+    public void GoBack()
+    {
+        if (currentScreen != null)
+        {
+            // If we are at the "root" of our screen hierarchy, and we have chosen to disable the root when the user goes back another level, then disable the current screen.  
+            if (currentScreen.GetComponent<Screen>().isRoot && currentScreen.GetComponent<Screen>().disableRootOnBack)
+            {
+                DisableCurrentScreen();
+            }
+            // Otherwise, if we are at the root, and we don't want the screen disabled on back (i.e. Main Menu screen, or at the HUD), then we don't do anything
+            else if (currentScreen.GetComponent<Screen>().isRoot && !currentScreen.GetComponent<Screen>().disableRootOnBack)
+            {
+                // Do nothing
+            }
+            // Otherwise, we have pressed B and we can still go back another level, so switch from the current screen to the last screen we were on.
+            else
+            {
+                //PopScreen();
+                SwitchScreens(currentScreen, lastScreen);
+            }
+        }
+    }
 
     public void PopScreen()
     {

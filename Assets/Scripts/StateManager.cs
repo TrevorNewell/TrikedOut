@@ -106,7 +106,7 @@ public class StateManager : MonoBehaviour
                 // Find the screen that's the root and enable it.
                 if (s.isRoot)
                 {
-                    ScreenManager.instance.EnableScreen(s.gameObject);
+                    //ScreenManager.instance.EnableScreen(s.gameObject);
                 }
                 // Any screen that isn't the root, is disabled.
                 else

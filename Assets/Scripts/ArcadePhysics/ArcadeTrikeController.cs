@@ -104,9 +104,14 @@ public class ArcadeTrikeController : MonoBehaviour
     //    }
     //  }
 
-   public void Pop(float slow)
+    public void Pop(float slow)
     {
         body.AddForce(new Vector3(0f, 100000f, 0f));
+    }
+
+    public float GetPercentOfMaxSpeed()
+    {
+        return thrust / forwardAcceleration;
     }
 
     public void Move(float turnAxis, float acceleration, float drifting, bool increasePedalCount)
@@ -151,7 +156,6 @@ public class ArcadeTrikeController : MonoBehaviour
         }
 
         //playerHUD.GetComponentInChildren<Slider>().value = Mathf.Lerp(playerHUD.GetComponentInChildren<Slider>().value, currentPedals / maxPedals, smoothlyAnimateSpeedMeter);
-
         playerHUD.GetComponentInChildren<Slider>().value = (float)thrust / forwardAcceleration;
 
         // Get thrust input

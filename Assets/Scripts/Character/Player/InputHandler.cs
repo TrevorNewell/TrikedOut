@@ -104,31 +104,39 @@ public class InputHandler : MonoBehaviour
             currentTime -= Time.deltaTime;
             if (useController)
             {
-                if (XCI.GetAxis(xba["steerX"], playerNumber) == -1 && currentTime <= 0)
+                if (Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber) + 1) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber)) > 0.75f && currentTime <= 0)
                 {
                     bs.SelectLeft();
                     currentTime = delay;
                 }
-                else if (XCI.GetAxis(xba["steerX"], playerNumber) == 1 && currentTime <= 0)
+                else if (Mathf.Abs(1 - XCI.GetAxis(xba["steerX"], playerNumber)) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber)) > 0.75f && currentTime <= 0)
                 {
                     bs.SelectRight();
                     currentTime = delay;
                 }
 
-                if (XCI.GetAxis(xba["steerY"], playerNumber) == -1 && currentTime <= 0)
+                if (Mathf.Abs(XCI.GetAxis(xba["steerY"], playerNumber) + 1) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerY"], playerNumber)) > 0.75f && currentTime <= 0)
                 {
                     bs.SelectDown();
                     currentTime = delay;
                 }
-                else if (XCI.GetAxis(xba["steerY"], playerNumber) == 1 && currentTime <= 0)
+                else if (Mathf.Abs(1 - XCI.GetAxis(xba["steerY"], playerNumber)) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerY"], playerNumber)) > 0.75f && currentTime <= 0)
                 {
                     bs.SelectUp();
                     currentTime = delay;
                 }
 
-                if (XCI.GetButtonDown(xbb["activateWeapon"]))
+                if (XCI.GetButtonDown(xbb["activateWeapon"], playerNumber))
                 {
+                    //print("clicked");
                     bs.Click();
+                }
+
+                if (XCI.GetButtonDown(xbb["activatePickup"], playerNumber))
+                {
+                    if (ScreenManager.instance.currentScreen.GetComponent<Screen>().isRoot)
+                        StateManager.instance.Unpause(int.Parse(prefix.Substring(1, 1)));
+                    ScreenManager.instance.GoBack();
                 }
             }
         }
