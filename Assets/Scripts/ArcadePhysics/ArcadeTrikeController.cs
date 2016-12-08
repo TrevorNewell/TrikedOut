@@ -74,7 +74,7 @@ public class ArcadeTrikeController : MonoBehaviour
     {
         playerHUD = GameObject.Find("HUD" + GetComponentInParent<Player>().playerNumber);
 
-        originalOrientation = handleBars.transform.localEulerAngles;
+        if(handleBars != null) originalOrientation = handleBars.transform.localEulerAngles;
 
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
@@ -199,7 +199,7 @@ public class ArcadeTrikeController : MonoBehaviour
             else
             {
                 //currentPedals = (int)(maxPedals * Mathf.Pow(thrust / forwardAcceleration, (1.0f / 2.0f)));
-                if(currentPedals != maxPedals) thrust -= slowFactor;
+                if(currentPedals != maxPedals || slowed) thrust -= slowFactor;
                 //currentPedals = (int) (maxPedals * Mathf.Pow(thrust / forwardAcceleration, (1.0f / 2.0f)));
 
                 if (thrust < 0)
@@ -329,14 +329,14 @@ public class ArcadeTrikeController : MonoBehaviour
             {
                 if ((canTurn || canTurnWhenStopped) && grounded) body.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
 
-                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+                if (handleBars != null) handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
             // Going forward
             else
             {
                 if ((canTurn || canTurnWhenStopped) && grounded) body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
 
-                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+                if (handleBars != null) handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
 
             currentAngle = (turnValue * maxTurnAngle);
@@ -350,14 +350,14 @@ public class ArcadeTrikeController : MonoBehaviour
             {
                 if (canTurn) body.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
 
-                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+                if (handleBars != null) handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
             // Going forward
             else
             {
                 if (canTurn) body.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
 
-                handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
+                if (handleBars != null) handleBars.transform.localRotation = Quaternion.Euler(new Vector3(originalOrientation.x, originalOrientation.y + (turnValue * maxTurnAngle), handlePivot.transform.localRotation.eulerAngles.z));
             }
 
             currentAngle = (turnValue * maxTurnAngle);
