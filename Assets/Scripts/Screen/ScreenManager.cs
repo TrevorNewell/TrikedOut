@@ -20,7 +20,7 @@ public class ScreenManager : MonoBehaviour
     public List<GameObject> screenQueue;
 
     public GameObject[] pauseScreens; // Our pauseScreen.  This is stored as a variable so in the StateManager when "Pause" is pressed on a controller, we can activate this menu.
-    public GameObject[] optionScreens;
+    //public GameObject[] optionScreens;
     // The individaul HUDs for each player.
     public GameObject HUD1;
     public GameObject HUD2;

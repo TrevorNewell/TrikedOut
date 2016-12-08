@@ -6,6 +6,7 @@ public class Marshmallow : MonoBehaviour
 {
     public float speed;
     public float slow;
+    public float timeTilSticky;
     public float lifeSpan;
     public float stickyLifespanGround;
     public float stickyLifespanPlayer;
@@ -25,6 +26,7 @@ public class Marshmallow : MonoBehaviour
     private Vector3 forward;
     private bool stuck;
     private bool grounded;
+    private float currentTime;
 
     private List<ArcadeTrikeController> slowedTrikes;
 
@@ -38,11 +40,15 @@ public class Marshmallow : MonoBehaviour
 
         slowedTrikes = new List<ArcadeTrikeController>();
         stuck = false;
+
+        currentTime = 0f;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (currentTime < timeTilSticky)
+            currentTime += Time.deltaTime;
         if(!stuck && !grounded) yFactor -= gravity * Time.deltaTime;
         //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * Time.deltaTime);
         transform.localPosition = new Vector3(transform.localPosition.x + xFactor * Time.deltaTime, transform.localPosition.y + yFactor * Time.deltaTime, transform.localPosition.z + zFactor * Time.deltaTime);
@@ -66,7 +72,7 @@ public class Marshmallow : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.CompareTag("Player") && !stuck)
+        if (c.CompareTag("Player") && !stuck && currentTime > timeTilSticky)
         {
             //slow
             ArcadeTrikeController atc = c.GetComponentInChildren<ArcadeTrikeController>();

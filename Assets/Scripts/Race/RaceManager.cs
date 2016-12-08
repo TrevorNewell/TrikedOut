@@ -7,6 +7,8 @@ public class RaceManager : MonoBehaviour
     [Header("Player")]
     public GameObject player;
     public bool isActive = true;
+    public GameObject speed;
+    public GameObject charge;
 
     [Header("Checkpoint Variables")]
     public bool disableCheckpointsOnStart = true;
@@ -415,6 +417,9 @@ public class RaceManager : MonoBehaviour
             }
             else if (isStarting && tempTime < countdownAtStart) // Countdown to start the race!
             {
+                speed.SetActive(false);
+                charge.SetActive(false);
+
                 tempTime = Time.timeSinceLevelLoad - pauseTime;
 
                 DisplayStartText();
@@ -426,6 +431,8 @@ public class RaceManager : MonoBehaviour
                 player.GetComponent<InputHandler>().enabled = true;
                 isStarting = false;
                 DisplayStartText();
+                speed.SetActive(true);
+                charge.SetActive(true);
             }
         }
     }

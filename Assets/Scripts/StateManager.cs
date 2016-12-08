@@ -111,7 +111,7 @@ public class StateManager : MonoBehaviour
                 // Any screen that isn't the root, is disabled.
                 else
                 {
-                    s.gameObject.SetActive(false);
+                    //s.gameObject.SetActive(false);
                 }
             }
         }
@@ -217,6 +217,7 @@ public class StateManager : MonoBehaviour
             {
                 // c.playerNumber - 1 may have to changed to an increment.  If there's 2 players but 3 controllers there's a possibility that player 2 will actually be player 3's controller.  We can probably
                 // remedy this by adjusting the prefix of the Player script in the other scene based on which controller player 2 is actually using.
+                print(c.playerNumber + " " + c.currentObject);
                 actualCharSelection[c.playerNumber - 1] = possibleCharSelection[c.currentObject];
             }
         }
