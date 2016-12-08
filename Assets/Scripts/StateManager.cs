@@ -6,6 +6,8 @@ public class StateManager : MonoBehaviour
 {
     public static StateManager instance;
     public bool isMainMenu;
+    public bool isTrack1;
+
     public bool isPaused;
 
     public bool raceOver;
@@ -95,6 +97,12 @@ public class StateManager : MonoBehaviour
                     s.gameObject.SetActive(false);
                 }
             }
+        }
+        else if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.CompareTo("Track1") == 0)
+        {
+            isTrack1 = true;
+
+            SoundManager.instance.PlayTrackSong();
         }
         // Any other scene but the main menu will enter this else statement
         else

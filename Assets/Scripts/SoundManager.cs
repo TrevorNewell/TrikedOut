@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource musicManager;
     public AudioClip sampleSong;
+    public AudioClip track1Song;
 
     private AudioSource menuSoundManager;
     public AudioClip[] clickSounds;
@@ -42,6 +43,14 @@ public class SoundManager : MonoBehaviour
         musicManager = gameObject.AddComponent<AudioSource>();
         musicManager.ignoreListenerPause = true;
 
+
+        musicManager.loop = true;
+
+        // Default levels of volume for our various sounds
+        inGameSoundManager.volume = 0.7f;
+        menuSoundManager.volume = 0.7f;
+
+
         if (StateManager.instance.isMainMenu)
         {
             musicManager.clip = sampleSong;
@@ -53,6 +62,12 @@ public class SoundManager : MonoBehaviour
     {
         int r = Random.Range(0, clickSounds.Length);
         menuSoundManager.PlayOneShot(clickSounds[r]);
+    }
+
+    public void PlayTrackSong()
+    {
+        musicManager.clip = track1Song;
+        musicManager.PlayDelayed(1.8f);
     }
 
     public void PlayLeftPedalSound()
