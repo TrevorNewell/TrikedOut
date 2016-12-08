@@ -68,7 +68,6 @@ public class Checkpoint : MonoBehaviour
 
         if (playerbools[pNum, 0])
         {
-            print(pNum);
             playerbools[pNum, 1] = true;
             playerbools[pNum, 2] = true;
             playerbools[pNum, 3] = false;

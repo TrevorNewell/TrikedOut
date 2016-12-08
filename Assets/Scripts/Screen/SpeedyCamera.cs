@@ -30,7 +30,7 @@ public class SpeedyCamera : MonoBehaviour
             atc = transform.parent.parent.gameObject.GetComponentInChildren<ArcadeTrikeController>();
             move = transform.parent.GetComponentInParent<Move>();
         }
-        if (!move.IsPedalling())
+        if (!move.IsPedalling() && atc.GetPercentOfMaxSpeed() < 0.97f)
         {
             currentTime += Time.deltaTime;
             if (currentTime > timeToDecay)

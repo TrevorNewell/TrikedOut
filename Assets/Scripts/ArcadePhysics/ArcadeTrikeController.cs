@@ -29,6 +29,7 @@ public class ArcadeTrikeController : MonoBehaviour
 
     [Header("Performance Modifiers")]
     public float timeTilDecay = 0.5f;
+    public float pedalTimeMaxSpeed = 2f;
     public float deadZone = 0.1f; // Filters out small movements so the controller isn't as sensitive
     public float groundedDrag = 3f;  // Changes RigidBody drag factor depending on whether the trike is grounded or in the air.  Should leave at 3
     public float maxVelocity = 50;
@@ -112,12 +113,12 @@ public class ArcadeTrikeController : MonoBehaviour
     public float GetPercentOfMaxSpeed()
     {
         return thrust / forwardAcceleration;
+        //return currentPedals / maxPedals;
     }
 
     public void Move(float turnAxis, float acceleration, float drifting, bool increasePedalCount)
     {
         bool pedalCountChanged = false;
-
         if (increasePedalCount)
         {
             if (currentPedals < maxPedals)
@@ -131,8 +132,16 @@ public class ArcadeTrikeController : MonoBehaviour
         else
         {
             temp += Time.deltaTime;
-
-            if (temp >= timeTilDecay)
+            if (currentPedals == maxPedals)
+            {
+                if (temp >= pedalTimeMaxSpeed)
+                {
+                    currentPedals--;
+                    pedalCountChanged = true;
+                    temp = 0;
+                }
+            }
+            else if (temp >= timeTilDecay)
             {
                 if (currentPedals - 1 != -1)
                 {
@@ -190,8 +199,7 @@ public class ArcadeTrikeController : MonoBehaviour
             else
             {
                 //currentPedals = (int)(maxPedals * Mathf.Pow(thrust / forwardAcceleration, (1.0f / 2.0f)));
-
-                thrust -= slowFactor;
+                if(currentPedals != maxPedals) thrust -= slowFactor;
                 //currentPedals = (int) (maxPedals * Mathf.Pow(thrust / forwardAcceleration, (1.0f / 2.0f)));
 
                 if (thrust < 0)
