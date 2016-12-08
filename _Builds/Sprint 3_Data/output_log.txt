@@ -1,0 +1,105 @@
+Initialize engine version: 5.4.2f2 (b7e030c65c9b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 965M (ID=0x1427)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\XInputDotNetPure.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\XInputDotNetPure.dll into Unity Child Domain
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\XInputDotNetPure.dll (this message is harmless)
+Loading D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\XInputDotNetPure.dll into Unity Child Domain
+- Completed reload, in  0.071 seconds
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Class\Capstone\TrikedOut\_Builds\Sprint 3_Data\Managed\System.dll (this message is harmless)
+desktop: 3840x2160 60Hz; virtual: 3840x2160 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+The referenced script on this Behaviour (Game Object 'Bat Model') is missing!
+ 
+(Filename:  Line: 1656)
+
+The referenced script on this Behaviour (Game Object 'LeftCollider') is missing!
+ 
+(Filename:  Line: 1656)
+
+The referenced script on this Behaviour (Game Object 'Front Collider') is missing!
+ 
+(Filename:  Line: 1656)
+
+The referenced script on this Behaviour (Game Object 'RightCollider') is missing!
+ 
+(Filename:  Line: 1656)
+
+UnloadTime: 0.747850 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 3540 -> priority: 1 
+  Thread -> id: 4330 -> priority: 1 
+Player 1 Joystick
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Player 2 Joystick
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Character count: 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+1 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+2 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Actual character count: 2 Size: 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.943700 ms
+Num Characters: 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Player Objects: 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+P1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+P2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 7258.
+Total: 7.248581 ms (FindLiveObjects: 0.345283 ms CreateObjectMapping: 0.258765 ms MarkObjects: 1.815305 ms  DeleteObjects: 4.821325 ms)
+
+24 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+24 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+

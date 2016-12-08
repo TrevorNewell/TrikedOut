@@ -27,7 +27,6 @@ public class InputHandler : MonoBehaviour
         move = gameObject.GetComponent<Move>();
         prefix = player.prefix;
         currentTime = 0f;
-
         switch (prefix)
         {
             case "P1":

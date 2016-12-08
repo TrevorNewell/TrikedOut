@@ -62,6 +62,8 @@ public class ArcadeTrikeController : MonoBehaviour
     private float startWidth;
 
     private bool isReverse = false;  // Are we going forward or backward?
+    private bool popping = false;
+    private float popCheckDelay = 0f;
     public GameObject playerHUD;
     private float smoothlyAnimateSpeedMeter = 0;
     int layerMask;
@@ -113,7 +115,13 @@ public class ArcadeTrikeController : MonoBehaviour
 
     public void Pop(float slow)
     {
-        body.AddForce(new Vector3(0f, 100000f, 0f));
+        if (!popping)
+        {
+            body.AddForce(new Vector3(0f, 100000f, 0f));
+            popping = true;
+            popCheckDelay = 0;
+        }
+
     }
 
     public float GetPercentOfMaxSpeed()
@@ -277,6 +285,17 @@ public class ArcadeTrikeController : MonoBehaviour
         }
 
         var emissionRate = 0;
+        if (popCheckDelay < 0.3)
+        {
+            popCheckDelay += Time.fixedDeltaTime;
+        }
+        else
+        {
+            if (grounded)
+            {
+                popping = false;
+            }
+        }
         if (grounded)
         {
             body.drag = groundedDrag;
@@ -285,7 +304,8 @@ public class ArcadeTrikeController : MonoBehaviour
         else
         {
             body.drag = 0.1f;
-            thrust /= 1000f;
+            thrust /= 10f;
+            if (popping) thrust /= 100f;
             turnValue /= 1f;
         }
 

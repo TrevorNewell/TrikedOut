@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class InputValues
 {
     public string prefix;
-    public bool useController = false;
+    public bool useController = true;
     public XboxController playerController;
     public Dictionary<string, XboxAxis> xboxAxisValues;
     public Dictionary<string, XboxButton> xboxButtonValues;
