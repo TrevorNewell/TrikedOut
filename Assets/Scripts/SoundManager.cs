@@ -59,13 +59,13 @@ public class SoundManager : MonoBehaviour
     {
         int r = Random.Range(0, pedalLeftSounds.Length);
         //inGameSoundManager.PlayOneShot(pedalLeftSounds[r]);
-        inGameSoundManager.PlayOneShot(pedalLeftSounds[0]);
+        //inGameSoundManager.PlayOneShot(pedalLeftSounds[0]);
     }
     public void PlayRightPedalSound()
     {
         int r = Random.Range(0, pedalRightSounds.Length);
         //inGameSoundManager.PlayOneShot(pedalRightSounds[r]);
-        inGameSoundManager.PlayOneShot(pedalRightSounds[0]);
+        //inGameSoundManager.PlayOneShot(pedalRightSounds[0]);
 
     }
 

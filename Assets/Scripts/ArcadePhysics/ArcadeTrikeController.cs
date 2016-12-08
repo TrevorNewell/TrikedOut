@@ -57,7 +57,10 @@ public class ArcadeTrikeController : MonoBehaviour
     public float CurrentSpeed { get { return body.velocity.magnitude; } }
     public float speed;
     public float temp;
-   
+
+    private float diff; // Difference in start and end widths of our trail renderer.  Used to increase start size based on speed
+    private float startWidth;
+
     private bool isReverse = false;  // Are we going forward or backward?
     public GameObject playerHUD;
     private float smoothlyAnimateSpeedMeter = 0;
@@ -72,6 +75,9 @@ public class ArcadeTrikeController : MonoBehaviour
 
     void Start()
     {
+        diff = backLeftWheel.GetComponent<TrailRenderer>().endWidth - backLeftWheel.GetComponent<TrailRenderer>().startWidth;
+        startWidth = backLeftWheel.GetComponent<TrailRenderer>().startWidth;
+
         playerHUD = GameObject.Find("HUD" + GetComponentInParent<Player>().playerNumber);
 
         if(handleBars != null) originalOrientation = handleBars.transform.localEulerAngles;
@@ -116,15 +122,27 @@ public class ArcadeTrikeController : MonoBehaviour
         //return currentPedals / maxPedals;
     }
 
+    public void UpdateTrailRenderers()
+    {
+        if (localVelocity.z > 0)
+        {
+            backLeftWheel.GetComponent<TrailRenderer>().startWidth = startWidth + (diff * GetPercentOfMaxSpeed());
+            backRightWheel.GetComponent<TrailRenderer>().startWidth = startWidth + (diff * GetPercentOfMaxSpeed());
+        }
+        else
+        {
+            backLeftWheel.GetComponent<TrailRenderer>().startWidth = startWidth;
+            backRightWheel.GetComponent<TrailRenderer>().startWidth = startWidth;
+        }
+    }
+
     public void Move(float turnAxis, float acceleration, float drifting, bool increasePedalCount)
     {
-        bool pedalCountChanged = false;
         if (increasePedalCount)
         {
             if (currentPedals < maxPedals)
             {
                 currentPedals++;
-                pedalCountChanged = true;
             }
 
             temp = 0;
@@ -137,7 +155,6 @@ public class ArcadeTrikeController : MonoBehaviour
                 if (temp >= pedalTimeMaxSpeed)
                 {
                     currentPedals--;
-                    pedalCountChanged = true;
                     temp = 0;
                 }
             }
@@ -146,22 +163,9 @@ public class ArcadeTrikeController : MonoBehaviour
                 if (currentPedals - 1 != -1)
                 {
                     currentPedals--;
-                    pedalCountChanged = true;
                 }
                 temp = 0;
             }
-        }
-
-        smoothlyAnimateSpeedMeter += Time.deltaTime;
-
-        //if (smoothlyAnimateSpeedMeter > 1.0f) smoothlyAnimateSpeedMeter = 1.0f;
-
-        if (pedalCountChanged)
-        {
-
-        }
-        else
-        {
         }
 
         //playerHUD.GetComponentInChildren<Slider>().value = Mathf.Lerp(playerHUD.GetComponentInChildren<Slider>().value, currentPedals / maxPedals, smoothlyAnimateSpeedMeter);
@@ -229,6 +233,8 @@ public class ArcadeTrikeController : MonoBehaviour
 
     void FixedUpdate()
     {
+        UpdateTrailRenderers();
+
         speed = body.velocity.magnitude;
         //  Do hover/bounce force
         RaycastHit hit;
