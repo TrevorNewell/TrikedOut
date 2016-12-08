@@ -23,6 +23,11 @@ public class ButtonSelect : MonoBehaviour
         }
     }
 
+    public void GoBack()
+    {
+        current = 0;
+    }
+
     public void SelectUp()
     {
         current--;

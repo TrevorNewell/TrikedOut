@@ -134,9 +134,11 @@ public class InputHandler : MonoBehaviour
 
                 if (XCI.GetButtonDown(xbb["activatePickup"], playerNumber))
                 {
+                    //bs.GoBack();
                     if (ScreenManager.instance.currentScreen.GetComponent<Screen>().isRoot)
                         StateManager.instance.Unpause(int.Parse(prefix.Substring(1, 1)));
                     ScreenManager.instance.GoBack();
+                    ScreenManager.instance.currentScreen.GetComponent<ButtonSelect>().GoBack();
                 }
             }
         }
