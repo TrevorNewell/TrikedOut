@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class WeaponHandler : MonoBehaviour
@@ -11,10 +12,13 @@ public class WeaponHandler : MonoBehaviour
     public GameObject ultimateWeapon;
     public float unitsToChargeUlti;
     private float currentCharge;
+    private Slider chargeSlider;
 
 	// Use this for initialization
 	void Start ()
     {
+        chargeSlider = GameObject.Find("ChargeMeter" + GetComponentInParent<Player>().playerNumber).GetComponent<Slider>();
+
         items = new List<GameObject>();
 
 	    if (startWeapon1 != null)
@@ -60,10 +64,12 @@ public class WeaponHandler : MonoBehaviour
     public void Charge(float c)
     {
         currentCharge += c;
+        if (currentCharge > unitsToChargeUlti) currentCharge = unitsToChargeUlti;
     }
 
     void Update()
     {
+        chargeSlider.value = currentCharge / unitsToChargeUlti;
         //print(currentCharge);
     }
 }

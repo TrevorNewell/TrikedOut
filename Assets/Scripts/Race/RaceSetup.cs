@@ -36,47 +36,32 @@ public class RaceSetup : MonoBehaviour
             int j = players[i].GetComponent<Character>().GetID();
             if (j <= playerCount)
             {
+                Vector2 refRes = GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution;
+                refRes.x /= rectSize.x;
+                refRes.y /= rectSize.y;
+                GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes;
+                GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes;
+                GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
+                GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
+                Vector3 scale = GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale;
+                scale.x *= rectSize.x;
+                scale.y = scale.x;
+                GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale = scale;
+                GameObject.Find("ChargeMeter" + j.ToString()).transform.localScale = scale;
+
                 switch (j - 1)
                 {
                     case 0:
                         GameObject.Find("PlayerCamera" + j.ToString()).GetComponent<Camera>().rect = new Rect(new Vector2(0.0f, 1.0f - rectSize.y), rectSize);
-                        Vector2 refRes1 = GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution;
-                        refRes1.x /= rectSize.x;
-                        refRes1.y /= rectSize.y;
-                        GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes1;
-                        GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes1;
-                        GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
-                        GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
                         break;
                     case 1:
                         GameObject.Find("PlayerCamera" + j.ToString()).GetComponent<Camera>().rect = new Rect(new Vector2(0.5f, 1.0f - rectSize.y), rectSize);
-                        Vector2 refRes2 = GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution;
-                        refRes2.x /= rectSize.x;
-                        refRes2.y /= rectSize.y;
-                        GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes2;
-                        GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes2;
-                        GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
-                        GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
                         break;
                     case 2:
                         GameObject.Find("PlayerCamera" + j.ToString()).GetComponent<Camera>().rect = new Rect(new Vector2(0.0f, 0.0f), rectSize);
-                        Vector2 refRes3 = GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution;
-                        refRes3.x /= rectSize.x;
-                        refRes3.y /= rectSize.y;
-                        GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes3;
-                        GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes3;
-                        GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
-                        GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
                         break;
                     case 3:
                         GameObject.Find("PlayerCamera" + j.ToString()).GetComponent<Camera>().rect = new Rect(new Vector2(0.5f, 0.0f), rectSize);
-                        Vector2 refRes4 = GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution;
-                        refRes4.x /= rectSize.x;
-                        refRes4.y /= rectSize.y;
-                        GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes4;
-                        GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes4;
-                        GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
-                        GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
                         break;
                 }
             }

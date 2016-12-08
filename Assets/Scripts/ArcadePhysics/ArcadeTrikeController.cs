@@ -156,7 +156,8 @@ public class ArcadeTrikeController : MonoBehaviour
         }
 
         //playerHUD.GetComponentInChildren<Slider>().value = Mathf.Lerp(playerHUD.GetComponentInChildren<Slider>().value, currentPedals / maxPedals, smoothlyAnimateSpeedMeter);
-        playerHUD.GetComponentInChildren<Slider>().value = (float)thrust / forwardAcceleration;
+        //playerHUD.GetComponentInChildren<Slider>().value = thrust / forwardAcceleration;
+        GameObject.Find("SpeedMeter" + GetComponentInParent<Player>().playerNumber).GetComponent<Slider>().value = thrust / forwardAcceleration;
 
         // Get thrust input
         if (acceleration > deadZone)
