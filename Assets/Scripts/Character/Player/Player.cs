@@ -26,7 +26,6 @@ public class Player : MonoBehaviour, Character
     public string prefix; // i.e. P1
     public int playerNumber; // i.e 1
 
-    public MeshRenderer theMeshToChange; // This is a temporary variable and will be removed later.  Just lets me test the Main Menu and Character selection correctly with the Trike model in place.
     public GameObject theCharacter;
 
     // Temp variable until colliders are sorted out.  

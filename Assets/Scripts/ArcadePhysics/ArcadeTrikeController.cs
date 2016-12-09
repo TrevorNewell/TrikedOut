@@ -58,6 +58,8 @@ public class ArcadeTrikeController : MonoBehaviour
     public float speed;
     public float temp;
 
+    public float reverseDecreaseInt = 2f;
+
     private float diff; // Difference in start and end widths of our trail renderer.  Used to increase start size based on speed
     private float startWidth;
 
@@ -191,7 +193,18 @@ public class ArcadeTrikeController : MonoBehaviour
         }
         else if (acceleration < -deadZone)
         {
-            thrust = acceleration * reverseAcceleration;
+            temp += Time.deltaTime;
+            if (temp >= reverseDecreaseInt)
+            {
+                if (currentPedals - 1 != -1)
+                {
+                    currentPedals--;
+                }
+                temp = 0;
+            }
+
+            //thrust = acceleration * reverseAcceleration;
+            thrust = -(Mathf.Pow(maxPedals - currentPedals, 2) / Mathf.Pow(maxPedals, 2) * reverseAcceleration);
             isReverse = true;
             canTurn = true;
 

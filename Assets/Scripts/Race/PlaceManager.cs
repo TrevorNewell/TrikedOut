@@ -104,6 +104,7 @@ public class PlaceManager : MonoBehaviour
 
             tempPlaces[i] = maxj;
         }
+
         places = tempPlaces;
 
         /*places = new LinkedList<int>();
