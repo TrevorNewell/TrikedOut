@@ -21,22 +21,30 @@ public class Marshmallow : MonoBehaviour
 
     private float xFactor;
     private float yFactor;
+    private float gravAngle;
     private float zFactor;
 
     private Vector3 forward;
     private bool stuck;
     private bool grounded;
     private float currentTime;
+    private float upSpeed;
 
     private List<ArcadeTrikeController> slowedTrikes;
 
     public void SetForward(Vector3 v)
     {
-        transform.rotation = Quaternion.Euler(0, v.y, 0);
+        transform.rotation = Quaternion.Euler(v.x, v.y, 0);
 
         xFactor = Mathf.Sin(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * speed;
-        yFactor = UnityEngine.Random.Range(launchAngleFactorMin, launchAngleFactorMax);
+
+        gravAngle = Mathf.Cos(transform.rotation.eulerAngles.x * Mathf.Deg2Rad);
+        upSpeed = UnityEngine.Random.Range(launchAngleFactorMin, launchAngleFactorMax);
+        yFactor = gravAngle * upSpeed;
+
         zFactor = Mathf.Cos(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * speed;
+
+        xFactor -= upSpeed * Mathf.Sin(transform.rotation.eulerAngles.x * Mathf.Deg2Rad);
 
         slowedTrikes = new List<ArcadeTrikeController>();
         stuck = false;
@@ -49,7 +57,7 @@ public class Marshmallow : MonoBehaviour
     {
         if (currentTime < timeTilSticky)
             currentTime += Time.deltaTime;
-        if(!stuck && !grounded) yFactor -= gravity * Time.deltaTime;
+        if(!stuck && !grounded) yFactor -= gravAngle * gravity * Time.deltaTime;
         //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * Time.deltaTime);
         transform.localPosition = new Vector3(transform.localPosition.x + xFactor * Time.deltaTime, transform.localPosition.y + yFactor * Time.deltaTime, transform.localPosition.z + zFactor * Time.deltaTime);
         lifeSpan -= Time.deltaTime;

@@ -30,7 +30,7 @@ public class SpeedyCamera : MonoBehaviour
             atc = transform.parent.parent.gameObject.GetComponentInChildren<ArcadeTrikeController>();
             move = transform.parent.GetComponentInParent<Move>();
         }
-        if (!move.IsPedalling() && atc.GetPercentOfMaxSpeed() < 0.97f)
+        if (!move.IsPedalling() && Mathf.Abs(atc.GetPercentOfMaxSpeed()) < 0.97f)
         {
             currentTime += Time.deltaTime;
             if (currentTime > timeToDecay)
@@ -41,7 +41,8 @@ public class SpeedyCamera : MonoBehaviour
             startDecay = false;
             currentTime = 0;
         }
-        if (cam.fieldOfView < maxDOF && !startDecay) cam.fieldOfView += diff * atc.GetPercentOfMaxSpeed() * Time.deltaTime / timeToBuild;
-        else if (cam.fieldOfView > minDOF && startDecay) cam.fieldOfView -= diff * atc.GetPercentOfMaxSpeed() * Time.deltaTime / timeToSlow;
+        Debug.Log(startDecay + " " + cam.fieldOfView + " " + minDOF);
+        if (cam.fieldOfView < maxDOF && !startDecay) cam.fieldOfView += diff * Mathf.Abs(atc.GetPercentOfMaxSpeed()) * Time.deltaTime / timeToBuild;
+        else if (cam.fieldOfView > minDOF && startDecay) cam.fieldOfView -= diff * (Mathf.Abs(atc.GetPercentOfMaxSpeed()) + 1) * Time.deltaTime / timeToSlow;
 	}
 }
