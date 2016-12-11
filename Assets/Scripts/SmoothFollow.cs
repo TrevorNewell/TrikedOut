@@ -21,11 +21,7 @@ namespace UnityStandardAssets.Utility
 		private float heightDamping;
 
 		// Use this for initialization
-		void Start()
-        {
-            //distance = gameObject.transform.localPosition.z;
-            //height = gameObject.transform.localPosition.y;
-        }
+		void Start() { }
 
 		// Update is called once per frame
 		void LateUpdate()
@@ -60,9 +56,6 @@ namespace UnityStandardAssets.Utility
 
 			// Always look at the target
 			transform.LookAt(target);
-
-            transform.position = target.position;
-            transform.Translate(-Vector3.forward * distance);
-        }
+		}
 	}
 }
