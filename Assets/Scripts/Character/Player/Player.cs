@@ -3,7 +3,6 @@ using System.Collections;
 
 [RequireComponent(typeof(Move))]
 [RequireComponent(typeof(InputHandler))]
-[RequireComponent(typeof(Trike))]
 public class Player : MonoBehaviour, Character
 {
     protected Move ourMove;
@@ -28,19 +27,9 @@ public class Player : MonoBehaviour, Character
 
     public GameObject theCharacter;
 
-    // Temp variable until colliders are sorted out.  
-    private float originalY;
-
     // Use this for initialization
     public void Start ()
     {
-        originalY = gameObject.transform.position.y;
-
-        //Eventually this car will be a part of a prefab and will be pulled as a GetComponent<Car>() from that GameObject
-        //ourCar = new Car();//gameObject.GetComponent<Car>();
-        //ourMove = new Move(this);
-
-        ourTrike = gameObject.GetComponent<Trike>();
         ourMove = gameObject.GetComponent<Move>();
 
         GameObject temp = Instantiate(theCharacter);
@@ -97,11 +86,6 @@ public class Player : MonoBehaviour, Character
     public void CeaseFire()
     {
         weapon.GetComponent<Item>().Deactivate();
-    }
-
-    public Trike GetTrike ()
-    {
-        return ourTrike;
     }
 
     public Move GetMove()

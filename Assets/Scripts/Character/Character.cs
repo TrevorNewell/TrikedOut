@@ -23,8 +23,6 @@ public interface Character
 
     void Update ();
 
-    Trike GetTrike ();
-
     Move GetMove();
 
     int GetID();
