@@ -144,7 +144,7 @@ public class Move : MonoBehaviour
         GameObject cam = GameObject.Find("CameraBoom" + GetComponent<Player>().prefix.Substring(1, 1));
         //print(cameraFactor * cameraSnapAngle);
         cam.transform.localRotation = Quaternion.Euler(new Vector3(cam.transform.localRotation.eulerAngles.x, 
-            /*cam.transform.localRotation.eulerAngles.y + cameraFactor * 50f * Time.deltaTime*/cameraFactor * cameraSnapAngle, cam.transform.localRotation.eulerAngles.z));
+        cam.transform.localRotation.eulerAngles.y + cameraFactor * 50f * Time.deltaTime));//cameraFactor * cameraSnapAngle, cam.transform.localRotation.eulerAngles.z));
         // Both pedals were pressed.
         if (leftPedal && rightPedal)
         {

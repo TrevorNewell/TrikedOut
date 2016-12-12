@@ -20,6 +20,9 @@ public class InputHandler : MonoBehaviour
     private float currentTime;
     private float delay = 0.2f;
 
+    //temp for keyboard build
+    private bool lastPedalLeft = true;
+
     // Use this for initialization
     void Start()
     {
@@ -79,6 +82,7 @@ public class InputHandler : MonoBehaviour
             }
             else
             {
+                /*
                 leftPedal = (Input.GetKeyDown(kbc["leftPedal"]) == true) ? true : false;
                 rightPedal = (Input.GetKeyDown(kbc["rightPedal"]) == true) ? true : false;
                 turnFactor = (Input.GetKey(kbc["steerX"]) == true) ? -1 : (Input.GetKey(kbc["steerY"]) == true) ? 1 : 0;
@@ -87,6 +91,52 @@ public class InputHandler : MonoBehaviour
                 ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
                 activateUlti = Input.GetKeyDown(kbc["switchWeapon"]);
                 pause = Input.GetKeyDown(kbc["pause"]);
+                */
+
+                if (prefix == "P1")
+                {
+                    if (lastPedalLeft)
+                    {
+                        leftPedal = false;
+                        rightPedal = (Input.GetKey(KeyCode.W)) ? true : false;
+                        lastPedalLeft = false;
+                    }
+                    else
+                    {
+                        rightPedal = false;
+                        leftPedal = (Input.GetKey(KeyCode.W)) ? true : false;
+                        lastPedalLeft = true;
+                    }
+                    if (Input.GetKey(KeyCode.S)) rightPedal = leftPedal = true;
+                    turnFactor = (Input.GetKey(KeyCode.A)) ? -1 : (Input.GetKey(KeyCode.D)) ? 1 : 0;
+                    fire = Input.GetKey(KeyCode.E);
+                    cameraFactor = (Input.GetKey(KeyCode.Z)) ? 1 : (Input.GetKey(KeyCode.C)) ? -1 : 0;
+                    ceaseFire = Input.GetKeyUp(KeyCode.E);
+                    activateUlti = Input.GetKeyDown(KeyCode.X);
+                    pause = Input.GetKeyDown(KeyCode.Escape);
+                }
+                else
+                {
+                    if (lastPedalLeft)
+                    {
+                        leftPedal = false;
+                        rightPedal = (Input.GetKey(KeyCode.UpArrow)) ? true : false;
+                        lastPedalLeft = false;
+                    }
+                    else
+                    {
+                        rightPedal = false;
+                        leftPedal = (Input.GetKey(KeyCode.UpArrow)) ? true : false;
+                        lastPedalLeft = true;
+                    }
+                    if (Input.GetKey(KeyCode.DownArrow)) rightPedal = leftPedal = true;
+                    turnFactor = (Input.GetKey(KeyCode.LeftArrow)) ? -1 : (Input.GetKey(KeyCode.RightArrow)) ? 1 : 0;
+                    fire = Input.GetKey(KeyCode.RightShift);
+                    cameraFactor = (Input.GetKey(KeyCode.N)) ? 1 : (Input.GetKey(KeyCode.M)) ? -1 : 0;
+                    ceaseFire = Input.GetKeyUp(KeyCode.RightShift);
+                    activateUlti = Input.GetKeyDown(KeyCode.Slash);
+                    pause = false;
+                }
             }
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
