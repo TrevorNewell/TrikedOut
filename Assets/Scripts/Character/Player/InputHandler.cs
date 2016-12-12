@@ -82,7 +82,6 @@ public class InputHandler : MonoBehaviour
             }
             else
             {
-                /*
                 leftPedal = (Input.GetKeyDown(kbc["leftPedal"]) == true) ? true : false;
                 rightPedal = (Input.GetKeyDown(kbc["rightPedal"]) == true) ? true : false;
                 turnFactor = (Input.GetKey(kbc["steerX"]) == true) ? -1 : (Input.GetKey(kbc["steerY"]) == true) ? 1 : 0;
@@ -91,9 +90,8 @@ public class InputHandler : MonoBehaviour
                 ceaseFire = Input.GetKeyUp(kbc["activateWeapon"]);
                 activateUlti = Input.GetKeyDown(kbc["switchWeapon"]);
                 pause = Input.GetKeyDown(kbc["pause"]);
-                */
 
-                if (prefix == "P1")
+                /*if (prefix == "P1")
                 {
                     if (lastPedalLeft)
                     {
@@ -136,7 +134,7 @@ public class InputHandler : MonoBehaviour
                     ceaseFire = Input.GetKeyUp(KeyCode.RightShift);
                     activateUlti = Input.GetKeyDown(KeyCode.Slash);
                     pause = false;
-                }
+                }*/
             }
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
