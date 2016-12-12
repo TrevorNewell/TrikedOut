@@ -41,7 +41,7 @@ public class SpeedyCamera : MonoBehaviour
             startDecay = false;
             currentTime = 0;
         }
-        Debug.Log(startDecay + " " + cam.fieldOfView + " " + minDOF);
+        //Debug.Log(startDecay + " " + cam.fieldOfView + " " + minDOF);
         if (cam.fieldOfView < maxDOF && !startDecay) cam.fieldOfView += diff * Mathf.Abs(atc.GetPercentOfMaxSpeed()) * Time.deltaTime / timeToBuild;
         else if (cam.fieldOfView > minDOF && startDecay) cam.fieldOfView -= diff * (Mathf.Abs(atc.GetPercentOfMaxSpeed()) + 1) * Time.deltaTime / timeToSlow;
 	}

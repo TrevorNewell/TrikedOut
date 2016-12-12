@@ -16,7 +16,7 @@ public class DeflectOnCollision : MonoBehaviour
 
             Debug.Log("Angle: " + Vector3.Angle(vel, -normal));
             // Measure angle
-            if (/*Vector3.Angle(vel, -normal) > maxAngle*/true)
+            if (true )//Vector3.Angle(vel, -normal) > maxAngle)
             {
                 // Trike bounces off the surface
                 body.velocity = Vector3.Reflect(vel, normal);
