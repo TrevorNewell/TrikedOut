@@ -26,6 +26,7 @@ public class ArcadeTrikeController : MonoBehaviour
     [Range(10, 90)] public int maxTurnAngle;
     public ParticleSystem[] dustTrails = new ParticleSystem[2];
     public GameObject[] hoverPoints;
+    //public TrailRenderer theTrailRenderer;
 
     [Header("Performance Modifiers")]
     public float timeTilDecay = 0.5f;
@@ -79,8 +80,8 @@ public class ArcadeTrikeController : MonoBehaviour
 
     void Start()
     {
-        diff = backLeftWheel.GetComponent<TrailRenderer>().endWidth - backLeftWheel.GetComponent<TrailRenderer>().startWidth;
-        startWidth = backLeftWheel.GetComponent<TrailRenderer>().startWidth;
+        //diff = theTrailRenderer.endWidth - theTrailRenderer.startWidth;
+        //startWidth = theTrailRenderer.startWidth;
 
         playerHUD = GameObject.Find("HUD" + GetComponentInParent<Player>().playerNumber);
 
@@ -136,13 +137,13 @@ public class ArcadeTrikeController : MonoBehaviour
     {
         if (localVelocity.z > 0)
         {
-            backLeftWheel.GetComponent<TrailRenderer>().startWidth = startWidth + (diff * GetPercentOfMaxSpeed());
-            backRightWheel.GetComponent<TrailRenderer>().startWidth = startWidth + (diff * GetPercentOfMaxSpeed());
+            //backLeftWheel.GetComponent<TrailRenderer>().startWidth = startWidth + (diff * GetPercentOfMaxSpeed());
+            //theTrailRenderer.startWidth = startWidth + (diff * GetPercentOfMaxSpeed());
         }
         else
         {
-            backLeftWheel.GetComponent<TrailRenderer>().startWidth = startWidth;
-            backRightWheel.GetComponent<TrailRenderer>().startWidth = startWidth;
+            //backLeftWheel.GetComponent<TrailRenderer>().startWidth = startWidth;
+            //theTrailRenderer.startWidth = startWidth;
         }
     }
 
