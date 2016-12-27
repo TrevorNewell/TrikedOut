@@ -318,8 +318,15 @@ public class ArcadeTrikeController : MonoBehaviour
         else
         {
             body.drag = 0.1f;
+            //thrust /= 10f;
+            //if (popping) thrust /= 100f;
             thrust /= 10f;
-            if (popping) thrust /= 100f;
+            if (popping)
+            {
+                thrust = 0;
+                currentPedals = 0; // Haven't tested because I need more players, but should work as expected
+            }
+
             turnValue /= 1f;
         }
 

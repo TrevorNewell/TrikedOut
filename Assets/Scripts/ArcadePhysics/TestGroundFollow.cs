@@ -9,7 +9,16 @@ public class TestGroundFollow : MonoBehaviour
     public CharacterController controller;
     public float curDir = 0f; // compass indicating direction
     public float vertSpeed = 0f; // vertical speed (see note)
+    public float horSpeed = 0f;
     public Vector3 curNormal = Vector3.up; // smoothed terrain normal
+
+    void OnCollisionStay(Collision col)
+    {
+        if (col.collider.CompareTag("Road"))
+        {
+            vertSpeed = 0;
+        }
+    }
 
     void Start()
     {
@@ -31,9 +40,18 @@ public class TestGroundFollow : MonoBehaviour
         Vector3 movDir;
         movDir = transform.forward * Input.GetAxis("Vertical") * speed;
         // moves the character in horizontal direction (gravity changed!)
-        if (controller.isGrounded) vertSpeed = 0; // zero v speed when grounded
-        vertSpeed -= 9.8f * 3 * Time.deltaTime; // apply gravity
-        movDir.y = vertSpeed; // keep the current vert speed
+        if (controller.isGrounded)
+        {
+            vertSpeed = 0; // zero v speed when grounded
+            Debug.Log("grounded");
+        }
+        else
+        {
+            vertSpeed -= 9.8f * Time.deltaTime; // apply gravity
+            Debug.Log("not grounded");
+        }
+            movDir.y = vertSpeed; // keep the current vert speed
+        horSpeed = movDir.z;
         controller.Move(movDir * Time.deltaTime);
     }
 }
