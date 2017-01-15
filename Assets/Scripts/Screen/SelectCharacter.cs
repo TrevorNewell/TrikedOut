@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using XboxCtrlrInput;
-using System.Collections;
 
 public class SelectCharacter : MonoBehaviour
 {
@@ -15,7 +13,6 @@ public class SelectCharacter : MonoBehaviour
     public float timeBetweenClicks = 0.2f; // How often can we switch from one label to the other?  This is used to control the massive amount of updates that happen per second.  
     public bool canClick = false; // True when "timeBetweenClicks" seconds has passed.
     private float timer = 0.0f;
-    private XboxController xbxcon;
     private bool aDown;
 
 	// Use this for initialization
@@ -37,24 +34,6 @@ public class SelectCharacter : MonoBehaviour
         {
             g.SetActive(false);
         }
-        /*
-        switch (playerNumber)
-        {
-            case 1:
-                xbxcon = XboxController.First;
-                break;
-            case 2:
-                xbxcon = XboxController.Second;
-                break;
-            case 3:
-                xbxcon = XboxController.Third;
-                break;
-            case 4:
-                xbxcon = XboxController.Fourth;
-                break;
-        }
-
-        aDown = false || playerNumber == 1;*/
     }
 	
     // Called when "A" is pressed on player numbers controller
@@ -77,21 +56,9 @@ public class SelectCharacter : MonoBehaviour
             canClick = true;
         }
 
-        //if (Input.GetButtonUp("P" + playerNumber + "_A"))
-        //{
-        //    hasPicked = true;
-        //}
-
-        //if (Input.GetButtonUp("P" + playerNumber + "_B"))
-        //{
-        //    hasPicked = false;
-        //}
-        //aDown = XCI.GetButtonDown(XboxButton.A, xbxcon) || aDown;
-        if (Input.GetButtonUp("P" + playerNumber + "_A") && StateManager.instance.isMainMenu && !isActive)
+        if (Input.GetButtonUp("P" + playerNumber + "_Start") && StateManager.instance.isMainMenu && !isActive)
         {
             //StateManager.instance.numPlayers++;
-
-            print(playerNumber + " " + xbxcon);
             SelectCharacter[] items = FindObjectsOfType<SelectCharacter>();
 
             Activate();

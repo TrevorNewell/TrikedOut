@@ -10,6 +10,7 @@ public class InputValues
     public Dictionary<string, XboxAxis> xboxAxisValues;
     public Dictionary<string, XboxButton> xboxButtonValues;
     public Dictionary<string, KeyCode> keyboardButtonValues;
+    public Dictionary<string, string> unityControllerValues;
 
     public InputValues(string p)
     {
@@ -34,6 +35,7 @@ public class InputValues
         xboxAxisValues = new Dictionary<string, XboxAxis>();
         xboxButtonValues = new Dictionary<string, XboxButton>();
         keyboardButtonValues = new Dictionary<string, KeyCode>();
+        unityControllerValues = new Dictionary<string, string>();
     }
 
     public string GetXboxValues(Dictionary<XboxAxis, string> xbA2S, Dictionary<XboxButton, string> xbB2S)
@@ -112,7 +114,7 @@ public class InputValues
     {
         GameObject player = GameObject.Find(prefix);
         if (player == null) return;
-        player.GetComponent<InputHandler>().ReceiveDefinitions(useController, xboxAxisValues, xboxButtonValues, keyboardButtonValues);
+        player.GetComponent<InputHandler>().ReceiveDefinitions(useController, xboxAxisValues, xboxButtonValues, keyboardButtonValues, unityControllerValues);
     }
 
     public void SetDefaultValues()

@@ -15,12 +15,12 @@ public class ButtonSelect : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        if (!StateManager.instance.isMainMenu)
-        {
-            current = 0;
-            buttons[current].Select();
-            columnSize = buttons.Length / columnCount;
-        }
+        //if (!StateManager.instance.isMainMenu)
+        
+        current = 0;
+        buttons[current].Select();
+        columnSize = buttons.Length / columnCount;
+        
     }
 
     public void GoBack()
@@ -39,6 +39,7 @@ public class ButtonSelect : MonoBehaviour
     {
         current++;
         if (current > columnSize - 1) current = 0;
+        print(current);
         buttons[current].Select();
     }
 

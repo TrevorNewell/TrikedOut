@@ -17,6 +17,7 @@ public class InputHandler : MonoBehaviour
     private Dictionary<string, XboxAxis> xba;
     private Dictionary<string, XboxButton> xbb;
     private Dictionary<string, KeyCode> kbc;
+    private Dictionary<string, string> ucv;
     private float currentTime;
     private float delay = 0.2f;
 
@@ -47,18 +48,19 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    public void ReceiveDefinitions(bool uc, Dictionary<string, XboxAxis> xa, Dictionary<string, XboxButton> xb, Dictionary<string, KeyCode> kb)
+    public void ReceiveDefinitions(bool uc, Dictionary<string, XboxAxis> xa, Dictionary<string, XboxButton> xb, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
         useController = uc;
         xba = xa;
         xbb = xb;
         kbc = kb;
+        ucv = uv;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!StateManager.instance.isPaused)
+        if (!StateManager.instance.isPaused || ScreenManager.instance.currentScreen.GetComponent<Screen>().isPublicMenu)
         {
             bool leftPedal;
             bool rightPedal;
@@ -71,14 +73,23 @@ public class InputHandler : MonoBehaviour
 
             if (useController)
             {
-                leftPedal = (XCI.GetAxis(xba["leftPedal"], playerNumber) == 1) ? true : false;
+                /*leftPedal = (XCI.GetAxis(xba["leftPedal"], playerNumber) == 1) ? true : false;
                 rightPedal = (XCI.GetAxis(xba["rightPedal"], playerNumber) == 1) ? true : false;
                 turnFactor = XCI.GetAxis(xba["steerX"], playerNumber);
                 cameraFactor = XCI.GetAxis(xba["cameraX"], playerNumber);
                 fire = XCI.GetButtonDown(xbb["activateWeapon"], playerNumber);
                 ceaseFire = XCI.GetButtonUp(xbb["activateWeapon"], playerNumber);
                 activateUlti = XCI.GetButtonDown(xbb["switchWeapon"], playerNumber);
-                pause = XCI.GetButtonDown(xbb["pause"], playerNumber);
+                pause = XCI.GetButtonDown(xbb["pause"], playerNumber);*/
+
+                leftPedal = (Input.GetAxis(ucv["leftPedal"]) == 1) ? true : false;
+                rightPedal = (Input.GetAxis(ucv["rightPedal"]) == 1) ? true : false;
+                turnFactor = Input.GetAxis(ucv["steerX"]);
+                cameraFactor = Input.GetAxis(ucv["cameraX"]);
+                fire = Input.GetButtonDown(ucv["activateWeapon"]);
+                ceaseFire = Input.GetButtonUp(ucv["activateWeapon"]);
+                activateUlti = Input.GetButtonDown(ucv["switchWeapon"]);
+                pause = Input.GetButtonDown(ucv["pause"]);
             }
             else
             {
@@ -151,35 +162,36 @@ public class InputHandler : MonoBehaviour
             currentTime -= Time.deltaTime;
             if (useController)
             {
-                if (Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber) + 1) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber)) > 0.75f && currentTime <= 0)
+                //if (Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber) + 1) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber)) > 0.75f && currentTime <= 0)
+                if (Mathf.Abs(Input.GetAxis(ucv["steerX"]) + 1) < 0.1 && Mathf.Abs(Input.GetAxis(ucv["steerX"])) > 0.75f && currentTime <= 0)
                 {
                     bs.SelectLeft();
                     currentTime = delay;
                 }
-                else if (Mathf.Abs(1 - XCI.GetAxis(xba["steerX"], playerNumber)) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerX"], playerNumber)) > 0.75f && currentTime <= 0)
+                else if (Mathf.Abs(1 - Input.GetAxis(ucv["steerX"])) < 0.1 && Mathf.Abs(Input.GetAxis(ucv["steerX"])) > 0.75f && currentTime <= 0)
                 {
                     bs.SelectRight();
                     currentTime = delay;
                 }
 
-                if (Mathf.Abs(XCI.GetAxis(xba["steerY"], playerNumber) + 1) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerY"], playerNumber)) > 0.75f && currentTime <= 0)
-                {
-                    bs.SelectDown();
-                    currentTime = delay;
-                }
-                else if (Mathf.Abs(1 - XCI.GetAxis(xba["steerY"], playerNumber)) < 0.1 && Mathf.Abs(XCI.GetAxis(xba["steerY"], playerNumber)) > 0.75f && currentTime <= 0)
+                if (Mathf.Abs(Input.GetAxis(ucv["steerY"]) + 1) < 0.1 && Mathf.Abs(Input.GetAxis(ucv["steerY"])) > 0.75f && currentTime <= 0)
                 {
                     bs.SelectUp();
                     currentTime = delay;
                 }
+                else if (Mathf.Abs(1 - Input.GetAxis(ucv["steerY"])) < 0.1 && Mathf.Abs(Input.GetAxis(ucv["steerY"])) > 0.75f && currentTime <= 0)
+                {
+                    bs.SelectDown();
+                    currentTime = delay;
+                }
 
-                if (XCI.GetButtonDown(xbb["activateWeapon"], playerNumber))
+                if (Input.GetButtonDown(ucv["activateWeapon"]))
                 {
                     //print("clicked");
                     bs.Click();
                 }
 
-                if (XCI.GetButtonDown(xbb["activatePickup"], playerNumber))
+                if (Input.GetButtonDown(ucv["activatePickup"]))
                 {
                     //bs.GoBack();
                     if (ScreenManager.instance.currentScreen.GetComponent<Screen>().isRoot)

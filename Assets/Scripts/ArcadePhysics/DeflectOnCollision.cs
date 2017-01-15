@@ -8,7 +8,6 @@ public class DeflectOnCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        print(collision.collider.tag);
         if (collision.collider.CompareTag("Bumper"))
         {
             Vector3 normal = collision.contacts[0].normal;

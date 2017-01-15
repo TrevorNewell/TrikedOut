@@ -15,6 +15,7 @@ public class Screen : MonoBehaviour
 
     public bool isRoot;
     public bool disableRootOnBack;
+    public bool isPublicMenu;
 
 	// Use this for initialization
 	void Start ()

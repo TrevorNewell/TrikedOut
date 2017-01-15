@@ -133,7 +133,7 @@ public class StateManager : MonoBehaviour
 
     public bool RequestPausePermission(int p)
     {
-        return pauseUserID == p;
+        return pauseUserID == p || ScreenManager.instance.currentScreen.GetComponent<Screen>().isPublicMenu;
     }
 
     // Update is called once per frame
@@ -165,12 +165,12 @@ public class StateManager : MonoBehaviour
         }
 
         //SoundManager.instance.Pause();
-        EventSystem e = EventSystem.current;
+        /*EventSystem e = EventSystem.current;
         StandaloneInputModule s = e.gameObject.GetComponent<StandaloneInputModule>();
         s.submitButton = "P" + p.ToString() + "_A";
         s.cancelButton = "P" + p.ToString() + "_B";
         s.horizontalAxis = "P" + p.ToString() + "_Horizontal";
-        s.verticalAxis = "P" + p.ToString() + "_Vertical";
+        s.verticalAxis = "P" + p.ToString() + "_Vertical";*/
         ScreenManager.instance.Pause(p);
         pauseUser = 0;
 

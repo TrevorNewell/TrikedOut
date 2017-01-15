@@ -93,6 +93,11 @@ public class ControlManager : MonoBehaviour
             else if (state == 1) playerControls[prefix].xboxAxisValues.Add(lines[0], xboxStringToAxis[lines[1]]);
             else if (state == 2) playerControls[prefix].xboxButtonValues.Add(lines[0], xboxStringToButton[lines[1]]);
             else if (state == 3) playerControls[prefix].keyboardButtonValues.Add(lines[0], keyboardStringToKey[lines[1]]);
+
+            if (state == 1 || state == 2)
+            {
+                playerControls[prefix].unityControllerValues.Add(lines[0], prefix + "_" + lines[1]);
+            }
         }
 
         file.Close();
