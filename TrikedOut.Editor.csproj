@@ -106,35 +106,26 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.LinuxStandalone.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+    <Reference Include="UnityEditor.WSA.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.OSXStandalone.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.OSXStandalone.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="JMOAssets">
-      <HintPath>Assets\OriginalBuggy\CarbonConcept\JMO Assets\Editor\JMOAssets.dll</HintPath>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\x86_64\XInputDotNetPure.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript-firstpass">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-UnityScript">
+      <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -163,19 +154,6 @@
     <None Include="Assets\Fonts\Gochi_Hand\OFL.txt" />
     <None Include="Assets\Fonts\Permanent_Marker\LICENSE.txt" />
     <None Include="Assets\Fonts\Rock_Salt\LICENSE.txt" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\!JMO Assets Readme.txt" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_Lit.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_Additive.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_AdditiveZ.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain_Bumped.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureAdd.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureAdd_Bumped.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureMult.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Shaders\MatCap_TextureMult_Bumped.shader" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Textures\BenSimonds\_Textures Readme.txt" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\Textures\MaCrea\MaCrea.txt" />
-    <None Include="Assets\OriginalBuggy\CarbonConcept\JMO Assets\MatCap Shaders\_MatCap Shaders Readme.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
@@ -187,6 +165,7 @@
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
     <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
+    <None Include="Assets\UniCar\Shaders\TireSkidMarks.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

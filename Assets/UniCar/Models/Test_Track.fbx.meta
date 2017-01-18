@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: c5da789e8b6561a42af760c6a8242488
+timeCreated: 1442936666
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Barrier_Section_01
+    100002: Barrier_Section_02
+    100004: Barrier_Section_03
+    100006: Barrier_Section_04
+    100008: Barrier_Section_05
+    100010: Building_Group01
+    100012: Building_Group02
+    100014: Building_Group03
+    100016: Building_Group04
+    100018: Building_Group05
+    100020: Inner_Trees
+    100022: Pavement_Crack_Group
+    100024: RunwayMarks
+    100026: //RootNode
+    100028: Tire_Skidmarks
+    100030: Track_Railing_Edge
+    100032: Track_Surface
+    100034: Treeline_Rows
+    100036: YellowStripeLines
+    400000: Barrier_Section_01
+    400002: Barrier_Section_02
+    400004: Barrier_Section_03
+    400006: Barrier_Section_04
+    400008: Barrier_Section_05
+    400010: Building_Group01
+    400012: Building_Group02
+    400014: Building_Group03
+    400016: Building_Group04
+    400018: Building_Group05
+    400020: Inner_Trees
+    400022: Pavement_Crack_Group
+    400024: RunwayMarks
+    400026: //RootNode
+    400028: Tire_Skidmarks
+    400030: Track_Railing_Edge
+    400032: Track_Surface
+    400034: Treeline_Rows
+    400036: YellowStripeLines
+    2300000: Barrier_Section_01
+    2300002: Barrier_Section_02
+    2300004: Barrier_Section_03
+    2300006: Barrier_Section_04
+    2300008: Barrier_Section_05
+    2300010: Building_Group01
+    2300012: Building_Group02
+    2300014: Building_Group03
+    2300016: Building_Group04
+    2300018: Building_Group05
+    2300020: Inner_Trees
+    2300022: Pavement_Crack_Group
+    2300024: RunwayMarks
+    2300026: Tire_Skidmarks
+    2300028: Track_Railing_Edge
+    2300030: Track_Surface
+    2300032: Treeline_Rows
+    2300034: YellowStripeLines
+    3300000: Barrier_Section_01
+    3300002: Barrier_Section_02
+    3300004: Barrier_Section_03
+    3300006: Barrier_Section_04
+    3300008: Barrier_Section_05
+    3300010: Building_Group01
+    3300012: Building_Group02
+    3300014: Building_Group03
+    3300016: Building_Group04
+    3300018: Building_Group05
+    3300020: Inner_Trees
+    3300022: Pavement_Crack_Group
+    3300024: RunwayMarks
+    3300026: Tire_Skidmarks
+    3300028: Track_Railing_Edge
+    3300030: Track_Surface
+    3300032: Treeline_Rows
+    3300034: YellowStripeLines
+    4300000: Track_Surface
+    4300002: Inner_Trees
+    4300004: Track_Railing_Edge
+    4300006: Barrier_Section_01
+    4300008: Barrier_Section_02
+    4300010: Tire_Skidmarks
+    4300012: Pavement_Crack_Group
+    4300014: Building_Group01
+    4300016: Building_Group02
+    4300018: Building_Group03
+    4300020: Building_Group04
+    4300022: Building_Group05
+    4300024: Barrier_Section_03
+    4300026: Barrier_Section_05
+    4300028: Barrier_Section_04
+    4300030: Treeline_Rows
+    4300032: RunwayMarks
+    4300034: YellowStripeLines
+    6400000: Barrier_Section_01
+    6400002: Barrier_Section_02
+    6400004: Barrier_Section_03
+    6400006: Barrier_Section_04
+    6400008: Barrier_Section_05
+    6400010: Building_Group01
+    6400012: Building_Group02
+    6400014: Building_Group03
+    6400016: Building_Group04
+    6400018: Building_Group05
+    6400020: Inner_Trees
+    6400022: Pavement_Crack_Group
+    6400024: RunwayMarks
+    6400026: Tire_Skidmarks
+    6400028: Track_Railing_Edge
+    6400030: Track_Surface
+    6400032: Treeline_Rows
+    6400034: YellowStripeLines
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
