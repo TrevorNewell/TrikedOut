@@ -88,6 +88,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
+        public Vector3 curNormal = Vector3.up; // smoothed terrain normal
 
 
         public Vector3 Velocity
@@ -122,7 +123,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
-            //mouseLook.Init (transform, cam.transform);
+            mouseLook.Init (transform, cam.transform);
         }
 
 
@@ -211,11 +212,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Vector2 GetInput()
         {
-            
+
             Vector2 input = new Vector2
-                {
-                    x = CrossPlatformInputManager.GetAxis("Horizontal"),
-                    y = CrossPlatformInputManager.GetAxis("Vertical")
+            {
+                //
+                x = 0, // Input.GetAxis("P1_LeftStickX"),  // CrossPlatformInputManager.GetAxis("Horizontal"),
+                    //
+                    y = -Input.GetAxis("P1_LeftStickY")  //CrossPlatformInputManager.GetAxis("Vertical")
                 };
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
