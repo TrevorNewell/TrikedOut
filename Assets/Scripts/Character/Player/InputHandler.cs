@@ -10,10 +10,10 @@ public class InputHandler : MonoBehaviour
      * The Move class will not move the player until the Update function is called, which the Player will do
      **/
     private Player player;
-    private Move move;
+    private NewMove move;
     private string prefix;
     private XboxController playerNumber;
-    private bool useController;
+    private bool useController = true;
     private Dictionary<string, XboxAxis> xba;
     private Dictionary<string, XboxButton> xbb;
     private Dictionary<string, KeyCode> kbc;
@@ -28,7 +28,7 @@ public class InputHandler : MonoBehaviour
     void Start()
     {
         player = gameObject.GetComponent<Player>();
-        move = gameObject.GetComponent<Move>();
+        move = gameObject.GetComponent<NewMove>();
         prefix = player.prefix;
         currentTime = 0f;
         switch (prefix)
@@ -60,7 +60,7 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!StateManager.instance.isPaused || ScreenManager.instance.currentScreen.GetComponent<Screen>().isPublicMenu)
+        //if (!StateManager.instance.isPaused || ScreenManager.instance.currentScreen.GetComponent<Screen>().isPublicMenu)
         {
             bool leftPedal;
             bool rightPedal;
@@ -156,7 +156,7 @@ public class InputHandler : MonoBehaviour
             if (activateUlti) player.ActivateUlti();
             if (pause) StateManager.instance.SetPauseUser(int.Parse(prefix.Substring(1, 1)));
         }
-        else if (StateManager.instance.RequestPausePermission(int.Parse(prefix.Substring(1, 1))))
+        /*else if (StateManager.instance.RequestPausePermission(int.Parse(prefix.Substring(1, 1))))
         {
             ButtonSelect bs = ScreenManager.instance.currentScreen.GetComponent<ButtonSelect>();
             currentTime -= Time.deltaTime;
@@ -200,6 +200,6 @@ public class InputHandler : MonoBehaviour
                     ScreenManager.instance.currentScreen.GetComponent<ButtonSelect>().GoBack();
                 }
             }
-        }
+        }*/
     }
 }

@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\Character\Items\Weapon.cs" />
     <Compile Include="Assets\Scripts\Character\Items\WeaponHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Move.cs" />
+    <Compile Include="Assets\Scripts\Character\NewMove.cs" />
     <Compile Include="Assets\Scripts\Character\Player\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\MenuInputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />

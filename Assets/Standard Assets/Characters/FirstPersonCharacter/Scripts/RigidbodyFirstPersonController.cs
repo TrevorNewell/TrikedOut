@@ -78,6 +78,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         public Camera cam;
+        public float percentOfMaxSpeed = 0f;
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
@@ -141,7 +142,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void FixedUpdate()
         {
             GroundCheck();
-            Vector2 input = GetInput();
+            Vector2 input = AlternateGetInput();//GetInput();
 
             if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
             {
@@ -221,6 +222,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     y = -Input.GetAxis("P1_LeftStickY")  //CrossPlatformInputManager.GetAxis("Vertical")
                 };
 			movementSettings.UpdateDesiredTargetSpeed(input);
+            return input;
+        }
+
+        public Vector2 AlternateGetInput()
+        {
+            Vector2 input = new Vector2
+            {
+                x = 0,
+                y = percentOfMaxSpeed
+            };
+            if (input.y > 0) movementSettings.CurrentTargetSpeed = movementSettings.ForwardSpeed * input.y;
+            else if (input.y < 0) movementSettings.CurrentTargetSpeed = -movementSettings.BackwardSpeed * input.y;
+            print(input.y + " CURRENT TARGET SPEED " + movementSettings.CurrentTargetSpeed);
             return input;
         }
 
