@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using XboxCtrlrInput;
+//using XboxCtrlrInput;
 using System.IO;
 
 public class ControlManager : MonoBehaviour
 {
     public static ControlManager instance;
 
-    private Dictionary<string, XboxAxis> xboxStringToAxis;
-    private Dictionary<string, XboxButton> xboxStringToButton;
+    //private Dictionary<string, XboxAxis> xboxStringToAxis;
+    //private Dictionary<string, XboxButton> xboxStringToButton;
     private Dictionary<string, KeyCode> keyboardStringToKey;
 
-    private Dictionary<XboxAxis, string> xboxAxisToString;
-    private Dictionary<XboxButton, string> xboxButtonToString;
+    //private Dictionary<XboxAxis, string> xboxAxisToString;
+    //private Dictionary<XboxButton, string> xboxButtonToString;
     private Dictionary<KeyCode, string> keyboardKeyToString;
 
     public Dictionary<string, InputValues> playerControls;
@@ -24,12 +24,12 @@ public class ControlManager : MonoBehaviour
     {
         instance = this;
 
-        xboxStringToAxis = new Dictionary<string, XboxAxis>();
-        xboxStringToButton = new Dictionary<string, XboxButton>();
+        //xboxStringToAxis = new Dictionary<string, XboxAxis>();
+        //xboxStringToButton = new Dictionary<string, XboxButton>();
         keyboardStringToKey = new Dictionary<string, KeyCode>();
 
-        xboxAxisToString = new Dictionary<XboxAxis, string>();
-        xboxButtonToString = new Dictionary<XboxButton, string>();
+        //xboxAxisToString = new Dictionary<XboxAxis, string>();
+        //xboxButtonToString = new Dictionary<XboxButton, string>();
         keyboardKeyToString = new Dictionary<KeyCode, string>();
 
         SetDefinitions();
@@ -64,12 +64,12 @@ public class ControlManager : MonoBehaviour
 
     void WriteInputOptions(string prefix)
     {
-        string file = playerControls[prefix].GetXboxValues(xboxAxisToString, xboxButtonToString) + playerControls[prefix].GetKeyboardValues(keyboardKeyToString);
+        //string file = playerControls[prefix].GetXboxValues(xboxAxisToString, xboxButtonToString) + playerControls[prefix].GetKeyboardValues(keyboardKeyToString);
 
         //StreamWriter sw = new StreamWriter(Application.persistentDataPath + "\\" + /*"/Controls/" +*/ prefix + "controls.txt");
         //sw.Write(file.ToCharArray());
         //sw.Close();
-        File.WriteAllText(Application.dataPath + "\\Controls\\" + prefix + "controls.txt", file);
+        //File.WriteAllText(Application.dataPath + "\\Controls\\" + prefix + "controls.txt", file);
     }
 
     void ReadInputOptions(string prefix)
@@ -90,8 +90,8 @@ public class ControlManager : MonoBehaviour
             }
             string[] lines = line.Split("=".ToCharArray());
             if (lines[0].Equals("useController")) playerControls[prefix].useController = lines[1].Equals("True");
-            else if (state == 1) playerControls[prefix].xboxAxisValues.Add(lines[0], xboxStringToAxis[lines[1]]);
-            else if (state == 2) playerControls[prefix].xboxButtonValues.Add(lines[0], xboxStringToButton[lines[1]]);
+            //else if (state == 1) playerControls[prefix].xboxAxisValues.Add(lines[0], xboxStringToAxis[lines[1]]);
+            //else if (state == 2) playerControls[prefix].xboxButtonValues.Add(lines[0], xboxStringToButton[lines[1]]);
             else if (state == 3) playerControls[prefix].keyboardButtonValues.Add(lines[0], keyboardStringToKey[lines[1]]);
 
             if (state == 1 || state == 2)
@@ -120,7 +120,7 @@ public class ControlManager : MonoBehaviour
     {
         //String to Input
 
-        xboxStringToAxis.Add("LeftTrigger", XboxAxis.LeftTrigger);
+        /*xboxStringToAxis.Add("LeftTrigger", XboxAxis.LeftTrigger);
         xboxStringToAxis.Add("RightTrigger", XboxAxis.RightTrigger);
         xboxStringToAxis.Add("LeftStickX", XboxAxis.LeftStickX);
         xboxStringToAxis.Add("LeftStickY", XboxAxis.LeftStickY);
@@ -257,6 +257,6 @@ public class ControlManager : MonoBehaviour
         keyboardKeyToString.Add(KeyCode.DownArrow, "DownArrow");
         keyboardKeyToString.Add(KeyCode.LeftArrow, "LeftArrow");
         keyboardKeyToString.Add(KeyCode.RightArrow, "RightArrow");
-        keyboardKeyToString.Add(KeyCode.Escape, "Escape");
+        keyboardKeyToString.Add(KeyCode.Escape, "Escape");*/
     }
 }

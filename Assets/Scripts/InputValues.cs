@@ -1,4 +1,4 @@
-﻿using XboxCtrlrInput;
+﻿//using XboxCtrlrInput;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -6,9 +6,9 @@ public class InputValues
 {
     public string prefix;
     public bool useController = true;
-    public XboxController playerController;
-    public Dictionary<string, XboxAxis> xboxAxisValues;
-    public Dictionary<string, XboxButton> xboxButtonValues;
+    //public XboxController playerController;
+    //public Dictionary<string, XboxAxis> xboxAxisValues;
+    //public Dictionary<string, XboxButton> xboxButtonValues;
     public Dictionary<string, KeyCode> keyboardButtonValues;
     public Dictionary<string, string> unityControllerValues;
 
@@ -19,30 +19,30 @@ public class InputValues
         switch (prefix)
         {
             case "P1":
-                playerController = XboxController.First;
+                //playerController = XboxController.First;
                 break;
             case "P2":
-                playerController = XboxController.Second;
+                //playerController = XboxController.Second;
                 break;
             case "P3":
-                playerController = XboxController.Third;
+                //playerController = XboxController.Third;
                 break;
             case "P4":
-                playerController = XboxController.Fourth;
+                //playerController = XboxController.Fourth;
                 break;
         }
 
-        xboxAxisValues = new Dictionary<string, XboxAxis>();
-        xboxButtonValues = new Dictionary<string, XboxButton>();
+        //xboxAxisValues = new Dictionary<string, XboxAxis>();
+        //xboxButtonValues = new Dictionary<string, XboxButton>();
         keyboardButtonValues = new Dictionary<string, KeyCode>();
         unityControllerValues = new Dictionary<string, string>();
     }
 
-    public string GetXboxValues(Dictionary<XboxAxis, string> xbA2S, Dictionary<XboxButton, string> xbB2S)
+    public string GetXboxValues(/*Dictionary<XboxAxis, string> xbA2S, Dictionary<XboxButton, string> xbB2S*/)
     {
         string retVal = "[XboxAxis]" + System.Environment.NewLine;
 
-        retVal += "useController=";
+        /*retVal += "useController=";
         retVal += useController.ToString() + System.Environment.NewLine;
         retVal += "leftPedal=";
         retVal += xbA2S[xboxAxisValues["leftPedal"]] + System.Environment.NewLine;
@@ -67,7 +67,7 @@ public class InputValues
         retVal += "pause=";
         retVal += xbB2S[xboxButtonValues["pause"]] + System.Environment.NewLine;
         retVal += "map=";
-        retVal += xbB2S[xboxButtonValues["map"]] + System.Environment.NewLine;
+        retVal += xbB2S[xboxButtonValues["map"]] + System.Environment.NewLine;*/
 
         return retVal;
     }
@@ -105,8 +105,8 @@ public class InputValues
 
     public void ClearDefinitions()
     {
-        xboxAxisValues.Clear();
-        xboxButtonValues.Clear();
+        //xboxAxisValues.Clear();
+        //xboxButtonValues.Clear();
         keyboardButtonValues.Clear();
     }
 
@@ -114,12 +114,12 @@ public class InputValues
     {
         GameObject player = GameObject.Find(prefix);
         if (player == null) return;
-        player.GetComponent<InputHandler>().ReceiveDefinitions(useController, xboxAxisValues, xboxButtonValues, keyboardButtonValues, unityControllerValues);
+        //player.GetComponent<InputHandler>().ReceiveDefinitions(useController, xboxAxisValues, xboxButtonValues, keyboardButtonValues, unityControllerValues);
     }
 
     public void SetDefaultValues()
     {
-        xboxAxisValues.Add("leftPedal", XboxAxis.LeftTrigger);
+        /*xboxAxisValues.Add("leftPedal", XboxAxis.LeftTrigger);
         xboxAxisValues.Add("rightPedal", XboxAxis.RightTrigger);
         xboxAxisValues.Add("steerX", XboxAxis.LeftStickX);
         xboxAxisValues.Add("steerY", XboxAxis.LeftStickY);
@@ -147,6 +147,6 @@ public class InputValues
         keyboardButtonValues.Add("steerX", KeyCode.LeftArrow);
         keyboardButtonValues.Add("steerY", KeyCode.RightArrow);
         keyboardButtonValues.Add("cameraX", KeyCode.Tab);
-        keyboardButtonValues.Add("cameraY", KeyCode.LeftShift);
+        keyboardButtonValues.Add("cameraY", KeyCode.LeftShift);*/
     }
 }

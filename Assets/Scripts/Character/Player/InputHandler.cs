@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using XboxCtrlrInput;
+//using XboxCtrlrInput;
 using System.Collections.Generic;
 
 public class InputHandler : MonoBehaviour
@@ -12,10 +12,10 @@ public class InputHandler : MonoBehaviour
     private Player player;
     private NewMove move;
     private string prefix;
-    private XboxController playerNumber;
+    //private XboxController playerNumber;
     private bool useController = true;
-    private Dictionary<string, XboxAxis> xba;
-    private Dictionary<string, XboxButton> xbb;
+    //private Dictionary<string, XboxAxis> xba;
+    //private Dictionary<string, XboxButton> xbb;
     private Dictionary<string, KeyCode> kbc;
     private Dictionary<string, string> ucv;
     private float currentTime;
@@ -29,31 +29,31 @@ public class InputHandler : MonoBehaviour
     {
         player = gameObject.GetComponent<Player>();
         move = gameObject.GetComponent<NewMove>();
-        prefix = player.prefix;
+        prefix = "P1";//player.prefix;
         currentTime = 0f;
         switch (prefix)
         {
             case "P1":
-                playerNumber = XboxController.First;
+                //playerNumber = XboxController.First;
                 break;
             case "P2":
-                playerNumber = XboxController.Second;
+                //playerNumber = XboxController.Second;
                 break;
             case "P3":
-                playerNumber = XboxController.Third;
+                //playerNumber = XboxController.Third;
                 break;
             case "P4":
-                playerNumber = XboxController.Fourth;
+                //playerNumber = XboxController.Fourth;
                 break;
         }
     }
 
-    public void ReceiveDefinitions(bool uc, Dictionary<string, XboxAxis> xa, Dictionary<string, XboxButton> xb, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
+    public void ReceiveDefinitions(bool uc, /*Dictionary<string, XboxAxis> xa, Dictionary<string, XboxButton> xb,*/ Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
         useController = uc;
-        xba = xa;
-        xbb = xb;
-        kbc = kb;
+        //xba = xa;
+        //xbb = xb;
+        //kbc = kb;
         ucv = uv;
     }
 
@@ -61,7 +61,7 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
         //if (!StateManager.instance.isPaused || ScreenManager.instance.currentScreen.GetComponent<Screen>().isPublicMenu)
-        {
+        //{
             bool leftPedal;
             bool rightPedal;
             float turnFactor;
@@ -71,8 +71,8 @@ public class InputHandler : MonoBehaviour
             bool activateUlti;
             bool pause;
 
-            if (useController)
-            {
+            //if (useController)
+            //{
                 /*leftPedal = (XCI.GetAxis(xba["leftPedal"], playerNumber) == 1) ? true : false;
                 rightPedal = (XCI.GetAxis(xba["rightPedal"], playerNumber) == 1) ? true : false;
                 turnFactor = XCI.GetAxis(xba["steerX"], playerNumber);
@@ -82,16 +82,16 @@ public class InputHandler : MonoBehaviour
                 activateUlti = XCI.GetButtonDown(xbb["switchWeapon"], playerNumber);
                 pause = XCI.GetButtonDown(xbb["pause"], playerNumber);*/
 
-                leftPedal = (Input.GetAxis(ucv["leftPedal"]) == 1) ? true : false;
-                rightPedal = (Input.GetAxis(ucv["rightPedal"]) == 1) ? true : false;
-                turnFactor = Input.GetAxis(ucv["steerX"]);
-                cameraFactor = Input.GetAxis(ucv["cameraX"]);
-                fire = Input.GetButtonDown(ucv["activateWeapon"]);
-                ceaseFire = Input.GetButtonUp(ucv["activateWeapon"]);
-                activateUlti = Input.GetButtonDown(ucv["switchWeapon"]);
-                pause = Input.GetButtonDown(ucv["pause"]);
-            }
-            else
+                leftPedal = (Input.GetAxis(/*ucv["leftPedal"]*/"P1_LeftTrigger") == 1) ? true : false;
+                rightPedal = (Input.GetAxis(/*ucv["rightPedal"]*/"P1_RightTrigger") == 1) ? true : false;
+                turnFactor = Input.GetAxis(/*ucv["steerX"]*/"P1_LeftStickX");
+                cameraFactor = Input.GetAxis(/*ucv["cameraX"]*/"P1_RightStickX");
+                fire = Input.GetButtonDown(/*ucv["activateWeapon"]*/"P1_A");
+                ceaseFire = Input.GetButtonUp(/*ucv["activateWeapon"]*/"P1_A");
+                activateUlti = Input.GetButtonDown(/*ucv["switchWeapon"]*/"P1_Y");
+                pause = Input.GetButtonDown(/*ucv["pause"]*/"P1_Start");
+            //}
+            /*else
             {
                 leftPedal = (Input.GetKeyDown(kbc["leftPedal"]) == true) ? true : false;
                 rightPedal = (Input.GetKeyDown(kbc["rightPedal"]) == true) ? true : false;
@@ -146,7 +146,7 @@ public class InputHandler : MonoBehaviour
                     activateUlti = Input.GetKeyDown(KeyCode.Slash);
                     pause = false;
                 }*/
-            }
+            //}
 
             //Debug.Log("Player: " + prefix + " LeftPedal: " + leftPedal + " RightPedal: " + rightPedal + " TurnFactor: " + turnFactor);
 
@@ -155,7 +155,7 @@ public class InputHandler : MonoBehaviour
             else if (ceaseFire) player.CeaseFire();
             if (activateUlti) player.ActivateUlti();
             if (pause) StateManager.instance.SetPauseUser(int.Parse(prefix.Substring(1, 1)));
-        }
+        //}
         /*else if (StateManager.instance.RequestPausePermission(int.Parse(prefix.Substring(1, 1))))
         {
             ButtonSelect bs = ScreenManager.instance.currentScreen.GetComponent<ButtonSelect>();
