@@ -1,8 +1,6 @@
 ﻿// Built using the tutorial at http://www.doofah.com/tutorials/unity/bouncy-vehicle-tutorial/ Credit to: Martin Horn
 // Expanded upon by: Trevor Newell
 using UnityEngine;
-using System.Collections;
-using System.Timers;
 using UnityEngine.UI;
 
 public class ArcadeTrikeController : MonoBehaviour
