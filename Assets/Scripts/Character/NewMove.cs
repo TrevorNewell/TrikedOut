@@ -25,7 +25,7 @@ public class NewMove : MonoBehaviour
     private float timeSinceLastPedal = 0f; //How long ago was the last pedal
     private bool braking = false; //Should we start slowing down
 
-    public void SetFactors(bool leftPedal, bool rightPedal, float turnFactor, float cameraFactor)
+    public void SetFactors(bool leftPedal, bool rightPedal)
     {
         if (leftPedal && rightPedal)
         {

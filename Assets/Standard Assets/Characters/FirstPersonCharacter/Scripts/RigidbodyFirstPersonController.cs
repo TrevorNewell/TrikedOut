@@ -79,6 +79,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public Camera cam;
         public float percentOfMaxSpeed = 0f;
+        public string prefix = "P1";
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
         public AdvancedSettings advancedSettings = new AdvancedSettings();
@@ -125,6 +126,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+            mouseLook.prefix = prefix;
         }
 
 
@@ -219,7 +221,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 //
                 x = 0, // Input.GetAxis("P1_LeftStickX"),  // CrossPlatformInputManager.GetAxis("Horizontal"),
                     //
-                    y = -Input.GetAxis("P1_LeftStickY")  //CrossPlatformInputManager.GetAxis("Vertical")
+                    y = -Input.GetAxis(prefix + "_LeftStickY")  //CrossPlatformInputManager.GetAxis("Vertical")
                 };
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
@@ -234,7 +236,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             };
             if (input.y > 0) movementSettings.CurrentTargetSpeed = movementSettings.ForwardSpeed * input.y;
             else if (input.y < 0) movementSettings.CurrentTargetSpeed = -movementSettings.BackwardSpeed * input.y;
-            print(input.y + " CURRENT TARGET SPEED " + movementSettings.CurrentTargetSpeed);
+            //print(input.y + " CURRENT TARGET SPEED " + movementSettings.CurrentTargetSpeed);
             return input;
         }
 

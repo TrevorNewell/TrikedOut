@@ -21,7 +21,7 @@ public class MarshmallowGun : MonoBehaviour, Item
     {
         startRot = transform.localRotation.eulerAngles;
         currentTime = fireDelay;
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        //transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void SetDefaultScale()
@@ -48,7 +48,7 @@ public class MarshmallowGun : MonoBehaviour, Item
         {
             if (currentTime > fireDelay)
             {
-                SoundManager.instance.PlayShootSound();
+                //SoundManager.instance.PlayShootSound();
 
                 firing = true;
                 //launch bullet
