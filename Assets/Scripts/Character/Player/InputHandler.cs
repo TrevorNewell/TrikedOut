@@ -69,7 +69,7 @@ public class InputHandler : MonoBehaviour
             bool fire;
             bool ceaseFire;
             bool activateUlti;
-            bool pause;
+            //bool pause;
 
             //if (useController)
             //{
@@ -89,7 +89,7 @@ public class InputHandler : MonoBehaviour
                 fire = Input.GetButtonDown(/*ucv["activateWeapon"]*/"P1_A");
                 ceaseFire = Input.GetButtonUp(/*ucv["activateWeapon"]*/"P1_A");
                 activateUlti = Input.GetButtonDown(/*ucv["switchWeapon"]*/"P1_Y");
-                pause = Input.GetButtonDown(/*ucv["pause"]*/"P1_Start");
+                //pause = Input.GetButtonDown(/*ucv["pause"]*/"P1_Start");
             //}
             /*else
             {
@@ -154,7 +154,7 @@ public class InputHandler : MonoBehaviour
             if (fire) player.FireWeapon();
             else if (ceaseFire) player.CeaseFire();
             if (activateUlti) player.ActivateUlti();
-            if (pause) StateManager.instance.SetPauseUser(int.Parse(prefix.Substring(1, 1)));
+            //if (pause) StateManager.instance.Pause(int.Parse(prefix.Substring(1, 1)));
         //}
         /*else if (StateManager.instance.RequestPausePermission(int.Parse(prefix.Substring(1, 1))))
         {

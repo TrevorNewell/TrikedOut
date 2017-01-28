@@ -51,7 +51,7 @@ public class SoundManager : MonoBehaviour
         menuSoundManager.volume = 0.7f;
 
 
-        if (StateManager.instance.isMainMenu)
+        if (StateManager.instance.TheState == State.MainMenu)
         {
             musicManager.clip = sampleSong;
             musicManager.Play();

@@ -401,7 +401,7 @@ public class RaceManager : MonoBehaviour
     void Update ()
     {
         // If we're paused track how long we're paused for so our overall race time doesn't get screwed up.
-        if (StateManager.instance.isPaused)
+        if (StateManager.instance.TheState == State.Paused)
         {
             pauseTime += Time.deltaTime;
         }

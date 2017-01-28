@@ -56,7 +56,7 @@ public class SelectCharacter : MonoBehaviour
             canClick = true;
         }
 
-        if (Input.GetButtonUp("P" + playerNumber + "_Start") && StateManager.instance.isMainMenu && !isActive)
+        if (Input.GetButtonUp("P" + playerNumber + "_Start") && StateManager.instance.TheState == State.MainMenu && !isActive)
         {
             //StateManager.instance.numPlayers++;
             SelectCharacter[] items = FindObjectsOfType<SelectCharacter>();
