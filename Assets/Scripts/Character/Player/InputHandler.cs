@@ -18,15 +18,6 @@ public class InputHandler : MonoBehaviour
     private float currentTime;
     private float delay = 0.2f;
 
-    // Use this for initialization
-    void Start()
-    {
-        move = gameObject.GetComponent<NewMove>();
-        prefix = name;//player.prefix;
-        weapon = GameObject.Find(prefix + "_Weapon");
-        currentTime = 0f;
-    }
-
     public void ReceiveDefinitions(bool uc, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
         useController = uc;
@@ -36,6 +27,14 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (move == null)
+        {
+            move = gameObject.GetComponent<NewMove>();
+            prefix = name;//player.prefix;
+            weapon = GameObject.Find(prefix + "_Weapon");
+            currentTime = 0f;
+        }
+
         bool leftPedal;
         bool rightPedal;
         float cameraFactor;
