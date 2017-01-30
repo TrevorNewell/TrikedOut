@@ -15,6 +15,11 @@ public enum State
     Credits
 };
 
+[RequireComponent(typeof(EventSystem))]
+[RequireComponent(typeof(StandaloneInputModule))]
+[RequireComponent(typeof(StandaloneInputModule))]
+[RequireComponent(typeof(StandaloneInputModule))]
+[RequireComponent(typeof(StandaloneInputModule))]
 public class StateManager : MonoBehaviour
 {
     public static StateManager instance;
@@ -25,16 +30,33 @@ public class StateManager : MonoBehaviour
 
     private State theState;
 
+    [Header("Visible For Debugging")]
+    public ScreenType currentScreen;
     public GameObject[] screens;
-    private GameObject mainMenu;
-    private GameObject pressStartMenu;
+    public GameObject mainMenu;
+    public GameObject pressStartMenu;
+    public GameObject optionsMenu;
+    public GameObject characterMenu;
+    public GameObject trackMenu;
 
-    private GameObject pauseMenu; // Only one pause menu, and we'll display an icon noting which player has control of the pause.
-    private GameObject[] HUDs; // Multiple HUDs
+    public GameObject pauseMenu; // Only one pause menu, and we'll display an icon noting which player has control of the pause.
 
-    private GameObject creditScreen;
+    public GameObject[] HUDs; // Multiple HUDs
 
-    private int playerWithControl = 0;
+    public GameObject creditScreen;
+
+    public EventSystem eventHandler;
+    public StandaloneInputModule p1Input;
+    public StandaloneInputModule p2Input;
+    public StandaloneInputModule p3Input;
+    public StandaloneInputModule p4Input;
+
+    public int playerWithControl = 1;
+    public GameObject[] possibleCharSelection; // Contains possible characters to choose from
+    public GameObject[] actualCharSelection; // Will hold our actual characters to choose from for this scene only
+    [SerializeField]
+    public static GameObject[] GlobalCharSelection; // Holds our actual characters between scenes.  This is set on the CharacterSelection screen in the Main Menu.
+    public static int charSelIndex = -1; // -1 until SaveCharacterSelection is called.  I should change this to a bool to avoid confusion, but eh.
 
     public State TheState
     {
@@ -47,16 +69,19 @@ public class StateManager : MonoBehaviour
 
             if (theState == State.PressStart)
             {
+                currentScreen = ScreenType.Start;
                 DeactivateAll();
                 if (pressStartMenu != null) pressStartMenu.SetActive(true);
             }
             else if (theState == State.MainMenu)
             {
+                currentScreen = ScreenType.MainMenu;
                 DeactivateAll();
-                mainMenu.SetActive(true);
+                if (mainMenu != null) mainMenu.SetActive(true);
             }
             else if (theState == State.InGame)
             {
+                currentScreen = ScreenType.HUD;
                 DeactivateAll();
 
                 if (HUDs.Length > 0)
@@ -71,14 +96,16 @@ public class StateManager : MonoBehaviour
             }
             else if (theState == State.Paused)
             {
+                currentScreen = ScreenType.PauseMenu;
                 DeactivateAll();
 
-                pauseMenu.SetActive(true);
+                if(pauseMenu != null) pauseMenu.SetActive(true);
 
                 Time.timeScale = 0.0f;
             }
             else if (theState == State.Credits)
             {
+                currentScreen = ScreenType.Credits;
                 LoadLevel("CreditScene");
             }
             else
@@ -91,14 +118,42 @@ public class StateManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        eventHandler = GetComponent<EventSystem>();
+        StandaloneInputModule[] sims = GetComponents<StandaloneInputModule>();
+        foreach (StandaloneInputModule s in sims)
+        {
+            if (s.submitButton.CompareTo("P1_A") == 0)
+            {
+                p1Input = s;
+            }
+            else if (s.submitButton.CompareTo("P2_A") == 0)
+            {
+                p2Input = s;
+            }
+            else if (s.submitButton.CompareTo("P3_A") == 0)
+            {
+                p3Input = s;
+            }
+            else if (s.submitButton.CompareTo("P4_A") == 0)
+            {
+                p4Input = s;
+            }
+        }
+
         foreach (Text f in FindObjectsOfType<Text>())
         {
             f.font = ourFont; // Not working for some reason.  Sets all to no font, despite having a font
         }
 
-        screens = GameObject.FindGameObjectsWithTag("Screen");
+        Screen[] screenTemp = FindObjectsOfType<Screen>();
+        int length = screenTemp.Length;
+        screens = new GameObject[length];
+        for (int i = 0; i < length; i++)
+        {
+            screens[i] = screenTemp[i].gameObject;
+        }
 
-        if (SceneManager.GetActiveScene().name.CompareTo("MainMenu") == 0)
+        if (SceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
         {
             Debug.Log("At the Main Menu");
             TheState = State.PressStart;
@@ -115,13 +170,28 @@ public class StateManager : MonoBehaviour
                     mainMenu = g;
                     g.SetActive(false);
                 }
+                else if (g.name.CompareTo("OptionsMenu") == 0)
+                {
+                    optionsMenu = g;
+                    g.SetActive(false);
+                }
+                else if (g.name.CompareTo("CharacterSelection") == 0)
+                {
+                    characterMenu = g;
+                    g.SetActive(false);
+                }
+                else if (g.name.CompareTo("TrackSelection") == 0)
+                {
+                    trackMenu = g;
+                    g.SetActive(false);
+                }
                 else
                 {
                     g.SetActive(false);
                 }
             }
         }
-        else if (SceneManager.GetActiveScene().buildIndex > 1)// This allows us to treat every track the same in terms of the state manager.  Special treatment is given if it's the start screen, main menu, or credits.  Otherwise, this. // .GetActiveScene().name.CompareTo("Track1") == 0)
+        else if (SceneManager.GetActiveScene().buildIndex > 2)// This allows us to treat every track the same in terms of the state manager.  Special treatment is given if it's the start screen, main menu, or credits.  Otherwise, this. // .GetActiveScene().name.CompareTo("Track1") == 0)
         {
             Debug.Log("InGame");
 
@@ -142,6 +212,12 @@ public class StateManager : MonoBehaviour
 
                     g.SetActive(false);
                    
+                }
+                else if (g.name.CompareTo("OptionsMenu") == 0)
+                {
+                    optionsMenu = g;
+                    g.SetActive(false);
+
                 }
                 else
                 {
@@ -173,13 +249,47 @@ public class StateManager : MonoBehaviour
             }
         }
 
+
+        // This will always be -1 unless SaveCharSelections has been called.  And that's only ever called from the main menu, transitioning from the character select screen to the track selection screen.
+        if (charSelIndex != -1)
+        {
+            // Update the playerCount so we can section off the screen appropriately and activate the required game objects.
+            //FindObjectOfType<RaceSetup>().playerCount = numPlayers;
+
+            // Just realized, this section below may need to be called after PlayerSetup has done it's thing.  FindObjectsOfType<Player>() only finds "active" game objects.
+            Player[] players = FindObjectsOfType<Player>();
+
+            Player playerObject = players[0];
+
+            Debug.Log("Player Objects: " + players.Length);
+            for (int i = 0; i < numPlayers; i++)
+            {
+                // Find the correct instance of the player script
+                for (int j = 0; j < players.Length; j++)
+                {
+                    if (players[j].playerNumber == i + 1)
+                    {
+                        playerObject = players[j];
+                        Debug.Log("P" + players[j].playerNumber);
+                    }
+                }
+
+                playerObject.theCharacter = GlobalCharSelection[i];
+            }
+        }
+
         instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TheState == State.PressStart && Input.anyKey) TheState = State.MainMenu;
+        if (TheState == State.PressStart && Input.anyKey)
+        {
+            playerWithControl = 1;
+            Enable(1);
+            TheState = State.MainMenu;
+        }
 
         // For the in game logic, check for something like  vvv   on each player
         // if (Input.GetButtonDown(P1_Start) && TheState == State.InGame) { //We weren't paused, but we are now and P1 has control }
@@ -202,11 +312,42 @@ public class StateManager : MonoBehaviour
         } 
     }
 
+    public void Options(int playerID)
+    {
+        if (playerID == playerWithControl)
+        {
+            currentScreen = ScreenType.Options;
+            DeactivateAll();
+            optionsMenu.SetActive(true);
+        }
+    }
+
+    public void CharacterSelection(int playerID)
+    {
+        if (playerID == playerWithControl)
+        {
+            currentScreen = ScreenType.CharacterSelection;
+            DeactivateAll();
+            characterMenu.SetActive(true);
+        }
+    }
+
+    public void TrackSelection(int playerID)
+    {
+        if (playerID == playerWithControl)
+        {
+            currentScreen = ScreenType.TrackSelection;
+            DeactivateAll();
+            trackMenu.SetActive(true);
+        }
+    }
+
     public void Pause(int playerID)
     {
         if (TheState == State.InGame)
         {
             playerWithControl = playerID;
+            Enable(playerID);
             TheState = State.Paused;
         }
     }
@@ -217,6 +358,57 @@ public class StateManager : MonoBehaviour
         {
             playerWithControl = 0;
             TheState = State.InGame;
+
+            p1Input.DeactivateModule();
+            p2Input.DeactivateModule();
+            p3Input.DeactivateModule();
+            p4Input.DeactivateModule();
+        }
+    }
+
+    public void GoBack(int playerID)
+    {
+        if (TheState == State.Paused && playerWithControl == playerID)
+        {
+            if (currentScreen == ScreenType.Options) TheState = State.Paused;
+            else if (currentScreen == ScreenType.PauseMenu) Unpause(playerID);
+        }
+        else if (TheState == State.MainMenu && playerWithControl == playerID)
+        {
+            if (currentScreen == ScreenType.Options || currentScreen == ScreenType.CharacterSelection) TheState = State.MainMenu;
+            else if (currentScreen == ScreenType.TrackSelection) CharacterSelection(playerID);
+        }
+    }
+
+    public void Enable(int playerID)
+    {
+        if (playerID == 1)
+        {
+            p1Input.ActivateModule();
+            p2Input.DeactivateModule();
+            p3Input.DeactivateModule();
+            p4Input.DeactivateModule();
+        }
+        else if (playerID == 2)
+        {
+            p1Input.DeactivateModule();
+            p2Input.ActivateModule();
+            p3Input.DeactivateModule();
+            p4Input.DeactivateModule();
+        }
+        else if (playerID == 3)
+        {
+            p1Input.DeactivateModule();
+            p2Input.DeactivateModule();
+            p3Input.ActivateModule();
+            p4Input.DeactivateModule();
+        }
+        else if (playerID == 4)
+        {
+            p1Input.DeactivateModule();
+            p2Input.DeactivateModule();
+            p3Input.DeactivateModule();
+            p4Input.ActivateModule();
         }
     }
 
@@ -231,6 +423,49 @@ public class StateManager : MonoBehaviour
         {
             g.SetActive(false);
         }
+    }
+
+    public void SaveCharSelections()
+    {
+        // Find all our SelectCharacter scripts to retrieve relevant data from them
+        SelectCharacter[] characters = Resources.FindObjectsOfTypeAll<SelectCharacter>();
+
+        Debug.Log("Character count: " + characters.Length);
+
+        int playerCount = 0;
+
+        foreach (SelectCharacter c in characters)
+        {
+            if (c.isActive)
+            {
+                playerCount++;
+            }
+        }
+
+        // This will hold our actual player count, and it's coded this way in case a player decides to back out of the race (which isn't currently supported).
+        numPlayers = playerCount;
+
+        actualCharSelection = new GameObject[numPlayers];
+
+        // Assign the correct "character" to our player based on their selection
+        foreach (SelectCharacter c in characters)
+        {
+            if (c.isActive)
+            {
+                // c.playerNumber - 1 may have to changed to an increment.  If there's 2 players but 3 controllers there's a possibility that player 2 will actually be player 3's controller.  We can probably
+                // remedy this by adjusting the prefix of the Player script in the other scene based on which controller player 2 is actually using.
+                print(c.playerNumber + " " + c.currentObject);
+                actualCharSelection[c.playerNumber - 1] = possibleCharSelection[c.currentObject];
+            }
+        }
+
+        // Make note of the fact that we've been through this method. Used in future scenes.  Should be changed to a bool.
+        charSelIndex = 0;
+
+        // Save our players character selections for use in later scenes.
+        GlobalCharSelection = actualCharSelection;
+
+        Debug.Log("Actual character count: " + playerCount + " Size: " + actualCharSelection.Length);
     }
 
     public void LoadLevel(string name)
