@@ -16,6 +16,8 @@ public class PlaceManager : MonoBehaviour
     private int playerCount;
     private float[] timesTilNextSpawn = new float[4] { 0f, 0f, 0f, 0f };
 
+    private bool tempStart = false;
+
     // Use this for initialization
     void Start()
     {
@@ -74,7 +76,10 @@ public class PlaceManager : MonoBehaviour
                 players[i] = GameObject.Find("P" + (i + 1).ToString());
             }
         }
-        
+
+        //if (Input.GetKeyDown(KeyCode.Space)) tempStart = true;
+        //if (!tempStart) return;
+
         int[] tempPlaces = new int[playerCount];
         for (int i = 0; i < playerCount; i++)
         {

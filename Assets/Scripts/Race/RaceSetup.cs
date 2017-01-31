@@ -43,11 +43,11 @@ public class RaceSetup : MonoBehaviour
                 //GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes;
                 //GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
                 //GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
-                Vector3 scale = GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale;
-                scale.x *= rectSize.x;
-                scale.y = scale.x;
-                GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale = scale;
-                GameObject.Find("ChargeMeter" + j.ToString()).transform.localScale = scale;
+                //Vector3 scale = GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale;
+                //scale.x *= rectSize.x;
+                //scale.y = scale.x;
+                //GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale = scale;
+                //GameObject.Find("ChargeMeter" + j.ToString()).transform.localScale = scale;
 
                 switch (j - 1)
                 {

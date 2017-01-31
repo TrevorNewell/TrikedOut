@@ -7,8 +7,8 @@ public class RaceManager : MonoBehaviour
     [Header("Player")]
     public GameObject player;
     public bool isActive = true;
-    public GameObject speed;
-    public GameObject charge;
+    //public GameObject speed;
+    //public GameObject charge;
 
     [Header("Checkpoint Variables")]
     public bool disableCheckpointsOnStart = true;
@@ -43,6 +43,8 @@ public class RaceManager : MonoBehaviour
     private float t;
 
     private PlaceManager pm;
+
+    private bool tempStart = false;
 
     [Header("UI Variables")]
     // Text components for the appropriately named section of the screen.
@@ -401,6 +403,8 @@ public class RaceManager : MonoBehaviour
 
     void Update ()
     {
+        //if (Input.GetKeyDown(KeyCode.Space)) tempStart = true;
+        //if (!tempStart) return;
         // If we're paused track how long we're paused for so our overall race time doesn't get screwed up.
         if (StateManager.instance.TheState == State.Paused)
         {
@@ -418,8 +422,8 @@ public class RaceManager : MonoBehaviour
             }
             else if (isStarting && tempTime < countdownAtStart) // Countdown to start the race!
             {
-                speed.SetActive(false);
-                charge.SetActive(false);
+                //speed.SetActive(false);
+                //charge.SetActive(false);
 
                 tempTime = Time.timeSinceLevelLoad - pauseTime;
 
@@ -432,8 +436,8 @@ public class RaceManager : MonoBehaviour
                 player.GetComponent<InputHandler>().enabled = true;
                 isStarting = false;
                 DisplayStartText();
-                speed.SetActive(true);
-                charge.SetActive(true);
+                //speed.SetActive(true);
+                //charge.SetActive(true);
             }
         }
     }

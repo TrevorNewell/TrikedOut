@@ -29,6 +29,7 @@ public class NewMove : MonoBehaviour
     private bool braking = false; //Should we start slowing down
     private float boostFactor = 1f; //If we are boosting, what is the increase
     private float boostDuration = 0f; //How long are we boosting for
+    private float originalSensitivity;
 
     public void SetFactors(bool leftPedal, bool rightPedal)
     {
@@ -52,10 +53,11 @@ public class NewMove : MonoBehaviour
         }
     }
 
-    public void SetBoost(float factor, float duration)
+    public void SetBoost(float factor, float duration, float sensitivity)
     {
         boostFactor = factor;
         boostDuration = duration;
+        rbfpc.mouseLook.XSensitivity = sensitivity;
     }
 
     //clamps a value v to c if v is greater than c
@@ -92,6 +94,7 @@ public class NewMove : MonoBehaviour
     {
         rbfpc = GetComponent<RigidbodyFirstPersonController>();
         originalMaxSpeed = maxSpeed;
+        originalSensitivity = rbfpc.mouseLook.XSensitivity;
     }
 
     void Update()
@@ -136,6 +139,7 @@ public class NewMove : MonoBehaviour
             if (boostDuration <= 0)
             {
                 boostFactor = 1f;
+                rbfpc.mouseLook.XSensitivity = originalSensitivity;
             }
         }
 

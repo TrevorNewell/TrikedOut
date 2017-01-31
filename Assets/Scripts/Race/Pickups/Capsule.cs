@@ -10,6 +10,7 @@ public class Capsule : MonoBehaviour
 
     public float boostFactor = 5f;
     public float boostDuration = 3f;
+    public float boostSensitivity = 2.5f;
 
     private bool isBat = true;
     private int playerID = 0;
@@ -21,6 +22,8 @@ public class Capsule : MonoBehaviour
     public void SetLayer(int l)
     {
         gameObject.layer = l;
+        bat.layer = l;
+        boost.layer = l;
         playerID = l - 9;
     }
 
@@ -50,7 +53,7 @@ public class Capsule : MonoBehaviour
                 }
                 else
                 {
-                    other.GetComponent<NewMove>().SetBoost(boostFactor, boostDuration);
+                    other.GetComponent<NewMove>().SetBoost(boostFactor, boostDuration, boostSensitivity);
                     Destroy(gameObject);
                 }
             }
