@@ -12,6 +12,17 @@ public class Capsule : MonoBehaviour
     public float boostDuration = 3f;
 
     private bool isBat = true;
+    private int playerID = 0;
+
+    //P1 is 10
+    //P2 is 11
+    //P3 is 12
+    //P4 is 13
+    public void SetLayer(int l)
+    {
+        gameObject.layer = l;
+        playerID = l - 9;
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -31,14 +42,17 @@ public class Capsule : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (isBat)
+            if (int.Parse(other.name.Substring(1)) == playerID)
             {
+                if (isBat)
+                {
 
-            }
-            else
-            {
-                other.GetComponent<NewMove>().SetBoost(boostFactor, boostDuration);
-                Destroy(gameObject);
+                }
+                else
+                {
+                    other.GetComponent<NewMove>().SetBoost(boostFactor, boostDuration);
+                    Destroy(gameObject);
+                }
             }
         }
     }

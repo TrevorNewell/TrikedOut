@@ -3,13 +3,18 @@ using System.Collections.Generic;
 
 public class PlaceManager : MonoBehaviour
 {
-    public float[] speedPercentages = new float[] { 0.85f, 0.95f, 1.05f, 1.15f };
+    public float[] speedPercentages = new float[4] { 0.85f, 0.95f, 1.05f, 1.15f };
+    public float[] timeBetweenDrops = new float[4] { 25f, 20f, 15f, 10f};
+    public float[] chanceOfDrop = new float[4] { 0.1f, 0.2f, 0.4f, 0.8f};
+
+    public GameObject dropPrefab;
 
     private Checkpoint[] checkpoints;
     private GameObject[] players;
     private int[] passed;
     private int[] places;
     private int playerCount;
+    private float[] timesTilNextSpawn = new float[4] { 0f, 0f, 0f, 0f };
 
     // Use this for initialization
     void Start()
@@ -119,6 +124,22 @@ public class PlaceManager : MonoBehaviour
         {
             int p = places[i];
             players[p].GetComponent<NewMove>().targetMaxSpeed = speedPercentages[i];
+            timesTilNextSpawn[p] += Time.deltaTime;
+            if (timesTilNextSpawn[p] >= timeBetweenDrops[i])
+            {
+                timesTilNextSpawn[p] = 0f;
+                if (Random.Range(0f, 1f) < chanceOfDrop[i])
+                {
+                    int cj = (passed[p] / 2) % checkpoints.Length + 1;
+                    if (cj >= checkpoints.Length)
+                    {
+                        cj = 0;
+                    }
+                    GameObject drop = Instantiate(dropPrefab);
+                    drop.transform.position = checkpoints[cj].transform.position;
+                    drop.GetComponent<Capsule>().SetLayer(10 + p);
+                }
+            }
         }
 
         /*places = new LinkedList<int>();
