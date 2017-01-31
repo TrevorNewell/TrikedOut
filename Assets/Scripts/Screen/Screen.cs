@@ -37,7 +37,7 @@ public class Screen : MonoBehaviour
 	
     void OnEnable()
     {
-        if (firstActive != null) StateManager.instance.eventHandler.SetSelectedGameObject(firstActive.gameObject);
+        //if (firstActive != null) StateManager.instance.eventHandler.SetSelectedGameObject(firstActive.gameObject);
     }
 
     void OnDisable()
@@ -47,6 +47,6 @@ public class Screen : MonoBehaviour
 
     public void SwitchScreens(GameObject to)
     {
-        ScreenManager.instance.SwitchScreens(gameObject, to);
+        //ScreenManager.instance.SwitchScreens(gameObject, to);
     }
 }

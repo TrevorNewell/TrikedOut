@@ -69,19 +69,19 @@ public class StateManager : MonoBehaviour
 
             if (theState == State.PressStart)
             {
-                currentScreen = ScreenType.Start;
+                //currentScreen = ScreenType.Start;
                 DeactivateAll();
                 if (pressStartMenu != null) pressStartMenu.SetActive(true);
             }
             else if (theState == State.MainMenu)
             {
-                currentScreen = ScreenType.MainMenu;
+                //currentScreen = ScreenType.MainMenu;
                 DeactivateAll();
                 if (mainMenu != null) mainMenu.SetActive(true);
             }
             else if (theState == State.InGame)
             {
-                currentScreen = ScreenType.HUD;
+                //currentScreen = ScreenType.HUD;
                 DeactivateAll();
 
                 if (HUDs.Length > 0)
@@ -153,43 +153,52 @@ public class StateManager : MonoBehaviour
             screens[i] = screenTemp[i].gameObject;
         }
 
+        foreach(Screen s in screenTemp)
+        {
+            if (s.screenType == ScreenType.Start) pressStartMenu = s.gameObject;
+            else if (s.screenType == ScreenType.MainMenu) mainMenu = s.gameObject;
+            else if (s.screenType == ScreenType.Options) optionsMenu = s.gameObject;
+            else if (s.screenType == ScreenType.CharacterSelection) characterMenu = s.gameObject;
+            else if (s.screenType == ScreenType.TrackSelection) trackMenu = s.gameObject;
+            else if (s.screenType == ScreenType.Credits) creditScreen = s.gameObject;
+        }
+
         if (SceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
         {
-            Debug.Log("At the Main Menu");
             TheState = State.PressStart;
 
-            foreach (GameObject g in screens)
-            {
-                if (g.name.CompareTo("PressStart") == 0)
-                {
-                    pressStartMenu = g;
-                    g.SetActive(true);
-                }
-                else if (g.name.CompareTo("MainMenu") == 0)
-                {
-                    mainMenu = g;
-                    g.SetActive(false);
-                }
-                else if (g.name.CompareTo("OptionsMenu") == 0)
-                {
-                    optionsMenu = g;
-                    g.SetActive(false);
-                }
-                else if (g.name.CompareTo("CharacterSelection") == 0)
-                {
-                    characterMenu = g;
-                    g.SetActive(false);
-                }
-                else if (g.name.CompareTo("TrackSelection") == 0)
-                {
-                    trackMenu = g;
-                    g.SetActive(false);
-                }
-                else
-                {
-                    g.SetActive(false);
-                }
-            }
+            //foreach (GameObject g in screens)
+            //{
+            //    if (g.name.CompareTo("PressStart") == 0)
+            //    {
+            //        pressStartMenu = g;
+            //        g.SetActive(true);
+            //    }
+            //    else if (g.name.CompareTo("MainMenu") == 0)
+            //    {
+            //        mainMenu = g;
+            //        g.SetActive(false);
+            //    }
+            //    else if (g.name.CompareTo("OptionsMenu") == 0)
+            //    {
+            //        optionsMenu = g;
+            //        g.SetActive(false);
+            //    }
+            //    else if (g.name.CompareTo("CharacterSelection") == 0)
+            //    {
+            //        characterMenu = g;
+            //        g.SetActive(false);
+            //    }
+            //    else if (g.name.CompareTo("TrackSelection") == 0)
+            //    {
+            //        trackMenu = g;
+            //        g.SetActive(false);
+            //    }
+            //    else
+            //    {
+            //        g.SetActive(false);
+            //    }
+            //}
         }
         else if (SceneManager.GetActiveScene().buildIndex > 2)// This allows us to treat every track the same in terms of the state manager.  Special treatment is given if it's the start screen, main menu, or credits.  Otherwise, this. // .GetActiveScene().name.CompareTo("Track1") == 0)
         {
@@ -200,12 +209,12 @@ public class StateManager : MonoBehaviour
 
             foreach (GameObject g in screens)
             {
-                if (g.name.CompareTo("PauseMenu") == 0)
-                {
-                    pauseMenu = g;
-                    g.SetActive(false);
-                }
-                else if (g.name.CompareTo("HUD") == 0)
+                //if (g.name.CompareTo("PauseMenu") == 0)
+                //{
+                //    pauseMenu = g;
+                //    g.SetActive(false);
+                //}
+                if (g.name.CompareTo("HUD") == 0)
                 {
                     temp[count] = g;
                     count++;
@@ -213,16 +222,16 @@ public class StateManager : MonoBehaviour
                     g.SetActive(false);
                    
                 }
-                else if (g.name.CompareTo("OptionsMenu") == 0)
-                {
-                    optionsMenu = g;
-                    g.SetActive(false);
+                //else if (g.name.CompareTo("OptionsMenu") == 0)
+                //{
+                //    optionsMenu = g;
+                //    g.SetActive(false);
 
-                }
-                else
-                {
-                    g.SetActive(false);
-                }
+                //}
+                //else
+                //{
+                //    g.SetActive(false);
+                //}
             }
 
             HUDs = temp;
@@ -233,20 +242,7 @@ public class StateManager : MonoBehaviour
         {
             Debug.Log("Credit Scene");
             //TheState = State.Credits;
-
-            foreach (GameObject g in screens)
-            {
-                if (g.name.CompareTo("CreditScreen") == 0)
-                {
-                    creditScreen = g;
-                    g.SetActive(true);
-                    g.GetComponent<Scroll>().StartScroll();
-                }
-                else
-                {
-                    g.SetActive(false);
-                }
-            }
+            creditScreen.GetComponent<Scroll>().StartScroll();
         }
 
 
@@ -316,7 +312,7 @@ public class StateManager : MonoBehaviour
     {
         if (playerID == playerWithControl)
         {
-            currentScreen = ScreenType.Options;
+            //currentScreen = ScreenType.Options;
             DeactivateAll();
             optionsMenu.SetActive(true);
         }
@@ -326,7 +322,7 @@ public class StateManager : MonoBehaviour
     {
         if (playerID == playerWithControl)
         {
-            currentScreen = ScreenType.CharacterSelection;
+            //currentScreen = ScreenType.CharacterSelection;
             DeactivateAll();
             characterMenu.SetActive(true);
         }
@@ -336,7 +332,7 @@ public class StateManager : MonoBehaviour
     {
         if (playerID == playerWithControl)
         {
-            currentScreen = ScreenType.TrackSelection;
+            //currentScreen = ScreenType.TrackSelection;
             DeactivateAll();
             trackMenu.SetActive(true);
         }
