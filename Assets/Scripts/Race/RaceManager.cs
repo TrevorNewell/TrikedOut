@@ -62,7 +62,7 @@ public class RaceManager : MonoBehaviour
     // Returns the ID for the "player" game 
     public int GetID()
     {
-        return player.GetComponent<Character>().GetID();
+        return int.Parse(player.name.Substring(1));//player.GetComponent<Character>().GetID();
     }
 
 	// Use this for initialization
@@ -108,7 +108,7 @@ public class RaceManager : MonoBehaviour
         }
 
         numCheckpoints = checkpoints.Length;
-        print(numCheckpoints + " " + GetID());
+        Debug.Log(numCheckpoints + " " + GetID());
 
 	    if (numLaps == 0)
         {
@@ -149,7 +149,7 @@ public class RaceManager : MonoBehaviour
 
     public void UpdatePassed(int pNum)
     {
-        int id = player.GetComponent<Character>().GetID();
+        int id = int.Parse(player.name.Substring(1));
         if (pNum != id)
             return;
         pm.UpdatePassed(pNum);
@@ -160,7 +160,8 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     public bool CheckForLap(int pNum)
     {
-        int id = player.GetComponent<Character>().GetID();
+        //int id = player.GetComponent<Character>().GetID();
+        int id = int.Parse(player.name.Substring(1));
         if (pNum != id)
             return false;
         // If we have only passed the last checkpoint, it means the race is just starting and we need to reset the variables for the end checkpoint.
@@ -222,7 +223,7 @@ public class RaceManager : MonoBehaviour
                 UpdateText();
                 // This is temp for now, just disable input to player for now.  We'll call a different method to do other stuff like stop the player while others finish, or if a solo race we'll show stats for the player.
                 player.GetComponent<InputHandler>().enabled = false;
-                player.GetComponent<Move>().SlowCharacter();
+                //player.GetComponent<Move>().SlowCharacter();
             }
 
             foreach (Checkpoint c in checkpoints)

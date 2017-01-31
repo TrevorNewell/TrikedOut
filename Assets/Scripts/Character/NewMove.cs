@@ -10,7 +10,9 @@ public class NewMove : MonoBehaviour
     public float powerFalloffRate = 0.1f; //How much power you lost each second after your initial max power period
     public float minimumPowerLevel = 0.1f; //The least amount of power a pedal can be worth
     public float slowFactor = 0.08f; //How much you slow by if you stop pedalling
-    public float maxSpeed = 1f; //Percentage from 0 to 1 of controllers max speed. Greater than 1 will inflate the controller's max speed and is not recommended
+    public float maxSpeed = 1f; //Percentage from 0 to 1 of controllers max speed. Greater than 1 will inflate the controller's max speed and is not recommended. Used for rubber banding.
+    public float maxSpeedChangeFactor = 0.1f; //How fast the max speed changes when rubber banding.
+    public float targetMaxSpeed = 1f; //The max speed we are aiming for. Used in rubber banding.
     public float maxPowerPedalsToFull = 20f; //The number of max power pedals needed to reach full speed.
     public float timeUntilSlow = 1f; //How long you can coast before losing speed at any point
     public float timeUntilSlowFullSpeed = 5f; //How long you can coast before losing speed at max speed
@@ -20,10 +22,13 @@ public class NewMove : MonoBehaviour
     private RigidbodyFirstPersonController rbfpc; //The controller
     private float currentPowerLevel = 1f; //Power level is percentile 0 to 1
     private float currentSpeed = 0f; //Speed is percentile 0 to 1
+    private float originalMaxSpeed = 1f; //The original value of maxSpeed. Used in rubber banding.
     private float turnFactor = 0f; //Which direction and how hard we are turning
     private bool lastPedalLeft = false; //Was the last pedal used the left pedal
     private float timeSinceLastPedal = 0f; //How long ago was the last pedal
     private bool braking = false; //Should we start slowing down
+    private float boostFactor = 1f; //If we are boosting, what is the increase
+    private float boostDuration = 0f; //How long are we boosting for
 
     public void SetFactors(bool leftPedal, bool rightPedal)
     {
@@ -45,6 +50,12 @@ public class NewMove : MonoBehaviour
                 currentPowerLevel = 1f;
             }
         }
+    }
+
+    public void SetBoost(float factor, float duration)
+    {
+        boostFactor = factor;
+        boostDuration = duration;
     }
 
     //clamps a value v to c if v is greater than c
@@ -80,6 +91,7 @@ public class NewMove : MonoBehaviour
     void Start ()
     {
         rbfpc = GetComponent<RigidbodyFirstPersonController>();
+        originalMaxSpeed = maxSpeed;
     }
 
     void Update()
@@ -105,7 +117,29 @@ public class NewMove : MonoBehaviour
             SlowDown();
         }
 
+        if (maxSpeed > targetMaxSpeed)
+        {
+            maxSpeed -= maxSpeedChangeFactor * Time.deltaTime;
+            ClampLessThan(ref maxSpeed, targetMaxSpeed);
+        }
+        else if (maxSpeed < targetMaxSpeed)
+        {
+            maxSpeed += maxSpeedChangeFactor * Time.deltaTime;
+            ClampGreaterThan(ref maxSpeed, targetMaxSpeed);
+        }
+
+        ClampGreaterThan(ref currentSpeed, maxSpeed);
+
+        if (boostDuration > 0)
+        {
+            boostDuration -= Time.deltaTime;
+            if (boostDuration <= 0)
+            {
+                boostFactor = 1f;
+            }
+        }
+
         //tell the rbfpc our speed
-        rbfpc.percentOfMaxSpeed = currentSpeed;
+        rbfpc.percentOfMaxSpeed = currentSpeed * boostFactor;
     }
 }

@@ -33,16 +33,16 @@ public class RaceSetup : MonoBehaviour
 
         for (int i = 0; i < players.Length; i++)
         {
-            int j = players[i].GetComponent<Character>().GetID();
+            int j = int.Parse(players[i].name.Substring(1));// GetComponent<Character>().GetID();
             if (j <= playerCount)
             {
-                Vector2 refRes = GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution;
-                refRes.x /= rectSize.x;
-                refRes.y /= rectSize.y;
-                GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes;
-                GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes;
-                GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
-                GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
+                //Vector2 refRes = GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution;
+                //refRes.x /= rectSize.x;
+                //refRes.y /= rectSize.y;
+                //GameObject.Find("InGameMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes;
+                //GameObject.Find("OptionsMenuP" + j.ToString()).GetComponent<CanvasScaler>().referenceResolution = refRes;
+                //GameObject.Find("InGameMenuP" + j.ToString()).SetActive(false);
+                //GameObject.Find("OptionsMenuP" + j.ToString()).SetActive(false);
                 Vector3 scale = GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale;
                 scale.x *= rectSize.x;
                 scale.y = scale.x;

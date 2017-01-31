@@ -3,17 +3,25 @@ using System.Collections.Generic;
 
 public class PlaceManager : MonoBehaviour
 {
-    Checkpoint[] checkpoints;
-    GameObject[] players;
-    int[] passed;
-    int[] places;
-    int playerCount;
+    public float[] speedPercentages = new float[] { 0.85f, 0.95f, 1.05f, 1.15f };
 
-	// Use this for initialization
-	void Start ()
+    private Checkpoint[] checkpoints;
+    private GameObject[] players;
+    private int[] passed;
+    private int[] places;
+    private int playerCount;
+
+    // Use this for initialization
+    void Start()
     {
         checkpoints = gameObject.GetComponentsInChildren<Checkpoint>();
         playerCount = -1;
+
+        /*AudioListener[] myListeners = FindObjectsOfType<AudioListener>() as AudioListener[];
+        foreach (AudioListener a in myListeners)
+        {
+            Debug.Log("Found:  " + a.gameObject);
+        }*/
     }
 
     public void UpdatePassed(int id)
@@ -106,6 +114,12 @@ public class PlaceManager : MonoBehaviour
         }
 
         places = tempPlaces;
+
+        for (int i = 0; i < playerCount; i++)
+        {
+            int p = places[i];
+            players[p].GetComponent<NewMove>().targetMaxSpeed = speedPercentages[i];
+        }
 
         /*places = new LinkedList<int>();
         bool[] placed = new bool[playerCount];
