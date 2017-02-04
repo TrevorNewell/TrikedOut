@@ -1,9 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MarshmallowRot : MonoBehaviour {
+public class MarshmallowRot : MonoBehaviour
+{
     private float rotSpeed;
     private Vector3 rands;
+    private bool stopped;
+
+    public void StartRot()
+    {
+        stopped = false;
+    }
+
+    public void Stop()
+    {
+        stopped = true;
+    }
 
 	// Use this for initialization
 	void Start ()
@@ -18,6 +30,7 @@ public class MarshmallowRot : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (stopped) return;
         //transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x + rands.x * Time.deltaTime,
         //transform.rotation.eulerAngles.y + rands.y * Time.deltaTime,
         //transform.rotation.eulerAngles.z + rands.z * Time.deltaTime);

@@ -100,11 +100,13 @@
     <Compile Include="Assets\Scripts\Character\FollowGround.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Bat\Bat.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Character\Items\Jack\Jack.cs" />
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\Marshmallow.cs" />
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\MarshmallowGun.cs" />
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\MarshmallowRot.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Weapon.cs" />
     <Compile Include="Assets\Scripts\Character\Items\WeaponHandler.cs" />
+    <Compile Include="Assets\Scripts\Character\ModelController.cs" />
     <Compile Include="Assets\Scripts\Character\Move.cs" />
     <Compile Include="Assets\Scripts\Character\NewMove.cs" />
     <Compile Include="Assets\Scripts\Character\Player\InputHandler.cs" />
