@@ -25,6 +25,8 @@ public class Bat : MonoBehaviour, Item
     private Vector3 ogPosition;
     private Quaternion ogRotation;
 
+    private GameObject[] playersInRange;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +37,7 @@ public class Bat : MonoBehaviour, Item
         ogPosition = transform.localPosition;
         ogRotation = transform.localRotation;
         batModel.SetActive(false);
+        playersInRange = new GameObject[4];
     }
 
     public bool Swinging()
@@ -59,6 +62,7 @@ public class Bat : MonoBehaviour, Item
         if (batDuration <= 0)
         {
             hasBat = false;
+            if (!swinging) Deactivate();
         }
 
         if (swinging)
@@ -72,14 +76,15 @@ public class Bat : MonoBehaviour, Item
                 if (currentAngle >= maxSwingAngle)
                 {
                     backswing = true;
-                    int[] trikesAhead = placeManager.GetTrikesAhead(myPlayerID);
-                    if(trikesAhead != null)
+                    for (int i = 0; i < 4; i++)
                     {
-                        foreach (int i in trikesAhead)
+                        if (playersInRange[i] != null)
                         {
-                            //DO SOMETHING TO THE OTHER PLAYERS
-                            //GameObject.Find("P" + i.ToString()).GetComponentInChildren<ArcadeTrikeController>().Pop(slowFactor);
+                            playersInRange[i].GetComponent<ModelController>().SpinOut(5);
+                            playersInRange[i].GetComponent<NewMove>().SetBoost(0f, 2f, 0f);
                         }
+                        //DO SOMETHING TO THE OTHER PLAYERS
+                        //GameObject.Find("P" + i.ToString()).GetComponentInChildren<ArcadeTrikeController>().Pop(slowFactor);
                     }
                 }
             }
@@ -94,13 +99,13 @@ public class Bat : MonoBehaviour, Item
             }
             Vector3 newRot = new Vector3(startRot.x + currentAngle, startRot.y, startRot.z);
 
-            transform.localRotation = Quaternion.Euler(newRot);
+            batModel.transform.localRotation = Quaternion.Euler(newRot);
         }
     }
 
     public void Activate()
     {
-        if (!hasBat) return;
+        if (!hasBat || swinging) return;
         batModel.SetActive(true);
         swinging = true;
         backswing = false;
@@ -113,6 +118,7 @@ public class Bat : MonoBehaviour, Item
     public void Deactivate()
     {
         //Destroy(gameObject);
+        swinging = false;
         if(!hasBat) batModel.SetActive(false);
     }
 
@@ -125,5 +131,21 @@ public class Bat : MonoBehaviour, Item
     public void SetPlayerID(int id)
     {
         myPlayerID = id;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playersInRange[int.Parse(other.name.Substring(1)) - 1] = other.gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            playersInRange[int.Parse(other.name.Substring(1)) - 1] = null;
+        }
     }
 }

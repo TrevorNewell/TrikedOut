@@ -134,12 +134,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
 
-            /*if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
+            /*if (Input.GetKeyDown(KeyCode.Space) && !m_Jump)
             {
                 m_Jump = true;
             }*/
         }
-
 
         private void FixedUpdate()
         {
