@@ -5,7 +5,7 @@ using System;
 public class Marshmallow : MonoBehaviour
 {
     public float speed;
-    public float slow;
+    public float slowFactor;
     public float timeTilSticky;
     public float lifeSpan;
     public float stickyLifespanGround;
@@ -13,7 +13,6 @@ public class Marshmallow : MonoBehaviour
     public float launchAngleFactorMin;
     public float launchAngleFactorMax;
     public float gravity;
-    public float hitCharge;
     public float myPlayerID;
     public MarshmallowGun myGun;
 
@@ -30,8 +29,6 @@ public class Marshmallow : MonoBehaviour
     private float currentTime;
     private float upSpeed;
 
-    private List<ArcadeTrikeController> slowedTrikes;
-
     public void SetForward(Vector3 v)
     {
         transform.rotation = Quaternion.Euler(v.x, v.y, 0);
@@ -45,8 +42,7 @@ public class Marshmallow : MonoBehaviour
         zFactor = Mathf.Cos(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * speed;
 
         xFactor -= upSpeed * Mathf.Sin(transform.rotation.eulerAngles.x * Mathf.Deg2Rad);
-
-        slowedTrikes = new List<ArcadeTrikeController>();
+        
         stuck = false;
 
         currentTime = 0f;
@@ -66,14 +62,14 @@ public class Marshmallow : MonoBehaviour
 
     void DestroyMarshmallow()
     {
-        foreach (ArcadeTrikeController atc in slowedTrikes)
+        /*foreach (ArcadeTrikeController atc in slowedTrikes)
         {
             if (atc.slowed)
             {
                 atc.slowed = false;
                 atc.slowFactor -= slow;
             }
-        }
+        }*/
 
         Destroy(gameObject);
     }
@@ -82,18 +78,13 @@ public class Marshmallow : MonoBehaviour
     {
         if (c.CompareTag("Player") && !stuck && currentTime > timeTilSticky)
         {
+            print("WHAT");
+            if (int.Parse(c.name.Substring(1)) == myPlayerID) return;
             //slow
-            ArcadeTrikeController atc = c.GetComponentInChildren<ArcadeTrikeController>();
-            if (!atc.slowed)
-            {
-                stuck = true;
-                atc.slowed = true;
-                atc.slowFactor += slow;
-                slowedTrikes.Add(atc);
-                lifeSpan = stickyLifespanPlayer;
-                transform.parent = c.gameObject.transform;
-                if(c.GetComponent<Player>().GetID() != myPlayerID) myGun.SendCharge(hitCharge);
-            }
+            c.GetComponent<NewMove>().SetBoost(slowFactor, stickyLifespanPlayer, 0.8f);
+            stuck = true;
+            lifeSpan = stickyLifespanPlayer;
+            transform.parent = c.gameObject.transform;
         }
         if (c.CompareTag("Terrain") && !stuck)
         {

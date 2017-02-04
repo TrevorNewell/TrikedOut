@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
      * The Move class will not move the player until the Update function is called, which the Player will do
      **/
     private GameObject weapon;
+    private GameObject ulti;
     private NewMove move;
     private string prefix;
     private bool useController = true;
@@ -29,8 +30,9 @@ public class InputHandler : MonoBehaviour
     {
         if (move == null)
         {
-            move = gameObject.GetComponent<NewMove>();
             prefix = name;//player.prefix;
+            ulti = GameObject.Find(prefix + "_Ulti");
+            move = gameObject.GetComponent<NewMove>();
             weapon = GameObject.Find(prefix + "_Weapon");
             currentTime = 0f;
         }
@@ -52,7 +54,7 @@ public class InputHandler : MonoBehaviour
         move.SetFactors(leftPedal, rightPedal);
         if (fire) FireWeapon();
         else if (ceaseFire) CeaseFire();
-        //if (activateUlti) player.ActivateUlti();
+        if (activateUlti) ActivateUlti();
     }
 
     void FireWeapon()
@@ -66,5 +68,11 @@ public class InputHandler : MonoBehaviour
     void CeaseFire()
     {
         weapon.GetComponent<Item>().Deactivate();
+    }
+
+    void ActivateUlti()
+    {
+        //ulti.SetActive(true);
+        ulti.GetComponent<Item>().Activate();
     }
 }

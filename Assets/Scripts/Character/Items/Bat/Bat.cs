@@ -9,7 +9,10 @@ public class Bat : MonoBehaviour, Item
     public float hopHeight;
     public float maxSwingAngle;
     public float slowFactor;
+    public GameObject batModel;
 
+    private bool hasBat = true;
+    private float batDuration = 10;
     private bool swinging;
     private bool backswing;
     private bool endSwing;
@@ -19,6 +22,9 @@ public class Bat : MonoBehaviour, Item
     private PlaceManager placeManager;
     private int myPlayerID;
 
+    private Vector3 ogPosition;
+    private Quaternion ogRotation;
+
     // Use this for initialization
     void Start()
     {
@@ -26,6 +32,9 @@ public class Bat : MonoBehaviour, Item
         backswing = false;
         endSwing = false;
         anglesPerSecond = maxSwingAngle / swingDuration;
+        ogPosition = transform.localPosition;
+        ogRotation = transform.localRotation;
+        batModel.SetActive(false);
     }
 
     public bool Swinging()
@@ -33,9 +42,25 @@ public class Bat : MonoBehaviour, Item
         return swinging;
     }
 
+    public void GiveBat(float bd)
+    {
+        hasBat = true;
+        batDuration = bd;
+        batModel.SetActive(true);
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
+        if (batDuration > 0)
+        {
+            batDuration -= Time.deltaTime;
+        }
+        if (batDuration <= 0)
+        {
+            hasBat = false;
+        }
+
         if (swinging)
         {
             //this code should be replaced by an animation
@@ -52,16 +77,18 @@ public class Bat : MonoBehaviour, Item
                     {
                         foreach (int i in trikesAhead)
                         {
-                            GameObject.Find("P" + i.ToString()).GetComponentInChildren<ArcadeTrikeController>().Pop(slowFactor);
+                            //DO SOMETHING TO THE OTHER PLAYERS
+                            //GameObject.Find("P" + i.ToString()).GetComponentInChildren<ArcadeTrikeController>().Pop(slowFactor);
                         }
                     }
                 }
             }
             else
             {
-                currentAngle = currentAngle - anglesPerSecond * Time.deltaTime;
-                if (currentAngle < 0)
+                if(currentAngle > 0) currentAngle = currentAngle - anglesPerSecond * Time.deltaTime;
+                if (currentAngle <= 0)
                 {
+                    currentAngle = 0;
                     Deactivate();
                 }
             }
@@ -73,22 +100,26 @@ public class Bat : MonoBehaviour, Item
 
     public void Activate()
     {
+        if (!hasBat) return;
+        batModel.SetActive(true);
         swinging = true;
         backswing = false;
         endSwing = false;
         currentAngle = 0;
         placeManager = GameObject.Find("Race Manager").GetComponent<PlaceManager>();
+        SetDefaultScale();
     }
 
     public void Deactivate()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        if(!hasBat) batModel.SetActive(false);
     }
 
     public void SetDefaultScale()
     {
-        transform.localScale = new Vector3(100f, 100f, 100f);
-        transform.localPosition = new Vector3(6.2f, 12.3f, 0f);
+        transform.localRotation = ogRotation;//new Vector3(100f, 100f, 100f);
+        transform.localPosition = ogPosition;//new Vector3(1.3f, 0.4f, 0.09f);
     }
 
     public void SetPlayerID(int id)

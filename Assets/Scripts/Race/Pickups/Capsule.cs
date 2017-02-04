@@ -6,7 +6,9 @@ public class Capsule : MonoBehaviour
 {
     public GameObject bat;
     public GameObject boost;
+
     public float chanceForBat = 0.5f;
+    public float batDuration = 5f;
 
     public float boostFactor = 5f;
     public float boostDuration = 3f;
@@ -49,7 +51,8 @@ public class Capsule : MonoBehaviour
             {
                 if (isBat)
                 {
-
+                    GameObject.Find(other.name + "_Ulti").GetComponent<Bat>().GiveBat(batDuration);
+                    Destroy(gameObject);
                 }
                 else
                 {

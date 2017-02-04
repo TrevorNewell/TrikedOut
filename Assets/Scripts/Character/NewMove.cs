@@ -29,7 +29,7 @@ public class NewMove : MonoBehaviour
     private bool braking = false; //Should we start slowing down
     private float boostFactor = 1f; //If we are boosting, what is the increase
     private float boostDuration = 0f; //How long are we boosting for
-    private float originalSensitivity;
+    private float originalSensitivity; //The original X axis we start at
 
     public void SetFactors(bool leftPedal, bool rightPedal)
     {
