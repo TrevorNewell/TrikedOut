@@ -11,8 +11,8 @@ public class Bat : MonoBehaviour, Item
     public float slowFactor;
     public GameObject batModel;
 
-    private bool hasBat = true;
-    private float batDuration = 10;
+    private bool hasBat;
+    private float batDuration;
     private bool swinging;
     private bool backswing;
     private bool endSwing;

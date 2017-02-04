@@ -16,12 +16,6 @@ public class ModelController : MonoBehaviour
         currentRotations = 0;
         spinOutRotations = rots;
     }
-
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
 	
 	// Update is called once per frame
 	void Update ()

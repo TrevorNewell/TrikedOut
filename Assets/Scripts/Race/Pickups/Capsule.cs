@@ -6,8 +6,12 @@ public class Capsule : MonoBehaviour
 {
     public GameObject bat;
     public GameObject boost;
+    public GameObject jackSprite;
+
+    public GameObject jackObject;
 
     public float chanceForBat = 0.5f;
+    public float chanceForJack = 0.2f;
     public float batDuration = 5f;
 
     public float boostFactor = 5f;
@@ -15,6 +19,7 @@ public class Capsule : MonoBehaviour
     public float boostSensitivity = 2.5f;
 
     private bool isBat = true;
+    private bool isJack = false;
     private int playerID = 0;
 
     //P1 is 10
@@ -36,6 +41,12 @@ public class Capsule : MonoBehaviour
         {
             bat.SetActive(true);
         }
+        else if (Random.Range(0f, 1f) < chanceForJack)
+        {
+            //jackSprite.SetActive(true);
+            isBat = false;
+            isJack = true;
+        }
         else
         {
             boost.SetActive(true);
@@ -52,6 +63,13 @@ public class Capsule : MonoBehaviour
                 if (isBat)
                 {
                     GameObject.Find(other.name + "_Ulti").GetComponent<Bat>().GiveBat(batDuration);
+                    Destroy(gameObject);
+                }
+                else if (isJack)
+                {
+                    GameObject jack = Instantiate(jackObject);
+                    jack.transform.position = transform.position;
+                    jack.GetComponent<Jack>().AddForwardForce(other.transform.forward, 1000f);
                     Destroy(gameObject);
                 }
                 else
