@@ -53,7 +53,6 @@ public class FollowGround : MonoBehaviour
                 {
                     cosineDegrees = cosineDegrees - 180f;
                     move.UpHill();
-                    print("UPHILL");
                 }
             }
             //Otherwise we need a positive angle
@@ -62,12 +61,10 @@ public class FollowGround : MonoBehaviour
                 if (goingDown)
                 {
                     move.DownHill();
-                    print("DOWNHILL");
                 }
                 else
                 {
                     move.Flat();
-                    print("FLAT");
                 }
                 //if((goingUp && hitForward.distance >= hitBack.distance) || !goingUp)
                 cosineDegrees = 180f - cosineDegrees;
