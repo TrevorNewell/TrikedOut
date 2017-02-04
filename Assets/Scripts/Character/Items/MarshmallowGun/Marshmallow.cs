@@ -78,7 +78,6 @@ public class Marshmallow : MonoBehaviour
     {
         if (c.CompareTag("Player") && !stuck && currentTime > timeTilSticky)
         {
-            print("WHAT");
             if (int.Parse(c.name.Substring(1)) == myPlayerID) return;
             //slow
             c.GetComponent<NewMove>().SetBoost(slowFactor, stickyLifespanPlayer, 0.8f);
