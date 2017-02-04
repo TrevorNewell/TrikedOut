@@ -10,14 +10,22 @@ public class NewMove : MonoBehaviour
     public float powerFalloffRate = 0.1f; //How much power you lost each second after your initial max power period
     public float minimumPowerLevel = 0.1f; //The least amount of power a pedal can be worth
     public float slowFactor = 0.08f; //How much you slow by if you stop pedalling
+    public float downHillSlowFactor = 0f; //How much you slow by going downhill
+    public float upHillSlowFactor = 0.2f; //How much you slow by going uphill
     public float maxSpeed = 1f; //Percentage from 0 to 1 of controllers max speed. Greater than 1 will inflate the controller's max speed and is not recommended. Used for rubber banding.
     public float maxSpeedChangeFactor = 0.1f; //How fast the max speed changes when rubber banding.
     public float targetMaxSpeed = 1f; //The max speed we are aiming for. Used in rubber banding.
     public float maxPowerPedalsToFull = 20f; //The number of max power pedals needed to reach full speed.
     public float timeUntilSlow = 1f; //How long you can coast before losing speed at any point
+    public float upHillTimeUntilSlow = 0f; //How long you can coast uphill before losing speed at any point
     public float timeUntilSlowFullSpeed = 5f; //How long you can coast before losing speed at max speed
+    public float upHillTimeUntilSlowFullSpeed = 0f; //How long you can coast uphill before losing speed at max speed
     public float brakeSpeed = 0.5f; //How fast you break, also how fast you accelerate when going backwards
     public float maxReverseSpeed = -0.3f; //How fast can we go backwards;
+
+    private float usedSlowTime;
+    private float usedSlowTimeFullSpeed;
+    private float usedSlowFactor;
 
     private RigidbodyFirstPersonController rbfpc; //The controller
     private float currentPowerLevel = 1f; //Power level is percentile 0 to 1
@@ -60,6 +68,27 @@ public class NewMove : MonoBehaviour
         rbfpc.mouseLook.XSensitivity = sensitivity;
     }
 
+    public void UpHill()
+    {
+        usedSlowTime = upHillTimeUntilSlow;
+        usedSlowTimeFullSpeed = upHillTimeUntilSlowFullSpeed;
+        usedSlowFactor = upHillSlowFactor;
+    }
+
+    public void DownHill()
+    {
+        usedSlowTime = timeUntilSlow;
+        usedSlowTimeFullSpeed = timeUntilSlowFullSpeed;
+        usedSlowFactor = downHillSlowFactor;
+    }
+
+    public void Flat()
+    {
+        usedSlowTime = timeUntilSlow;
+        usedSlowTimeFullSpeed = timeUntilSlowFullSpeed;
+        usedSlowFactor = slowFactor;
+    }
+
     //clamps a value v to c if v is greater than c
     void ClampGreaterThan(ref float v, float c)
     {
@@ -73,7 +102,7 @@ public class NewMove : MonoBehaviour
 
     void SlowDown()
     {
-        currentSpeed -= slowFactor * Time.deltaTime;
+        currentSpeed -= usedSlowFactor * Time.deltaTime;
         ClampLessThan(ref currentSpeed, 0f);
     }
 
@@ -95,6 +124,7 @@ public class NewMove : MonoBehaviour
         rbfpc = GetComponent<RigidbodyFirstPersonController>();
         originalMaxSpeed = maxSpeed;
         originalSensitivity = rbfpc.mouseLook.XSensitivity;
+        Flat();
     }
 
     void Update()
@@ -113,8 +143,8 @@ public class NewMove : MonoBehaviour
             //brake
             Brake();
         }
-        else if ((timeSinceLastPedal > timeUntilSlow && currentSpeed < 1.0f) ||
-                 (timeSinceLastPedal > timeUntilSlowFullSpeed && currentSpeed >= 1.0))
+        else if ((timeSinceLastPedal > usedSlowTime && currentSpeed < maxSpeed) ||
+                 (timeSinceLastPedal > usedSlowTimeFullSpeed && currentSpeed >= maxSpeed))
         {
             //start slowing down
             SlowDown();

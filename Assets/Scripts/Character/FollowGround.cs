@@ -7,8 +7,18 @@ public class FollowGround : MonoBehaviour
     public float lerpFactor = 0.2f;
     public float maxSlopeAllowed = 20f;
     public GameObject castPoint;
-	// Use this for initialization
-	
+
+    private int layerMask;
+    private NewMove move;
+
+    // Use this for initialization
+    void Start()
+    {
+        layerMask = 1 << LayerMask.NameToLayer("Terrain");
+        //layerMask = ~layerMask;
+        move = GetComponentInParent<NewMove>();
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -26,12 +36,12 @@ public class FollowGround : MonoBehaviour
             //It would be good to give the road a different layer/tag and only check for hits on that layer/tag.
             RaycastHit hitForward;
             Vector3 dirF = castPoint.transform.TransformDirection(Vector3.forward);
-            bool goingUp = Physics.Raycast(castPoint.transform.position, dirF, out hitForward, 10f);
+            bool goingUp = Physics.Raycast(castPoint.transform.position, dirF, out hitForward, 10f, layerMask);
 
             //Do the same thing as before but going backwards. 
             RaycastHit hitBack;
             Vector3 dirB = castPoint.transform.TransformDirection(Vector3.back);
-            bool goingDown = Physics.Raycast(castPoint.transform.position, dirB, out hitBack, 10f);
+            bool goingDown = Physics.Raycast(castPoint.transform.position, dirB, out hitBack, 15f, layerMask);
 
             //If we are going up we need a negative angle, so check to make sure that
             //1) we are going up
@@ -39,14 +49,28 @@ public class FollowGround : MonoBehaviour
             //3) that otherwise we are not going down
             if (goingUp)
             {
-                if((goingDown && hitForward.distance < hitBack.distance) || !goingDown)
+                if ((goingDown && hitForward.distance < hitBack.distance) || !goingDown)
+                {
                     cosineDegrees = cosineDegrees - 180f;
+                    move.UpHill();
+                    print("UPHILL");
+                }
             }
             //Otherwise we need a positive angle
-            else //if (goingDown)
+            else
             {
+                if (goingDown)
+                {
+                    move.DownHill();
+                    print("DOWNHILL");
+                }
+                else
+                {
+                    move.Flat();
+                    print("FLAT");
+                }
                 //if((goingUp && hitForward.distance >= hitBack.distance) || !goingUp)
-                    cosineDegrees = 180f - cosineDegrees;
+                cosineDegrees = 180f - cosineDegrees;
             }
 
             //This is a safety check. Occasionally things can go wrong if random objects interfere with the raycasts or if you are sitting in a particularly tight valley
