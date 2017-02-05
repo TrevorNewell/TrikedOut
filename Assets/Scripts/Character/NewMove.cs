@@ -118,6 +118,16 @@ public class NewMove : MonoBehaviour
         ClampLessThan(ref currentPowerLevel, minimumPowerLevel);
     }
 
+    public bool IsPedalling()
+    {
+        return timeSinceLastPedal < timeUntilPowerFalloff;
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
+
     // Use this for initialization
     void Start ()
     {
