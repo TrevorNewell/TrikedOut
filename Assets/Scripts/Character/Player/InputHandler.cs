@@ -11,6 +11,7 @@ public class InputHandler : MonoBehaviour
      **/
     private GameObject weapon;
     private GameObject ulti;
+    private GameObject minimap;
     private NewMove move;
     private string prefix;
     private bool useController = true;
@@ -25,16 +26,21 @@ public class InputHandler : MonoBehaviour
         ucv = uv;
     }
 
+    private void Start()
+    {
+        minimap = GameObject.Find("MinimapCam");
+        prefix = name;//player.prefix;
+        ulti = GameObject.Find(prefix + "_Ulti");
+        move = gameObject.GetComponent<NewMove>();
+        weapon = GameObject.Find(prefix + "_Weapon");
+        currentTime = 0f;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (move == null)
         {
-            prefix = name;//player.prefix;
-            ulti = GameObject.Find(prefix + "_Ulti");
-            move = gameObject.GetComponent<NewMove>();
-            weapon = GameObject.Find(prefix + "_Weapon");
-            currentTime = 0f;
         }
 
         bool leftPedal;
@@ -43,6 +49,7 @@ public class InputHandler : MonoBehaviour
         bool fire;
         bool ceaseFire;
         bool activateUlti;
+        bool openMinimap;
 
         leftPedal = (Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
         rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
@@ -50,11 +57,13 @@ public class InputHandler : MonoBehaviour
         fire = Input.GetButtonDown(prefix + "_A");
         ceaseFire = Input.GetButtonUp(prefix + "_A");
         activateUlti = Input.GetButtonDown(prefix + "_Y");
+        openMinimap = Input.GetButtonDown(prefix + "_B");
 
         move.SetFactors(leftPedal, rightPedal);
         if (fire) FireWeapon();
         else if (ceaseFire) CeaseFire();
         if (activateUlti) ActivateUlti();
+        if (openMinimap) minimap.SetActive(!minimap.activeInHierarchy);
     }
 
     void FireWeapon()

@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\Character\Items\MarshmallowGun\MarshmallowRot.cs" />
     <Compile Include="Assets\Scripts\Character\Items\Weapon.cs" />
     <Compile Include="Assets\Scripts\Character\Items\WeaponHandler.cs" />
+    <Compile Include="Assets\Scripts\Character\MinimapIconRot.cs" />
     <Compile Include="Assets\Scripts\Character\ModelController.cs" />
     <Compile Include="Assets\Scripts\Character\Move.cs" />
     <Compile Include="Assets\Scripts\Character\NewMove.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Assets\Scripts\Race\RaceSetup.cs" />
     <Compile Include="Assets\Scripts\Screen\ButtonSelect.cs" />
     <Compile Include="Assets\Scripts\Screen\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Screen\DisableOnUpdate.cs" />
     <Compile Include="Assets\Scripts\Screen\EnableDisableOnHighlight.cs" />
     <Compile Include="Assets\Scripts\Screen\Screen.cs" />
     <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
