@@ -28,5 +28,7 @@ public class CharacterSelector : MonoBehaviour
         character.transform.localPosition = new Vector3(0f, modelOffset, 0f);
         weapon.transform.parent = character.transform;
         GetComponent<ModelController>().model = character;
+
+
 	}
 }

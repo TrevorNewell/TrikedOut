@@ -71,13 +71,13 @@ public class StateManager : MonoBehaviour
             {
                 //currentScreen = ScreenType.Start;
                 DeactivateAll();
-                if (pressStartMenu != null) pressStartMenu.SetActive(true);
+                if (pressStartMenu != null) GetComponent<ScreenManager>().OpenPanel(pressStartMenu.GetComponent<Animator>());  //pressStartMenu.SetActive(true);
             }
             else if (theState == State.MainMenu)
             {
                 //currentScreen = ScreenType.MainMenu;
                 DeactivateAll();
-                if (mainMenu != null) mainMenu.SetActive(true);
+                if (mainMenu != null) GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
             }
             else if (theState == State.InGame)
             {
@@ -283,7 +283,7 @@ public class StateManager : MonoBehaviour
         if (TheState == State.PressStart && Input.anyKey)
         {
             playerWithControl = 1;
-            Enable(1);
+            //Enable(1);
             TheState = State.MainMenu;
         }
 
