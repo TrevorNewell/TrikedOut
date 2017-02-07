@@ -16,7 +16,10 @@ public class Marshmallow : MonoBehaviour
     public float myPlayerID;
     public MarshmallowGun myGun;
 
-    public MarshmallowRot mrot;
+    public GameObject projMallow;
+    public GameObject stuckMallow;
+
+    private MarshmallowRot mrot;
 
     private float xFactor;
     private float yFactor;
@@ -28,6 +31,11 @@ public class Marshmallow : MonoBehaviour
     private bool grounded;
     private float currentTime;
     private float upSpeed;
+
+    void Start()
+    {
+        mrot = projMallow.GetComponent<MarshmallowRot>();
+    }
 
     public void SetForward(Vector3 v)
     {
@@ -93,6 +101,8 @@ public class Marshmallow : MonoBehaviour
             yFactor = 0;
             zFactor = 0;
             lifeSpan = stickyLifespanGround;
+            projMallow.SetActive(false);
+            stuckMallow.SetActive(true);
             //GetComponent<Rigidbody>().velocity = Vector3.zero;
             //GetComponent<Rigidbody>().useGravity = false;
             //GetComponent<Rigidbody>().isKinematic = true;

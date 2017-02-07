@@ -36,7 +36,7 @@ public class Bat : MonoBehaviour, Item
         anglesPerSecond = maxSwingAngle / swingDuration;
         ogPosition = transform.localPosition;
         ogRotation = transform.localRotation;
-        batModel.SetActive(false);
+        //batModel.SetActive(false);
         playersInRange = new GameObject[4];
     }
 

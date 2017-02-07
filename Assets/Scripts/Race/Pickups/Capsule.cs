@@ -7,6 +7,7 @@ public class Capsule : MonoBehaviour
     public GameObject bat;
     public GameObject boost;
     public GameObject jackSprite;
+    public GameObject splat;
 
     public GameObject jackObject;
 
@@ -31,6 +32,7 @@ public class Capsule : MonoBehaviour
         gameObject.layer = l;
         bat.layer = l;
         boost.layer = l;
+        splat.layer = l;
         playerID = l - 9;
     }
 
