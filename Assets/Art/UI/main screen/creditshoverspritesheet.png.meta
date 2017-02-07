@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 0d315296bdbd0424a830676ce1fd9886
-timeCreated: 1486339838
+timeCreated: 1486422887
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: creditshoverspritesheet_0
+    21300002: creditshoverspritesheet_1
+    21300004: creditshoverspritesheet_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +37,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -76,7 +79,46 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: creditshoverspritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 667
+        width: 1392
+        height: 333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: creditshoverspritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 340
+        width: 1392
+        height: 333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: creditshoverspritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 13
+        width: 1392
+        height: 333
+      alignment: 9
+      pivot: {x: 0.50458735, y: 0.5575288}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
