@@ -56,6 +56,8 @@ public class StateManager : MonoBehaviour
     public GameObject[] actualCharSelection; // Will hold our actual characters to choose from for this scene only
     [SerializeField]
     public static GameObject[] GlobalCharSelection; // Holds our actual characters between scenes.  This is set on the CharacterSelection screen in the Main Menu.
+    public int[] indexedCharSelection;
+    public static int[] GlobalIndexedSelection;
     public static int charSelIndex = -1; // -1 until SaveCharacterSelection is called.  I should change this to a bool to avoid confusion, but eh.
 
     public State TheState
@@ -76,7 +78,7 @@ public class StateManager : MonoBehaviour
             else if (theState == State.MainMenu)
             {
                 //currentScreen = ScreenType.MainMenu;
-                DeactivateAll();
+                //DeactivateAll();
                 if (mainMenu != null) GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
             }
             else if (theState == State.InGame)
@@ -245,7 +247,14 @@ public class StateManager : MonoBehaviour
             creditScreen.GetComponent<Scroll>().StartScroll();
         }
 
+        if (charSelIndex == -1)
+        {
+            instance = this;
+        }
+    }
 
+    public void InstantiateDemCharacters(GameObject[] thePlayerObjects)
+    {
         // This will always be -1 unless SaveCharSelections has been called.  And that's only ever called from the main menu, transitioning from the character select screen to the track selection screen.
         if (charSelIndex != -1)
         {
@@ -253,7 +262,12 @@ public class StateManager : MonoBehaviour
             //FindObjectOfType<RaceSetup>().playerCount = numPlayers;
 
             // Just realized, this section below may need to be called after PlayerSetup has done it's thing.  FindObjectsOfType<Player>() only finds "active" game objects.
-            Player[] players = FindObjectsOfType<Player>();
+            //Player[] players = FindObjectsOfType<Player>();
+            Player[] players = new Player[thePlayerObjects.Length];
+            for (int i = 0; i < thePlayerObjects.Length; i++)
+            {
+                players[i] = thePlayerObjects[i].GetComponent<Player>();
+            }
 
             Player playerObject = players[0];
 
@@ -271,6 +285,8 @@ public class StateManager : MonoBehaviour
                 }
 
                 playerObject.theCharacter = GlobalCharSelection[i];
+
+                playerObject.gameObject.GetComponent<CharacterSelector>().CreateCharacter(GlobalIndexedSelection[i]);
             }
         }
 
@@ -320,21 +336,21 @@ public class StateManager : MonoBehaviour
 
     public void CharacterSelection(int playerID)
     {
-        if (playerID == playerWithControl)
+        //if (playerID == playerWithControl)
         {
             //currentScreen = ScreenType.CharacterSelection;
-            DeactivateAll();
-            characterMenu.SetActive(true);
+            //DeactivateAll();
+            GetComponent<ScreenManager>().OpenPanel(characterMenu.GetComponent<Animator>());
         }
     }
 
     public void TrackSelection(int playerID)
     {
-        if (playerID == playerWithControl)
+        //if (playerID == playerWithControl)
         {
             //currentScreen = ScreenType.TrackSelection;
-            DeactivateAll();
-            trackMenu.SetActive(true);
+            //DeactivateAll();
+            GetComponent<ScreenManager>().OpenPanel(trackMenu.GetComponent<Animator>());
         }
     }
 
@@ -442,6 +458,7 @@ public class StateManager : MonoBehaviour
         numPlayers = playerCount;
 
         actualCharSelection = new GameObject[numPlayers];
+        indexedCharSelection = new int[numPlayers];
 
         // Assign the correct "character" to our player based on their selection
         foreach (SelectCharacter c in characters)
@@ -452,6 +469,7 @@ public class StateManager : MonoBehaviour
                 // remedy this by adjusting the prefix of the Player script in the other scene based on which controller player 2 is actually using.
                 print(c.playerNumber + " " + c.currentObject);
                 actualCharSelection[c.playerNumber - 1] = possibleCharSelection[c.currentObject];
+                indexedCharSelection[c.playerNumber - 1] = c.currentObject;
             }
         }
 
@@ -460,6 +478,7 @@ public class StateManager : MonoBehaviour
 
         // Save our players character selections for use in later scenes.
         GlobalCharSelection = actualCharSelection;
+        GlobalIndexedSelection = indexedCharSelection;
 
         Debug.Log("Actual character count: " + playerCount + " Size: " + actualCharSelection.Length);
     }

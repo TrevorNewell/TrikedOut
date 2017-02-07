@@ -7,7 +7,7 @@ public class CharacterSelector : MonoBehaviour
     public GameObject castPoint;
     public GameObject weapon;
     public GameObject ulti;
-    public int characterSelection = 0;
+    //public int characterSelection = 0;
     public GameObject[] characters;
     public GameObject[] projectiles;
     public GameObject[] bats;
@@ -18,11 +18,11 @@ public class CharacterSelector : MonoBehaviour
     void Start()
     {
         //TEMPORARY
-        CreateCharacter();
+        CreateCharacter(0);
     }
 
 	// This method should be called most likely by the race manager when it receives character selections
-	public void CreateCharacter ()
+	public void CreateCharacter (int characterSelection)
     {
         character = Instantiate(characters[characterSelection]);
         character.name = characters[characterSelection].name;

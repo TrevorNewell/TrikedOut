@@ -11,6 +11,8 @@ public class RaceSetup : MonoBehaviour
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
+        //FindObjectOfType<StateManager>().InstantiateDemCharacters(players);
+
         Vector2 rectSize = new Vector2(1.0f, 1.0f);
         bool vert = true;
         if (StateManager.numPlayers != 0) playerCount = StateManager.numPlayers;
@@ -84,5 +86,7 @@ public class RaceSetup : MonoBehaviour
         }
 
         GameObject.Find("CheckPoints").transform.parent = transform;
+
+        //FindObjectOfType<StateManager>().InstantiateDemCharacters();
 	}
 }
