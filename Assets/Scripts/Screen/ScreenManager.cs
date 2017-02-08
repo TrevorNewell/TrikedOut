@@ -66,7 +66,8 @@ public class ScreenManager : MonoBehaviour
 
         //Set an element in the new screen as the new Selected one.
         GameObject go = FindFirstEnabledSelectable(anim.gameObject);
-        SetSelected(go);
+        if (go != null) SetSelected(anim.gameObject.GetComponent<Screen>().firstActive.gameObject);
+        //SetSelected(go);
     }
 
     //Finds the first Selectable element in the providade hierarchy.
