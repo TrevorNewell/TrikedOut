@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class ScreenManager : MonoBehaviour
 {
-
     //Screen to open automatically at the start of the Scene
     public Animator initiallyOpen;
 

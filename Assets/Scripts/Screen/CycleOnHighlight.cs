@@ -19,8 +19,10 @@ public class CycleOnHighlight : MonoBehaviour, ISelectHandler, IDeselectHandler 
     private int currentIndex = 0;
     private int maxIndex;
 
+    private bool isFirst = true;
+
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         theButton = GetComponent<Button>();
 
@@ -67,6 +69,17 @@ public class CycleOnHighlight : MonoBehaviour, ISelectHandler, IDeselectHandler 
     {
         cycle = true;
         Debug.Log("Selected: " + gameObject.name);
+
+        if (isFirst)
+        {
+            isFirst = false;
+
+            if (currentIndex > maxIndex) currentIndex = 0;
+
+            theButton.spriteState = theStates[currentIndex]; //.highlightedSprite = sprites[currentIndex];
+
+            currentIndex++;
+        }
     }
 
     public void OnDeselect(BaseEventData eventData)

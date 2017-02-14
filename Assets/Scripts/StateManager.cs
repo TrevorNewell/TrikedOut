@@ -381,12 +381,35 @@ public class StateManager : MonoBehaviour
     {
         if (TheState == State.Paused && playerWithControl == playerID)
         {
-            if (currentScreen == ScreenType.Options) TheState = State.Paused;
+            if (currentScreen == ScreenType.Options) Options(playerID);
             else if (currentScreen == ScreenType.PauseMenu) Unpause(playerID);
         }
         else if (TheState == State.MainMenu)
         {
-            if (currentScreen == ScreenType.Options || currentScreen == ScreenType.ControllerRegistration || currentScreen == ScreenType.Credits) GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>()); // Not sure if this does what I intend as our state is already MainMenu.
+            if (currentScreen == ScreenType.ControllerRegistration)
+            {
+                if (playerID == 1 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p1)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+                else if (playerID == 2 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p2)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+                else if (playerID == 3 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p3)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+                else if (playerID == 4 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p4)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+            }
+            else if (currentScreen == ScreenType.Options || currentScreen == ScreenType.Credits) GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
             else if (currentScreen == ScreenType.TrackSelection) CharacterSelection();
             else if (currentScreen == ScreenType.CharacterSelection) ControllerRegistration();
         }
