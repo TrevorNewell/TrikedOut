@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ControllerRegistration : MonoBehaviour
 {
+    public float animationPlaybackSpeed = 1.0f;
+
     public bool p1 = false;
     public bool p2 = false;
     public bool p3 = false;
@@ -26,6 +28,11 @@ public class ControllerRegistration : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        p1GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+        p2GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+        p3GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+        p4GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+
         p1GO.GetComponent<Animator>().Play("Take", 0, 1.0f);
         p2GO.GetComponent<Animator>().Play("Take", 0, 1.0f);
         p3GO.GetComponent<Animator>().Play("Take", 0, 1.0f);
