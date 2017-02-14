@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public enum State
 {
+    CompanyLogo,
     SplashScreen,
     PressStart,
     MainMenu,
@@ -26,6 +27,10 @@ public class StateManager : MonoBehaviour
 
     public static int numPlayers;
 
+    public float companyLogoTime = 6.0f;
+    private bool readyToStart;
+    private float companyLogoMult = 1.0f;
+
     public Font ourFont;
 
     private State theState;
@@ -33,12 +38,13 @@ public class StateManager : MonoBehaviour
     [Header("Visible For Debugging")]
     public ScreenType currentScreen;
     public GameObject[] screens;
+    public GameObject companyLogoMenu;
     public GameObject mainMenu;
     public GameObject pressStartMenu;
     public GameObject optionsMenu;
     public GameObject characterMenu;
     public GameObject trackMenu;
-
+    public GameObject controllerRegistrationMenu;
     public GameObject pauseMenu; // Only one pause menu, and we'll display an icon noting which player has control of the pause.
 
     public GameObject[] HUDs; // Multiple HUDs
@@ -60,6 +66,8 @@ public class StateManager : MonoBehaviour
     public static int[] GlobalIndexedSelection;
     public static int charSelIndex = -1; // -1 until SaveCharacterSelection is called.  I should change this to a bool to avoid confusion, but eh.
 
+    private float tempT = 0.0f;
+
     public State TheState
     {
         get { return theState; }
@@ -69,7 +77,13 @@ public class StateManager : MonoBehaviour
 
             Debug.Log("State: " + theState.ToString());
 
-            if (theState == State.PressStart)
+            if (theState == State.CompanyLogo)
+            {
+                //currentScreen = ScreenType.Start;
+                LogoTime();
+                //if (companyLogoMenu != null) GetComponent<ScreenManager>().OpenPanel(companyLogoMenu.GetComponent<Animator>());  //pressStartMenu.SetActive(true);
+            }
+            else if (theState == State.PressStart)
             {
                 //currentScreen = ScreenType.Start;
                 DeactivateAll();
@@ -120,6 +134,8 @@ public class StateManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        companyLogoMult = companyLogoTime;
+
         eventHandler = GetComponent<EventSystem>();
         StandaloneInputModule[] sims = GetComponents<StandaloneInputModule>();
         foreach (StandaloneInputModule s in sims)
@@ -163,11 +179,15 @@ public class StateManager : MonoBehaviour
             else if (s.screenType == ScreenType.CharacterSelection) characterMenu = s.gameObject;
             else if (s.screenType == ScreenType.TrackSelection) trackMenu = s.gameObject;
             else if (s.screenType == ScreenType.Credits) creditScreen = s.gameObject;
+            else if (s.screenType == ScreenType.ControllerRegistration) controllerRegistrationMenu = s.gameObject;
+            else if (s.screenType == ScreenType.CompanyLogo) companyLogoMenu = s.gameObject;
         }
 
         if (SceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
         {
-            TheState = State.PressStart;
+            TheState = State.CompanyLogo;
+
+            //companyLogoMenu.GetComponent<Animator>().SetFloat("speedMult", 10);
 
             //foreach (GameObject g in screens)
             //{
@@ -296,7 +316,19 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TheState == State.PressStart && Input.anyKey)
+        if (!readyToStart)
+        {
+            tempT += Time.deltaTime;
+            if (tempT > companyLogoTime)
+            {
+                readyToStart = true;
+                companyLogoMenu.SetActive(false);
+                //GetComponent<ScreenManager>().OpenPanel(pressStartMenu.GetComponent<Animator>());
+                TheState = State.PressStart;
+            }
+        }
+
+        if (TheState == State.PressStart && Input.anyKey && readyToStart)
         {
             playerWithControl = 1;
             //Enable(1);
@@ -307,7 +339,6 @@ public class StateManager : MonoBehaviour
         // if (Input.GetButtonDown(P1_Start) && TheState == State.InGame) { //We weren't paused, but we are now and P1 has control }
         // then for pause logic we can disable every standalone input module except for the respective module for our player allowing for easy navigation through the menus.  Or we can reassign variables on the standalone input module, but I think it's easier to disable and enable.
 
-        // These will need to be changed but it's essentially what we want.  Just too lazy right now to look up the actual names, and blah blah.
         if (TheState == State.InGame)
         {
             if (Input.GetButtonDown("P1_Start")) Pause(1);
@@ -322,6 +353,10 @@ public class StateManager : MonoBehaviour
             else if (Input.GetButtonDown("P3_Start")) Unpause(3);
             else if (Input.GetButtonDown("P4_Start")) Unpause(4);
         } 
+        else if (TheState == State.MainMenu)
+        {
+            if (Input.GetButtonDown("P1_B")) GoBack(1);
+        }
     }
 
     public void Options(int playerID)
@@ -334,24 +369,19 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    public void CharacterSelection(int playerID)
+    public void ControllerRegistration()
     {
-        //if (playerID == playerWithControl)
-        {
-            //currentScreen = ScreenType.CharacterSelection;
-            //DeactivateAll();
-            GetComponent<ScreenManager>().OpenPanel(characterMenu.GetComponent<Animator>());
-        }
+        GetComponent<ScreenManager>().OpenPanel(controllerRegistrationMenu.GetComponent<Animator>());
     }
 
-    public void TrackSelection(int playerID)
+    public void CharacterSelection()
     {
-        //if (playerID == playerWithControl)
-        {
-            //currentScreen = ScreenType.TrackSelection;
-            //DeactivateAll();
-            GetComponent<ScreenManager>().OpenPanel(trackMenu.GetComponent<Animator>());
-        }
+        GetComponent<ScreenManager>().OpenPanel(characterMenu.GetComponent<Animator>());
+    }
+
+    public void TrackSelection()
+    {
+        GetComponent<ScreenManager>().OpenPanel(trackMenu.GetComponent<Animator>());
     }
 
     public void Pause(int playerID)
@@ -382,13 +412,37 @@ public class StateManager : MonoBehaviour
     {
         if (TheState == State.Paused && playerWithControl == playerID)
         {
-            if (currentScreen == ScreenType.Options) TheState = State.Paused;
+            if (currentScreen == ScreenType.Options) Options(playerID);
             else if (currentScreen == ScreenType.PauseMenu) Unpause(playerID);
         }
-        else if (TheState == State.MainMenu && playerWithControl == playerID)
+        else if (TheState == State.MainMenu)
         {
-            if (currentScreen == ScreenType.Options || currentScreen == ScreenType.CharacterSelection) TheState = State.MainMenu;
-            else if (currentScreen == ScreenType.TrackSelection) CharacterSelection(playerID);
+            if (currentScreen == ScreenType.ControllerRegistration)
+            {
+                if (playerID == 1 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p1)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+                else if (playerID == 2 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p2)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+                else if (playerID == 3 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p3)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+                else if (playerID == 4 && !controllerRegistrationMenu.GetComponent<ControllerRegistration>().p4)
+                {
+                    //controllerRegistrationMenu.GetComponent<ControllerRegistration>().Reset();
+                    GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+                }
+            }
+            else if (currentScreen == ScreenType.Options || currentScreen == ScreenType.Credits) GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+            else if (currentScreen == ScreenType.TrackSelection) CharacterSelection();
+            else if (currentScreen == ScreenType.CharacterSelection) ControllerRegistration();
         }
     }
 
@@ -434,6 +488,15 @@ public class StateManager : MonoBehaviour
         foreach (GameObject g in screens)
         {
             g.SetActive(false);
+        }
+    }
+
+    private void LogoTime()
+    {
+        foreach (GameObject g in screens)
+        {
+            if (g.GetComponent<Screen>().screenType != ScreenType.CompanyLogo) g.SetActive(false);
+            else g.SetActive(true);
         }
     }
 

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class ScreenManager : MonoBehaviour
 {
-
     //Screen to open automatically at the start of the Scene
     public Animator initiallyOpen;
 
@@ -53,7 +52,7 @@ public class ScreenManager : MonoBehaviour
 
         currentScreenType = anim.gameObject.GetComponent<Screen>().screenType;
 
-        //StateManager.instance.currentScreen = currentScreenType;
+        GetComponent<StateManager>().currentScreen = currentScreenType;
 
         CloseCurrent();
 

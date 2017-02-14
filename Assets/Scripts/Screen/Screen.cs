@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public enum ScreenType { Start, MainMenu, TrackSelection, CharacterSelection, Options, HUD, PauseMenu, Credits }
+public enum ScreenType { CompanyLogo, Start, MainMenu, TrackSelection, ControllerRegistration, CharacterSelection, Options, HUD, PauseMenu, Credits }
 
 // A screen is a single window that contains the Canvas for drawing to the screen as well as any images and buttons etc that are displayed on that screen.
 public class Screen : MonoBehaviour
@@ -14,7 +14,6 @@ public class Screen : MonoBehaviour
     //public Vector3[] newLocations;
     //public bool onScreen; 
     public Selectable firstActive;
-
 
     public ScreenType screenType;
 

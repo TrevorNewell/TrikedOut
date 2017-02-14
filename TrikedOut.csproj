@@ -131,6 +131,7 @@
     <Compile Include="Assets\Scripts\Race\RaceSetup.cs" />
     <Compile Include="Assets\Scripts\Screen\ButtonSelect.cs" />
     <Compile Include="Assets\Scripts\Screen\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Screen\ControllerRegistration.cs" />
     <Compile Include="Assets\Scripts\Screen\CycleOnHighlight.cs" />
     <Compile Include="Assets\Scripts\Screen\DisableOnUpdate.cs" />
     <Compile Include="Assets\Scripts\Screen\EnableDisableOnHighlight.cs" />
