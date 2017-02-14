@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public enum State
 {
+    CompanyLogo,
     SplashScreen,
     PressStart,
     MainMenu,
@@ -26,6 +27,10 @@ public class StateManager : MonoBehaviour
 
     public static int numPlayers;
 
+    public float companyLogoTime = 6.0f;
+    private bool readyToStart;
+    private float companyLogoMult = 1.0f;
+
     public Font ourFont;
 
     private State theState;
@@ -33,6 +38,7 @@ public class StateManager : MonoBehaviour
     [Header("Visible For Debugging")]
     public ScreenType currentScreen;
     public GameObject[] screens;
+    public GameObject companyLogoMenu;
     public GameObject mainMenu;
     public GameObject pressStartMenu;
     public GameObject optionsMenu;
@@ -60,6 +66,8 @@ public class StateManager : MonoBehaviour
     public static int[] GlobalIndexedSelection;
     public static int charSelIndex = -1; // -1 until SaveCharacterSelection is called.  I should change this to a bool to avoid confusion, but eh.
 
+    private float tempT = 0.0f;
+
     public State TheState
     {
         get { return theState; }
@@ -69,7 +77,13 @@ public class StateManager : MonoBehaviour
 
             Debug.Log("State: " + theState.ToString());
 
-            if (theState == State.PressStart)
+            if (theState == State.CompanyLogo)
+            {
+                //currentScreen = ScreenType.Start;
+                LogoTime();
+                //if (companyLogoMenu != null) GetComponent<ScreenManager>().OpenPanel(companyLogoMenu.GetComponent<Animator>());  //pressStartMenu.SetActive(true);
+            }
+            else if (theState == State.PressStart)
             {
                 //currentScreen = ScreenType.Start;
                 DeactivateAll();
@@ -120,6 +134,8 @@ public class StateManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        companyLogoMult = companyLogoTime;
+
         eventHandler = GetComponent<EventSystem>();
         StandaloneInputModule[] sims = GetComponents<StandaloneInputModule>();
         foreach (StandaloneInputModule s in sims)
@@ -164,11 +180,14 @@ public class StateManager : MonoBehaviour
             else if (s.screenType == ScreenType.TrackSelection) trackMenu = s.gameObject;
             else if (s.screenType == ScreenType.Credits) creditScreen = s.gameObject;
             else if (s.screenType == ScreenType.ControllerRegistration) controllerRegistrationMenu = s.gameObject;
+            else if (s.screenType == ScreenType.CompanyLogo) companyLogoMenu = s.gameObject;
         }
 
         if (SceneManager.GetActiveScene().name.CompareTo("Menus") == 0)
         {
-            TheState = State.PressStart;
+            TheState = State.CompanyLogo;
+
+            //companyLogoMenu.GetComponent<Animator>().SetFloat("speedMult", 10);
 
             //foreach (GameObject g in screens)
             //{
@@ -297,7 +316,19 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TheState == State.PressStart && Input.anyKey)
+        if (!readyToStart)
+        {
+            tempT += Time.deltaTime;
+            if (tempT > companyLogoTime)
+            {
+                readyToStart = true;
+                companyLogoMenu.SetActive(false);
+                //GetComponent<ScreenManager>().OpenPanel(pressStartMenu.GetComponent<Animator>());
+                TheState = State.PressStart;
+            }
+        }
+
+        if (TheState == State.PressStart && Input.anyKey && readyToStart)
         {
             playerWithControl = 1;
             //Enable(1);
@@ -457,6 +488,15 @@ public class StateManager : MonoBehaviour
         foreach (GameObject g in screens)
         {
             g.SetActive(false);
+        }
+    }
+
+    private void LogoTime()
+    {
+        foreach (GameObject g in screens)
+        {
+            if (g.GetComponent<Screen>().screenType != ScreenType.CompanyLogo) g.SetActive(false);
+            else g.SetActive(true);
         }
     }
 
