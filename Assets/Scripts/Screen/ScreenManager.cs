@@ -53,7 +53,7 @@ public class ScreenManager : MonoBehaviour
 
         currentScreenType = anim.gameObject.GetComponent<Screen>().screenType;
 
-        //StateManager.instance.currentScreen = currentScreenType;
+        GetComponent<StateManager>().currentScreen = currentScreenType;
 
         CloseCurrent();
 
