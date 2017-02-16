@@ -60,6 +60,8 @@ public class InputHandler : MonoBehaviour
 
         leftPedal = (Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
         rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
+        //leftPedal = Input.GetKeyDown(KeyCode.A);
+        //rightPedal = Input.GetKeyDown(KeyCode.D);
         cameraFactor = Input.GetAxis(prefix + "_RightStickX");
         fire = Input.GetButtonDown(prefix + "_A");
         ceaseFire = Input.GetButtonUp(prefix + "_A");
