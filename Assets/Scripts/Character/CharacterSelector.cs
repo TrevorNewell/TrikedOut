@@ -39,6 +39,10 @@ public class CharacterSelector : MonoBehaviour
         ub.SetActive(false);
         GetComponent<ModelController>().model = character;
 
-
+        Animator anim = character.GetComponent<Animator>();
+        if (anim != null)
+        {
+            GetComponent<InputHandler>().SetAnimator(anim);
+        }
 	}
 }

@@ -9,6 +9,7 @@ public class InputHandler : MonoBehaviour
      * It will send messages to the player's move class, which will move the player
      * The Move class will not move the player until the Update function is called, which the Player will do
      **/
+    public float turnAnimSensitivity = 0.4f;
     private GameObject weapon;
     private GameObject ulti;
     private GameObject minimap;
@@ -19,11 +20,17 @@ public class InputHandler : MonoBehaviour
     private Dictionary<string, string> ucv;
     private float currentTime;
     private float delay = 0.2f;
+    private Animator anim;
 
     public void ReceiveDefinitions(bool uc, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
         useController = uc;
         ucv = uv;
+    }
+
+    public void SetAnimator(Animator a)
+    {
+        anim = a;
     }
 
     private void Start()
@@ -64,6 +71,14 @@ public class InputHandler : MonoBehaviour
         else if (ceaseFire) CeaseFire();
         if (activateUlti) ActivateUlti();
         if (openMinimap) minimap.SetActive(!minimap.activeInHierarchy);
+
+        if (anim != null)
+        {
+            anim.SetBool("Pedalling", move.IsPedalling());
+            anim.SetBool("Turning", Mathf.Abs(Input.GetAxis(prefix + "_LeftStickX")) > turnAnimSensitivity);
+            anim.SetBool("Right", Input.GetAxis(prefix + "_LeftStickX") > 0);
+            anim.SetBool("Taunting", Input.GetButtonDown(prefix + "_X"));
+        }
     }
 
     void FireWeapon()

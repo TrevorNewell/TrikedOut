@@ -120,7 +120,7 @@ public class NewMove : MonoBehaviour
 
     public bool IsPedalling()
     {
-        return timeSinceLastPedal < timeUntilPowerFalloff;
+        return timeSinceLastPedal < 0.5f;
     }
 
     public float GetCurrentSpeed()
