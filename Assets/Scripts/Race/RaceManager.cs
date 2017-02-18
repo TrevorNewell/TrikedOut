@@ -235,7 +235,6 @@ public class RaceManager : MonoBehaviour
                     c.NewLap(id);
                 }
             }
-
             return true;
         }
         // A checkpoint wasn't passed in the right direction
