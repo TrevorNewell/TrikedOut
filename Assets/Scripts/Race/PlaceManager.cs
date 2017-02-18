@@ -64,7 +64,7 @@ public class PlaceManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (playerCount == -1)
         {
@@ -141,7 +141,7 @@ public class PlaceManager : MonoBehaviour
                         cj = 0;
                     }
                     GameObject drop = Instantiate(dropPrefab);
-                    drop.transform.position = checkpoints[cj].transform.position;
+                    drop.transform.position = checkpoints[cj].transform.FindChild("DropSpawn").transform.position;
                     drop.GetComponent<Capsule>().SetLayer(10 + p);
                 }
             }

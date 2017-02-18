@@ -39,7 +39,7 @@ public class Marshmallow : MonoBehaviour
 
     public void SetForward(Vector3 v)
     {
-        transform.rotation = Quaternion.Euler(v.x, v.y, 0);
+        transform.rotation = Quaternion.Euler(/*v.x*/0, v.y, 0);
 
         xFactor = Mathf.Sin(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * speed;
 
@@ -57,7 +57,7 @@ public class Marshmallow : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         if (currentTime < timeTilSticky)
             currentTime += Time.deltaTime;

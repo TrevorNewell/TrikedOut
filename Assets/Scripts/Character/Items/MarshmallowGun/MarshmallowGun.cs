@@ -53,7 +53,7 @@ public class MarshmallowGun : MonoBehaviour, Item
                 firing = true;
                 //launch bullet
                 GameObject b = Instantiate(bullet);
-                b.GetComponent<Marshmallow>().SetForward(transform.rotation.eulerAngles);
+                b.GetComponent<Marshmallow>().SetForward(launchPoint.transform.rotation.eulerAngles);
                 b.GetComponent<Marshmallow>().myPlayerID = myPlayerID;
                 b.GetComponent<Marshmallow>().myGun = this;
                 b.transform.position = launchPoint.transform.position;
