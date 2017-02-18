@@ -28,7 +28,6 @@ public class ModelController : MonoBehaviour
                 currentRotations++;
                 currentLocalizedRotation = 0f;
             }
-
             model.transform.localRotation = Quaternion.Euler(0f, currentLocalizedRotation, 0f);
         }
 	}

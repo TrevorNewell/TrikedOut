@@ -29,6 +29,7 @@ public class CharacterSelector : MonoBehaviour
         character.GetComponent<FollowGround>().castPoint = castPoint;
         character.transform.parent = gameObject.transform;
         character.transform.localPosition = new Vector3(0f, modelOffset, 0f);
+        character.transform.localRotation = Quaternion.Euler(Vector3.zero);
         weapon.transform.parent = character.transform;
         weapon.GetComponent<MarshmallowGun>().bullet = projectiles[characterSelection];
         GameObject ub = Instantiate(bats[characterSelection]);

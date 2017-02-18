@@ -28,6 +28,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CameraTargetRot = camera.localRotation;
         }
 
+        public void OverrideAngle(float angle)
+        {
+            m_CharacterTargetRot *= Quaternion.Euler(0f, angle, 0f);
+            //m_CameraTargetRot = cm;
+        }
+
 
         public void LookRotation(Transform character, Transform camera)
         {

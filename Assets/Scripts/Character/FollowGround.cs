@@ -61,6 +61,7 @@ public class FollowGround : MonoBehaviour
                 if (goingDown)
                 {
                     move.DownHill();
+
                 }
                 else
                 {

@@ -14,6 +14,7 @@ public class Marshmallow : MonoBehaviour
     public float launchAngleFactorMax;
     public float gravity;
     public float myPlayerID;
+    public float hoverTime;
     public MarshmallowGun myGun;
 
     public GameObject projMallow;
@@ -25,16 +26,27 @@ public class Marshmallow : MonoBehaviour
     private float yFactor;
     private float gravAngle;
     private float zFactor;
+    private float distanceToHover;
+    private float heightDiff;
 
     private Vector3 forward;
     private bool stuck;
     private bool grounded;
     private float currentTime;
     private float upSpeed;
+    private int layerMask;
 
     void Start()
     {
         mrot = projMallow.GetComponent<MarshmallowRot>();
+
+        layerMask = 1 << LayerMask.NameToLayer("Terrain");
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, layerMask))
+        {
+            distanceToHover = hit.distance;
+        }
     }
 
     public void SetForward(Vector3 v)
@@ -61,9 +73,28 @@ public class Marshmallow : MonoBehaviour
     {
         if (currentTime < timeTilSticky)
             currentTime += Time.deltaTime;
+
         if(!stuck && !grounded) yFactor -= gravAngle * gravity * Time.deltaTime;
-        //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * Time.deltaTime);
         transform.localPosition = new Vector3(transform.localPosition.x + xFactor * Time.deltaTime, transform.localPosition.y + yFactor * Time.deltaTime, transform.localPosition.z + zFactor * Time.deltaTime);
+        
+        /*if (currentTime < hoverTime)
+        {
+            currentTime += Time.deltaTime;
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, layerMask))
+            {
+                heightDiff = Mathf.Lerp(heightDiff, hit.distance - distanceToHover, Time.deltaTime);
+            }
+
+            transform.localPosition = new Vector3(transform.localPosition.x + xFactor * Time.deltaTime, transform.localPosition.y - heightDiff, transform.localPosition.z + zFactor * Time.deltaTime);
+        }
+        else
+        {
+            if (!stuck && !grounded)
+                transform.localPosition = new Vector3(transform.localPosition.x + xFactor * Time.deltaTime, transform.localPosition.y - gravAngle * gravity * Time.deltaTime, transform.localPosition.z + zFactor * Time.deltaTime);
+        }*/
+
         lifeSpan -= Time.deltaTime;
         if (lifeSpan < 0) DestroyMarshmallow();
 	}
