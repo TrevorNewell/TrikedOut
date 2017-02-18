@@ -70,7 +70,7 @@ public class RaceManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        player.GetComponent<InputHandler>().enabled = false;
+        player.GetComponent<InputHandler>().TurnOff();
 
         bottomLeftText.text = "";
         directMiddleText.text = "";
@@ -224,7 +224,7 @@ public class RaceManager : MonoBehaviour
 
                 UpdateText();
                 // This is temp for now, just disable input to player for now.  We'll call a different method to do other stuff like stop the player while others finish, or if a solo race we'll show stats for the player.
-                player.GetComponent<InputHandler>().enabled = false;
+                player.GetComponent<InputHandler>().TurnOff();
                 //player.GetComponent<Move>().SlowCharacter();
             }
 
@@ -432,7 +432,7 @@ public class RaceManager : MonoBehaviour
             if (tempTime > countdownAtStart - countdownPerNumber && tempTime < countdownAtStart) // Allows the player to start on the last string that's displayed
             {
                 tempTime = Time.timeSinceLevelLoad - pauseTime;
-                player.GetComponent<InputHandler>().enabled = true;
+                player.GetComponent<InputHandler>().TurnOn();
                 isStarting = false;
                 DisplayStartText();
                 //speed.SetActive(true);

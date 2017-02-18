@@ -21,6 +21,7 @@ public class InputHandler : MonoBehaviour
     private float currentTime;
     private float delay = 0.2f;
     private Animator anim;
+    private bool on;
 
     public void ReceiveDefinitions(bool uc, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
@@ -36,18 +37,31 @@ public class InputHandler : MonoBehaviour
     private void Start()
     {
         minimap = GameObject.Find("MinimapCam");
+        Debug.Log(minimap);
         prefix = name;//player.prefix;
         ulti = GameObject.Find(prefix + "_Ulti");
         move = gameObject.GetComponent<NewMove>();
         weapon = GameObject.Find(prefix + "_Weapon");
         currentTime = 0f;
+        on = false;
+    }
+
+    public void TurnOn()
+    {
+        on = true;
+    }
+
+    public void TurnOff()
+    {
+        on = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (move == null)
+        if (!on)
         {
+            return;
         }
 
         bool leftPedal;

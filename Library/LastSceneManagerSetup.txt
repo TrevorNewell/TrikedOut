@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/TestScenes/AlienTrack.unity
+- path: Assets/Scenes/BuildScenes/Track1.unity
   isLoaded: 1
   isActive: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MinimapIconRot : MonoBehaviour
 {
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
         transform.rotation = Quaternion.Euler(90f, 0f, 0f);
 	}

@@ -7,10 +7,12 @@ public class CharacterSelector : MonoBehaviour
     public GameObject castPoint;
     public GameObject weapon;
     public GameObject ulti;
+    public GameObject minimapIcon;
     public int characterSelection = 0;
     public GameObject[] characters;
     public GameObject[] projectiles;
     public GameObject[] bats;
+    public Sprite[] minimapIcons;
     public float modelOffset = -0.81f;
 
     private GameObject character;
@@ -39,6 +41,7 @@ public class CharacterSelector : MonoBehaviour
         ulti.GetComponent<Bat>().batModel = ub;
         ub.SetActive(false);
         GetComponent<ModelController>().model = character;
+        minimapIcon.GetComponent<SpriteRenderer>().sprite = minimapIcons[characterSelection];
 
         Animator anim = character.GetComponent<Animator>();
         if (anim != null)

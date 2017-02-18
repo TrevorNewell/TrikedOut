@@ -13,7 +13,7 @@ public class Capsule : MonoBehaviour
 
     public float chanceForBat = 0.5f;
     public float chanceForJack = 0.2f;
-    public float batDuration = 5f;
+    public float batDuration = 10f;
 
     public float boostFactor = 5f;
     public float boostDuration = 3f;
