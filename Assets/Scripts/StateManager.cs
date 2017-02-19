@@ -331,6 +331,7 @@ public class StateManager : MonoBehaviour
         if (TheState == State.PressStart && Input.anyKey && readyToStart)
         {
             playerWithControl = 1;
+			pressStartMenu.SetActive (false);
             //Enable(1);
             TheState = State.MainMenu;
         }

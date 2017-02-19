@@ -73,11 +73,8 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-UnityScript-firstpass">
       <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
@@ -90,6 +87,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraShake\PeriodicShake.cs" />
+    <Compile Include="Assets\CameraShake\PerlinShake.cs" />
+    <Compile Include="Assets\CameraShake\RandomShake.cs" />
+    <Compile Include="Assets\CameraShake\Util_Easing.cs" />
+    <Compile Include="Assets\CameraShake\Util_Noise.cs" />
     <Compile Include="Assets\Scripts\ArcadePhysics\ArcadeTrikeController.cs" />
     <Compile Include="Assets\Scripts\ArcadePhysics\CameraController.cs" />
     <Compile Include="Assets\Scripts\ArcadePhysics\DeflectOnCollision.cs" />

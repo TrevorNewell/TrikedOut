@@ -35,21 +35,9 @@ public class CharacterSelector : MonoBehaviour
         weapon.transform.parent = character.transform;
         weapon.GetComponent<MarshmallowGun>().bullet = projectiles[characterSelection];
         GameObject ub = Instantiate(bats[characterSelection]);
-        print(ub);
-        if (character.GetComponent<GetAnchors>() != null)
-        {
-            ub.transform.parent = character.GetComponent<GetAnchors>().dominantHand.transform;
-            ub.transform.localPosition = Vector3.zero;
-            ub.transform.localRotation = Quaternion.Euler(90f, 90 * -1f * character.GetComponent<GetAnchors>().dominantHandOrientation, 0f);
-            ulti.GetComponent<Bat>().SetAnimatedSwing();
-            ulti.GetComponent<Bat>().SetAnimator(character.GetComponent<Animator>());
-        }
-        else
-        {
-            ub.transform.parent = ulti.transform;
-            ub.transform.localPosition = new Vector3(0.063f, 0f, 0.128f);//Vector3.zero;
-            ub.transform.localScale = Vector3.one;
-        }
+        ub.transform.parent = ulti.transform;
+        ub.transform.localPosition = new Vector3(0.063f, 0f, 0.128f);//Vector3.zero;
+        ub.transform.localScale = Vector3.one;
         ulti.GetComponent<Bat>().batModel = ub;
         ub.SetActive(false);
         GetComponent<ModelController>().model = character;

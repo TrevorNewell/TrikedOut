@@ -1,0 +1,593 @@
+fileFormatVersion: 2
+guid: f596b4c5606036845b440c3661322373
+timeCreated: 1487527513
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: hair2
+    100002: hair3
+    100004: hair_start
+    100006: hair_tip
+    100008: HairHandle
+    100010: head_center
+    100012: head_top
+    100014: HeadHandle
+    100016: HeadIK
+    100018: headtop
+    100020: ikHandle1
+    100022: ikHandle2
+    100024: imagePlane1
+    100026: jaw_base
+    100028: jawbase
+    100030: l_ankle
+    100032: l_ankle 1
+    100034: l_armHandle
+    100036: l_armIK
+    100038: l_armPV
+    100040: l_ball
+    100042: l_clavicle
+    100044: l_clavicle 1
+    100046: l_elbow
+    100048: l_elbow 1
+    100050: l_footHandle
+    100052: l_hair_mid
+    100054: l_hair_tip
+    100056: l_heel
+    100058: l_hip
+    100060: l_hip 1
+    100062: l_index1
+    100064: l_index1 1
+    100066: l_index2
+    100068: l_index2 1
+    100070: l_index3
+    100072: l_index3 1
+    100074: l_index4
+    100076: l_indextip
+    100078: l_knee
+    100080: l_knee 1
+    100082: l_knee_poleVector1
+    100084: l_kneePV
+    100086: l_legHandle
+    100088: l_mid1
+    100090: l_mid1 1
+    100092: l_mid2
+    100094: l_mid2 1
+    100096: l_mid3
+    100098: l_mid3 1
+    100100: l_mid4
+    100102: l_midtip
+    100104: l_pinky1
+    100106: l_pinky1 1
+    100108: l_pinky2
+    100110: l_pinky2 1
+    100112: l_pinky3
+    100114: l_pinky3 1
+    100116: l_pinky4
+    100118: l_pinkytip
+    100120: l_ring1
+    100122: l_ring1 1
+    100124: l_ring2
+    100126: l_ring2 1
+    100128: l_ring3
+    100130: l_ring3 1
+    100132: l_ring4
+    100134: l_ringHelper
+    100136: l_ringpinkhelper
+    100138: l_ringtip
+    100140: l_shoulder
+    100142: l_shoulder 1
+    100144: l_thumb1
+    100146: l_thumb1 1
+    100148: l_thumb2
+    100150: l_thumb2 1
+    100152: l_thumb3
+    100154: l_thumbHelper
+    100156: l_thumbhelper
+    100158: l_thumbtip
+    100160: l_toe
+    100162: l_toe 1
+    100164: l_wrist
+    100166: l_wrist 1
+    100168: l_wristHandle
+    100170: MainHandle
+    100172: MainPelvisPrincess
+    100174: midhead
+    100176: neck_base
+    100178: neck_top
+    100180: neckbase
+    100182: necktop
+    100184: PELVIS
+    100186: polySurface1
+    100188: polySurface1 1
+    100190: polySurface2
+    100192: polySurface3
+    100194: polySurface4
+    100196: polySurface4 1
+    100198: polySurface5
+    100200: polySurface6
+    100202: polySurface7
+    100204: Princess_Mapped:polySurface1
+    100206: PrincessMainController
+    100208: //RootNode
+    100210: r_ankle
+    100212: r_ankle 1
+    100214: r_armHandle
+    100216: r_armIK
+    100218: r_armPV
+    100220: r_ball
+    100222: r_clavicle
+    100224: r_clavicle 1
+    100226: r_elbow
+    100228: r_elbow 1
+    100230: r_footHandle
+    100232: r_hair_mid
+    100234: r_hair_tip
+    100236: r_heel
+    100238: r_hip
+    100240: r_hip 1
+    100242: r_index1
+    100244: r_index1 1
+    100246: r_index2
+    100248: r_index2 1
+    100250: r_index3
+    100252: r_index3 1
+    100254: r_index4
+    100256: r_indextip
+    100258: r_knee
+    100260: r_knee 1
+    100262: r_knee_poleVector
+    100264: r_kneePV
+    100266: r_legHandle
+    100268: r_mid1
+    100270: r_mid1 1
+    100272: r_mid2
+    100274: r_mid2 1
+    100276: r_mid3
+    100278: r_mid3 1
+    100280: r_mid4
+    100282: r_midtip
+    100284: r_pinky1
+    100286: r_pinky1 1
+    100288: r_pinky2
+    100290: r_pinky2 1
+    100292: r_pinky3
+    100294: r_pinky3 1
+    100296: r_pinky4
+    100298: r_pinkytip
+    100300: r_ring1
+    100302: r_ring1 1
+    100304: r_ring2
+    100306: r_ring2 1
+    100308: r_ring3
+    100310: r_ring3 1
+    100312: r_ring4
+    100314: r_ringHelper
+    100316: r_ringpinkhelper
+    100318: r_ringtip
+    100320: r_shoulder
+    100322: r_shoulder 1
+    100324: r_thumb1
+    100326: r_thumb1 1
+    100328: r_thumb2
+    100330: r_thumb2 1
+    100332: r_thumb3
+    100334: r_thumbHelper
+    100336: r_thumbhelper
+    100338: r_thumbtip
+    100340: r_toe
+    100342: r_toe 1
+    100344: r_wrist
+    100346: r_wrist 1
+    100348: r_wristHandle
+    100350: Ramon_Clothes
+    100352: RamonRigComplete:polySurface1
+    100354: RamonRigComplete:polySurface1Base
+    100356: spine1
+    100358: spine1 1
+    100360: spine2
+    100362: spine2 1
+    100364: spine3
+    100366: spine3 1
+    100368: spine4
+    100370: spine4 1
+    100372: spine5
+    100374: spineend
+    100376: transform1
+    100378: transform2
+    100380: transform3
+    100382: transform4
+    100384: transform5
+    100386: transform6
+    100388: transform7
+    100390: Trike_Princess:CarriageWheel_Group1
+    100392: Trike_Princess:CarriageWheel_Group3
+    100394: Trike_Princess:CarriageWheel_Group4
+    100396: Trike_Princess:CarriageWheel_ZBrush_defualt_group1
+    100398: Trike_Princess:CarriageWheel_ZBrush_defualt_group2
+    100400: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    100402: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    100404: Trike_Princess:imagePlane1
+    100406: Trike_Princess:imagePlane2
+    100408: Trike_Princess:pCube3
+    100410: Trike_Princess:pCylinder12
+    100412: Trike_Princess:pCylinder3
+    100414: Trike_Princess:pCylinder4
+    100416: Trike_Princess:pCylinder8
+    100418: Trike_Princess:pCylinder9
+    100420: Trike_Princess:polySurface10
+    100422: Trike_Princess:polySurface11
+    100424: Trike_Princess:polySurface12
+    100426: Trike_Princess:polySurface16
+    100428: Trike_Princess:polySurface17
+    100430: Trike_Princess:polySurface18
+    100432: Trike_Princess:polySurface3
+    100434: Trike_Princess:polySurface4
+    100436: Trike_Princess:polySurface5
+    100438: Trike_Princess:polySurface6
+    100440: Trike_Princess:polySurface7
+    100442: Trike_Princess:polySurface8
+    100444: Trike_Princess:polySurface9
+    100446: Trike_Princess:pSphere10
+    100448: Trike_Princess:transform1
+    100450: Trike_Princess:transform10
+    100452: Trike_Princess:transform11
+    100454: Trike_Princess:transform12
+    100456: Trike_Princess:transform13
+    100458: Trike_Princess:transform2
+    100460: Trike_Princess:transform3
+    100462: Trike_Princess:transform4
+    100464: Trike_Princess:transform5
+    100466: Trike_Princess:transform6
+    100468: Trike_Princess:transform7
+    100470: Trike_Princess:transform8
+    100472: Trike_Princess:transform9
+    400000: hair2
+    400002: hair3
+    400004: hair_start
+    400006: hair_tip
+    400008: HairHandle
+    400010: head_center
+    400012: head_top
+    400014: HeadHandle
+    400016: HeadIK
+    400018: headtop
+    400020: ikHandle1
+    400022: ikHandle2
+    400024: imagePlane1
+    400026: jaw_base
+    400028: jawbase
+    400030: l_ankle
+    400032: l_ankle 1
+    400034: l_armHandle
+    400036: l_armIK
+    400038: l_armPV
+    400040: l_ball
+    400042: l_clavicle
+    400044: l_clavicle 1
+    400046: l_elbow
+    400048: l_elbow 1
+    400050: l_footHandle
+    400052: l_hair_mid
+    400054: l_hair_tip
+    400056: l_heel
+    400058: l_hip
+    400060: l_hip 1
+    400062: l_index1
+    400064: l_index1 1
+    400066: l_index2
+    400068: l_index2 1
+    400070: l_index3
+    400072: l_index3 1
+    400074: l_index4
+    400076: l_indextip
+    400078: l_knee
+    400080: l_knee 1
+    400082: l_knee_poleVector1
+    400084: l_kneePV
+    400086: l_legHandle
+    400088: l_mid1
+    400090: l_mid1 1
+    400092: l_mid2
+    400094: l_mid2 1
+    400096: l_mid3
+    400098: l_mid3 1
+    400100: l_mid4
+    400102: l_midtip
+    400104: l_pinky1
+    400106: l_pinky1 1
+    400108: l_pinky2
+    400110: l_pinky2 1
+    400112: l_pinky3
+    400114: l_pinky3 1
+    400116: l_pinky4
+    400118: l_pinkytip
+    400120: l_ring1
+    400122: l_ring1 1
+    400124: l_ring2
+    400126: l_ring2 1
+    400128: l_ring3
+    400130: l_ring3 1
+    400132: l_ring4
+    400134: l_ringHelper
+    400136: l_ringpinkhelper
+    400138: l_ringtip
+    400140: l_shoulder
+    400142: l_shoulder 1
+    400144: l_thumb1
+    400146: l_thumb1 1
+    400148: l_thumb2
+    400150: l_thumb2 1
+    400152: l_thumb3
+    400154: l_thumbHelper
+    400156: l_thumbhelper
+    400158: l_thumbtip
+    400160: l_toe
+    400162: l_toe 1
+    400164: l_wrist
+    400166: l_wrist 1
+    400168: l_wristHandle
+    400170: MainHandle
+    400172: MainPelvisPrincess
+    400174: midhead
+    400176: neck_base
+    400178: neck_top
+    400180: neckbase
+    400182: necktop
+    400184: PELVIS
+    400186: polySurface1
+    400188: polySurface1 1
+    400190: polySurface2
+    400192: polySurface3
+    400194: polySurface4
+    400196: polySurface4 1
+    400198: polySurface5
+    400200: polySurface6
+    400202: polySurface7
+    400204: Princess_Mapped:polySurface1
+    400206: PrincessMainController
+    400208: //RootNode
+    400210: r_ankle
+    400212: r_ankle 1
+    400214: r_armHandle
+    400216: r_armIK
+    400218: r_armPV
+    400220: r_ball
+    400222: r_clavicle
+    400224: r_clavicle 1
+    400226: r_elbow
+    400228: r_elbow 1
+    400230: r_footHandle
+    400232: r_hair_mid
+    400234: r_hair_tip
+    400236: r_heel
+    400238: r_hip
+    400240: r_hip 1
+    400242: r_index1
+    400244: r_index1 1
+    400246: r_index2
+    400248: r_index2 1
+    400250: r_index3
+    400252: r_index3 1
+    400254: r_index4
+    400256: r_indextip
+    400258: r_knee
+    400260: r_knee 1
+    400262: r_knee_poleVector
+    400264: r_kneePV
+    400266: r_legHandle
+    400268: r_mid1
+    400270: r_mid1 1
+    400272: r_mid2
+    400274: r_mid2 1
+    400276: r_mid3
+    400278: r_mid3 1
+    400280: r_mid4
+    400282: r_midtip
+    400284: r_pinky1
+    400286: r_pinky1 1
+    400288: r_pinky2
+    400290: r_pinky2 1
+    400292: r_pinky3
+    400294: r_pinky3 1
+    400296: r_pinky4
+    400298: r_pinkytip
+    400300: r_ring1
+    400302: r_ring1 1
+    400304: r_ring2
+    400306: r_ring2 1
+    400308: r_ring3
+    400310: r_ring3 1
+    400312: r_ring4
+    400314: r_ringHelper
+    400316: r_ringpinkhelper
+    400318: r_ringtip
+    400320: r_shoulder
+    400322: r_shoulder 1
+    400324: r_thumb1
+    400326: r_thumb1 1
+    400328: r_thumb2
+    400330: r_thumb2 1
+    400332: r_thumb3
+    400334: r_thumbHelper
+    400336: r_thumbhelper
+    400338: r_thumbtip
+    400340: r_toe
+    400342: r_toe 1
+    400344: r_wrist
+    400346: r_wrist 1
+    400348: r_wristHandle
+    400350: Ramon_Clothes
+    400352: RamonRigComplete:polySurface1
+    400354: RamonRigComplete:polySurface1Base
+    400356: spine1
+    400358: spine1 1
+    400360: spine2
+    400362: spine2 1
+    400364: spine3
+    400366: spine3 1
+    400368: spine4
+    400370: spine4 1
+    400372: spine5
+    400374: spineend
+    400376: transform1
+    400378: transform2
+    400380: transform3
+    400382: transform4
+    400384: transform5
+    400386: transform6
+    400388: transform7
+    400390: Trike_Princess:CarriageWheel_Group1
+    400392: Trike_Princess:CarriageWheel_Group3
+    400394: Trike_Princess:CarriageWheel_Group4
+    400396: Trike_Princess:CarriageWheel_ZBrush_defualt_group1
+    400398: Trike_Princess:CarriageWheel_ZBrush_defualt_group2
+    400400: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    400402: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    400404: Trike_Princess:imagePlane1
+    400406: Trike_Princess:imagePlane2
+    400408: Trike_Princess:pCube3
+    400410: Trike_Princess:pCylinder12
+    400412: Trike_Princess:pCylinder3
+    400414: Trike_Princess:pCylinder4
+    400416: Trike_Princess:pCylinder8
+    400418: Trike_Princess:pCylinder9
+    400420: Trike_Princess:polySurface10
+    400422: Trike_Princess:polySurface11
+    400424: Trike_Princess:polySurface12
+    400426: Trike_Princess:polySurface16
+    400428: Trike_Princess:polySurface17
+    400430: Trike_Princess:polySurface18
+    400432: Trike_Princess:polySurface3
+    400434: Trike_Princess:polySurface4
+    400436: Trike_Princess:polySurface5
+    400438: Trike_Princess:polySurface6
+    400440: Trike_Princess:polySurface7
+    400442: Trike_Princess:polySurface8
+    400444: Trike_Princess:polySurface9
+    400446: Trike_Princess:pSphere10
+    400448: Trike_Princess:transform1
+    400450: Trike_Princess:transform10
+    400452: Trike_Princess:transform11
+    400454: Trike_Princess:transform12
+    400456: Trike_Princess:transform13
+    400458: Trike_Princess:transform2
+    400460: Trike_Princess:transform3
+    400462: Trike_Princess:transform4
+    400464: Trike_Princess:transform5
+    400466: Trike_Princess:transform6
+    400468: Trike_Princess:transform7
+    400470: Trike_Princess:transform8
+    400472: Trike_Princess:transform9
+    2300000: polySurface3
+    2300002: polySurface4
+    2300004: polySurface5
+    2300006: Ramon_Clothes
+    2300008: RamonRigComplete:polySurface1Base
+    2300010: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    2300012: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    2300014: Trike_Princess:pCube3
+    2300016: Trike_Princess:polySurface10
+    2300018: Trike_Princess:polySurface11
+    2300020: Trike_Princess:polySurface12
+    2300022: Trike_Princess:polySurface16
+    2300024: Trike_Princess:polySurface17
+    3300000: polySurface3
+    3300002: polySurface4
+    3300004: polySurface5
+    3300006: Ramon_Clothes
+    3300008: RamonRigComplete:polySurface1Base
+    3300010: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    3300012: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    3300014: Trike_Princess:pCube3
+    3300016: Trike_Princess:polySurface10
+    3300018: Trike_Princess:polySurface11
+    3300020: Trike_Princess:polySurface12
+    3300022: Trike_Princess:polySurface16
+    3300024: Trike_Princess:polySurface17
+    4300000: RamonRigComplete:polySurface1
+    4300002: Ramon_Clothes
+    4300004: RamonRigComplete:polySurface1Base
+    4300006: Trike_Princess:pCube3
+    4300008: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    4300010: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    4300012: Trike_Princess:polySurface10
+    4300014: Trike_Princess:polySurface11
+    4300016: Trike_Princess:polySurface12
+    4300018: Trike_Princess:polySurface16
+    4300020: Trike_Princess:polySurface17
+    4300022: polySurface3
+    4300024: polySurface5
+    4300026: polySurface1
+    4300028: polySurface4
+    9500000: //RootNode
+    13700000: polySurface1
+    13700002: RamonRigComplete:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
