@@ -56,6 +56,6 @@ public class PerlinShake : MonoBehaviour {
 			yield return null;
 		}
 
-        GetComponent<Camera>().transform.position; = originalCamPos;
+        GetComponent<Camera>().transform.position = originalCamPos;
 	}
 }

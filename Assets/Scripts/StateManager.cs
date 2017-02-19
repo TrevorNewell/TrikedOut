@@ -222,7 +222,7 @@ public class StateManager : MonoBehaviour
             //    }
             //}
         }
-        else if (SceneManager.GetActiveScene().buildIndex > 2)// This allows us to treat every track the same in terms of the state manager.  Special treatment is given if it's the start screen, main menu, or credits.  Otherwise, this. // .GetActiveScene().name.CompareTo("Track1") == 0)
+        else if (SceneManager.GetActiveScene().buildIndex > 1)// This allows us to treat every track the same in terms of the state manager.  Special treatment is given if it's the start screen, main menu, or credits.  Otherwise, this. // .GetActiveScene().name.CompareTo("Track1") == 0)
         {
             Debug.Log("InGame");
 
@@ -499,6 +499,25 @@ public class StateManager : MonoBehaviour
             if (g.GetComponent<Screen>().screenType != ScreenType.CompanyLogo) g.SetActive(false);
             else g.SetActive(true);
         }
+    }
+
+    public void SaveCharSelectionsTemp(int[] selections)
+    {
+        // This will hold our actual player count, and it's coded this way in case a player decides to back out of the race (which isn't currently supported).
+        int playerCount = selections.Length;
+        numPlayers = playerCount;
+
+        //actualCharSelection = new GameObject[numPlayers];
+        indexedCharSelection = new int[numPlayers];
+        indexedCharSelection = selections;
+
+        // Save our players character selections for use in later scenes.
+        GlobalIndexedSelection = indexedCharSelection;
+
+        // Make note of the fact that we've been through this method. Used in future scenes.  Should be changed to a bool.
+        charSelIndex = 0;
+
+        Debug.Log("Actual character count: " + playerCount + " Size: " + actualCharSelection.Length);
     }
 
     public void SaveCharSelections()

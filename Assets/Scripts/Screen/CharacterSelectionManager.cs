@@ -9,6 +9,7 @@ public class CharacterSelectionManager : MonoBehaviour
 {
 	public ControllerRegistration controllerReg;
 	public Text playerSelectingText;
+    public int[] selections;
 
 	public Image left;
 	public Sprite leftButtonSelect;
@@ -33,7 +34,11 @@ public class CharacterSelectionManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-		leftButtonOriginal = left.sprite;
+        selections = new int[controllerReg.playerCount];
+
+        playerSelectingText.text = "Player " + playerPicking + " Picking";
+
+        leftButtonOriginal = left.sprite;
 		rightButtonOriginal = right.sprite;
         maxIndex = subscreens.Length-1;
 
@@ -48,10 +53,8 @@ public class CharacterSelectionManager : MonoBehaviour
     {
         if (Input.GetButtonDown("P" + playerPicking + "_A"))
         {
-			// Transition back to first character
-			Reset();
-	
             SaveCharacterSelection(playerPicking, currentIndex);
+            Reset();
         }
 
 		float h = Input.GetAxis ("P" + playerPicking + "_Horizontal");
@@ -146,8 +149,6 @@ public class CharacterSelectionManager : MonoBehaviour
 		{
 			startCount = true;
 		}
-
-
 	}
 
 	public void Original()
@@ -167,17 +168,29 @@ public class CharacterSelectionManager : MonoBehaviour
 
 	public void Reset()
 	{
-		// Transition back to first player.  Maybe not.
+        // Transition back to first player.  Maybe not.  Not
 
-		// Change player selecting text.
+        if (controllerReg.playerCount > playerPicking)
+        {
+            playerPicking++;
 
+            // Change player selecting text.
+            playerSelectingText.text = "Player " + playerPicking + " Picking";
+        }
+        else
+        {
+            // All players have picked.  Save to StateManager.
+            FindObjectOfType<StateManager>().SaveCharSelectionsTemp(selections);
 
-		if (controllerReg.playerCount > playerPicking)
-			playerPicking++;
-	}
+            // Transition to Track Selection screen.
+            FindObjectOfType<StateManager>().TrackSelection();
+        }
+    }
 
-	public void SaveCharacterSelection(int player, int character)
+    public void SaveCharacterSelection(int player, int character)
 	{
-		// Store the int for player 1 in StateManager.  Or here, then set the variable in StateManager.
+        //Temp if statement until our characters are done.
+        if (character > 2) selections[player] = 2;
+        else selections[player] = character;
 	}
 }
