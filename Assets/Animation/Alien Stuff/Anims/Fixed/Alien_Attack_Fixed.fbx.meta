@@ -1,0 +1,354 @@
+fileFormatVersion: 2
+guid: d1a49021a0d85884a91d67427b66d072
+timeCreated: 1487465634
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: AlienGirlMapped:polySurface1
+    100004: back
+    100006: Chest
+    100008: Head
+    100010: joint1
+    100012: joint10
+    100014: joint11
+    100016: joint12
+    100018: joint13
+    100020: joint14
+    100022: joint15
+    100024: joint16
+    100026: joint17
+    100028: joint18
+    100030: joint19
+    100032: joint2
+    100034: joint20
+    100036: joint21
+    100038: joint22
+    100040: joint23
+    100042: joint24
+    100044: joint25
+    100046: joint26
+    100048: joint27
+    100050: joint28
+    100052: joint29
+    100054: joint3
+    100056: joint30
+    100058: joint31
+    100060: joint32
+    100062: joint33
+    100064: joint34
+    100066: joint4
+    100068: joint5
+    100070: joint6
+    100072: joint7
+    100074: joint8
+    100076: joint9
+    100078: Left_Lower_Elbow
+    100080: Left_Lower_Shoulder
+    100082: Left_Shoulder
+    100084: Left_Thigh
+    100086: Left_Upper_Elbow
+    100088: Left_Upper_Knee
+    100090: Left_Upper_Shoulder
+    100092: locator1
+    100094: Neck
+    100096: Pelvis
+    100098: polySurface14
+    100100: polySurface16
+    100102: polySurface9
+    100104: Right_Lower_Elbow
+    100106: Right_Lower_Shoulder
+    100108: Right_Shoulder
+    100110: Right_Thigh
+    100112: Right_Upper_Elbow
+    100114: Right_Upper_Knee
+    100116: Right_Upper_Shoulder
+    100118: Stomach
+    400000: //RootNode
+    400002: AlienGirlMapped:polySurface1
+    400004: back
+    400006: Chest
+    400008: Head
+    400010: joint1
+    400012: joint10
+    400014: joint11
+    400016: joint12
+    400018: joint13
+    400020: joint14
+    400022: joint15
+    400024: joint16
+    400026: joint17
+    400028: joint18
+    400030: joint19
+    400032: joint2
+    400034: joint20
+    400036: joint21
+    400038: joint22
+    400040: joint23
+    400042: joint24
+    400044: joint25
+    400046: joint26
+    400048: joint27
+    400050: joint28
+    400052: joint29
+    400054: joint3
+    400056: joint30
+    400058: joint31
+    400060: joint32
+    400062: joint33
+    400064: joint34
+    400066: joint4
+    400068: joint5
+    400070: joint6
+    400072: joint7
+    400074: joint8
+    400076: joint9
+    400078: Left_Lower_Elbow
+    400080: Left_Lower_Shoulder
+    400082: Left_Shoulder
+    400084: Left_Thigh
+    400086: Left_Upper_Elbow
+    400088: Left_Upper_Knee
+    400090: Left_Upper_Shoulder
+    400092: locator1
+    400094: Neck
+    400096: Pelvis
+    400098: polySurface14
+    400100: polySurface16
+    400102: polySurface9
+    400104: Right_Lower_Elbow
+    400106: Right_Lower_Shoulder
+    400108: Right_Shoulder
+    400110: Right_Thigh
+    400112: Right_Upper_Elbow
+    400114: Right_Upper_Knee
+    400116: Right_Upper_Shoulder
+    400118: Stomach
+    2300000: polySurface14
+    2300002: polySurface16
+    2300004: polySurface9
+    3300000: polySurface14
+    3300002: polySurface16
+    3300004: polySurface9
+    4300000: polySurface14
+    4300002: polySurface9
+    4300004: polySurface16
+    7400000: Alien_Attack_Fixed
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Alien_Attack_Fixed
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AlienGirlMapped:polySurface1
+        weight: 1
+      - path: back
+        weight: 1
+      - path: locator1
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: Pelvis/Left_Thigh
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint25
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint25/joint26
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint25/joint26/joint27
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint25/joint26/joint27/joint28
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint25/joint26/joint27/joint28/joint29
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint30
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint30/joint31
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint30/joint31/joint32
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint30/joint31/joint32/joint33
+        weight: 1
+      - path: Pelvis/Left_Thigh/Left_Upper_Knee/joint30/joint31/joint32/joint33/joint34
+        weight: 1
+      - path: Pelvis/Right_Thigh
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint15
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint15/joint16
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint15/joint16/joint17
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint15/joint16/joint17/joint18
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint15/joint16/joint17/joint18/joint19
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint20
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint20/joint21
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint20/joint21/joint22
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint20/joint21/joint22/joint23
+        weight: 1
+      - path: Pelvis/Right_Thigh/Right_Upper_Knee/joint20/joint21/joint22/joint23/joint24
+        weight: 1
+      - path: Pelvis/Stomach
+        weight: 1
+      - path: Pelvis/Stomach/Chest
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Lower_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Lower_Shoulder/Left_Lower_Elbow
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Lower_Shoulder/Left_Lower_Elbow/joint4
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Lower_Shoulder/Left_Lower_Elbow/joint4/joint5
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Lower_Shoulder/Left_Lower_Elbow/joint4/joint5/joint6
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Upper_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Upper_Shoulder/Left_Upper_Elbow
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Upper_Shoulder/Left_Upper_Elbow/joint1
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Upper_Shoulder/Left_Upper_Elbow/joint1/joint2
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Left_Shoulder/Left_Upper_Shoulder/Left_Upper_Elbow/joint1/joint2/joint3
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Neck
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Neck/Head
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Lower_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Lower_Shoulder/Right_Lower_Elbow
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Lower_Shoulder/Right_Lower_Elbow/joint11
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Lower_Shoulder/Right_Lower_Elbow/joint11/joint12
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Lower_Shoulder/Right_Lower_Elbow/joint11/joint12/joint13
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Lower_Shoulder/Right_Lower_Elbow/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Upper_Shoulder
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Upper_Shoulder/Right_Upper_Elbow
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Upper_Shoulder/Right_Upper_Elbow/joint7
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Upper_Shoulder/Right_Upper_Elbow/joint7/joint8
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Upper_Shoulder/Right_Upper_Elbow/joint7/joint8/joint9
+        weight: 1
+      - path: Pelvis/Stomach/Chest/Right_Shoulder/Right_Upper_Shoulder/Right_Upper_Elbow/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: polySurface14
+        weight: 1
+      - path: polySurface14/polySurface9
+        weight: 1
+      - path: polySurface14/polySurface16
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
