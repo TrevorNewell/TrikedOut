@@ -21,12 +21,14 @@ public class TrackSelectionManager : MonoBehaviour
 
     private int playerPicking = 1;
 
+    // Variables that control the state of our left and right arrows
     private float time = 0;
     private float timeTilBack = 0.2f;
     private bool startCount = false;
 
+    // Variables controlling if and how often we can transition between characters
     private bool canTransition = true;
-    private float timeTilTransition = 0.1f;
+    private float timeTilTransition = 0.5f;
     private float timeForTransition = 0;
 
     // Use this for initialization
@@ -54,6 +56,7 @@ public class TrackSelectionManager : MonoBehaviour
 
         float h = Input.GetAxis("P" + playerPicking + "_Horizontal");
         Debug.Log(h);
+
         if (h < -0.7f)
         {
             if (canTransition) TransitionLeft();

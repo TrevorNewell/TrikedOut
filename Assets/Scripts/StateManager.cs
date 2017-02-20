@@ -316,7 +316,7 @@ public class StateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!readyToStart)
+        if (!readyToStart && TheState == State.CompanyLogo)
         {
             tempT += Time.deltaTime;
             if (tempT > companyLogoTime)

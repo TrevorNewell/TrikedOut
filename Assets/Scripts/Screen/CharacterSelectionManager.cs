@@ -23,12 +23,14 @@ public class CharacterSelectionManager : MonoBehaviour
 
     public int playerPicking = 1;
 
+    // Variables that control the state of our left and right arrows
 	private float time = 0;
 	private float timeTilBack = 0.2f;
 	private bool startCount = false;
 
+    // Variables controlling if and how often we can transition between characters
 	private bool canTransition = true;
-	private float timeTilTransition = 0.1f;
+	private float timeTilTransition = 0.5f;
 	private float timeForTransition = 0;
 
 	// Use this for initialization
@@ -179,6 +181,8 @@ public class CharacterSelectionManager : MonoBehaviour
         }
         else
         {
+            playerSelectingText.text = "";
+
             // All players have picked.  Save to StateManager.
             FindObjectOfType<StateManager>().SaveCharSelectionsTemp(selections);
 
@@ -190,7 +194,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public void SaveCharacterSelection(int player, int character)
 	{
         //Temp if statement until our characters are done.
-        if (character > 2) selections[player] = 2;
-        else selections[player] = character;
+        if (character > 2) selections[player-1] = 2;
+        else selections[player-1] = character;
 	}
 }
