@@ -123,7 +123,7 @@ public class ControllerRegistration : MonoBehaviour
         {
             playerCount++;
             p4 = true;
-            p1GO.GetComponent<Animator>().SetBool("active", true);
+            p4GO.GetComponent<Animator>().SetBool("active", true);
         }
         else if (Input.GetButtonDown("P4_B") && p4)
         {
