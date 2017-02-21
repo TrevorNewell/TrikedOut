@@ -7,6 +7,7 @@ public class FollowGround : MonoBehaviour
     public float lerpFactor = 0.2f;
     public float maxSlopeAllowed = 20f;
     public GameObject castPoint;
+    public bool useZAxis = false;
 
     private int layerMask;
     private NewMove move;
@@ -73,8 +74,11 @@ public class FollowGround : MonoBehaviour
 
             //This is a safety check. Occasionally things can go wrong if random objects interfere with the raycasts or if you are sitting in a particularly tight valley
             //By clamping ourselves to a maximum allowed slope, we make sure nothing crazy happens in the worst case scenario
-            if(Mathf.Abs(cosineDegrees) < maxSlopeAllowed)
-                transform.rotation = Quaternion.LerpUnclamped(transform.rotation, Quaternion.Euler(cosineDegrees, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z), lerpFactor * Time.deltaTime);
+            if (Mathf.Abs(cosineDegrees) < maxSlopeAllowed)
+            {
+                if (!useZAxis) transform.rotation = Quaternion.LerpUnclamped(transform.rotation, Quaternion.Euler(cosineDegrees, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z), lerpFactor * Time.deltaTime);
+                else transform.rotation = Quaternion.LerpUnclamped(transform.rotation, Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, cosineDegrees), lerpFactor * Time.deltaTime);
+            }
         }
 	}
 }

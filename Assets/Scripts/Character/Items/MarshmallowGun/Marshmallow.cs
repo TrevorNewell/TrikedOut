@@ -15,6 +15,7 @@ public class Marshmallow : MonoBehaviour
     public float gravity;
     public float myPlayerID;
     public float hoverTime;
+    public float speedDownscale = 3f;
     public MarshmallowGun myGun;
 
     public GameObject projMallow;
@@ -49,8 +50,10 @@ public class Marshmallow : MonoBehaviour
         }
     }
 
-    public void SetForward(Vector3 v)
+    public void SetForward(Vector3 v, Vector3 rbv)
     {
+        speed += rbv.magnitude / speedDownscale;
+
         transform.rotation = Quaternion.Euler(/*v.x*/0, v.y, 0);
 
         xFactor = Mathf.Sin(transform.rotation.eulerAngles.y * Mathf.Deg2Rad) * speed;

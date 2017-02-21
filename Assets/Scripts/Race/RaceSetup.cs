@@ -51,6 +51,9 @@ public class RaceSetup : MonoBehaviour
                 //GameObject.Find("SpeedMeter" + j.ToString()).transform.localScale = scale;
                 //GameObject.Find("ChargeMeter" + j.ToString()).transform.localScale = scale;
 
+                if (StateManager.GlobalIndexedSelection != null)
+                    players[i].GetComponent<CharacterSelector>().characterSelection = StateManager.GlobalIndexedSelection[j - 1];
+
                 switch (j - 1)
                 {
                     case 0:

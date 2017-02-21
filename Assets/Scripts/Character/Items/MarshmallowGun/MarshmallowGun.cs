@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
 using System;
 
@@ -15,12 +16,14 @@ public class MarshmallowGun : MonoBehaviour, Item
     private float currentTime;
     private float currentAngle;
     private Vector3 startRot;
+    private Rigidbody player;
 
     // Use this for initialization
     void Start()
     {
         startRot = transform.localRotation.eulerAngles;
         currentTime = fireDelay;
+        player = GameObject.Find("P" + myPlayerID.ToString()).GetComponent<Rigidbody>();
         //transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
@@ -53,7 +56,7 @@ public class MarshmallowGun : MonoBehaviour, Item
                 firing = true;
                 //launch bullet
                 GameObject b = Instantiate(bullet);
-                b.GetComponent<Marshmallow>().SetForward(launchPoint.transform.rotation.eulerAngles);
+                b.GetComponent<Marshmallow>().SetForward(launchPoint.transform.rotation.eulerAngles, player.velocity);
                 b.GetComponent<Marshmallow>().myPlayerID = myPlayerID;
                 b.GetComponent<Marshmallow>().myGun = this;
                 b.transform.position = launchPoint.transform.position;

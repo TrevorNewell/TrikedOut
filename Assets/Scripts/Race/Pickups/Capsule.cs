@@ -77,6 +77,7 @@ public class Capsule : MonoBehaviour
                 else
                 {
                     other.GetComponent<NewMove>().SetBoost(boostFactor, boostDuration, boostSensitivity);
+                    other.GetComponentInChildren<Rockets>().Activate(boostDuration);
                     Destroy(gameObject);
                 }
             }

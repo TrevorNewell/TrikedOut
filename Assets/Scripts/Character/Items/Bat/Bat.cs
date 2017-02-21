@@ -5,10 +5,12 @@ using System;
 public class Bat : MonoBehaviour, Item
 {
     public float swingDuration;
+    public float downScaleFactor;
     public float hopDuration;
     public float hopHeight;
     public float maxSwingAngle;
     public float slowFactor;
+    public float maxScale = 20f;
     public GameObject batModel;
 
     private bool hasBat;
@@ -21,11 +23,18 @@ public class Bat : MonoBehaviour, Item
     private Vector3 startRot;
     private PlaceManager placeManager;
     private int myPlayerID;
+    private bool manualAnim;
+    private float currentScale;
+    private float ogScale;
+    private float scalePerSecond;
+    private float downScalePerSecond;
 
     private Vector3 ogPosition;
     private Quaternion ogRotation;
 
     private GameObject[] playersInRange;
+
+    private Animator anim;
 
     // Use this for initialization
     void Start()
@@ -33,6 +42,7 @@ public class Bat : MonoBehaviour, Item
         //swinging = false;
         backswing = false;
         endSwing = false;
+        manualAnim = true;
         anglesPerSecond = maxSwingAngle / swingDuration;
         ogPosition = transform.localPosition;
         ogRotation = transform.localRotation;
@@ -72,7 +82,10 @@ public class Bat : MonoBehaviour, Item
 
             if (!backswing)
             {
-                currentAngle = currentAngle + anglesPerSecond * Time.deltaTime;
+                currentAngle += anglesPerSecond * Time.deltaTime;
+                currentScale += scalePerSecond * Time.deltaTime;
+                batModel.transform.localScale = Vector3.one * currentScale;
+
                 if (currentAngle >= maxSwingAngle)
                 {
                     backswing = true;
@@ -90,17 +103,41 @@ public class Bat : MonoBehaviour, Item
             }
             else
             {
-                if(currentAngle > 0) currentAngle = currentAngle - anglesPerSecond * Time.deltaTime;
+                if (currentScale > ogScale)
+                {
+                    currentScale -= downScalePerSecond * Time.deltaTime;
+
+                    if (currentScale < ogScale)
+                    {
+                        currentScale = ogScale;
+                        batModel.transform.localScale = Vector3.one * currentScale;
+                        Deactivate();
+                    }
+
+                    batModel.transform.localScale = Vector3.one * currentScale;
+
+                }
+
+                if (currentAngle > 0) currentAngle = currentAngle - anglesPerSecond * Time.deltaTime;
                 if (currentAngle <= 0)
                 {
                     currentAngle = 0;
-                    Deactivate();
                 }
             }
             Vector3 newRot = new Vector3(startRot.x + currentAngle, startRot.y, startRot.z);
-
-            batModel.transform.localRotation = Quaternion.Euler(newRot);
+            if (manualAnim) batModel.transform.localRotation = Quaternion.Euler(newRot);
+            //batModel.transform.localRotation = Quaternion.Euler(newRot);
         }
+    }
+
+    public void SetAnimator(Animator a)
+    {
+        anim = a;
+    }
+
+    public void SetAnimatedSwing()
+    {
+        manualAnim = false;
     }
 
     public void Activate()
@@ -111,7 +148,15 @@ public class Bat : MonoBehaviour, Item
         backswing = false;
         endSwing = false;
         currentAngle = 0;
+        ogScale = batModel.transform.localScale.x;
+        currentScale = ogScale;
+        scalePerSecond = (maxScale - ogScale) / swingDuration;
+        downScalePerSecond = (maxScale - ogScale) / downScaleFactor;
         placeManager = GameObject.Find("Race Manager").GetComponent<PlaceManager>();
+        if (anim != null)
+        {
+            anim.SetBool("Swinging", true);
+        }
         SetDefaultScale();
     }
 

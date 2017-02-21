@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 1305512db1e731f478af3655b3ac029c
+timeCreated: 1487663105
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: hair2
+    100002: hair3
+    100004: hair_start
+    100006: hair_tip
+    100008: HairHandle
+    100010: head_center
+    100012: head_top
+    100014: HeadHandle
+    100016: HeadIK
+    100018: headtop
+    100020: ikHandle1
+    100022: ikHandle2
+    100024: imagePlane1
+    100026: jaw_base
+    100028: jawbase
+    100030: l_ankle
+    100032: l_ankle 1
+    100034: l_armHandle
+    100036: l_armIK
+    100038: l_armPV
+    100040: l_ball
+    100042: l_clavicle
+    100044: l_clavicle 1
+    100046: l_elbow
+    100048: l_elbow 1
+    100050: l_footHandle
+    100052: l_hair_mid
+    100054: l_hair_tip
+    100056: l_heel
+    100058: l_hip
+    100060: l_hip 1
+    100062: l_index1
+    100064: l_index1 1
+    100066: l_index2
+    100068: l_index2 1
+    100070: l_index3
+    100072: l_index3 1
+    100074: l_index4
+    100076: l_indextip
+    100078: l_knee
+    100080: l_knee 1
+    100082: l_knee_poleVector1
+    100084: l_kneePV
+    100086: l_legHandle
+    100088: l_mid1
+    100090: l_mid1 1
+    100092: l_mid2
+    100094: l_mid2 1
+    100096: l_mid3
+    100098: l_mid3 1
+    100100: l_mid4
+    100102: l_midtip
+    100104: l_pinky1
+    100106: l_pinky1 1
+    100108: l_pinky2
+    100110: l_pinky2 1
+    100112: l_pinky3
+    100114: l_pinky3 1
+    100116: l_pinky4
+    100118: l_pinkytip
+    100120: l_ring1
+    100122: l_ring1 1
+    100124: l_ring2
+    100126: l_ring2 1
+    100128: l_ring3
+    100130: l_ring3 1
+    100132: l_ring4
+    100134: l_ringHelper
+    100136: l_ringpinkhelper
+    100138: l_ringtip
+    100140: l_shoulder
+    100142: l_shoulder 1
+    100144: l_thumb1
+    100146: l_thumb1 1
+    100148: l_thumb2
+    100150: l_thumb2 1
+    100152: l_thumb3
+    100154: l_thumbHelper
+    100156: l_thumbhelper
+    100158: l_thumbtip
+    100160: l_toe
+    100162: l_toe 1
+    100164: l_wrist
+    100166: l_wrist 1
+    100168: l_wristHandle
+    100170: MainHandle
+    100172: MainPelvisPrincess
+    100174: midhead
+    100176: neck_base
+    100178: neck_top
+    100180: neckbase
+    100182: necktop
+    100184: PELVIS
+    100186: polySurface1
+    100188: polySurface3
+    100190: polySurface4
+    100192: polySurface5
+    100194: //RootNode
+    100196: PrincessMainController
+    100198: r_ankle
+    100200: r_ankle 1
+    100202: r_armHandle
+    100204: r_armIK
+    100206: r_armPV
+    100208: r_ball
+    100210: r_clavicle
+    100212: r_clavicle 1
+    100214: r_elbow
+    100216: r_elbow 1
+    100218: r_footHandle
+    100220: r_hair_mid
+    100222: r_hair_tip
+    100224: r_heel
+    100226: r_hip
+    100228: r_hip 1
+    100230: r_index1
+    100232: r_index1 1
+    100234: r_index2
+    100236: r_index2 1
+    100238: r_index3
+    100240: r_index3 1
+    100242: r_index4
+    100244: r_indextip
+    100246: r_knee
+    100248: r_knee 1
+    100250: r_knee_poleVector
+    100252: r_kneePV
+    100254: r_legHandle
+    100256: r_mid1
+    100258: r_mid1 1
+    100260: r_mid2
+    100262: r_mid2 1
+    100264: r_mid3
+    100266: r_mid3 1
+    100268: r_mid4
+    100270: r_midtip
+    100272: r_pinky1
+    100274: r_pinky1 1
+    100276: r_pinky2
+    100278: r_pinky2 1
+    100280: r_pinky3
+    100282: r_pinky3 1
+    100284: r_pinky4
+    100286: r_pinkytip
+    100288: r_ring1
+    100290: r_ring1 1
+    100292: r_ring2
+    100294: r_ring2 1
+    100296: r_ring3
+    100298: r_ring3 1
+    100300: r_ring4
+    100302: r_ringHelper
+    100304: r_ringpinkhelper
+    100306: r_ringtip
+    100308: r_shoulder
+    100310: r_shoulder 1
+    100312: r_thumb1
+    100314: r_thumb1 1
+    100316: r_thumb2
+    100318: r_thumb2 1
+    100320: r_thumb3
+    100322: r_thumbHelper
+    100324: r_thumbhelper
+    100326: r_thumbtip
+    100328: r_toe
+    100330: r_toe 1
+    100332: r_wrist
+    100334: r_wrist 1
+    100336: r_wristHandle
+    100338: spine1
+    100340: spine1 1
+    100342: spine2
+    100344: spine2 1
+    100346: spine3
+    100348: spine3 1
+    100350: spine4
+    100352: spine4 1
+    100354: spine5
+    100356: spineend
+    100358: Trike_Princess:CarriageWheel_Group4
+    100360: Trike_Princess:CarriageWheel_ZBrush_defualt_group1
+    100362: Trike_Princess:CarriageWheel_ZBrush_defualt_group2
+    100364: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    100366: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    100368: Trike_Princess:imagePlane1
+    100370: Trike_Princess:imagePlane2
+    100372: Trike_Princess:pCube3
+    100374: Trike_Princess:pCylinder12
+    100376: Trike_Princess:pCylinder3
+    100378: Trike_Princess:pCylinder4
+    100380: Trike_Princess:pCylinder8
+    100382: Trike_Princess:pCylinder9
+    100384: Trike_Princess:polySurface12
+    100386: Trike_Princess:polySurface16
+    100388: Trike_Princess:polySurface17
+    100390: Trike_Princess:polySurface18
+    400000: hair2
+    400002: hair3
+    400004: hair_start
+    400006: hair_tip
+    400008: HairHandle
+    400010: head_center
+    400012: head_top
+    400014: HeadHandle
+    400016: HeadIK
+    400018: headtop
+    400020: ikHandle1
+    400022: ikHandle2
+    400024: imagePlane1
+    400026: jaw_base
+    400028: jawbase
+    400030: l_ankle
+    400032: l_ankle 1
+    400034: l_armHandle
+    400036: l_armIK
+    400038: l_armPV
+    400040: l_ball
+    400042: l_clavicle
+    400044: l_clavicle 1
+    400046: l_elbow
+    400048: l_elbow 1
+    400050: l_footHandle
+    400052: l_hair_mid
+    400054: l_hair_tip
+    400056: l_heel
+    400058: l_hip
+    400060: l_hip 1
+    400062: l_index1
+    400064: l_index1 1
+    400066: l_index2
+    400068: l_index2 1
+    400070: l_index3
+    400072: l_index3 1
+    400074: l_index4
+    400076: l_indextip
+    400078: l_knee
+    400080: l_knee 1
+    400082: l_knee_poleVector1
+    400084: l_kneePV
+    400086: l_legHandle
+    400088: l_mid1
+    400090: l_mid1 1
+    400092: l_mid2
+    400094: l_mid2 1
+    400096: l_mid3
+    400098: l_mid3 1
+    400100: l_mid4
+    400102: l_midtip
+    400104: l_pinky1
+    400106: l_pinky1 1
+    400108: l_pinky2
+    400110: l_pinky2 1
+    400112: l_pinky3
+    400114: l_pinky3 1
+    400116: l_pinky4
+    400118: l_pinkytip
+    400120: l_ring1
+    400122: l_ring1 1
+    400124: l_ring2
+    400126: l_ring2 1
+    400128: l_ring3
+    400130: l_ring3 1
+    400132: l_ring4
+    400134: l_ringHelper
+    400136: l_ringpinkhelper
+    400138: l_ringtip
+    400140: l_shoulder
+    400142: l_shoulder 1
+    400144: l_thumb1
+    400146: l_thumb1 1
+    400148: l_thumb2
+    400150: l_thumb2 1
+    400152: l_thumb3
+    400154: l_thumbHelper
+    400156: l_thumbhelper
+    400158: l_thumbtip
+    400160: l_toe
+    400162: l_toe 1
+    400164: l_wrist
+    400166: l_wrist 1
+    400168: l_wristHandle
+    400170: MainHandle
+    400172: MainPelvisPrincess
+    400174: midhead
+    400176: neck_base
+    400178: neck_top
+    400180: neckbase
+    400182: necktop
+    400184: PELVIS
+    400186: polySurface1
+    400188: polySurface3
+    400190: polySurface4
+    400192: polySurface5
+    400194: //RootNode
+    400196: PrincessMainController
+    400198: r_ankle
+    400200: r_ankle 1
+    400202: r_armHandle
+    400204: r_armIK
+    400206: r_armPV
+    400208: r_ball
+    400210: r_clavicle
+    400212: r_clavicle 1
+    400214: r_elbow
+    400216: r_elbow 1
+    400218: r_footHandle
+    400220: r_hair_mid
+    400222: r_hair_tip
+    400224: r_heel
+    400226: r_hip
+    400228: r_hip 1
+    400230: r_index1
+    400232: r_index1 1
+    400234: r_index2
+    400236: r_index2 1
+    400238: r_index3
+    400240: r_index3 1
+    400242: r_index4
+    400244: r_indextip
+    400246: r_knee
+    400248: r_knee 1
+    400250: r_knee_poleVector
+    400252: r_kneePV
+    400254: r_legHandle
+    400256: r_mid1
+    400258: r_mid1 1
+    400260: r_mid2
+    400262: r_mid2 1
+    400264: r_mid3
+    400266: r_mid3 1
+    400268: r_mid4
+    400270: r_midtip
+    400272: r_pinky1
+    400274: r_pinky1 1
+    400276: r_pinky2
+    400278: r_pinky2 1
+    400280: r_pinky3
+    400282: r_pinky3 1
+    400284: r_pinky4
+    400286: r_pinkytip
+    400288: r_ring1
+    400290: r_ring1 1
+    400292: r_ring2
+    400294: r_ring2 1
+    400296: r_ring3
+    400298: r_ring3 1
+    400300: r_ring4
+    400302: r_ringHelper
+    400304: r_ringpinkhelper
+    400306: r_ringtip
+    400308: r_shoulder
+    400310: r_shoulder 1
+    400312: r_thumb1
+    400314: r_thumb1 1
+    400316: r_thumb2
+    400318: r_thumb2 1
+    400320: r_thumb3
+    400322: r_thumbHelper
+    400324: r_thumbhelper
+    400326: r_thumbtip
+    400328: r_toe
+    400330: r_toe 1
+    400332: r_wrist
+    400334: r_wrist 1
+    400336: r_wristHandle
+    400338: spine1
+    400340: spine1 1
+    400342: spine2
+    400344: spine2 1
+    400346: spine3
+    400348: spine3 1
+    400350: spine4
+    400352: spine4 1
+    400354: spine5
+    400356: spineend
+    400358: Trike_Princess:CarriageWheel_Group4
+    400360: Trike_Princess:CarriageWheel_ZBrush_defualt_group1
+    400362: Trike_Princess:CarriageWheel_ZBrush_defualt_group2
+    400364: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    400366: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    400368: Trike_Princess:imagePlane1
+    400370: Trike_Princess:imagePlane2
+    400372: Trike_Princess:pCube3
+    400374: Trike_Princess:pCylinder12
+    400376: Trike_Princess:pCylinder3
+    400378: Trike_Princess:pCylinder4
+    400380: Trike_Princess:pCylinder8
+    400382: Trike_Princess:pCylinder9
+    400384: Trike_Princess:polySurface12
+    400386: Trike_Princess:polySurface16
+    400388: Trike_Princess:polySurface17
+    400390: Trike_Princess:polySurface18
+    2300000: polySurface3
+    2300002: polySurface4
+    2300004: polySurface5
+    2300006: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    2300008: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    2300010: Trike_Princess:pCube3
+    2300012: Trike_Princess:polySurface12
+    2300014: Trike_Princess:polySurface16
+    2300016: Trike_Princess:polySurface17
+    3300000: polySurface3
+    3300002: polySurface4
+    3300004: polySurface5
+    3300006: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    3300008: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    3300010: Trike_Princess:pCube3
+    3300012: Trike_Princess:polySurface12
+    3300014: Trike_Princess:polySurface16
+    3300016: Trike_Princess:polySurface17
+    4300000: Trike_Princess:pCube3
+    4300002: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+    4300004: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+    4300006: Trike_Princess:polySurface12
+    4300008: Trike_Princess:polySurface16
+    4300010: Trike_Princess:polySurface17
+    4300012: polySurface3
+    4300014: polySurface5
+    4300016: polySurface1
+    4300018: polySurface4
+    7400000: Princess_Pedal
+    9500000: //RootNode
+    13700000: polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Princess_Pedal
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: HairHandle
+        weight: 1
+      - path: imagePlane1
+        weight: 1
+      - path: l_armPV
+        weight: 1
+      - path: l_knee_poleVector1
+        weight: 1
+      - path: l_kneePV
+        weight: 1
+      - path: MainHandle
+        weight: 1
+      - path: MainHandle/HeadHandle
+        weight: 1
+      - path: MainHandle/HeadHandle/HeadIK
+        weight: 1
+      - path: MainHandle/l_footHandle
+        weight: 1
+      - path: MainHandle/l_footHandle/ikHandle1
+        weight: 1
+      - path: MainHandle/l_wristHandle
+        weight: 1
+      - path: MainHandle/l_wristHandle/l_armIK
+        weight: 1
+      - path: MainHandle/PELVIS
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip 1
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip 1/l_knee 1
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip 1/l_knee 1/l_ankle 1
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip 1/l_knee 1/l_ankle 1/l_ball
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip 1/l_knee 1/l_ankle 1/l_ball/l_toe 1
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip 1
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip 1/r_knee 1
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip 1/r_knee 1/r_ankle 1
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip 1/r_knee 1/r_ankle 1/r_ball
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip 1/r_knee 1/r_ankle 1/r_ball/r_toe 1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2/l_mid3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2/l_mid3/l_midtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1/l_pinky2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1/l_pinky2/l_pinky3/l_pinkytip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1/l_ring2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1/l_ring2/l_ring3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1/l_ring2/l_ring3/l_ringtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1/l_index2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1/l_index2/l_index3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1/l_index2/l_index3/l_indextip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_thumb1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_thumb1/l_thumb2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_thumb1/l_thumb2/l_thumbtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/neckbase
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/neckbase/necktop
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/neckbase/necktop/midhead
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/neckbase/necktop/midhead/headtop
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/neckbase/necktop/midhead/jawbase
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2/r_mid3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2/r_mid3/r_midtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1/r_pinky2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1/r_pinky2/r_pinky3/r_pinkytip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1/r_ring2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1/r_ring2/r_ring3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1/r_ring2/r_ring3/r_ringtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1/r_index2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1/r_index2/r_index3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1/r_index2/r_index3/r_indextip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_thumb1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_thumb1/r_thumb2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1 1/spine2 1/spine3 1/spine4 1/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_thumb1/r_thumb2/r_thumbtip
+        weight: 1
+      - path: MainHandle/r_footHandle
+        weight: 1
+      - path: MainHandle/r_footHandle/ikHandle2
+        weight: 1
+      - path: MainHandle/r_wristHandle
+        weight: 1
+      - path: MainHandle/r_wristHandle/r_armIK
+        weight: 1
+      - path: MainPelvisPrincess
+        weight: 1
+      - path: MainPelvisPrincess/l_hip
+        weight: 1
+      - path: MainPelvisPrincess/l_hip/l_knee
+        weight: 1
+      - path: MainPelvisPrincess/l_hip/l_knee/l_ankle
+        weight: 1
+      - path: MainPelvisPrincess/l_hip/l_knee/l_ankle/l_heel
+        weight: 1
+      - path: MainPelvisPrincess/l_hip/l_knee/l_ankle/l_heel/l_toe
+        weight: 1
+      - path: MainPelvisPrincess/r_hip
+        weight: 1
+      - path: MainPelvisPrincess/r_hip/r_knee
+        weight: 1
+      - path: MainPelvisPrincess/r_hip/r_knee/r_ankle
+        weight: 1
+      - path: MainPelvisPrincess/r_hip/r_knee/r_ankle/r_heel
+        weight: 1
+      - path: MainPelvisPrincess/r_hip/r_knee/r_ankle/r_heel/r_toe
+        weight: 1
+      - path: MainPelvisPrincess/spine1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_pinky1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_pinky1 1/l_pinky2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_pinky1 1/l_pinky2 1/l_pinky3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_pinky1 1/l_pinky2 1/l_pinky3
+          1/l_pinky4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_ring1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_ring1 1/l_ring2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_ring1 1/l_ring2 1/l_ring3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_ringHelper/l_ring1 1/l_ring2 1/l_ring3
+          1/l_ring4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_index1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_index1 1/l_index2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_index1 1/l_index2 1/l_index3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_index1 1/l_index2 1/l_index3
+          1/l_index4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_mid1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_mid1 1/l_mid2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_mid1 1/l_mid2 1/l_mid3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_mid1 1/l_mid2 1/l_mid3
+          1/l_mid4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_thumb1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_thumb1 1/l_thumb2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/l_clavicle
+          1/l_shoulder 1/l_elbow 1/l_wrist 1/l_thumbHelper/l_thumb1 1/l_thumb2 1/l_thumb3
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start/hair2
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start/hair2/hair3
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start/hair2/hair3/hair_tip
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start/hair2/hair3/l_hair_tip
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start/hair2/hair3/r_hair_tip
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start/hair2/l_hair_mid
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/head_top/hair_start/hair2/r_hair_mid
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/neck_top/head_center/jaw_base
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_pinky1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_pinky1 1/r_pinky2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_pinky1 1/r_pinky2 1/r_pinky3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_pinky1 1/r_pinky2 1/r_pinky3
+          1/r_pinky4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_ring1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_ring1 1/r_ring2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_ring1 1/r_ring2 1/r_ring3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_ringHelper/r_ring1 1/r_ring2 1/r_ring3
+          1/r_ring4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_index1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_index1 1/r_index2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_index1 1/r_index2 1/r_index3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_index1 1/r_index2 1/r_index3
+          1/r_index4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_mid1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_mid1 1/r_mid2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_mid1 1/r_mid2 1/r_mid3
+          1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_mid1 1/r_mid2 1/r_mid3
+          1/r_mid4
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_thumb1 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_thumb1 1/r_thumb2 1
+        weight: 1
+      - path: MainPelvisPrincess/spine1/spine2/spine3/spine4/spine5/neck_base/r_clavicle
+          1/r_shoulder 1/r_elbow 1/r_wrist 1/r_thumbHelper/r_thumb1 1/r_thumb2 1/r_thumb3
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface4
+        weight: 1
+      - path: PrincessMainController
+        weight: 1
+      - path: PrincessMainController/l_armHandle
+        weight: 1
+      - path: PrincessMainController/l_legHandle
+        weight: 1
+      - path: PrincessMainController/r_armHandle
+        weight: 1
+      - path: PrincessMainController/r_legHandle
+        weight: 1
+      - path: r_armPV
+        weight: 1
+      - path: r_knee_poleVector
+        weight: 1
+      - path: r_kneePV
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_Group4
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_Group4/Trike_Princess:polySurface12
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_Group4/Trike_Princess:polySurface16
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_Group4/Trike_Princess:polySurface17
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_ZBrush_defualt_group1
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_ZBrush_defualt_group2
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_ZBrush_defualt_group3
+        weight: 1
+      - path: Trike_Princess:CarriageWheel_ZBrush_defualt_group6
+        weight: 1
+      - path: Trike_Princess:imagePlane1
+        weight: 1
+      - path: Trike_Princess:imagePlane2
+        weight: 1
+      - path: Trike_Princess:pCube3
+        weight: 1
+      - path: Trike_Princess:pCylinder3
+        weight: 1
+      - path: Trike_Princess:pCylinder4
+        weight: 1
+      - path: Trike_Princess:pCylinder8
+        weight: 1
+      - path: Trike_Princess:pCylinder9
+        weight: 1
+      - path: Trike_Princess:pCylinder12
+        weight: 1
+      - path: Trike_Princess:polySurface18
+        weight: 1
+      - path: Trike_Princess:polySurface18/polySurface3
+        weight: 1
+      - path: Trike_Princess:polySurface18/polySurface5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
