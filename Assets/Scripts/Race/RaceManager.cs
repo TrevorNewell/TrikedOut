@@ -34,6 +34,7 @@ public class RaceManager : MonoBehaviour
     public float tempTime; // Tracks time before the race starts.
     public float pauseTime; // How much time our game has been paused for.  Used to track actual overallTime.
     public float overallTime; // How long the race has actually been going.
+    public float flythroughTime;
 
     private float currentTime; // Current lap time.
     private float lastTime; // Last laps time.
@@ -44,7 +45,7 @@ public class RaceManager : MonoBehaviour
 
     private PlaceManager pm;
 
-    private bool tempStart = false;
+    private bool playingFlythrough = true;
 
     [Header("UI Variables")]
     // Text components for the appropriately named section of the screen.
@@ -400,10 +401,18 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    public void FinishFlythrough()
+    {
+        playingFlythrough = false;
+    }
+
     void Update ()
     {
         //if (Input.GetKeyDown(KeyCode.Space)) tempStart = true;
         //if (!tempStart) return;
+        
+        if (playingFlythrough) return;
+
         // If we're paused track how long we're paused for so our overall race time doesn't get screwed up.
         if (StateManager.instance.TheState == State.Paused)
         {
@@ -423,8 +432,7 @@ public class RaceManager : MonoBehaviour
             {
                 //speed.SetActive(false);
                 //charge.SetActive(false);
-
-                tempTime = Time.timeSinceLevelLoad - pauseTime;
+                tempTime = Time.timeSinceLevelLoad - flythroughTime - pauseTime;
 
                 DisplayStartText();
             }

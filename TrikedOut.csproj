@@ -128,6 +128,7 @@
     <Compile Include="Assets\Scripts\InputValues.cs" />
     <Compile Include="Assets\Scripts\Race\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
+    <Compile Include="Assets\Scripts\Race\FlythroughEnd.cs" />
     <Compile Include="Assets\Scripts\Race\Pickups\Capsule.cs" />
     <Compile Include="Assets\Scripts\Race\Pickups\Rockets.cs" />
     <Compile Include="Assets\Scripts\Race\PlaceManager.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Assets\Scripts\Screen\CycleOnHighlight.cs" />
     <Compile Include="Assets\Scripts\Screen\DisableOnUpdate.cs" />
     <Compile Include="Assets\Scripts\Screen\EnableDisableOnHighlight.cs" />
+    <Compile Include="Assets\Scripts\Screen\Flythrough.cs" />
     <Compile Include="Assets\Scripts\Screen\Highlighted.cs" />
     <Compile Include="Assets\Scripts\Screen\Screen.cs" />
     <Compile Include="Assets\Scripts\Screen\ScreenManager.cs" />
