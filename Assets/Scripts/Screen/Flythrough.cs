@@ -7,6 +7,7 @@ public class Flythrough : MonoBehaviour
     public float length;
 
     private GameObject[] players;
+    private PlaceManager pmanager;
     private RaceManager[] managers;
     private bool initialized;
     
@@ -14,6 +15,7 @@ public class Flythrough : MonoBehaviour
 	void Start ()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
+        pmanager = FindObjectOfType<PlaceManager>();
         managers = FindObjectsOfType<RaceManager>();
         length = GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length;
 	}
@@ -23,6 +25,7 @@ public class Flythrough : MonoBehaviour
     {
 		if (!initialized)
         {
+            GetComponentInChildren<FlythroughFadeout>().SetLength(length);
             foreach (GameObject g in players)
             {
                 g.SetActive(false);
@@ -34,6 +37,8 @@ public class Flythrough : MonoBehaviour
 
     public void Finish()
     {
+        pmanager.raceStarted = true;
+
         foreach (GameObject g in players)
         {
             g.SetActive(true);

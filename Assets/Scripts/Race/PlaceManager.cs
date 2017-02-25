@@ -8,6 +8,7 @@ public class PlaceManager : MonoBehaviour
     public float[] chanceOfDrop = new float[4] { 0.1f, 0.2f, 0.4f, 0.8f};
 
     public GameObject dropPrefab;
+    public bool raceStarted = false;
 
     private Checkpoint[] checkpoints;
     private GameObject[] players;
@@ -15,8 +16,6 @@ public class PlaceManager : MonoBehaviour
     private int[] places;
     private int playerCount;
     private float[] timesTilNextSpawn = new float[4] { 0f, 0f, 0f, 0f };
-
-    private bool tempStart = false;
 
     // Use this for initialization
     void Start()
@@ -66,6 +65,8 @@ public class PlaceManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!raceStarted) return;
+
         if (playerCount == -1)
         {
             playerCount = GetComponent<RaceSetup>().playerCount;

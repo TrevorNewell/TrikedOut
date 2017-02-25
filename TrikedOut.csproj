@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\Race\Checkpoint.cs" />
     <Compile Include="Assets\Scripts\Race\CheckpointStatus.cs" />
     <Compile Include="Assets\Scripts\Race\FlythroughEnd.cs" />
+    <Compile Include="Assets\Scripts\Race\FlythroughFadeout.cs" />
     <Compile Include="Assets\Scripts\Race\Pickups\Capsule.cs" />
     <Compile Include="Assets\Scripts\Race\Pickups\Rockets.cs" />
     <Compile Include="Assets\Scripts\Race\PlaceManager.cs" />
