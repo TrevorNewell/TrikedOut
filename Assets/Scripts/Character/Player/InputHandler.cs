@@ -88,6 +88,19 @@ public class InputHandler : MonoBehaviour
         if (activateUlti) ActivateUlti();
         if (openMinimap) minimap.SetActive(!minimap.activeInHierarchy);
 
+        if (Input.GetAxis(prefix + "_LeftStickX") > turnAnimSensitivity)
+        {
+            GetComponentInChildren<CameraTurnDelay>().TurnRight();
+        }
+        else if (Input.GetAxis(prefix + "_LeftStickX") < -turnAnimSensitivity)
+        {
+            GetComponentInChildren<CameraTurnDelay>().TurnLeft();
+        }
+        else
+        {
+            GetComponentInChildren<CameraTurnDelay>().Stop();
+        }
+
         if (anim != null)
         {
             anim.SetBool("Pedalling", move.IsPedalling());

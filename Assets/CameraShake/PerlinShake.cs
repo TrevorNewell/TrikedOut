@@ -7,7 +7,7 @@ public class PerlinShake : MonoBehaviour {
 	public float speed = 1.0f;
 	public float magnitude = 0.1f;
 	
-	public bool test = false;
+	public bool test = true;
 	
 	// -------------------------------------------------------------------------
 	public void PlayShake() {
@@ -25,15 +25,16 @@ public class PerlinShake : MonoBehaviour {
 	}
 	
 	// -------------------------------------------------------------------------
-	IEnumerator Shake() {
+	IEnumerator Shake()
+    {
 		
 		float elapsed = 0.0f;
 
-        Vector3 originalCamPos = GetComponent<Camera>().transform.position;
+        Vector3 originalCamPos = GetComponent<Camera>().transform.localPosition;
 		float randomStart = Random.Range(-1000.0f, 1000.0f);
 		
-		while (elapsed < duration) {
-			
+		while (elapsed < duration)
+        {
 			elapsed += Time.deltaTime;			
 			
 			float percentComplete = elapsed / duration;			
@@ -51,11 +52,11 @@ public class PerlinShake : MonoBehaviour {
 			x *= magnitude * damper;
 			y *= magnitude * damper;
 			
-			Camera.main.transform.position = new Vector3(x, y, originalCamPos.z);
+			Camera.main.transform.localPosition = new Vector3(x, originalCamPos.y - y, originalCamPos.z);
 				
 			yield return null;
 		}
 
-        GetComponent<Camera>().transform.position = originalCamPos;
+        GetComponent<Camera>().transform.localPosition = originalCamPos;
 	}
 }

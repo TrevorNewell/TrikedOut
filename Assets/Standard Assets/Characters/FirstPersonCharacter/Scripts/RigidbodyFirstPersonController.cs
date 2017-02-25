@@ -78,6 +78,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         public Camera cam;
+        public GameObject cameraBoom;
         public float percentOfMaxSpeed = 0f;
         public string prefix = "P1";
         public MovementSettings movementSettings = new MovementSettings();
@@ -125,7 +126,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
-            mouseLook.Init (transform, cam.transform);
+            mouseLook.Init (transform, cameraBoom.transform);
             mouseLook.prefix = prefix;
         }
 
@@ -147,7 +148,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Vector2 input = AlternateGetInput();
 
             // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
+            Vector3 desiredMove = cameraBoom.transform.forward * input.y + cameraBoom.transform.right * input.x;
             desiredMove = Vector3.ProjectOnPlane(desiredMove, m_GroundContactNormal).normalized;
 
             desiredMove.x = desiredMove.x * movementSettings.CurrentTargetSpeed;
@@ -193,7 +194,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
             {
                 // always move along the camera forward as it is the direction that it being aimed at
-                Vector3 desiredMove = cam.transform.forward*input.y + cam.transform.right*input.x;
+                Vector3 desiredMove = cameraBoom.transform.forward*input.y + cameraBoom.transform.right*input.x;
                 desiredMove = Vector3.ProjectOnPlane(desiredMove, m_GroundContactNormal).normalized;
 
                 desiredMove.x = desiredMove.x*movementSettings.CurrentTargetSpeed;
@@ -294,7 +295,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            mouseLook.LookRotation (transform, cam.transform);
+            mouseLook.LookRotation (transform, cameraBoom.transform);
 
             if (m_IsGrounded || advancedSettings.airControl)
             {
