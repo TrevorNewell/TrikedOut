@@ -130,6 +130,7 @@ public class Marshmallow : MonoBehaviour
         if (c.CompareTag("Terrain") && !stuck)
         {
             mrot.enabled = false;
+            print(mrot);
             grounded = true;
             xFactor = 0;
             yFactor = 0;

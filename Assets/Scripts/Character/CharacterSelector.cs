@@ -39,6 +39,11 @@ public class CharacterSelector : MonoBehaviour
             character.transform.localRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
         }
 
+        if (characterSelection == 3)
+        {
+            character.transform.localRotation = Quaternion.Euler(new Vector3(0f, -90f, 0f));
+        }
+
         weapon.transform.parent = character.transform;
         weapon.GetComponent<MarshmallowGun>().bullet = projectiles[characterSelection];
         GameObject ub = Instantiate(bats[characterSelection]);
