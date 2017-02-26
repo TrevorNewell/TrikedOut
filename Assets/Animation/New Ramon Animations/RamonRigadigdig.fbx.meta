@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 3a40f3075acc81640a8e3097eb0f7ca2
+timeCreated: 1488074636
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: headtop
+    100002: jawbase
+    100004: l_ankle
+    100006: l_ball
+    100008: l_clavicle
+    100010: l_elbow
+    100012: l_hip
+    100014: l_index1
+    100016: l_index2
+    100018: l_index3
+    100020: l_indextip
+    100022: l_knee
+    100024: l_mid1
+    100026: l_mid2
+    100028: l_mid3
+    100030: l_midtip
+    100032: l_pinky1
+    100034: l_pinky2
+    100036: l_pinky3
+    100038: l_pinkytip
+    100040: l_ring1
+    100042: l_ring2
+    100044: l_ring3
+    100046: l_ringpinkhelper
+    100048: l_ringtip
+    100050: l_shoulder
+    100052: l_thumb1
+    100054: l_thumb2
+    100056: l_thumbhelper
+    100058: l_thumbtip
+    100060: l_toe
+    100062: l_wrist
+    100064: MainHandle
+    100066: midhead
+    100068: neckbase
+    100070: necktop
+    100072: PELVIS
+    100074: r_ankle
+    100076: r_ball
+    100078: r_clavicle
+    100080: r_elbow
+    100082: r_hip
+    100084: r_index1
+    100086: r_index2
+    100088: r_index3
+    100090: r_indextip
+    100092: r_knee
+    100094: r_mid1
+    100096: r_mid2
+    100098: r_mid3
+    100100: r_midtip
+    100102: r_pinky1
+    100104: r_pinky2
+    100106: r_pinky3
+    100108: r_pinkytip
+    100110: r_ring1
+    100112: r_ring2
+    100114: r_ring3
+    100116: r_ringpinkhelper
+    100118: r_ringtip
+    100120: r_shoulder
+    100122: r_thumb1
+    100124: r_thumb2
+    100126: r_thumbhelper
+    100128: r_thumbtip
+    100130: r_toe
+    100132: r_wrist
+    100134: //RootNode
+    100136: RamonRigComplete:polySurface1
+    100138: spine1
+    100140: spine2
+    100142: spine3
+    100144: spine4
+    100146: spineend
+    400000: headtop
+    400002: jawbase
+    400004: l_ankle
+    400006: l_ball
+    400008: l_clavicle
+    400010: l_elbow
+    400012: l_hip
+    400014: l_index1
+    400016: l_index2
+    400018: l_index3
+    400020: l_indextip
+    400022: l_knee
+    400024: l_mid1
+    400026: l_mid2
+    400028: l_mid3
+    400030: l_midtip
+    400032: l_pinky1
+    400034: l_pinky2
+    400036: l_pinky3
+    400038: l_pinkytip
+    400040: l_ring1
+    400042: l_ring2
+    400044: l_ring3
+    400046: l_ringpinkhelper
+    400048: l_ringtip
+    400050: l_shoulder
+    400052: l_thumb1
+    400054: l_thumb2
+    400056: l_thumbhelper
+    400058: l_thumbtip
+    400060: l_toe
+    400062: l_wrist
+    400064: MainHandle
+    400066: midhead
+    400068: neckbase
+    400070: necktop
+    400072: PELVIS
+    400074: r_ankle
+    400076: r_ball
+    400078: r_clavicle
+    400080: r_elbow
+    400082: r_hip
+    400084: r_index1
+    400086: r_index2
+    400088: r_index3
+    400090: r_indextip
+    400092: r_knee
+    400094: r_mid1
+    400096: r_mid2
+    400098: r_mid3
+    400100: r_midtip
+    400102: r_pinky1
+    400104: r_pinky2
+    400106: r_pinky3
+    400108: r_pinkytip
+    400110: r_ring1
+    400112: r_ring2
+    400114: r_ring3
+    400116: r_ringpinkhelper
+    400118: r_ringtip
+    400120: r_shoulder
+    400122: r_thumb1
+    400124: r_thumb2
+    400126: r_thumbhelper
+    400128: r_thumbtip
+    400130: r_toe
+    400132: r_wrist
+    400134: //RootNode
+    400136: RamonRigComplete:polySurface1
+    400138: spine1
+    400140: spine2
+    400142: spine3
+    400144: spine4
+    400146: spineend
+    4300000: RamonRigComplete:polySurface1
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: RamonRigComplete:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
