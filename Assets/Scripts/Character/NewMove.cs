@@ -128,6 +128,11 @@ public class NewMove : MonoBehaviour
         return currentSpeed;
     }
 
+    public float GetCurrentAdjustedSpeed()
+    {
+        return currentSpeed / targetMaxSpeed;
+    }
+
     // Use this for initialization
     void Start ()
     {
