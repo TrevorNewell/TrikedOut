@@ -1,0 +1,319 @@
+fileFormatVersion: 2
+guid: c85b61167dec3e44e8a674746c57e725
+timeCreated: 1488078413
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: back1
+    100002: headtop
+    100004: ikHandle1
+    100006: ikHandle2
+    100008: imagePlane3
+    100010: imagePlane4
+    100012: jawbase
+    100014: l_ankle
+    100016: l_ball
+    100018: l_clavicle
+    100020: l_elbow
+    100022: l_hip
+    100024: l_index1
+    100026: l_index2
+    100028: l_index3
+    100030: l_indextip
+    100032: l_knee
+    100034: l_mid1
+    100036: l_mid2
+    100038: l_mid3
+    100040: l_midtip
+    100042: l_pinky1
+    100044: l_pinky2
+    100046: l_pinky3
+    100048: l_pinkytip
+    100050: l_ring1
+    100052: l_ring2
+    100054: l_ring3
+    100056: l_ringpinkhelper
+    100058: l_ringtip
+    100060: l_shoulder
+    100062: l_thumb1
+    100064: l_thumb2
+    100066: l_thumbhelper
+    100068: l_thumbtip
+    100070: l_toe
+    100072: l_wrist
+    100074: MainHandle
+    100076: midhead
+    100078: neckbase
+    100080: necktop
+    100082: pCube5
+    100084: PELVIS
+    100086: polySurface10
+    100088: polySurface11
+    100090: polySurface11 1
+    100092: polySurface12
+    100094: polySurface13
+    100096: polySurface13 1
+    100098: polySurface14
+    100100: polySurface14 1
+    100102: polySurface15
+    100104: polySurface3
+    100106: polySurface4
+    100108: polySurface5
+    100110: polySurface6
+    100112: polySurface7
+    100114: polySurface8
+    100116: polySurface9
+    100118: r_ankle
+    100120: r_ball
+    100122: r_clavicle
+    100124: r_elbow
+    100126: r_hip
+    100128: r_index1
+    100130: r_index2
+    100132: r_index3
+    100134: r_indextip
+    100136: r_knee
+    100138: r_mid1
+    100140: r_mid2
+    100142: r_mid3
+    100144: r_midtip
+    100146: r_pinky1
+    100148: r_pinky2
+    100150: r_pinky3
+    100152: r_pinkytip
+    100154: r_ring1
+    100156: r_ring2
+    100158: r_ring3
+    100160: r_ringpinkhelper
+    100162: r_ringtip
+    100164: r_shoulder
+    100166: r_thumb1
+    100168: r_thumb2
+    100170: r_thumbhelper
+    100172: r_thumbtip
+    100174: r_toe
+    100176: r_wrist
+    100178: //RootNode
+    100180: RamonRigComplete:polySurface1
+    100182: Ramons_Trike_back1
+    100184: Ramons_Trike_imagePlane3
+    100186: Ramons_Trike_imagePlane4
+    100188: Ramons_Trike_pCube5
+    100190: spine1
+    100192: spine2
+    100194: spine3
+    100196: spine4
+    100198: spineend
+    100200: transform1
+    100202: transform10
+    100204: transform11
+    100206: transform12
+    100208: transform13
+    100210: transform14
+    100212: transform2
+    100214: transform3
+    100216: transform4
+    100218: transform5
+    100220: transform6
+    100222: transform7
+    100224: transform8
+    100226: transform9
+    400000: back1
+    400002: headtop
+    400004: ikHandle1
+    400006: ikHandle2
+    400008: imagePlane3
+    400010: imagePlane4
+    400012: jawbase
+    400014: l_ankle
+    400016: l_ball
+    400018: l_clavicle
+    400020: l_elbow
+    400022: l_hip
+    400024: l_index1
+    400026: l_index2
+    400028: l_index3
+    400030: l_indextip
+    400032: l_knee
+    400034: l_mid1
+    400036: l_mid2
+    400038: l_mid3
+    400040: l_midtip
+    400042: l_pinky1
+    400044: l_pinky2
+    400046: l_pinky3
+    400048: l_pinkytip
+    400050: l_ring1
+    400052: l_ring2
+    400054: l_ring3
+    400056: l_ringpinkhelper
+    400058: l_ringtip
+    400060: l_shoulder
+    400062: l_thumb1
+    400064: l_thumb2
+    400066: l_thumbhelper
+    400068: l_thumbtip
+    400070: l_toe
+    400072: l_wrist
+    400074: MainHandle
+    400076: midhead
+    400078: neckbase
+    400080: necktop
+    400082: pCube5
+    400084: PELVIS
+    400086: polySurface10
+    400088: polySurface11
+    400090: polySurface11 1
+    400092: polySurface12
+    400094: polySurface13
+    400096: polySurface13 1
+    400098: polySurface14
+    400100: polySurface14 1
+    400102: polySurface15
+    400104: polySurface3
+    400106: polySurface4
+    400108: polySurface5
+    400110: polySurface6
+    400112: polySurface7
+    400114: polySurface8
+    400116: polySurface9
+    400118: r_ankle
+    400120: r_ball
+    400122: r_clavicle
+    400124: r_elbow
+    400126: r_hip
+    400128: r_index1
+    400130: r_index2
+    400132: r_index3
+    400134: r_indextip
+    400136: r_knee
+    400138: r_mid1
+    400140: r_mid2
+    400142: r_mid3
+    400144: r_midtip
+    400146: r_pinky1
+    400148: r_pinky2
+    400150: r_pinky3
+    400152: r_pinkytip
+    400154: r_ring1
+    400156: r_ring2
+    400158: r_ring3
+    400160: r_ringpinkhelper
+    400162: r_ringtip
+    400164: r_shoulder
+    400166: r_thumb1
+    400168: r_thumb2
+    400170: r_thumbhelper
+    400172: r_thumbtip
+    400174: r_toe
+    400176: r_wrist
+    400178: //RootNode
+    400180: RamonRigComplete:polySurface1
+    400182: Ramons_Trike_back1
+    400184: Ramons_Trike_imagePlane3
+    400186: Ramons_Trike_imagePlane4
+    400188: Ramons_Trike_pCube5
+    400190: spine1
+    400192: spine2
+    400194: spine3
+    400196: spine4
+    400198: spineend
+    400200: transform1
+    400202: transform10
+    400204: transform11
+    400206: transform12
+    400208: transform13
+    400210: transform14
+    400212: transform2
+    400214: transform3
+    400216: transform4
+    400218: transform5
+    400220: transform6
+    400222: transform7
+    400224: transform8
+    400226: transform9
+    2300000: polySurface11 1
+    2300002: polySurface13
+    2300004: polySurface14 1
+    2300006: polySurface8
+    3300000: polySurface11 1
+    3300002: polySurface13
+    3300004: polySurface14 1
+    3300006: polySurface8
+    4300000: RamonRigComplete:polySurface1
+    4300002: polySurface8
+    4300004: polySurface11
+    4300006: polySurface14
+    4300008: polySurface13
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: RamonRigComplete:polySurface1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
