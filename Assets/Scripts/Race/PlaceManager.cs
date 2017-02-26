@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class PlaceManager : MonoBehaviour
 {
+    public Sprite[] placeImages;
+
     public float[] speedPercentages = new float[4] { 0.85f, 0.95f, 1.05f, 1.15f };
     public float[] timeBetweenDrops = new float[4] { 25f, 20f, 15f, 10f};
     public float[] chanceOfDrop = new float[4] { 0.1f, 0.2f, 0.4f, 0.8f};

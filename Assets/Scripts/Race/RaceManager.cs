@@ -53,6 +53,9 @@ public class RaceManager : MonoBehaviour
     public Text bottomLeftText;
     public Text directMiddleText;
     public Text rightText;
+    public Image placeImage;
+
+    public Sprite[] placeImages;
 
     // Default strings to display as prefixes to each corresponding variable.
     public string overallTimeString;
@@ -148,6 +151,7 @@ public class RaceManager : MonoBehaviour
         UpdateText();
 
         pm = GetComponent<PlaceManager>();
+        placeImages = pm.placeImages;
     }
 
     public void UpdatePassed(int pNum)
@@ -354,9 +358,10 @@ public class RaceManager : MonoBehaviour
                             currentString + GetConvertedTime(currentTime);
             rightText.text = lapsString + " " + currentLap + " / " + numLaps + "\n";// + hpString + player.GetComponent<Player>().health.ToString();
 
-            string place = pm.GetPlace(GetID()).ToString();
-            
-            switch (place)
+            //string place = pm.GetPlace(GetID()).ToString();
+            int place = pm.GetPlace(GetID());
+            placeImage.sprite = placeImages[place - 1];
+            /*switch (place)
             {
                 case "1":
                     place += "st";
@@ -372,7 +377,7 @@ public class RaceManager : MonoBehaviour
                     break;
             }
 
-            bottomLeftText.text = place;
+            bottomLeftText.text = place;*/
         }
     }
 
