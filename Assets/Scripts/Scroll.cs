@@ -10,6 +10,8 @@ public class Scroll : MonoBehaviour
     public GameObject bottomOfCredits;
     public GameObject bottomOfScreen;
 
+    private Vector3 originalPosition;
+
     public Font ourFont;
 
     private bool shouldScroll = false;
@@ -18,6 +20,8 @@ public class Scroll : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        originalPosition = gameObject.transform.position;
+
         theTexts = FindObjectsOfType<Text>();
 
         foreach (Text t in theTexts)
@@ -35,12 +39,22 @@ public class Scroll : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + scrollRate, gameObject.transform.position.z);
 
-            if (bottomOfCredits.transform.position.y > bottomOfScreen.transform.position.y) shouldScroll = false;
+            if (bottomOfCredits.transform.position.y > bottomOfScreen.transform.position.y)
+            {
+                shouldScroll = false;
+                StateManager.instance.TheState = State.MainMenu;
+            }
         }
 	}
 
     public void StartScroll()
     {
+        shouldScroll = true;
+    }
+
+    public void RestartScroll()
+    {
+        gameObject.transform.position = originalPosition;
         shouldScroll = true;
     }
 }

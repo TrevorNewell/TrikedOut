@@ -121,8 +121,7 @@ public class StateManager : MonoBehaviour
             }
             else if (theState == State.Credits)
             {
-                currentScreen = ScreenType.Credits;
-                LoadLevel("CreditScene");
+
             }
             else
             {
@@ -319,7 +318,7 @@ public class StateManager : MonoBehaviour
         if (!readyToStart && TheState == State.CompanyLogo)
         {
             tempT += Time.deltaTime;
-            if (tempT > companyLogoTime)
+            if (tempT > companyLogoTime || Input.GetButtonDown("P1_A"))
             {
                 readyToStart = true;
                 companyLogoMenu.SetActive(false);
@@ -481,7 +480,15 @@ public class StateManager : MonoBehaviour
 
     public void StartCredits()
     {
-        TheState = State.Credits;
+        //TheState = State.Credits;
+
+        currentScreen = ScreenType.Credits;
+
+        if (creditScreen != null)
+        {
+            GetComponent<ScreenManager>().OpenPanel(creditScreen.GetComponent<Animator>());
+            creditScreen.GetComponentInChildren<Scroll>().RestartScroll();
+        }
     }
 
     private void DeactivateAll()
