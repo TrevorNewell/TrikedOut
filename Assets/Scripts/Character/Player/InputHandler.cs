@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
      * The Move class will not move the player until the Update function is called, which the Player will do
      **/
     public float turnAnimSensitivity = 0.4f;
+    public bool keyboard;
     private GameObject weapon;
     private GameObject ulti;
     private GameObject minimap;
@@ -37,7 +38,6 @@ public class InputHandler : MonoBehaviour
     private void Start()
     {
         minimap = GameObject.Find("MinimapCam");
-        Debug.Log(minimap);
         prefix = name;//player.prefix;
         ulti = GameObject.Find(prefix + "_Ulti");
         move = gameObject.GetComponent<NewMove>();
@@ -64,23 +64,35 @@ public class InputHandler : MonoBehaviour
             return;
         }
 
-        bool leftPedal;
-        bool rightPedal;
-        float cameraFactor;
-        bool fire;
-        bool ceaseFire;
-        bool activateUlti;
-        bool openMinimap;
+        bool leftPedal = false;
+        bool rightPedal = false;
+        float cameraFactor = 0f;
+        bool fire = false;
+        bool ceaseFire = false;
+        bool activateUlti = false;
+        bool openMinimap = false;
 
-        leftPedal = (Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
-        rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
-        //leftPedal = Input.GetKeyDown(KeyCode.A);
-        //rightPedal = Input.GetKeyDown(KeyCode.D);
-        cameraFactor = Input.GetAxis(prefix + "_RightStickX");
-        fire = Input.GetButtonDown(prefix + "_A");
-        ceaseFire = Input.GetButtonUp(prefix + "_A");
-        activateUlti = Input.GetButtonDown(prefix + "_Y");
-        openMinimap = Input.GetButtonDown(prefix + "_B");
+        if (keyboard)
+        {
+            leftPedal = (Input.GetKey(KeyCode.A));
+            rightPedal = (Input.GetKey(KeyCode.D));
+            fire = Input.GetKeyDown(KeyCode.Space);
+            ceaseFire = Input.GetKeyUp(KeyCode.Space);
+            activateUlti = Input.GetKeyUp(KeyCode.W);
+            openMinimap = Input.GetKeyDown(KeyCode.B);
+        }
+        else
+        {
+            leftPedal = (Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
+            rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
+            //leftPedal = Input.GetKeyDown(KeyCode.A);
+            //rightPedal = Input.GetKeyDown(KeyCode.D);
+            cameraFactor = Input.GetAxis(prefix + "_RightStickX");
+            fire = Input.GetButtonDown(prefix + "_A");
+            ceaseFire = Input.GetButtonUp(prefix + "_A");
+            activateUlti = Input.GetButtonDown(prefix + "_Y");
+            openMinimap = Input.GetButtonDown(prefix + "_B");
+        }
 
         move.SetFactors(leftPedal, rightPedal);
         if (fire) FireWeapon();

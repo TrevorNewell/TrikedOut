@@ -6,6 +6,8 @@ public class RaceSetup : MonoBehaviour
 {
     public int playerCount = 2;
 
+    public Camera minimap;
+
 	// Use this for initialization
 	void Awake ()
     {
@@ -72,6 +74,10 @@ public class RaceSetup : MonoBehaviour
             }
             else
             {
+                if (playerCount == 3)
+                {
+                    minimap.rect = new Rect(new Vector2(0.5f, 0.0f), rectSize);
+                }
                 players[i].SetActive(false);
             }
         }

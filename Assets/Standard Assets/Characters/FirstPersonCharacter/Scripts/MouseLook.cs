@@ -16,6 +16,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float smoothTime = 5f;
         public bool lockCursor = true;
         public string prefix = "P1";
+        public bool keyboard = false;
 
 
         private Quaternion m_CharacterTargetRot;
@@ -39,6 +40,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             // Left to Right
             float yRot = Input.GetAxis(prefix + "_LeftStickX") * XSensitivity; // CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+            if (keyboard) yRot = (Input.GetKey(KeyCode.LeftArrow)) ? -1 : (Input.GetKey(KeyCode.RightArrow)) ? 1 : 0;
 
             // Up and Down
             float xRot = 0; // Input.GetAxis("P1_RightStickY"); // CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;

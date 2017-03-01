@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flythrough : MonoBehaviour
 {
     public float length;
+    public GameObject minimap;
 
     private GameObject[] players;
     private PlaceManager pmanager;
@@ -38,7 +39,10 @@ public class Flythrough : MonoBehaviour
     public void Finish()
     {
         pmanager.raceStarted = true;
-
+        if (FindObjectOfType<RaceSetup>().playerCount == 3)
+        {
+            minimap.SetActive(true);
+        }
         foreach (GameObject g in players)
         {
             g.SetActive(true);
