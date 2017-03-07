@@ -194,7 +194,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public void SaveCharacterSelection(int player, int character)
 	{
         //Temp if statement until our characters are done.
-        if (character > 2) selections[player-1] = 2;
+        if (character > 3) selections[player-1] = 3;
         else selections[player-1] = character;
 	}
 }
