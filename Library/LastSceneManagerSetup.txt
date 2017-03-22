@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/InControl/Examples/MultiplayerBasic/MultiplayerBasic.unity
+- path: Assets/Scenes/BuildScenes/Menus.unity
   isLoaded: 1
   isActive: 1

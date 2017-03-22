@@ -146,7 +146,6 @@
     <None Include="Assets\Fonts\Gochi_Hand\OFL.txt" />
     <None Include="Assets\Fonts\Permanent_Marker\LICENSE.txt" />
     <None Include="Assets\Fonts\Rock_Salt\LICENSE.txt" />
-    <None Include="Assets\InControl\Readme\README.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
