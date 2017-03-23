@@ -83,8 +83,8 @@ public class InputHandler : MonoBehaviour
         }
         else
         {
-            leftPedal = (Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
-            rightPedal = (Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
+            leftPedal = Input.GetButtonDown(prefix + "_LeftBumper");//(Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
+            rightPedal = Input.GetButtonDown(prefix + "_RightBumper");//(Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
             //leftPedal = Input.GetKeyDown(KeyCode.A);
             //rightPedal = Input.GetKeyDown(KeyCode.D);
             cameraFactor = Input.GetAxis(prefix + "_RightStickX");
