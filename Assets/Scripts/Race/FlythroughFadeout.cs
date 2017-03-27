@@ -13,6 +13,7 @@ public class FlythroughFadeout : MonoBehaviour
     private float alphaPerSecond;
     private Color color;
     private float currentTime;
+    private bool cutShort = false;
 	// Use this for initialization
 	void Start ()
     {
@@ -32,10 +33,22 @@ public class FlythroughFadeout : MonoBehaviour
 	void Update ()
     {
         currentTime += Time.deltaTime;
+        if (Input.anyKey)
+        {
+            timeUntilFade = 0f;
+            cutShort = true;
+        }
         if (currentTime > timeUntilFade)
         {
             currentAlpha += alphaPerSecond * Time.deltaTime;
-            if (currentAlpha > 1) currentAlpha = 1;
+            if (currentAlpha > 1)
+            {
+                currentAlpha = 1;
+                if (cutShort)
+                {
+                    GetComponentInParent<Flythrough>().Finish();
+                }
+            }
             color.a = currentAlpha;
             mr.material.color = color;
         }

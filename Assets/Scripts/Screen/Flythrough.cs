@@ -11,6 +11,7 @@ public class Flythrough : MonoBehaviour
     private PlaceManager pmanager;
     private RaceManager[] managers;
     private bool initialized;
+    private float timeElapsed = 0f;
     
 	// Use this for initialization
 	void Start ()
@@ -34,6 +35,8 @@ public class Flythrough : MonoBehaviour
 
             initialized = true;
         }
+
+        timeElapsed += Time.deltaTime;
 	}
 
     public void Finish()
@@ -51,7 +54,7 @@ public class Flythrough : MonoBehaviour
         foreach (RaceManager r in managers)
         {
             r.FinishFlythrough();
-            r.flythroughTime = length;
+            r.flythroughTime = timeElapsed;
         }
 
         Destroy(gameObject);
