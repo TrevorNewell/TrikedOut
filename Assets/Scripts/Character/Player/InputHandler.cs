@@ -24,6 +24,7 @@ public class InputHandler : MonoBehaviour
     private Animator anim;
     private bool on;
     private PlayerSoundPlayer psp;
+    private int playerCount;
 
     public void ReceiveDefinitions(bool uc, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
@@ -46,6 +47,7 @@ public class InputHandler : MonoBehaviour
         currentTime = 0f;
         on = false;
         psp = GetComponentInChildren<PlayerSoundPlayer>();
+        playerCount = FindObjectOfType<RaceSetup>().playerCount;
     }
 
     public void TurnOn()
@@ -85,8 +87,8 @@ public class InputHandler : MonoBehaviour
         }
         else
         {
-            leftPedal = Input.GetButtonDown(prefix + "_LeftBumper");//(Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
-            rightPedal = Input.GetButtonDown(prefix + "_RightBumper");//(Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
+            leftPedal = Input.GetButton(prefix + "_LeftBumper");//(Input.GetAxis(prefix + "_LeftTrigger") == 1) ? true : false;
+            rightPedal = Input.GetButton(prefix + "_RightBumper");//(Input.GetAxis(prefix + "_RightTrigger") == 1) ? true : false;
             //leftPedal = Input.GetKeyDown(KeyCode.A);
             //rightPedal = Input.GetKeyDown(KeyCode.D);
             cameraFactor = Input.GetAxis(prefix + "_RightStickX");
@@ -100,7 +102,7 @@ public class InputHandler : MonoBehaviour
         if (fire) FireWeapon();
         else if (ceaseFire) CeaseFire();
         if (activateUlti) ActivateUlti();
-        if (openMinimap) minimap.SetActive(!minimap.activeInHierarchy);
+        if (openMinimap) if (playerCount != 3) minimap.SetActive(!minimap.activeInHierarchy);
 
         if (Input.GetAxis(prefix + "_LeftStickX") > turnAnimSensitivity)
         {

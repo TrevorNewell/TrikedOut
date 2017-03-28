@@ -155,8 +155,6 @@ public class RaceManager : MonoBehaviour
 
         pm = GetComponent<PlaceManager>();
         placeImages = pm.placeImages;
-
-        psp = player.GetComponentInChildren<PlayerSoundPlayer>();
     }
 
     public void UpdatePassed(int pNum)
@@ -442,7 +440,12 @@ public class RaceManager : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.Space)) tempStart = true;
         //if (!tempStart) return;
-        
+
+        if (psp == null)
+        {
+            psp = player.GetComponentInChildren<PlayerSoundPlayer>();
+        }
+
         if (playingFlythrough) return;
 
         // If we're paused track how long we're paused for so our overall race time doesn't get screwed up.
