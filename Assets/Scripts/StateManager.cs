@@ -442,7 +442,7 @@ public class StateManager : MonoBehaviour
             }
             else if (currentScreen == ScreenType.Options || currentScreen == ScreenType.Credits) GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
             else if (currentScreen == ScreenType.TrackSelection) CharacterSelection();
-            else if (currentScreen == ScreenType.CharacterSelection) ControllerRegistration();
+            else if (currentScreen == ScreenType.CharacterSelection && characterMenu.GetComponent<CharacterSelectionManager>().playerHasSelected[0] == false) ControllerRegistration();
         }
     }
 

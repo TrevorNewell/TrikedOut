@@ -51,6 +51,13 @@ public class ControllerRegistration : MonoBehaviour
 
     public void Reset()
     {
+        playerCount = 0;
+
+        p1GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+        p2GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+        p3GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+        p4GO.GetComponent<Animator>().SetFloat("animSpeedMult", animationPlaybackSpeed);
+
         p1GO.GetComponent<Animator>().SetBool("active", false);
         p2GO.GetComponent<Animator>().SetBool("active", false);
         p3GO.GetComponent<Animator>().SetBool("active", false);
