@@ -221,7 +221,7 @@ public class StateManager : MonoBehaviour
             //    }
             //}
         }
-        else if (SceneManager.GetActiveScene().buildIndex > 1)// This allows us to treat every track the same in terms of the state manager.  Special treatment is given if it's the start screen, main menu, or credits.  Otherwise, this. // .GetActiveScene().name.CompareTo("Track1") == 0)
+        else if (SceneManager.GetActiveScene().buildIndex > 0)// This allows us to treat every track the same in terms of the state manager.  Special treatment is given if it's the start screen, main menu, or credits.  Otherwise, this. // .GetActiveScene().name.CompareTo("Track1") == 0)
         {
             Debug.Log("InGame");
 
