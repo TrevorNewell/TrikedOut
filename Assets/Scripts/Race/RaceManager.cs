@@ -43,6 +43,9 @@ public class RaceManager : MonoBehaviour
 
     private float t;
 
+    private PlayerSoundPlayer psp;
+
+    private int oldPlace = -1;
     private PlaceManager pm;
 
     private bool playingFlythrough = true;
@@ -152,6 +155,8 @@ public class RaceManager : MonoBehaviour
 
         pm = GetComponent<PlaceManager>();
         placeImages = pm.placeImages;
+
+        psp = player.GetComponentInChildren<PlayerSoundPlayer>();
     }
 
     public void UpdatePassed(int pNum)
@@ -342,6 +347,15 @@ public class RaceManager : MonoBehaviour
         {
             bottomLeftText.text = "";
             directMiddleText.text = "Finish!";
+            SoundManager.instance.Finish();
+            if (pm.GetPlace(GetID()) == 1)
+            {
+                psp.Victory();
+            }
+            else
+            {
+                psp.Loss();
+            }
         }
 
         // If the race is starting, don't display laps or overall last and current times
@@ -360,7 +374,20 @@ public class RaceManager : MonoBehaviour
 
             //string place = pm.GetPlace(GetID()).ToString();
             int place = pm.GetPlace(GetID());
+            if (oldPlace == -1) oldPlace = place;
             placeImage.sprite = placeImages[place - 1];
+
+            if (place < oldPlace)
+            {
+                psp.Passing();
+            }
+            else if (place > oldPlace)
+            {
+                psp.Passed();
+            }
+
+            oldPlace = place;
+
             /*switch (place)
             {
                 case "1":

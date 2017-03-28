@@ -21,6 +21,8 @@ public class Marshmallow : MonoBehaviour
     public GameObject projMallow;
     public GameObject stuckMallow;
 
+    public AudioClip splat;
+
     private MarshmallowRot mrot;
 
     private float xFactor;
@@ -126,6 +128,7 @@ public class Marshmallow : MonoBehaviour
             stuck = true;
             lifeSpan = stickyLifespanPlayer;
             transform.parent = c.gameObject.transform;
+            SoundManager.instance.PlaySoundClip(splat);
         }
         if (c.CompareTag("Terrain") && !stuck)
         {
@@ -138,6 +141,7 @@ public class Marshmallow : MonoBehaviour
             lifeSpan = stickyLifespanGround;
             projMallow.SetActive(false);
             stuckMallow.SetActive(true);
+            SoundManager.instance.PlaySoundClip(splat);
             //GetComponent<Rigidbody>().velocity = Vector3.zero;
             //GetComponent<Rigidbody>().useGravity = false;
             //GetComponent<Rigidbody>().isKinematic = true;

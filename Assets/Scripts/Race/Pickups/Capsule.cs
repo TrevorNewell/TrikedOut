@@ -19,6 +19,9 @@ public class Capsule : MonoBehaviour
     public float boostDuration = 3f;
     public float boostSensitivity = 2.5f;
 
+    public AudioClip pickupSound;
+    public AudioClip boostSound;
+
     private bool isBat = true;
     private bool isJack = false;
     private int playerID = 0;
@@ -62,6 +65,7 @@ public class Capsule : MonoBehaviour
         {
             if (int.Parse(other.name.Substring(1)) == playerID)
             {
+                SoundManager.instance.PlaySoundClip(pickupSound);
                 if (isBat)
                 {
                     GameObject.Find(other.name + "_Ulti").GetComponent<Bat>().GiveBat(batDuration);
@@ -78,6 +82,7 @@ public class Capsule : MonoBehaviour
                 {
                     other.GetComponent<NewMove>().SetBoost(boostFactor, boostDuration, boostSensitivity);
                     other.GetComponentInChildren<Rockets>().Activate(boostDuration);
+                    SoundManager.instance.PlaySoundClip(boostSound);
                     Destroy(gameObject);
                 }
             }

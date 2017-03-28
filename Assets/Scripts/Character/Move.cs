@@ -167,7 +167,7 @@ public class Move : MonoBehaviour
                 isPedaling = true;
                 pedalledThisFrame = true; // Only set to this true on one of the pedals,  I arbitrarily picked the right pedal.
 
-                SoundManager.instance.PlayLeftPedalSound();
+                //SoundManager.instance.PlayLeftPedalSound();
             }
 
             //Debug.Log("Start count to LeftPedal Drift");
@@ -198,7 +198,7 @@ public class Move : MonoBehaviour
                 isPedaling = true;
                 pedalledThisFrame = true;
 
-                SoundManager.instance.PlayRightPedalSound();
+                //SoundManager.instance.PlayRightPedalSound();
             }
 
             brakeCounter = 0;

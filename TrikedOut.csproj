@@ -119,6 +119,7 @@
     <Compile Include="Assets\Scripts\Character\Player\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\MenuInputHandler.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Character\PlayerSoundPlayer.cs" />
     <Compile Include="Assets\Scripts\Character\Trike.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\EasySuspension.cs" />
     <Compile Include="Assets\Scripts\Character\Wheels\HandleRotation.cs" />

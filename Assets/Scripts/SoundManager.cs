@@ -6,21 +6,25 @@ using System.Collections;
 public class SoundManager : MonoBehaviour
 { 
     public static SoundManager instance;
-
+    
     public int sceneCount = -1;
     private AudioListener theListener;
 
+    public float musicVolume = 0.4f;
     private AudioSource musicManager;
-    public AudioClip sampleSong;
-    public AudioClip track1Song;
+    public AudioClip song;
 
-    private AudioSource menuSoundManager;
+    public float voiceSoundsVolume = 0.7f;
+    private AudioSource voiceSoundManager;
     public AudioClip[] clickSounds;
 
+    public float inGameSoundsVolume = 0.7f;
     private AudioSource inGameSoundManager;
-    public AudioClip[] pedalLeftSounds;
-    public AudioClip[] pedalRightSounds;
-    public AudioClip[] hitSounds;
+    private float currentVoiceTime;
+    private float timeUntilNextVoice;
+    private bool playingVoice;
+
+    public AudioClip finish;
     public AudioClip[] shootSounds;
 
     void Awake()
@@ -37,8 +41,7 @@ public class SoundManager : MonoBehaviour
 
         inGameSoundManager = gameObject.AddComponent<AudioSource>();
 
-        menuSoundManager = gameObject.AddComponent<AudioSource>();
-        menuSoundManager.ignoreListenerPause = true;
+        voiceSoundManager = gameObject.AddComponent<AudioSource>();
 
         musicManager = gameObject.AddComponent<AudioSource>();
         musicManager.ignoreListenerPause = true;
@@ -47,54 +50,62 @@ public class SoundManager : MonoBehaviour
         musicManager.loop = true;
 
         // Default levels of volume for our various sounds
-        inGameSoundManager.volume = 0.7f;
-        menuSoundManager.volume = 0.7f;
+        musicManager.volume = musicVolume;
+        inGameSoundManager.volume = inGameSoundsVolume;
+        voiceSoundManager.volume = voiceSoundsVolume;
 
+        PlaySong();
 
-        //if (StateManager.instance.TheState == State.MainMenu)
+    }
+
+    private void Update()
+    {
+        if (playingVoice)
         {
-            //musicManager.clip = sampleSong;
-            //musicManager.Play();
+            currentVoiceTime += Time.deltaTime;
+            if (currentVoiceTime >= timeUntilNextVoice)
+            {
+                playingVoice = false;
+                inGameSoundManager.volume = inGameSoundsVolume;
+            }
         }
     }
 
-    public void PlayClickSound()
+    public void PlaySong()
     {
-        int r = Random.Range(0, clickSounds.Length);
-        menuSoundManager.PlayOneShot(clickSounds[r]);
+        musicManager.clip = song;
+        musicManager.Play();
     }
 
-    public void PlayTrackSong()
+    public void PlayVoiceClip(AudioClip clip)
     {
-        musicManager.clip = track1Song;
-        musicManager.PlayDelayed(1.8f);
+        if (playingVoice) return;
+        voiceSoundManager.PlayOneShot(clip);
+        timeUntilNextVoice = clip.length;
+        currentVoiceTime = 0f;
+        playingVoice = true;
     }
 
-    public void PlayLeftPedalSound()
+    public void PlayVoiceClip(AudioClip clip, float vol)
     {
-        int r = Random.Range(0, pedalLeftSounds.Length);
-        //inGameSoundManager.PlayOneShot(pedalLeftSounds[r]);
-        //inGameSoundManager.PlayOneShot(pedalLeftSounds[0]);
-    }
-    public void PlayRightPedalSound()
-    {
-        int r = Random.Range(0, pedalRightSounds.Length);
-        //inGameSoundManager.PlayOneShot(pedalRightSounds[r]);
-        //inGameSoundManager.PlayOneShot(pedalRightSounds[0]);
-
+        if (playingVoice) return;
+        voiceSoundManager.volume = inGameSoundsVolume * vol;
+        PlayVoiceClip(clip);
     }
 
-    public void PlayHitSound()
+    public void PlaySoundClip(AudioClip clip)
     {
-        int r = Random.Range(0, hitSounds.Length);
-        inGameSoundManager.PlayOneShot(hitSounds[r]);
-
+        inGameSoundManager.PlayOneShot(clip);
     }
 
-    public void PlayShootSound()
+    public void Finish()
     {
-        int r = Random.Range(0, shootSounds.Length);
-        inGameSoundManager.PlayOneShot(shootSounds[r]);
+        PlaySoundClip(finish);
+    }
+
+    public void Shoot()
+    {
+        PlaySoundClip(shootSounds[Random.Range(0, shootSounds.Length)]);
     }
 
     public void Pause()

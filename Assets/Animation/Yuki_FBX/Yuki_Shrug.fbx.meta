@@ -600,7 +600,7 @@ ModelImporter:
     4300016: r_handle
     4300018: l_handle
     4300020: FrontWheel
-    7400000: Take 001
+    7400000: Yuki_Taunt
     9500000: //RootNode
     13700000: pCylinder2
   materials:
@@ -623,7 +623,599 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Yuki_Taunt
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Body/transform34
+        weight: 1
+      - path: Body1
+        weight: 1
+      - path: Body1/transform33
+        weight: 1
+      - path: Body2
+        weight: 1
+      - path: Body2/polySurface10 1
+        weight: 1
+      - path: Body2/polySurface10 1/transform37
+        weight: 1
+      - path: Body2/transform35
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Eyes/polySurface7
+        weight: 1
+      - path: Eyes/polySurface7/transform29
+        weight: 1
+      - path: Eyes/polySurface8
+        weight: 1
+      - path: Eyes/polySurface8/transform28
+        weight: 1
+      - path: eyes
+        weight: 1
+      - path: eyes/polySurface9
+        weight: 1
+      - path: eyes/polySurface9/transform31
+        weight: 1
+      - path: eyes/transform30
+        weight: 1
+      - path: FrontEndGroup
+        weight: 1
+      - path: FrontEndGroup/YukiTrike:polySurface11
+        weight: 1
+      - path: FrontEndGroup/YukiTrike:polySurface11/YukiTrike:transform29
+        weight: 1
+      - path: FrontEndGroup/YukiTrike:polySurface12
+        weight: 1
+      - path: FrontEndGroup/YukiTrike:polySurface12/YukiTrike:transform28
+        weight: 1
+      - path: FrontEndGroup/YukiTrike:transform27
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: pCube51
+        weight: 1
+      - path: pCube51/Body 1
+        weight: 1
+      - path: pCube51/Body 1/transform32
+        weight: 1
+      - path: pCube53
+        weight: 1
+      - path: pCylinder2
+        weight: 1
+      - path: Pedals
+        weight: 1
+      - path: Pedals/l_peg
+        weight: 1
+      - path: Pedals/polySurface20
+        weight: 1
+      - path: Pedals/polySurface20/transform49
+        weight: 1
+      - path: Pedals/polySurface22 1
+        weight: 1
+      - path: Pedals/polySurface22 1/transform47
+        weight: 1
+      - path: Pedals/polySurface24
+        weight: 1
+      - path: Pedals/polySurface24/transform46
+        weight: 1
+      - path: Pedals/r_peg
+        weight: 1
+      - path: Pedals/transform45
+        weight: 1
+      - path: polySurface10
+        weight: 1
+      - path: polySurface10/transform39
+        weight: 1
+      - path: polySurface11
+        weight: 1
+      - path: polySurface11/transform38
+        weight: 1
+      - path: polySurface12
+        weight: 1
+      - path: polySurface12/polySurface15
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface16
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface16/transform42
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface19
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface19/transform43
+        weight: 1
+      - path: polySurface12/polySurface15/transform41
+        weight: 1
+      - path: polySurface12/transform40
+        weight: 1
+      - path: polySurface22
+        weight: 1
+      - path: polySurface22/transform48
+        weight: 1
+      - path: pSphere1
+        weight: 1
+      - path: pSphere1/transform36
+        weight: 1
+      - path: Yuki_Main_Controller
+        weight: 1
+      - path: Yuki_Main_Controller/HeadController
+        weight: 1
+      - path: Yuki_Main_Controller/HeadController/Bottom_HairPV
+        weight: 1
+      - path: Yuki_Main_Controller/HeadController/hair_topIK
+        weight: 1
+      - path: Yuki_Main_Controller/HeadController/HeadIK
+        weight: 1
+      - path: Yuki_Main_Controller/HeadController/HeadPV
+        weight: 1
+      - path: Yuki_Main_Controller/HeadController/Top_HairPV
+        weight: 1
+      - path: Yuki_Main_Controller/l_armIK
+        weight: 1
+      - path: Yuki_Main_Controller/l_armPV
+        weight: 1
+      - path: Yuki_Main_Controller/l_legIK
+        weight: 1
+      - path: Yuki_Main_Controller/l_legPV
+        weight: 1
+      - path: Yuki_Main_Controller/r_armIK
+        weight: 1
+      - path: Yuki_Main_Controller/r_armPV
+        weight: 1
+      - path: Yuki_Main_Controller/r_legIK
+        weight: 1
+      - path: Yuki_Main_Controller/r_legPV
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/l_hip
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/l_hip/l_knee
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/l_hip/l_knee/l_ankle
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/l_hip/l_knee/l_ankle/l_heel
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/l_hip/l_knee/l_ankle/l_heel/l_toe
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/l_hip/l_knee/l_ankle/l_heel/l_toe/joint2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/r_hip
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/r_hip/r_knee
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/r_hip/r_knee/r_ankle
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/r_hip/r_knee/r_ankle/r_heel
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/r_hip/r_knee/r_ankle/r_heel/r_toe
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/r_hip/r_knee/r_ankle/r_heel/r_toe/joint1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_pinky1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_pinky1/l_pinky2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_pinky1/l_pinky2/l_pinky3/l_pinky4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_ring1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_ring1/l_ring2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_ring1/l_ring2/l_ring3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring_helper/l_ring1/l_ring2/l_ring3/l_ring4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1/l_index2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1/l_index2/l_index3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1/l_index2/l_index3/l_index4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_mid1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_mid1/l_mid2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_mid1/l_mid2/l_mid3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_mid1/l_mid2/l_mid3/l_mid4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_thumb1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_thumb1/l_thumb2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4/hair5
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4/hair5/hair6
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4/hair5/hair6/hair7
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4/hair5/hair6/hair7/hair8
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4/hair5/hair6/hair7/hair8/hair9
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4/hair5/hair6/hair7/hair8/hair9/hair10
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/head_top/pony1/pony2/hair1/hair2/hair3/hair4/hair5/hair6/hair7/hair8/hair9/hair10/hair_end
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/neck_base/neck_top/head_mid/jaw_base
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_pinky1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_pinky1/r_pinky2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_pinky1/r_pinky2/r_pinky3/r_pinky4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_ring1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_ring1/r_ring2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_ring1/r_ring2/r_ring3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring_helper/r_ring1/r_ring2/r_ring3/r_ring4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1/r_index2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1/r_index2/r_index3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1/r_index2/r_index3/r_index4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_mid1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_mid1/r_mid2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_mid1/r_mid2/r_mid3
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_mid1/r_mid2/r_mid3/r_mid4
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_thumb1
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_thumb1/r_thumb2
+        weight: 1
+      - path: Yuki_Main_Controller/YukiRig/YukiPelvis/spine1/spine2/spine3/spine4/spine_final/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: YukiTrike:Back_Left_Wheel
+        weight: 1
+      - path: YukiTrike:Back_Left_Wheel/YukiTrike:transform20
+        weight: 1
+      - path: YukiTrike:Back_Right_Wheel
+        weight: 1
+      - path: YukiTrike:Back_Right_Wheel/YukiTrike:transform18
+        weight: 1
+      - path: YukiTrike:Body
+        weight: 1
+      - path: YukiTrike:Body/YukiTrike:transform22
+        weight: 1
+      - path: YukiTrike:Front_Wheel
+        weight: 1
+      - path: YukiTrike:Front_Wheel/YukiTrike:transform25
+        weight: 1
+      - path: YukiTrike:Front_Wheel_and_pedals
+        weight: 1
+      - path: YukiTrike:Front_Wheel_and_pedals/YukiTrike:transform31
+        weight: 1
+      - path: YukiTrike:HandleBars_Fork
+        weight: 1
+      - path: YukiTrike:HandleBars_Fork/YukiTrike:transform26
+        weight: 1
+      - path: YukiTrike:pCube2
+        weight: 1
+      - path: YukiTrike:pCube2/YukiTrike:transform1
+        weight: 1
+      - path: YukiTrike:pCube3
+        weight: 1
+      - path: YukiTrike:pCube3/YukiTrike:transform2
+        weight: 1
+      - path: YukiTrike:pCube6
+        weight: 1
+      - path: YukiTrike:pCube6/YukiTrike:transform9
+        weight: 1
+      - path: YukiTrike:pCube7
+        weight: 1
+      - path: YukiTrike:pCube7/YukiTrike:transform13
+        weight: 1
+      - path: YukiTrike:pCube8
+        weight: 1
+      - path: YukiTrike:pCube8/YukiTrike:polySurface1 1
+        weight: 1
+      - path: YukiTrike:pCube8/YukiTrike:polySurface1 1/YukiTrike:transform12
+        weight: 1
+      - path: YukiTrike:pCube8/YukiTrike:polySurface2
+        weight: 1
+      - path: YukiTrike:pCube8/YukiTrike:polySurface2/YukiTrike:transform11
+        weight: 1
+      - path: YukiTrike:pCube8/YukiTrike:transform10
+        weight: 1
+      - path: YukiTrike:pCylinder1
+        weight: 1
+      - path: YukiTrike:pCylinder1/YukiTrike:transform4
+        weight: 1
+      - path: YukiTrike:pCylinder2
+        weight: 1
+      - path: YukiTrike:pCylinder2/YukiTrike:transform3
+        weight: 1
+      - path: YukiTrike:pCylinder3
+        weight: 1
+      - path: YukiTrike:pCylinder3/YukiTrike:transform5
+        weight: 1
+      - path: YukiTrike:pCylinder5
+        weight: 1
+      - path: YukiTrike:pCylinder5/YukiTrike:transform8
+        weight: 1
+      - path: YukiTrike:Pedal_Crank
+        weight: 1
+      - path: YukiTrike:Pedal_Crank/YukiTrike:polySurface4
+        weight: 1
+      - path: YukiTrike:Pedal_Crank/YukiTrike:polySurface4/YukiTrike:transform17
+        weight: 1
+      - path: YukiTrike:Pedal_Crank/YukiTrike:polySurface5
+        weight: 1
+      - path: YukiTrike:Pedal_Crank/YukiTrike:polySurface5/YukiTrike:transform23
+        weight: 1
+      - path: YukiTrike:Pedal_Crank/YukiTrike:polySurface6
+        weight: 1
+      - path: YukiTrike:Pedal_Crank/YukiTrike:polySurface6/YukiTrike:transform16
+        weight: 1
+      - path: YukiTrike:Pedal_Crank/YukiTrike:transform15
+        weight: 1
+      - path: YukiTrike:Pedals
+        weight: 1
+      - path: YukiTrike:Pedals/YukiTrike:transform24
+        weight: 1
+      - path: YukiTrike:polySurface1
+        weight: 1
+      - path: YukiTrike:polySurface1/YukiTrike:transform14
+        weight: 1
+      - path: YukiTrike:pPipe2
+        weight: 1
+      - path: YukiTrike:pPipe2/YukiTrike:transform6
+        weight: 1
+      - path: YukiTrike:pPipe4
+        weight: 1
+      - path: YukiTrike:pPipe4/YukiTrike:transform7
+        weight: 1
+      - path: YukiTrike:Rear_Axel
+        weight: 1
+      - path: YukiTrike:Rear_Axel/YukiTrike:transform19
+        weight: 1
+      - path: YukiTrike:Seat
+        weight: 1
+      - path: YukiTrike:Seat/YukiTrike:transform21
+        weight: 1
+      - path: YukiTrike:trike:pCube1
+        weight: 1
+      - path: YukiTrike:trike:pCube1/YukiTrike:trike:transform17
+        weight: 1
+      - path: YukiTrike:trike:pCube2
+        weight: 1
+      - path: YukiTrike:trike:pCube2/YukiTrike:trike:transform20
+        weight: 1
+      - path: YukiTrike:trike:pCube3
+        weight: 1
+      - path: YukiTrike:trike:pCube3/YukiTrike:trike:transform7
+        weight: 1
+      - path: YukiTrike:trike:pCube4
+        weight: 1
+      - path: YukiTrike:trike:pCube4/YukiTrike:trike:transform6
+        weight: 1
+      - path: YukiTrike:trike:pCylinder1
+        weight: 1
+      - path: YukiTrike:trike:pCylinder1/YukiTrike:trike:transform2
+        weight: 1
+      - path: YukiTrike:trike:pCylinder2
+        weight: 1
+      - path: YukiTrike:trike:pCylinder2/YukiTrike:trike:polySurface1
+        weight: 1
+      - path: YukiTrike:trike:pCylinder2/YukiTrike:trike:polySurface1/YukiTrike:trike:transform15
+        weight: 1
+      - path: YukiTrike:trike:pCylinder2/YukiTrike:trike:polySurface2
+        weight: 1
+      - path: YukiTrike:trike:pCylinder2/YukiTrike:trike:polySurface2/YukiTrike:trike:transform16
+        weight: 1
+      - path: YukiTrike:trike:pCylinder2/YukiTrike:trike:transform5
+        weight: 1
+      - path: YukiTrike:trike:pCylinder3
+        weight: 1
+      - path: YukiTrike:trike:pCylinder3/YukiTrike:trike:transform4
+        weight: 1
+      - path: YukiTrike:trike:pCylinder4
+        weight: 1
+      - path: YukiTrike:trike:pCylinder4/YukiTrike:trike:transform3
+        weight: 1
+      - path: YukiTrike:trike:pCylinder6
+        weight: 1
+      - path: YukiTrike:trike:pCylinder6/YukiTrike:trike:transform8
+        weight: 1
+      - path: YukiTrike:trike:pCylinder7
+        weight: 1
+      - path: YukiTrike:trike:pCylinder7/YukiTrike:trike:polySurface3
+        weight: 1
+      - path: YukiTrike:trike:pCylinder7/YukiTrike:trike:polySurface3/YukiTrike:trike:transform12
+        weight: 1
+      - path: YukiTrike:trike:pCylinder7/YukiTrike:trike:polySurface5 1
+        weight: 1
+      - path: YukiTrike:trike:pCylinder7/YukiTrike:trike:polySurface5 1/YukiTrike:trike:transform11
+        weight: 1
+      - path: YukiTrike:trike:pCylinder7/YukiTrike:trike:transform9
+        weight: 1
+      - path: YukiTrike:trike:pCylinder8
+        weight: 1
+      - path: YukiTrike:trike:pCylinder8/YukiTrike:trike:transform10
+        weight: 1
+      - path: YukiTrike:trike:pCylinder9
+        weight: 1
+      - path: YukiTrike:trike:pCylinder9/YukiTrike:trike:transform19
+        weight: 1
+      - path: YukiTrike:trike:pCylinder10
+        weight: 1
+      - path: YukiTrike:trike:pCylinder10/YukiTrike:trike:transform18
+        weight: 1
+      - path: YukiTrike:trike:pCylinder11
+        weight: 1
+      - path: YukiTrike:trike:pCylinder11/YukiTrike:trike:transform28
+        weight: 1
+      - path: YukiTrike:trike:polySurface5
+        weight: 1
+      - path: YukiTrike:trike:polySurface5/YukiTrike:trike:transform13
+        weight: 1
+      - path: YukiTrike:trike:polySurface6
+        weight: 1
+      - path: YukiTrike:trike:polySurface6/YukiTrike:trike:transform14
+        weight: 1
+      - path: YukiTrike:trike:polySurface7
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface8
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface8/YukiTrike:trike:transform27
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface9
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface9/YukiTrike:trike:transform26
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface10
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface10/YukiTrike:trike:transform25
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface11
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface11/YukiTrike:trike:transform24
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface12
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:polySurface12/YukiTrike:trike:transform23
+        weight: 1
+      - path: YukiTrike:trike:polySurface7/YukiTrike:trike:transform22
+        weight: 1
+      - path: YukiTrike:trike:pPipe1
+        weight: 1
+      - path: YukiTrike:trike:pPipe1/YukiTrike:trike:transform1
+        weight: 1
+      - path: YukiTrike:trike:pPipe3
+        weight: 1
+      - path: YukiTrike:trike:pPipe3/YukiTrike:trike:transform30
+        weight: 1
+      - path: YukiTrike:trike:pPipe4
+        weight: 1
+      - path: YukiTrike:trike:pPipe4/YukiTrike:trike:transform29
+        weight: 1
+      - path: YukiTrike:trike:pSphere1
+        weight: 1
+      - path: YukiTrike:trike:pSphere1/YukiTrike:trike:transform21
+        weight: 1
+      - path: YukiTrikeChassis
+        weight: 1
+      - path: YukiTrikeChassis/BackWheels
+        weight: 1
+      - path: YukiTrikeChassis/FrontEnd
+        weight: 1
+      - path: YukiTrikeChassis/FrontEnd/FrontWheel
+        weight: 1
+      - path: YukiTrikeChassis/FrontEnd/Handlebars
+        weight: 1
+      - path: YukiTrikeChassis/FrontEnd/Handlebars/l_handle
+        weight: 1
+      - path: YukiTrikeChassis/FrontEnd/Handlebars/r_handle
+        weight: 1
+      - path: YukiTrikeChassis/FrontEnd/Handlebars/YukiTrike:transform30
+        weight: 1
+      - path: YukiTrikeChassis/PedalBase
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

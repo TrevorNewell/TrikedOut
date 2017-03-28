@@ -8,6 +8,8 @@ public class Teleporter : MonoBehaviour
     public float angleToRotateOnExit = 180f;
     public float radiusToSpawn = 2f;
 
+    public AudioClip teleportSound;
+
     public GameObject exit;
 
     void OnTriggerEnter(Collider other)
@@ -22,6 +24,8 @@ public class Teleporter : MonoBehaviour
 
             other.GetComponent<RigidbodyFirstPersonController>().mouseLook.OverrideAngle(angleToRotateOnExit);
             other.GetComponent<RigidbodyFirstPersonController>().ManualUpdate();
+
+            SoundManager.instance.PlaySoundClip(teleportSound);
         }
     }
 }

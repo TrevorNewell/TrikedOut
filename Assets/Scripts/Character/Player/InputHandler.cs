@@ -23,6 +23,7 @@ public class InputHandler : MonoBehaviour
     private float delay = 0.2f;
     private Animator anim;
     private bool on;
+    private PlayerSoundPlayer psp;
 
     public void ReceiveDefinitions(bool uc, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
@@ -44,6 +45,7 @@ public class InputHandler : MonoBehaviour
         weapon = GameObject.Find(prefix + "_Weapon");
         currentTime = 0f;
         on = false;
+        psp = GetComponentInChildren<PlayerSoundPlayer>();
     }
 
     public void TurnOn()
@@ -118,14 +120,19 @@ public class InputHandler : MonoBehaviour
             anim.SetBool("Pedalling", move.IsPedalling());
             anim.SetBool("Turning", Mathf.Abs(Input.GetAxis(prefix + "_LeftStickX")) > turnAnimSensitivity);
             anim.SetBool("Right", Input.GetAxis(prefix + "_LeftStickX") > 0);
-            anim.SetBool("Taunting", Input.GetButtonDown(prefix + "_X"));
+            if (Input.GetButtonDown(prefix + "_X"))
+            {
+                anim.SetBool("Taunting", true);
+                psp.Taunt();
+            }
         }
     }
 
     void FireWeapon()
     {
         weapon.GetComponent<Item>().Activate();
-
+        psp.Attack();
+        SoundManager.instance.Shoot();
         // Not implemented yet
         //SoundManager.instance.PlayShootSound();
     }

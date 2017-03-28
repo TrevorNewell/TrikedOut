@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, Character
     {
         if (c.CompareTag("Player") || c.CompareTag("Environment"))
         {
-            SoundManager.instance.PlayHitSound();
+            //SoundManager.instance.PlayHitSound();
         }
     }
     

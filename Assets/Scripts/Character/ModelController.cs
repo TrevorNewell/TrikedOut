@@ -10,6 +10,7 @@ public class ModelController : MonoBehaviour
     private float currentLocalizedRotation = 0f;
     private int currentRotations = 0;
     private int spinOutRotations;
+    private PlayerSoundPlayer psp;
 
     public void SpinOut(int rots)
     {
@@ -20,6 +21,11 @@ public class ModelController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (psp == null)
+        {
+            psp = GetComponentInChildren<PlayerSoundPlayer>();
+        }
+
 		if (currentRotations < spinOutRotations)
         {
             currentLocalizedRotation += spinOutAnglesPerSecond * Time.deltaTime;
@@ -30,5 +36,13 @@ public class ModelController : MonoBehaviour
             }
             model.transform.localRotation = Quaternion.Euler(0f, currentLocalizedRotation, 0f);
         }
-	}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag != "Terrain")
+        {
+            psp.Collide();
+        }
+    }
 }
