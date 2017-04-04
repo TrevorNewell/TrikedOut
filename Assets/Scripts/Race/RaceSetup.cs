@@ -8,10 +8,14 @@ public class RaceSetup : MonoBehaviour
 
     public Camera minimap;
 
+    public bool startEmbyMode = false;
+
+    private GameObject[] players;
+
 	// Use this for initialization
 	void Awake ()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        players = GameObject.FindGameObjectsWithTag("Player");
 
         //FindObjectOfType<StateManager>().InstantiateDemCharacters(players);
 
@@ -98,4 +102,17 @@ public class RaceSetup : MonoBehaviour
 
         //FindObjectOfType<StateManager>().InstantiateDemCharacters();
 	}
+
+    private void Update()
+    {
+        if (startEmbyMode)
+        {
+            foreach (GameObject g in players)
+            {
+                if (g.activeInHierarchy) g.GetComponent<CharacterSelector>().EmbyMode();
+            }
+
+            startEmbyMode = false;
+        }
+    }
 }

@@ -17,9 +17,10 @@ public class CharacterSelector : MonoBehaviour
 
 
     public GameObject emby;
-    public bool StartEmbyMode = false;
+    public bool startEmbyMode = false;
     private bool embyMode = false;
-    private GameObject character;
+    public GameObject character;
+    private bool embyOnline = false;
 
     void Start()
     {
@@ -28,13 +29,18 @@ public class CharacterSelector : MonoBehaviour
         CheckEmbyMode();
     }
 
-    void CheckEmbyMode()
+    public void CheckEmbyMode()
     {
-        emby = Instantiate(emby);
-        emby.transform.parent = transform;
-        emby.transform.localPosition = new Vector3(0f, -0.77f, 0f);
-        emby.GetComponent<FollowGround>().castPoint = castPoint;
-        if (StartEmbyMode) EmbyMode();
+        if (!embyOnline)
+        {
+            emby = Instantiate(emby);
+            emby.transform.parent = transform;
+            emby.transform.localPosition = new Vector3(0f, -0.77f, 0f);
+            emby.GetComponent<FollowGround>().castPoint = castPoint;
+            emby.SetActive(false);
+            embyOnline = true;
+        }
+       // EmbyMode();
     }
 
     public void EmbyMode()
@@ -48,6 +54,7 @@ public class CharacterSelector : MonoBehaviour
         else
         {
             emby.SetActive(true);
+            //print(gameObject.transform.parent);
             character.SetActive(false);
             embyMode = true;
         }
@@ -102,6 +109,6 @@ public class CharacterSelector : MonoBehaviour
             GetComponent<InputHandler>().SetAnimator(anim);
         }
 
-        emby.SetActive(false);
+        //emby.SetActive(false);
 	}
 }
