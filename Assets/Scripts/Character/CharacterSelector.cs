@@ -15,12 +15,42 @@ public class CharacterSelector : MonoBehaviour
     public Sprite[] minimapIcons;
     public float modelOffset = -0.81f;
 
+
+    public GameObject emby;
+    public bool StartEmbyMode = false;
+    private bool embyMode = false;
     private GameObject character;
 
     void Start()
     {
         //TEMPORARY
         CreateCharacter(characterSelection);
+        CheckEmbyMode();
+    }
+
+    void CheckEmbyMode()
+    {
+        emby = Instantiate(emby);
+        emby.transform.parent = transform;
+        emby.transform.localPosition = new Vector3(0f, -0.77f, 0f);
+        emby.GetComponent<FollowGround>().castPoint = castPoint;
+        if (StartEmbyMode) EmbyMode();
+    }
+
+    public void EmbyMode()
+    {
+        if (embyMode)
+        {
+            emby.SetActive(false);
+            character.SetActive(true);
+            embyMode = false;
+        }
+        else
+        {
+            emby.SetActive(true);
+            character.SetActive(false);
+            embyMode = true;
+        }
     }
 
 	// This method should be called most likely by the race manager when it receives character selections
@@ -71,5 +101,7 @@ public class CharacterSelector : MonoBehaviour
         {
             GetComponent<InputHandler>().SetAnimator(anim);
         }
+
+        emby.SetActive(false);
 	}
 }

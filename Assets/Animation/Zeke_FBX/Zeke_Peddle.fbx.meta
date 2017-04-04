@@ -430,7 +430,379 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Body/transform34
+        weight: 1
+      - path: Body1
+        weight: 1
+      - path: Body1/transform33
+        weight: 1
+      - path: Body2
+        weight: 1
+      - path: Body2/polySurface10 1
+        weight: 1
+      - path: Body2/polySurface10 1/transform37
+        weight: 1
+      - path: Body2/transform35
+        weight: 1
+      - path: Eyes
+        weight: 1
+      - path: Eyes/polySurface7
+        weight: 1
+      - path: Eyes/polySurface7/transform29
+        weight: 1
+      - path: Eyes/polySurface8
+        weight: 1
+      - path: Eyes/polySurface8/transform28
+        weight: 1
+      - path: eyes
+        weight: 1
+      - path: eyes/polySurface9
+        weight: 1
+      - path: eyes/polySurface9/transform31
+        weight: 1
+      - path: eyes/transform30
+        weight: 1
+      - path: headband1
+        weight: 1
+      - path: headband1/polySurface34
+        weight: 1
+      - path: headband1/polySurface34/transform54
+        weight: 1
+      - path: headband1/polySurface35 1
+        weight: 1
+      - path: headband1/polySurface35 1/transform55
+        weight: 1
+      - path: headband1/polySurface36
+        weight: 1
+      - path: headband1/polySurface36/transform45
+        weight: 1
+      - path: headband1/polySurface37
+        weight: 1
+      - path: headband1/polySurface37/transform47
+        weight: 1
+      - path: headband1/polySurface38
+        weight: 1
+      - path: headband1/polySurface38/transform49
+        weight: 1
+      - path: headband1/polySurface39
+        weight: 1
+      - path: headband1/polySurface39/transform46
+        weight: 1
+      - path: headband1/polySurface40
+        weight: 1
+      - path: headband1/polySurface40/transform48
+        weight: 1
+      - path: headband1/polySurface41
+        weight: 1
+      - path: headband1/polySurface41/transform50
+        weight: 1
+      - path: headband1/polySurface42
+        weight: 1
+      - path: headband1/polySurface42/transform53
+        weight: 1
+      - path: headband1/polySurface43
+        weight: 1
+      - path: headband1/polySurface43/transform52
+        weight: 1
+      - path: headband1/polySurface44
+        weight: 1
+      - path: headband1/polySurface44/transform51
+        weight: 1
+      - path: headband1/transform44
+        weight: 1
+      - path: pCube51
+        weight: 1
+      - path: pCube51/Body 1
+        weight: 1
+      - path: pCube51/Body 1/transform32
+        weight: 1
+      - path: pCube53
+        weight: 1
+      - path: polySurface3
+        weight: 1
+      - path: polySurface10
+        weight: 1
+      - path: polySurface10/transform39
+        weight: 1
+      - path: polySurface11
+        weight: 1
+      - path: polySurface11/transform38
+        weight: 1
+      - path: polySurface12
+        weight: 1
+      - path: polySurface12/polySurface15
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface16
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface16/transform42
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface19
+        weight: 1
+      - path: polySurface12/polySurface15/polySurface19/transform43
+        weight: 1
+      - path: polySurface12/polySurface15/transform41
+        weight: 1
+      - path: polySurface12/transform40
+        weight: 1
+      - path: polySurface33
+        weight: 1
+      - path: polySurface35
+        weight: 1
+      - path: polySurface48
+        weight: 1
+      - path: polySurface48/transform60
+        weight: 1
+      - path: polySurface63
+        weight: 1
+      - path: pSphere1
+        weight: 1
+      - path: pSphere1/transform36
+        weight: 1
+      - path: Zeke_Controller
+        weight: 1
+      - path: Zeke_Controller/Head_controller
+        weight: 1
+      - path: Zeke_Controller/Head_controller/headIK
+        weight: 1
+      - path: Zeke_Controller/l_armIK
+        weight: 1
+      - path: Zeke_Controller/l_elbowPV
+        weight: 1
+      - path: Zeke_Controller/l_kneePV
+        weight: 1
+      - path: Zeke_Controller/l_legIK
+        weight: 1
+      - path: Zeke_Controller/Pelvis
+        weight: 1
+      - path: Zeke_Controller/Pelvis/l_hip
+        weight: 1
+      - path: Zeke_Controller/Pelvis/l_hip/l_knee
+        weight: 1
+      - path: Zeke_Controller/Pelvis/l_hip/l_knee/l_ankle
+        weight: 1
+      - path: Zeke_Controller/Pelvis/l_hip/l_knee/l_ankle/l_heel
+        weight: 1
+      - path: Zeke_Controller/Pelvis/l_hip/l_knee/l_ankle/l_heel/l_ball
+        weight: 1
+      - path: Zeke_Controller/Pelvis/l_hip/l_knee/l_ankle/l_heel/l_ball/l_toe
+        weight: 1
+      - path: Zeke_Controller/Pelvis/r_hip
+        weight: 1
+      - path: Zeke_Controller/Pelvis/r_hip/r_knee
+        weight: 1
+      - path: Zeke_Controller/Pelvis/r_hip/r_knee/r_ankle
+        weight: 1
+      - path: Zeke_Controller/Pelvis/r_hip/r_knee/r_ankle/r_heel
+        weight: 1
+      - path: Zeke_Controller/Pelvis/r_hip/r_knee/r_ankle/r_heel/r_ball
+        weight: 1
+      - path: Zeke_Controller/Pelvis/r_hip/r_knee/r_ankle/r_heel/r_ball/r_toe
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2/l_mid3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2/l_mid3/l_mid4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_pinky1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_pinky1/l_pinky2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_pinky1/l_pinky2/l_pinky3/l_pinky4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring1/l_ring2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring1/l_ring2/l_ring3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ring1/l_ring2/l_ring3/l_ring4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1/l_index2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1/l_index2/l_index3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_index1/l_index2/l_index3/l_index4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_thumb1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_thumb1/l_thumb2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumb_helper/l_thumb1/l_thumb2/l_thumb3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/neck_base
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/neck_base/neck_top
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/neck_base/neck_top/jaw_base
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/neck_base/neck_top/jaw_base/head_top
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2/r_mid3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2/r_mid3/r_mid4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_pinky1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_pinky1/r_pinky2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_pinky1/r_pinky2/r_pinky3/r_pinky4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring1/r_ring2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring1/r_ring2/r_ring3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ring1/r_ring2/r_ring3/r_ring4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1/r_index2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1/r_index2/r_index3
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_index1/r_index2/r_index3/r_index4
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_thumb1
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_thumb1/r_thumb2
+        weight: 1
+      - path: Zeke_Controller/Pelvis/spine1/spine2/spine3/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumb_helper/r_thumb1/r_thumb2/r_thumb3
+        weight: 1
+      - path: Zeke_Controller/r_armIK
+        weight: 1
+      - path: Zeke_Controller/r_elbowPV
+        weight: 1
+      - path: Zeke_Controller/r_kneePV
+        weight: 1
+      - path: Zeke_Controller/r_legIK
+        weight: 1
+      - path: ZekeTrike:polySurface1
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface45
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface45/polySurface65
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface45/polySurface66
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface45/polySurface67
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface45/transform61
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface47
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface47/polySurface46
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface48 1
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface48 1/transform58
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface49
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface49/transform59
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface51
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface52
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface52/transform57
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface53
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface55
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface55/polySurface54
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface56
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface56/polySurface57
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface58
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface59
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface60
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface61
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface62
+        weight: 1
+      - path: ZekeTrike:polySurface1/polySurface64
+        weight: 1
+      - path: ZekeTrike:polySurface1/transform56
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
