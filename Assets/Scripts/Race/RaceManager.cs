@@ -344,15 +344,21 @@ public class RaceManager : MonoBehaviour
         else if (currentLap == numLaps && raceOver == true)
         {
             bottomLeftText.text = "";
-            directMiddleText.text = "Finish!";
+            directMiddleText.text = "";
             SoundManager.instance.Finish();
             if (pm.GetPlace(GetID()) == 1)
             {
                 psp.Victory();
+                player.GetComponent<CharacterSelector>().WinBanner();
             }
             else
             {
                 psp.Loss();
+                Image i = GameObject.Find(player.name + "_Image").GetComponent<Image>();
+                if (i.sprite == null) i.sprite = placeImages[pm.GetPlace(GetID()) - 1];
+                i.color = Color.white;
+                placeImage.sprite = null;
+                placeImage.color = Color.clear;
             }
         }
 
@@ -373,7 +379,10 @@ public class RaceManager : MonoBehaviour
             //string place = pm.GetPlace(GetID()).ToString();
             int place = pm.GetPlace(GetID());
             if (oldPlace == -1) oldPlace = place;
-            placeImage.sprite = placeImages[place - 1];
+            if (!raceOver)
+            {
+                placeImage.sprite = placeImages[place - 1];
+            }
 
             if (place < oldPlace)
             {

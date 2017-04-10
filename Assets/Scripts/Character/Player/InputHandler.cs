@@ -46,7 +46,6 @@ public class InputHandler : MonoBehaviour
         weapon = GameObject.Find(prefix + "_Weapon");
         currentTime = 0f;
         on = false;
-        psp = GetComponentInChildren<PlayerSoundPlayer>();
         playerCount = FindObjectOfType<RaceSetup>().playerCount;
     }
 
@@ -63,6 +62,7 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (psp == null) psp = GetComponentInChildren<PlayerSoundPlayer>();
         if (!on)
         {
             return;

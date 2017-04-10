@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelector : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CharacterSelector : MonoBehaviour
     public GameObject[] projectiles;
     public GameObject[] bats;
     public Sprite[] minimapIcons;
+    public Sprite[] winBanners;
     public float modelOffset = -0.81f;
 
 
@@ -41,6 +43,14 @@ public class CharacterSelector : MonoBehaviour
             embyOnline = true;
         }
        // EmbyMode();
+    }
+
+    public void WinBanner()
+    {
+        GameObject g = GameObject.Find(name + "_Image");
+        Image i = g.GetComponent<Image>();
+        i.sprite = winBanners[characterSelection];
+        i.color = Color.white;
     }
 
     public void EmbyMode()
