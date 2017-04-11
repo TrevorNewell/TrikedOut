@@ -25,6 +25,7 @@ public class InputHandler : MonoBehaviour
     private bool on;
     private PlayerSoundPlayer psp;
     private int playerCount;
+    private bool wasPaused = false;
 
     public void ReceiveDefinitions(bool uc, Dictionary<string, KeyCode> kb, Dictionary<string, string> uv)
     {
@@ -63,8 +64,10 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
         if (psp == null) psp = GetComponentInChildren<PlayerSoundPlayer>();
-        if (!on || StateManager.instance.TheState == State.Paused)
+        if (!on || StateManager.instance.TheState == State.Paused || wasPaused)
         {
+            if (StateManager.instance.TheState == State.Paused) wasPaused = true;
+            else wasPaused = false;
             return;
         }
 

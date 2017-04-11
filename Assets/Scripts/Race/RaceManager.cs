@@ -68,6 +68,8 @@ public class RaceManager : MonoBehaviour
     public string hpString;
     private string statusString;
 
+    public GameObject[] fireworks;
+
     // Returns the ID for the "player" game 
     public int GetID()
     {
@@ -350,6 +352,10 @@ public class RaceManager : MonoBehaviour
             {
                 psp.Victory();
                 player.GetComponent<CharacterSelector>().WinBanner();
+                foreach (GameObject g in fireworks)
+                {
+                    g.SetActive(true);
+                }
             }
             else
             {
