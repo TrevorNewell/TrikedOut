@@ -27,13 +27,15 @@ public class StateManager : MonoBehaviour
 
     public static int numPlayers;
 
+    public bool embyMode = false;
+
     public float companyLogoTime = 6.0f;
     private bool readyToStart;
     private float companyLogoMult = 1.0f;
 
     public Font ourFont;
 
-    private State theState;
+    public State theState;
 
     [Header("Visible For Debugging")]
     public ScreenType currentScreen;
@@ -46,6 +48,7 @@ public class StateManager : MonoBehaviour
     public GameObject trackMenu;
     public GameObject controllerRegistrationMenu;
     public GameObject pauseMenu; // Only one pause menu, and we'll display an icon noting which player has control of the pause.
+    public GameObject endMenu;
 
     public GameObject[] HUDs; // Multiple HUDs
 
@@ -97,31 +100,36 @@ public class StateManager : MonoBehaviour
             }
             else if (theState == State.InGame)
             {
+                print("In InGame state changer");
                 //currentScreen = ScreenType.HUD;
-                DeactivateAll();
+                DeactivateInGame();
 
-                if (HUDs.Length > 0)
-                {
-                    foreach (GameObject g in HUDs)
-                    {
-                        g.SetActive(true);
-                    }
-                }
+                EnableHUDs();
 
                 Time.timeScale = 1.0f;
             }
             else if (theState == State.Paused)
             {
+                print("You're being paused.");
                 currentScreen = ScreenType.PauseMenu;
-                DeactivateAll();
+                DeactivateInGame();
 
-                if(pauseMenu != null) pauseMenu.SetActive(true);
+                if (pauseMenu != null)
+                {
+                    GetComponent<ScreenManager>().OpenPanel(pauseMenu.GetComponent<Animator>());
+                    print("Pausing");
+                }
+                else print("Where the fuck is the pause menu?");
 
                 Time.timeScale = 0.0f;
             }
             else if (theState == State.Credits)
             {
 
+            }
+            else if (theState == State.BeginningOfRace)
+            {
+                
             }
             else
             {
@@ -175,6 +183,7 @@ public class StateManager : MonoBehaviour
             if (s.screenType == ScreenType.Start) pressStartMenu = s.gameObject;
             else if (s.screenType == ScreenType.MainMenu) mainMenu = s.gameObject;
             else if (s.screenType == ScreenType.Options) optionsMenu = s.gameObject;
+            else if (s.screenType == ScreenType.PauseMenu) pauseMenu = s.gameObject;
             else if (s.screenType == ScreenType.CharacterSelection) characterMenu = s.gameObject;
             else if (s.screenType == ScreenType.TrackSelection) trackMenu = s.gameObject;
             else if (s.screenType == ScreenType.Credits) creditScreen = s.gameObject;
@@ -230,12 +239,11 @@ public class StateManager : MonoBehaviour
 
             foreach (GameObject g in screens)
             {
-                //if (g.name.CompareTo("PauseMenu") == 0)
-                //{
-                //    pauseMenu = g;
-                //    g.SetActive(false);
-                //}
-                if (g.name.CompareTo("HUD") == 0)
+                if (g.name.CompareTo("PauseMenu") == 0 || g.name.CompareTo("OptionsMenu") == 0)
+                {
+                    g.SetActive(false);
+                }
+                if (g.GetComponent<Screen>().screenType == ScreenType.HUD)
                 {
                     temp[count] = g;
                     count++;
@@ -243,12 +251,6 @@ public class StateManager : MonoBehaviour
                     g.SetActive(false);
                    
                 }
-                //else if (g.name.CompareTo("OptionsMenu") == 0)
-                //{
-                //    optionsMenu = g;
-                //    g.SetActive(false);
-
-                //}
                 //else
                 //{
                 //    g.SetActive(false);
@@ -266,14 +268,31 @@ public class StateManager : MonoBehaviour
             creditScreen.GetComponent<Scroll>().StartScroll();
         }
 
-        if (charSelIndex == -1)
+        //if (charSelIndex == -1)
         {
             instance = this;
         }
     }
 
+    public void SetEmbyMode(Toggle toggle)
+    {
+        bool t = toggle.isOn;
+
+        if (t != embyMode)
+        {
+            CharacterSelector[] c = FindObjectsOfType<CharacterSelector>();
+
+            foreach (CharacterSelector l in c)
+            {
+                l.EmbyMode();
+            }
+        }
+    }
+
     public void InstantiateDemCharacters(GameObject[] thePlayerObjects)
     {
+        print("I'm in instantiate in StateManager");
+
         // This will always be -1 unless SaveCharSelections has been called.  And that's only ever called from the main menu, transitioning from the character select screen to the track selection screen.
         if (charSelIndex != -1)
         {
@@ -345,13 +364,18 @@ public class StateManager : MonoBehaviour
             else if (Input.GetButtonDown("P2_Start")) Pause(2);
             else if (Input.GetButtonDown("P3_Start")) Pause(3);
             else if (Input.GetButtonDown("P4_Start")) Pause(4);
+
+            if (Input.GetButtonDown("P1_B")) GoBack(1);
+            else if (Input.GetButtonDown("P2_B")) GoBack(2);
+            else if (Input.GetButtonDown("P3_B")) GoBack(3);
+            else if (Input.GetButtonDown("P4_B")) GoBack(4);
         }
         else if (TheState == State.Paused)
         {
-            if (Input.GetButtonDown("P1_Start")) Unpause(1);
-            else if (Input.GetButtonDown("P2_Start")) Unpause(2);
-            else if (Input.GetButtonDown("P3_Start")) Unpause(3);
-            else if (Input.GetButtonDown("P4_Start")) Unpause(4);
+            if (Input.GetButtonDown("P1_Start") || Input.GetButtonDown("P1_B")) Unpause(1);
+            else if (Input.GetButtonDown("P2_Start") || Input.GetButtonDown("P2_B")) Unpause(2);
+            else if (Input.GetButtonDown("P3_Start") || Input.GetButtonDown("P3_B")) Unpause(3);
+            else if (Input.GetButtonDown("P4_Start") || Input.GetButtonDown("P4_B")) Unpause(4);
         } 
         else if (TheState == State.MainMenu)
         {
@@ -359,13 +383,29 @@ public class StateManager : MonoBehaviour
         }
     }
 
+    public void FinishFlythrough()
+    {
+        print("Finishing flythroughs");
+
+        TheState = State.InGame;
+        EnableHUDs();
+    }
+
+    public void EnableHUDs()
+    {
+        foreach(GameObject g in HUDs)
+        {
+            if (g != null) g.SetActive(true);
+        }
+    }
+
     public void Options(int playerID)
     {
-        if (playerID == playerWithControl)
+        if (playerID == playerWithControl || playerID == 0) // If the playerId is 0, that means we pressed a button to get there, in which case we already have the correct player pressing it as that's the only input manager active.
         {
             //currentScreen = ScreenType.Options;
             DeactivateAll();
-            optionsMenu.SetActive(true);
+            GetComponent<ScreenManager>().OpenPanel(optionsMenu.GetComponent<Animator>());
         }
     }
 
@@ -388,7 +428,6 @@ public class StateManager : MonoBehaviour
     {
         if (TheState == State.InGame)
         {
-            playerWithControl = playerID;
             Enable(playerID);
             TheState = State.Paused;
         }
@@ -396,23 +435,22 @@ public class StateManager : MonoBehaviour
 
     public void Unpause(int playerID)
     {
-        if (TheState == State.Paused && playerWithControl == playerID)
+        if (TheState == State.Paused && (playerWithControl == playerID || playerID == 0))
         {
             playerWithControl = 0;
             TheState = State.InGame;
-
-            p1Input.DeactivateModule();
-            p2Input.DeactivateModule();
-            p3Input.DeactivateModule();
-            p4Input.DeactivateModule();
+            GetComponent<ScreenManager>().CloseCurrent();
+            DisablePlayerMenuInput();
         }
     }
 
     public void GoBack(int playerID)
     {
+        print("Going back: " + playerID + "  State: " + TheState + "  CurrentScreen: " + currentScreen);
+
         if (TheState == State.Paused && playerWithControl == playerID)
         {
-            if (currentScreen == ScreenType.Options) Options(playerID);
+            if (currentScreen == ScreenType.Options) TheState = State.InGame; //GetComponent<ScreenManager>().OpenPanel(pauseMenu.GetComponent<Animator>());
             else if (currentScreen == ScreenType.PauseMenu) Unpause(playerID);
         }
         else if (TheState == State.MainMenu)
@@ -440,7 +478,12 @@ public class StateManager : MonoBehaviour
                     GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
                 }
             }
-            else if (currentScreen == ScreenType.Options || currentScreen == ScreenType.Credits) GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+            else if (currentScreen == ScreenType.Options || currentScreen == ScreenType.Credits)
+            {
+                print("I'm in here: " + currentScreen);
+                currentScreen = ScreenType.MainMenu;
+                GetComponent<ScreenManager>().OpenPanel(mainMenu.GetComponent<Animator>());
+            }
             else if (currentScreen == ScreenType.TrackSelection) CharacterSelection();
             else if (currentScreen == ScreenType.CharacterSelection && characterMenu.GetComponent<CharacterSelectionManager>().playerHasSelected[0] == false) ControllerRegistration();
         }
@@ -448,34 +491,55 @@ public class StateManager : MonoBehaviour
 
     public void Enable(int playerID)
     {
+        p1Input.horizontalAxis = "P" + playerID + "_Horizontal";
+        p1Input.verticalAxis = "P" + playerID + "_Vertical";
+        p1Input.submitButton = "P" + playerID + "_A";
+        p1Input.cancelButton = "P" + playerID + "_B";
+
         if (playerID == 1)
         {
-            p1Input.ActivateModule();
-            p2Input.DeactivateModule();
-            p3Input.DeactivateModule();
-            p4Input.DeactivateModule();
+            playerWithControl = 1;
+
+            //p1Input.ActivateModule();
+            //p2Input.DeactivateModule();
+            //p3Input.DeactivateModule();
+            //p4Input.DeactivateModule();
         }
         else if (playerID == 2)
         {
-            p1Input.DeactivateModule();
-            p2Input.ActivateModule();
-            p3Input.DeactivateModule();
-            p4Input.DeactivateModule();
+            playerWithControl = 2;
+
+            //p1Input.DeactivateModule();
+            //p2Input.ActivateModule();
+            //p3Input.DeactivateModule();
+            //p4Input.DeactivateModule();
         }
         else if (playerID == 3)
         {
-            p1Input.DeactivateModule();
-            p2Input.DeactivateModule();
-            p3Input.ActivateModule();
-            p4Input.DeactivateModule();
+            playerWithControl = 3;
+
+            //p1Input.DeactivateModule();
+            //p2Input.DeactivateModule();
+            //p3Input.ActivateModule();
+            //p4Input.DeactivateModule();
         }
         else if (playerID == 4)
         {
-            p1Input.DeactivateModule();
-            p2Input.DeactivateModule();
-            p3Input.DeactivateModule();
-            p4Input.ActivateModule();
+            playerWithControl = 4;
+
+            //p1Input.DeactivateModule();
+            //p2Input.DeactivateModule();
+            //p3Input.DeactivateModule();
+            //p4Input.ActivateModule();
         }
+    }
+
+    public void DisablePlayerMenuInput()
+    {
+        //p1Input.DeactivateModule();
+        //p2Input.DeactivateModule();
+        //p3Input.DeactivateModule();
+        //p4Input.DeactivateModule();
     }
 
     public void StartCredits()
@@ -491,11 +555,30 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    private void DeactivateAll()
+    private void DeactivateInGame()
     {
         foreach (GameObject g in screens)
         {
-            g.SetActive(false);
+            if (g != null)
+            {
+                if (g.GetComponent<Screen>().screenType == ScreenType.HUD)
+                {
+                }
+                else if (g.GetComponent<Screen>().screenType == ScreenType.PauseMenu || g.GetComponent<Screen>().screenType == ScreenType.Options)
+                {
+                    g.SetActive(false);
+                }
+            }
+            //else g.SetActive(false);
+        }
+    }
+
+    private void DeactivateAll()
+    {
+        print(screens.Length + " And + " + instance.screens.Length);
+        foreach (GameObject g in screens)
+        {
+            if ( g != null && (TheState == State.InGame || TheState == State.Paused)) g.SetActive(false);
         }
     }
 

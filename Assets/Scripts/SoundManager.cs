@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 // Given the fact that we are limited to having one AudioListener per scene, we'll just be playing all our sounds at the same place (the location of our manager GO).  
 // For Multiplayer across xbox live, we can move this from the manager to the players camera and then we'll have to use PlayClipAtPoint in the correct spot and not just at the manager GO.
@@ -8,18 +9,20 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     
     public int sceneCount = -1;
-    private AudioListener theListener;
+    public AudioListener theListener;
+
+    public float masterVolume = 1.0f;
 
     public float musicVolume = 0.4f;
-    private AudioSource musicManager;
+    public AudioSource musicManager;
     public AudioClip song;
 
     public float voiceSoundsVolume = 0.7f;
-    private AudioSource voiceSoundManager;
+    public AudioSource voiceSoundManager;
     public AudioClip[] clickSounds;
 
     public float inGameSoundsVolume = 0.7f;
-    private AudioSource inGameSoundManager;
+    public AudioSource inGameSoundManager;
     private float currentVoiceTime;
     private float timeUntilNextVoice;
     private bool playingVoice;
@@ -37,15 +40,15 @@ public class SoundManager : MonoBehaviour
     {
         sceneCount += 1;
 
-        theListener = gameObject.AddComponent<AudioListener>();
+        //theListener = gameObject.AddComponent<AudioListener>();
 
-        inGameSoundManager = gameObject.AddComponent<AudioSource>();
+        //inGameSoundManager = gameObject.AddComponent<AudioSource>();
 
-        voiceSoundManager = gameObject.AddComponent<AudioSource>();
+        //voiceSoundManager = gameObject.AddComponent<AudioSource>();
 
-        musicManager = gameObject.AddComponent<AudioSource>();
+        //musicManager = gameObject.AddComponent<AudioSource>();
+
         musicManager.ignoreListenerPause = true;
-
 
         musicManager.loop = true;
 
@@ -58,6 +61,34 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    public void UpdateMasterVolume(Slider slider)
+    {
+        masterVolume =  slider.value;
+
+        musicManager.volume = musicVolume * masterVolume;
+        inGameSoundManager.volume = inGameSoundsVolume * masterVolume;
+        voiceSoundManager.volume = voiceSoundsVolume * masterVolume;
+
+    }
+
+    public void UpdateMusicVolume(Slider slider)
+    {
+        musicManager.volume = slider.value * masterVolume;
+        musicVolume = slider.value;
+    }
+
+    public void UpdateVoiceVolume(Slider slider)
+    {
+        voiceSoundManager.volume = slider.value * masterVolume;
+        voiceSoundsVolume = slider.value;
+    }
+
+    public void UpdateSFXVolume(Slider slider)
+    {
+        inGameSoundManager.volume = slider.value * masterVolume;
+        inGameSoundsVolume = slider.value;
+    }
+
     private void Update()
     {
         if (playingVoice)
@@ -66,7 +97,7 @@ public class SoundManager : MonoBehaviour
             if (currentVoiceTime >= timeUntilNextVoice)
             {
                 playingVoice = false;
-                inGameSoundManager.volume = inGameSoundsVolume;
+                inGameSoundManager.volume = inGameSoundsVolume * masterVolume;
             }
         }
     }
@@ -89,7 +120,7 @@ public class SoundManager : MonoBehaviour
     public void PlayVoiceClip(AudioClip clip, float vol)
     {
         if (playingVoice) return;
-        voiceSoundManager.volume = inGameSoundsVolume * vol;
+        voiceSoundManager.volume = voiceSoundsVolume * vol * masterVolume;
         PlayVoiceClip(clip);
     }
 

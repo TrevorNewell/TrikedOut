@@ -16,6 +16,8 @@ public class TrackSelectionManager : MonoBehaviour
     //public Sprite rightButtonSelect;
     private Sprite rightButtonOriginal;
     public GameObject[] subscreens;
+    public GameObject[] loadingScreens;
+
     public int maxIndex;
     public int currentIndex = 0;
 
@@ -168,7 +170,7 @@ public class TrackSelectionManager : MonoBehaviour
     public void LoadTrack(int index)
     {
         // Store the int for player 1 in StateManager.  Or here, then set the variable in StateManager.
-        StateManager.instance.LoadLevel(subscreens[index].name);
+        gameObject.GetComponent<SceneLoader>().LoadScene(index + 1, loadingScreens[index]);
     }
 }
 

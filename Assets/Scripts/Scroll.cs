@@ -7,6 +7,10 @@ public class Scroll : MonoBehaviour
     public bool shouldScrollOnStart = true;
     public float scrollRate = 0.1f;
 
+    public float timeToSitAtBottom = 1.0f;
+    public float t = 0;
+    public bool count = false;
+
     public GameObject bottomOfCredits;
     public GameObject bottomOfScreen;
 
@@ -42,6 +46,16 @@ public class Scroll : MonoBehaviour
             if (bottomOfCredits.transform.position.y > bottomOfScreen.transform.position.y)
             {
                 shouldScroll = false;
+                count = true;
+            }
+        }
+
+        if (count)
+        {
+            t += Time.deltaTime;
+
+            if (t > timeToSitAtBottom)
+            {
                 StateManager.instance.TheState = State.MainMenu;
             }
         }
@@ -56,5 +70,7 @@ public class Scroll : MonoBehaviour
     {
         gameObject.transform.position = originalPosition;
         shouldScroll = true;
+        count = false;
+        t = 0;
     }
 }

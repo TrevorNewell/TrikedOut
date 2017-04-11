@@ -36,7 +36,7 @@ public class Screen : MonoBehaviour
 	
     void OnEnable()
     {
-        //if (firstActive != null) StateManager.instance.eventHandler.SetSelectedGameObject(firstActive.gameObject);
+        //if (firstActive != null && firstActive.isActiveAndEnabled) StateManager.instance.eventHandler.SetSelectedGameObject(firstActive.gameObject);
     }
 
     void OnDisable()

@@ -63,7 +63,7 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
         if (psp == null) psp = GetComponentInChildren<PlayerSoundPlayer>();
-        if (!on)
+        if (!on || StateManager.instance.TheState == State.Paused)
         {
             return;
         }
@@ -95,7 +95,7 @@ public class InputHandler : MonoBehaviour
             fire = Input.GetButtonDown(prefix + "_A");
             ceaseFire = Input.GetButtonUp(prefix + "_A");
             activateUlti = Input.GetButtonDown(prefix + "_Y");
-            openMinimap = Input.GetButtonDown(prefix + "_B");
+            openMinimap = (Input.GetButtonDown(prefix + "_B") && StateManager.instance.theState != State.Paused);
         }
 
         move.SetFactors(leftPedal, rightPedal);

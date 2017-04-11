@@ -57,6 +57,7 @@ public class Flythrough : MonoBehaviour
             r.flythroughTime = timeElapsed;
         }
 
+        StateManager.instance.FinishFlythrough();
         Destroy(gameObject);
     }
 }
