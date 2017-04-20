@@ -1,0 +1,1131 @@
+fileFormatVersion: 2
+guid: e8b444af4b6311a4a80092a714cc82bb
+timeCreated: 1492728508
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: group
+    100002: head_top
+    100004: l_armik
+    100006: l_armpv
+    100008: l_legik
+    100010: l_legpv
+    100012: polySurface58
+    100014: r_armik
+    100016: r_armpv
+    100018: r_legik
+    100020: r_legpv
+    100022: zeke_10:Body
+    100024: zeke_10:Body 1
+    100026: zeke_10:Body1
+    100028: zeke_10:Body2
+    100030: zeke_10:Body3
+    100032: zeke_10:Body4
+    100034: zeke_10:Body5
+    100036: zeke_10:Eyes
+    100038: zeke_10:eyes
+    100040: zeke_10:headband1
+    100042: zeke_10:jaw_base
+    100044: zeke_10:l_ankle
+    100046: zeke_10:l_ball
+    100048: zeke_10:l_clavicle
+    100050: zeke_10:l_elbow
+    100052: zeke_10:l_heel
+    100054: zeke_10:l_hip
+    100056: zeke_10:l_index1
+    100058: zeke_10:l_index2
+    100060: zeke_10:l_index3
+    100062: zeke_10:l_index4
+    100064: zeke_10:l_knee
+    100066: zeke_10:l_mid1
+    100068: zeke_10:l_mid2
+    100070: zeke_10:l_mid3
+    100072: zeke_10:l_mid4
+    100074: zeke_10:l_pinky1
+    100076: zeke_10:l_pinky2
+    100078: zeke_10:l_pinky3
+    100080: zeke_10:l_pinky4
+    100082: zeke_10:l_ring1
+    100084: zeke_10:l_ring2
+    100086: zeke_10:l_ring3
+    100088: zeke_10:l_ring4
+    100090: zeke_10:l_shoulder
+    100092: zeke_10:l_thumb1
+    100094: zeke_10:l_thumb2
+    100096: zeke_10:l_thumb3
+    100098: zeke_10:l_thumb_helper
+    100100: zeke_10:l_toe
+    100102: zeke_10:l_wrist
+    100104: zeke_10:neck_base
+    100106: zeke_10:neck_top
+    100108: zeke_10:pCube51
+    100110: zeke_10:pCube53
+    100112: zeke_10:Pelvis
+    100114: zeke_10:polySurface10
+    100116: zeke_10:polySurface10 1
+    100118: zeke_10:polySurface11
+    100120: zeke_10:polySurface12
+    100122: zeke_10:polySurface15
+    100124: zeke_10:polySurface16
+    100126: zeke_10:polySurface19
+    100128: zeke_10:polySurface3
+    100130: zeke_10:polySurface33
+    100132: zeke_10:polySurface34
+    100134: zeke_10:polySurface35
+    100136: zeke_10:polySurface35 1
+    100138: zeke_10:polySurface36
+    100140: zeke_10:polySurface37
+    100142: zeke_10:polySurface38
+    100144: zeke_10:polySurface39
+    100146: zeke_10:polySurface40
+    100148: zeke_10:polySurface41
+    100150: zeke_10:polySurface42
+    100152: zeke_10:polySurface43
+    100154: zeke_10:polySurface44
+    100156: zeke_10:polySurface45
+    100158: zeke_10:polySurface46
+    100160: zeke_10:polySurface47
+    100162: zeke_10:polySurface48
+    100164: zeke_10:polySurface48 1
+    100166: zeke_10:polySurface49
+    100168: zeke_10:polySurface52
+    100170: zeke_10:polySurface53
+    100172: zeke_10:polySurface54
+    100174: zeke_10:polySurface55
+    100176: zeke_10:polySurface56
+    100178: zeke_10:polySurface57
+    100180: zeke_10:polySurface58
+    100182: zeke_10:polySurface60
+    100184: zeke_10:polySurface61
+    100186: zeke_10:polySurface62
+    100188: zeke_10:polySurface62 1
+    100190: zeke_10:polySurface66
+    100192: zeke_10:polySurface67
+    100194: zeke_10:polySurface68
+    100196: zeke_10:polySurface69
+    100198: zeke_10:polySurface7
+    100200: zeke_10:polySurface70
+    100202: zeke_10:polySurface71
+    100204: zeke_10:polySurface72
+    100206: zeke_10:polySurface73
+    100208: zeke_10:polySurface74
+    100210: zeke_10:polySurface75
+    100212: zeke_10:polySurface76
+    100214: zeke_10:polySurface77
+    100216: zeke_10:polySurface78
+    100218: zeke_10:polySurface79
+    100220: zeke_10:polySurface8
+    100222: zeke_10:polySurface80
+    100224: zeke_10:polySurface81
+    100226: zeke_10:polySurface82
+    100228: zeke_10:polySurface83
+    100230: zeke_10:polySurface84
+    100232: zeke_10:polySurface85
+    100234: zeke_10:polySurface86
+    100236: zeke_10:polySurface9
+    100238: zeke_10:pSphere1
+    100240: zeke_10:r_ankle
+    100242: zeke_10:r_ball
+    100244: zeke_10:r_clavicle
+    100246: zeke_10:r_elbow
+    100248: zeke_10:r_heel
+    100250: zeke_10:r_hip
+    100252: zeke_10:r_index1
+    100254: zeke_10:r_index2
+    100256: zeke_10:r_index3
+    100258: zeke_10:r_index4
+    100260: zeke_10:r_knee
+    100262: zeke_10:r_mid1
+    100264: zeke_10:r_mid2
+    100266: zeke_10:r_mid3
+    100268: zeke_10:r_mid4
+    100270: zeke_10:r_pinky1
+    100272: zeke_10:r_pinky2
+    100274: zeke_10:r_pinky3
+    100276: zeke_10:r_pinky4
+    100278: zeke_10:r_ring1
+    100280: zeke_10:r_ring2
+    100282: zeke_10:r_ring3
+    100284: zeke_10:r_ring4
+    100286: zeke_10:r_shoulder
+    100288: zeke_10:r_thumb1
+    100290: zeke_10:r_thumb2
+    100292: zeke_10:r_thumb3
+    100294: zeke_10:r_thumb_helper
+    100296: zeke_10:r_toe
+    100298: zeke_10:r_wrist
+    100300: zeke_10:spine1
+    100302: zeke_10:spine2
+    100304: zeke_10:spine3
+    100306: zeke_10:transform28
+    100308: zeke_10:transform29
+    100310: zeke_10:transform30
+    100312: zeke_10:transform31
+    100314: zeke_10:transform32
+    100316: zeke_10:transform33
+    100318: zeke_10:transform34
+    100320: zeke_10:transform35
+    100322: zeke_10:transform36
+    100324: zeke_10:transform37
+    100326: zeke_10:transform38
+    100328: zeke_10:transform39
+    100330: zeke_10:transform40
+    100332: zeke_10:transform41
+    100334: zeke_10:transform42
+    100336: zeke_10:transform43
+    100338: zeke_10:transform44
+    100340: zeke_10:transform45
+    100342: zeke_10:transform46
+    100344: zeke_10:transform47
+    100346: zeke_10:transform48
+    100348: zeke_10:transform49
+    100350: zeke_10:transform50
+    100352: zeke_10:transform51
+    100354: zeke_10:transform52
+    100356: zeke_10:transform53
+    100358: zeke_10:transform54
+    100360: zeke_10:transform55
+    100362: zeke_10:transform56
+    100364: zeke_10:transform57
+    100366: zeke_10:transform58
+    100368: zeke_10:transform59
+    100370: zeke_10:transform60
+    100372: zeke_10:transform61
+    100374: zeke_10:transform62
+    100376: zeke_10:transform63
+    100378: zeke_10:transform64
+    100380: zeke_10:transform65
+    100382: zeke_10:transform66
+    100384: zeke_10:transform67
+    100386: zeke_10:transform68
+    100388: zeke_10:transform69
+    100390: zeke_10:transform70
+    100392: zeke_10:transform71
+    100394: zeke_10:transform72
+    100396: zeke_10:transform73
+    100398: zeke_10:ZekeTrike:polySurface1
+    100400: zeke_11:polySurface45
+    100402: zeke_11:polySurface46
+    100404: zeke_11:polySurface47
+    100406: zeke_11:polySurface47 1
+    100408: zeke_11:polySurface48
+    100410: zeke_11:polySurface48 1
+    100412: zeke_11:polySurface49
+    100414: zeke_11:polySurface51
+    100416: zeke_11:polySurface52
+    100418: zeke_11:polySurface53
+    100420: zeke_11:polySurface54
+    100422: zeke_11:polySurface55
+    100424: zeke_11:polySurface56
+    100426: zeke_11:polySurface57
+    100428: zeke_11:polySurface58
+    100430: zeke_11:polySurface58 1
+    100432: zeke_11:polySurface59
+    100434: zeke_11:polySurface60
+    100436: zeke_11:polySurface61
+    100438: zeke_11:polySurface61 1
+    100440: zeke_11:polySurface62
+    100442: zeke_11:polySurface62 1
+    100444: zeke_11:polySurface63
+    100446: zeke_11:polySurface64
+    100448: zeke_11:polySurface65
+    100450: zeke_11:polySurface66
+    100452: zeke_11:polySurface67
+    100454: zeke_11:transform56
+    100456: zeke_11:transform57
+    100458: zeke_11:transform58
+    100460: zeke_11:transform59
+    100462: zeke_11:transform60
+    100464: zeke_11:transform61
+    100466: zeke_11:transform62
+    100468: zeke_11:transform63
+    100470: zeke_11:transform64
+    100472: zeke_11:transform65
+    100474: zeke_11:transform66
+    100476: zeke_11:transform67
+    100478: zeke_11:transform68
+    100480: zeke_11:transform69
+    100482: zeke_11:transform70
+    100484: zeke_11:transform71
+    100486: zeke_11:transform72
+    100488: zeke_11:transform73
+    100490: zeke_11:ZekeTrike:polySurface1
+    100492: //RootNode
+    400000: group
+    400002: head_top
+    400004: l_armik
+    400006: l_armpv
+    400008: l_legik
+    400010: l_legpv
+    400012: polySurface58
+    400014: r_armik
+    400016: r_armpv
+    400018: r_legik
+    400020: r_legpv
+    400022: zeke_10:Body
+    400024: zeke_10:Body 1
+    400026: zeke_10:Body1
+    400028: zeke_10:Body2
+    400030: zeke_10:Body3
+    400032: zeke_10:Body4
+    400034: zeke_10:Body5
+    400036: zeke_10:Eyes
+    400038: zeke_10:eyes
+    400040: zeke_10:headband1
+    400042: zeke_10:jaw_base
+    400044: zeke_10:l_ankle
+    400046: zeke_10:l_ball
+    400048: zeke_10:l_clavicle
+    400050: zeke_10:l_elbow
+    400052: zeke_10:l_heel
+    400054: zeke_10:l_hip
+    400056: zeke_10:l_index1
+    400058: zeke_10:l_index2
+    400060: zeke_10:l_index3
+    400062: zeke_10:l_index4
+    400064: zeke_10:l_knee
+    400066: zeke_10:l_mid1
+    400068: zeke_10:l_mid2
+    400070: zeke_10:l_mid3
+    400072: zeke_10:l_mid4
+    400074: zeke_10:l_pinky1
+    400076: zeke_10:l_pinky2
+    400078: zeke_10:l_pinky3
+    400080: zeke_10:l_pinky4
+    400082: zeke_10:l_ring1
+    400084: zeke_10:l_ring2
+    400086: zeke_10:l_ring3
+    400088: zeke_10:l_ring4
+    400090: zeke_10:l_shoulder
+    400092: zeke_10:l_thumb1
+    400094: zeke_10:l_thumb2
+    400096: zeke_10:l_thumb3
+    400098: zeke_10:l_thumb_helper
+    400100: zeke_10:l_toe
+    400102: zeke_10:l_wrist
+    400104: zeke_10:neck_base
+    400106: zeke_10:neck_top
+    400108: zeke_10:pCube51
+    400110: zeke_10:pCube53
+    400112: zeke_10:Pelvis
+    400114: zeke_10:polySurface10
+    400116: zeke_10:polySurface10 1
+    400118: zeke_10:polySurface11
+    400120: zeke_10:polySurface12
+    400122: zeke_10:polySurface15
+    400124: zeke_10:polySurface16
+    400126: zeke_10:polySurface19
+    400128: zeke_10:polySurface3
+    400130: zeke_10:polySurface33
+    400132: zeke_10:polySurface34
+    400134: zeke_10:polySurface35
+    400136: zeke_10:polySurface35 1
+    400138: zeke_10:polySurface36
+    400140: zeke_10:polySurface37
+    400142: zeke_10:polySurface38
+    400144: zeke_10:polySurface39
+    400146: zeke_10:polySurface40
+    400148: zeke_10:polySurface41
+    400150: zeke_10:polySurface42
+    400152: zeke_10:polySurface43
+    400154: zeke_10:polySurface44
+    400156: zeke_10:polySurface45
+    400158: zeke_10:polySurface46
+    400160: zeke_10:polySurface47
+    400162: zeke_10:polySurface48
+    400164: zeke_10:polySurface48 1
+    400166: zeke_10:polySurface49
+    400168: zeke_10:polySurface52
+    400170: zeke_10:polySurface53
+    400172: zeke_10:polySurface54
+    400174: zeke_10:polySurface55
+    400176: zeke_10:polySurface56
+    400178: zeke_10:polySurface57
+    400180: zeke_10:polySurface58
+    400182: zeke_10:polySurface60
+    400184: zeke_10:polySurface61
+    400186: zeke_10:polySurface62
+    400188: zeke_10:polySurface62 1
+    400190: zeke_10:polySurface66
+    400192: zeke_10:polySurface67
+    400194: zeke_10:polySurface68
+    400196: zeke_10:polySurface69
+    400198: zeke_10:polySurface7
+    400200: zeke_10:polySurface70
+    400202: zeke_10:polySurface71
+    400204: zeke_10:polySurface72
+    400206: zeke_10:polySurface73
+    400208: zeke_10:polySurface74
+    400210: zeke_10:polySurface75
+    400212: zeke_10:polySurface76
+    400214: zeke_10:polySurface77
+    400216: zeke_10:polySurface78
+    400218: zeke_10:polySurface79
+    400220: zeke_10:polySurface8
+    400222: zeke_10:polySurface80
+    400224: zeke_10:polySurface81
+    400226: zeke_10:polySurface82
+    400228: zeke_10:polySurface83
+    400230: zeke_10:polySurface84
+    400232: zeke_10:polySurface85
+    400234: zeke_10:polySurface86
+    400236: zeke_10:polySurface9
+    400238: zeke_10:pSphere1
+    400240: zeke_10:r_ankle
+    400242: zeke_10:r_ball
+    400244: zeke_10:r_clavicle
+    400246: zeke_10:r_elbow
+    400248: zeke_10:r_heel
+    400250: zeke_10:r_hip
+    400252: zeke_10:r_index1
+    400254: zeke_10:r_index2
+    400256: zeke_10:r_index3
+    400258: zeke_10:r_index4
+    400260: zeke_10:r_knee
+    400262: zeke_10:r_mid1
+    400264: zeke_10:r_mid2
+    400266: zeke_10:r_mid3
+    400268: zeke_10:r_mid4
+    400270: zeke_10:r_pinky1
+    400272: zeke_10:r_pinky2
+    400274: zeke_10:r_pinky3
+    400276: zeke_10:r_pinky4
+    400278: zeke_10:r_ring1
+    400280: zeke_10:r_ring2
+    400282: zeke_10:r_ring3
+    400284: zeke_10:r_ring4
+    400286: zeke_10:r_shoulder
+    400288: zeke_10:r_thumb1
+    400290: zeke_10:r_thumb2
+    400292: zeke_10:r_thumb3
+    400294: zeke_10:r_thumb_helper
+    400296: zeke_10:r_toe
+    400298: zeke_10:r_wrist
+    400300: zeke_10:spine1
+    400302: zeke_10:spine2
+    400304: zeke_10:spine3
+    400306: zeke_10:transform28
+    400308: zeke_10:transform29
+    400310: zeke_10:transform30
+    400312: zeke_10:transform31
+    400314: zeke_10:transform32
+    400316: zeke_10:transform33
+    400318: zeke_10:transform34
+    400320: zeke_10:transform35
+    400322: zeke_10:transform36
+    400324: zeke_10:transform37
+    400326: zeke_10:transform38
+    400328: zeke_10:transform39
+    400330: zeke_10:transform40
+    400332: zeke_10:transform41
+    400334: zeke_10:transform42
+    400336: zeke_10:transform43
+    400338: zeke_10:transform44
+    400340: zeke_10:transform45
+    400342: zeke_10:transform46
+    400344: zeke_10:transform47
+    400346: zeke_10:transform48
+    400348: zeke_10:transform49
+    400350: zeke_10:transform50
+    400352: zeke_10:transform51
+    400354: zeke_10:transform52
+    400356: zeke_10:transform53
+    400358: zeke_10:transform54
+    400360: zeke_10:transform55
+    400362: zeke_10:transform56
+    400364: zeke_10:transform57
+    400366: zeke_10:transform58
+    400368: zeke_10:transform59
+    400370: zeke_10:transform60
+    400372: zeke_10:transform61
+    400374: zeke_10:transform62
+    400376: zeke_10:transform63
+    400378: zeke_10:transform64
+    400380: zeke_10:transform65
+    400382: zeke_10:transform66
+    400384: zeke_10:transform67
+    400386: zeke_10:transform68
+    400388: zeke_10:transform69
+    400390: zeke_10:transform70
+    400392: zeke_10:transform71
+    400394: zeke_10:transform72
+    400396: zeke_10:transform73
+    400398: zeke_10:ZekeTrike:polySurface1
+    400400: zeke_11:polySurface45
+    400402: zeke_11:polySurface46
+    400404: zeke_11:polySurface47
+    400406: zeke_11:polySurface47 1
+    400408: zeke_11:polySurface48
+    400410: zeke_11:polySurface48 1
+    400412: zeke_11:polySurface49
+    400414: zeke_11:polySurface51
+    400416: zeke_11:polySurface52
+    400418: zeke_11:polySurface53
+    400420: zeke_11:polySurface54
+    400422: zeke_11:polySurface55
+    400424: zeke_11:polySurface56
+    400426: zeke_11:polySurface57
+    400428: zeke_11:polySurface58
+    400430: zeke_11:polySurface58 1
+    400432: zeke_11:polySurface59
+    400434: zeke_11:polySurface60
+    400436: zeke_11:polySurface61
+    400438: zeke_11:polySurface61 1
+    400440: zeke_11:polySurface62
+    400442: zeke_11:polySurface62 1
+    400444: zeke_11:polySurface63
+    400446: zeke_11:polySurface64
+    400448: zeke_11:polySurface65
+    400450: zeke_11:polySurface66
+    400452: zeke_11:polySurface67
+    400454: zeke_11:transform56
+    400456: zeke_11:transform57
+    400458: zeke_11:transform58
+    400460: zeke_11:transform59
+    400462: zeke_11:transform60
+    400464: zeke_11:transform61
+    400466: zeke_11:transform62
+    400468: zeke_11:transform63
+    400470: zeke_11:transform64
+    400472: zeke_11:transform65
+    400474: zeke_11:transform66
+    400476: zeke_11:transform67
+    400478: zeke_11:transform68
+    400480: zeke_11:transform69
+    400482: zeke_11:transform70
+    400484: zeke_11:transform71
+    400486: zeke_11:transform72
+    400488: zeke_11:transform73
+    400490: zeke_11:ZekeTrike:polySurface1
+    400492: //RootNode
+    2300000: polySurface58
+    2300002: zeke_10:pCube53
+    2300004: zeke_11:polySurface47
+    2300006: zeke_11:polySurface51
+    2300008: zeke_11:polySurface58
+    2300010: zeke_11:polySurface59
+    2300012: zeke_11:polySurface61
+    2300014: zeke_11:polySurface63
+    2300016: zeke_11:polySurface64
+    2300018: zeke_11:polySurface65
+    2300020: zeke_11:polySurface66
+    2300022: zeke_11:polySurface67
+    3300000: polySurface58
+    3300002: zeke_10:pCube53
+    3300004: zeke_11:polySurface47
+    3300006: zeke_11:polySurface51
+    3300008: zeke_11:polySurface58
+    3300010: zeke_11:polySurface59
+    3300012: zeke_11:polySurface61
+    3300014: zeke_11:polySurface63
+    3300016: zeke_11:polySurface64
+    3300018: zeke_11:polySurface65
+    3300020: zeke_11:polySurface66
+    3300022: zeke_11:polySurface67
+    4300000: zeke_10:pCube53
+    4300002: zeke_10:polySurface35
+    4300004: zeke_11:polySurface65
+    4300006: zeke_11:polySurface66
+    4300008: zeke_11:polySurface67
+    4300010: zeke_11:polySurface51
+    4300012: zeke_11:polySurface59
+    4300014: zeke_11:polySurface64
+    4300016: zeke_11:polySurface63
+    4300018: zeke_11:polySurface58
+    4300020: zeke_11:polySurface61
+    4300022: zeke_11:polySurface47
+    4300024: polySurface58
+    7400000: zeke_left
+    9500000: //RootNode
+    13700000: zeke_10:polySurface35
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: zeke_left
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group
+        weight: 1
+      - path: group/polySurface58
+        weight: 1
+      - path: group/zeke_11:polySurface47
+        weight: 1
+      - path: group/zeke_11:polySurface48
+        weight: 1
+      - path: group/zeke_11:polySurface48/zeke_11:transform60
+        weight: 1
+      - path: group/zeke_11:polySurface58
+        weight: 1
+      - path: group/zeke_11:polySurface61
+        weight: 1
+      - path: group/zeke_11:polySurface62
+        weight: 1
+      - path: group/zeke_11:polySurface62/zeke_11:transform70
+        weight: 1
+      - path: group/zeke_11:polySurface63
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface45
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface45/zeke_11:polySurface65
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface45/zeke_11:polySurface66
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface45/zeke_11:polySurface67
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface45/zeke_11:transform61
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface46
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface46/zeke_11:transform72
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface47 1
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface47 1/zeke_11:transform73
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface48 1
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface48 1/zeke_11:transform58
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface49
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface49/zeke_11:transform59
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface51
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface52
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface52/zeke_11:transform57
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface53
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface53/zeke_11:transform62
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface54
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface54/zeke_11:transform64
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface55
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface55/zeke_11:transform63
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface56
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface56/zeke_11:transform65
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface57
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface57/zeke_11:transform66
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface58 1
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface58 1/zeke_11:transform67
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface59
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface60
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface60/zeke_11:transform68
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface61 1
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface61 1/zeke_11:transform71
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface62 1
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface62 1/zeke_11:transform69
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:polySurface64
+        weight: 1
+      - path: group/zeke_11:ZekeTrike:polySurface1/zeke_11:transform56
+        weight: 1
+      - path: zeke_10:Body
+        weight: 1
+      - path: zeke_10:Body/zeke_10:transform34
+        weight: 1
+      - path: zeke_10:Body1
+        weight: 1
+      - path: zeke_10:Body1/zeke_10:transform33
+        weight: 1
+      - path: zeke_10:Body2
+        weight: 1
+      - path: zeke_10:Body2/zeke_10:polySurface10 1
+        weight: 1
+      - path: zeke_10:Body2/zeke_10:polySurface10 1/zeke_10:transform37
+        weight: 1
+      - path: zeke_10:Body2/zeke_10:polySurface66
+        weight: 1
+      - path: zeke_10:Body2/zeke_10:polySurface69
+        weight: 1
+      - path: zeke_10:Body2/zeke_10:polySurface77
+        weight: 1
+      - path: zeke_10:Body2/zeke_10:transform35
+        weight: 1
+      - path: zeke_10:Eyes
+        weight: 1
+      - path: zeke_10:Eyes/zeke_10:polySurface7
+        weight: 1
+      - path: zeke_10:Eyes/zeke_10:polySurface7/zeke_10:transform29
+        weight: 1
+      - path: zeke_10:Eyes/zeke_10:polySurface8
+        weight: 1
+      - path: zeke_10:Eyes/zeke_10:polySurface8/zeke_10:transform28
+        weight: 1
+      - path: zeke_10:eyes
+        weight: 1
+      - path: zeke_10:eyes/zeke_10:polySurface9
+        weight: 1
+      - path: zeke_10:eyes/zeke_10:polySurface9/zeke_10:transform31
+        weight: 1
+      - path: zeke_10:eyes/zeke_10:transform30
+        weight: 1
+      - path: zeke_10:headband1
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface34
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface34/zeke_10:transform54
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface35 1
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface35 1/zeke_10:transform55
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface36
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface36/zeke_10:transform45
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface37
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface37/zeke_10:transform47
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface38
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface38/zeke_10:transform49
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface39
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface39/zeke_10:transform46
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface40
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface40/zeke_10:transform48
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface41
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface41/zeke_10:transform50
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface42
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface42/zeke_10:transform53
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface43
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface43/zeke_10:transform52
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface44
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface44/zeke_10:transform51
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface67
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface70
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface72
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface73
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface74
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface75
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface76
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:polySurface78
+        weight: 1
+      - path: zeke_10:headband1/zeke_10:transform44
+        weight: 1
+      - path: zeke_10:pCube51
+        weight: 1
+      - path: zeke_10:pCube51/zeke_10:Body 1
+        weight: 1
+      - path: zeke_10:pCube51/zeke_10:Body 1/zeke_10:transform32
+        weight: 1
+      - path: zeke_10:pCube51/zeke_10:Body3
+        weight: 1
+      - path: zeke_10:pCube51/zeke_10:Body4
+        weight: 1
+      - path: zeke_10:pCube51/zeke_10:Body5
+        weight: 1
+      - path: zeke_10:pCube53
+        weight: 1
+      - path: zeke_10:Pelvis
+        weight: 1
+      - path: zeke_10:Pelvis/l_armik
+        weight: 1
+      - path: zeke_10:Pelvis/l_armpv
+        weight: 1
+      - path: zeke_10:Pelvis/l_legik
+        weight: 1
+      - path: zeke_10:Pelvis/l_legpv
+        weight: 1
+      - path: zeke_10:Pelvis/r_armik
+        weight: 1
+      - path: zeke_10:Pelvis/r_armpv
+        weight: 1
+      - path: zeke_10:Pelvis/r_legik
+        weight: 1
+      - path: zeke_10:Pelvis/r_legpv
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:l_hip
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:l_hip/zeke_10:l_knee
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:l_hip/zeke_10:l_knee/zeke_10:l_ankle
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:l_hip/zeke_10:l_knee/zeke_10:l_ankle/zeke_10:l_heel
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:l_hip/zeke_10:l_knee/zeke_10:l_ankle/zeke_10:l_heel/zeke_10:l_ball
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:l_hip/zeke_10:l_knee/zeke_10:l_ankle/zeke_10:l_heel/zeke_10:l_ball/zeke_10:l_toe
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:r_hip
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:r_hip/zeke_10:r_knee
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:r_hip/zeke_10:r_knee/zeke_10:r_ankle
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:r_hip/zeke_10:r_knee/zeke_10:r_ankle/zeke_10:r_heel
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:r_hip/zeke_10:r_knee/zeke_10:r_ankle/zeke_10:r_heel/zeke_10:r_ball
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:r_hip/zeke_10:r_knee/zeke_10:r_ankle/zeke_10:r_heel/zeke_10:r_ball/zeke_10:r_toe
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_mid1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_mid1/zeke_10:l_mid2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_mid1/zeke_10:l_mid2/zeke_10:l_mid3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_mid1/zeke_10:l_mid2/zeke_10:l_mid3/zeke_10:l_mid4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_pinky1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_pinky1/zeke_10:l_pinky2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_pinky1/zeke_10:l_pinky2/zeke_10:l_pinky3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_pinky1/zeke_10:l_pinky2/zeke_10:l_pinky3/zeke_10:l_pinky4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_ring1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_ring1/zeke_10:l_ring2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_ring1/zeke_10:l_ring2/zeke_10:l_ring3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_ring1/zeke_10:l_ring2/zeke_10:l_ring3/zeke_10:l_ring4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper/zeke_10:l_index1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper/zeke_10:l_index1/zeke_10:l_index2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper/zeke_10:l_index1/zeke_10:l_index2/zeke_10:l_index3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper/zeke_10:l_index1/zeke_10:l_index2/zeke_10:l_index3/zeke_10:l_index4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper/zeke_10:l_thumb1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper/zeke_10:l_thumb1/zeke_10:l_thumb2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:l_clavicle/zeke_10:l_shoulder/zeke_10:l_elbow/zeke_10:l_wrist/zeke_10:l_thumb_helper/zeke_10:l_thumb1/zeke_10:l_thumb2/zeke_10:l_thumb3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:neck_base
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:neck_base/zeke_10:neck_top
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:neck_base/zeke_10:neck_top/zeke_10:jaw_base
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:neck_base/zeke_10:neck_top/zeke_10:jaw_base/head_top
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_mid1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_mid1/zeke_10:r_mid2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_mid1/zeke_10:r_mid2/zeke_10:r_mid3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_mid1/zeke_10:r_mid2/zeke_10:r_mid3/zeke_10:r_mid4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_pinky1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_pinky1/zeke_10:r_pinky2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_pinky1/zeke_10:r_pinky2/zeke_10:r_pinky3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_pinky1/zeke_10:r_pinky2/zeke_10:r_pinky3/zeke_10:r_pinky4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_ring1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_ring1/zeke_10:r_ring2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_ring1/zeke_10:r_ring2/zeke_10:r_ring3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_ring1/zeke_10:r_ring2/zeke_10:r_ring3/zeke_10:r_ring4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper/zeke_10:r_index1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper/zeke_10:r_index1/zeke_10:r_index2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper/zeke_10:r_index1/zeke_10:r_index2/zeke_10:r_index3
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper/zeke_10:r_index1/zeke_10:r_index2/zeke_10:r_index3/zeke_10:r_index4
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper/zeke_10:r_thumb1
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper/zeke_10:r_thumb1/zeke_10:r_thumb2
+        weight: 1
+      - path: zeke_10:Pelvis/zeke_10:spine1/zeke_10:spine2/zeke_10:spine3/zeke_10:r_clavicle/zeke_10:r_shoulder/zeke_10:r_elbow/zeke_10:r_wrist/zeke_10:r_thumb_helper/zeke_10:r_thumb1/zeke_10:r_thumb2/zeke_10:r_thumb3
+        weight: 1
+      - path: zeke_10:polySurface3
+        weight: 1
+      - path: zeke_10:polySurface10
+        weight: 1
+      - path: zeke_10:polySurface10/zeke_10:transform39
+        weight: 1
+      - path: zeke_10:polySurface11
+        weight: 1
+      - path: zeke_10:polySurface11/zeke_10:transform38
+        weight: 1
+      - path: zeke_10:polySurface12
+        weight: 1
+      - path: zeke_10:polySurface12/zeke_10:polySurface15
+        weight: 1
+      - path: zeke_10:polySurface12/zeke_10:polySurface15/zeke_10:polySurface16
+        weight: 1
+      - path: zeke_10:polySurface12/zeke_10:polySurface15/zeke_10:polySurface16/zeke_10:transform42
+        weight: 1
+      - path: zeke_10:polySurface12/zeke_10:polySurface15/zeke_10:polySurface19
+        weight: 1
+      - path: zeke_10:polySurface12/zeke_10:polySurface15/zeke_10:polySurface19/zeke_10:transform43
+        weight: 1
+      - path: zeke_10:polySurface12/zeke_10:polySurface15/zeke_10:transform41
+        weight: 1
+      - path: zeke_10:polySurface12/zeke_10:transform40
+        weight: 1
+      - path: zeke_10:polySurface33
+        weight: 1
+      - path: zeke_10:polySurface35
+        weight: 1
+      - path: zeke_10:polySurface48
+        weight: 1
+      - path: zeke_10:polySurface48/zeke_10:transform60
+        weight: 1
+      - path: zeke_10:polySurface62
+        weight: 1
+      - path: zeke_10:polySurface62/zeke_10:transform70
+        weight: 1
+      - path: zeke_10:pSphere1
+        weight: 1
+      - path: zeke_10:pSphere1/zeke_10:transform36
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface45
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface45/zeke_10:transform61
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface46
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface46/zeke_10:transform72
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface47
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface47/zeke_10:transform73
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface48 1
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface48 1/zeke_10:transform58
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface49
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface49/zeke_10:transform59
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface52
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface52/zeke_10:transform57
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface53
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface53/zeke_10:transform62
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface54
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface54/zeke_10:transform64
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface55
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface55/zeke_10:transform63
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface56
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface56/zeke_10:transform65
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface57
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface57/zeke_10:transform66
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface58
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface58/zeke_10:transform67
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface60
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface60/zeke_10:transform68
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface61
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface61/zeke_10:transform71
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface62 1
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface62 1/zeke_10:transform69
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface68
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface71
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface79
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface80
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface81
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface82
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface83
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface84
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface85
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:polySurface86
+        weight: 1
+      - path: zeke_10:ZekeTrike:polySurface1/zeke_10:transform56
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

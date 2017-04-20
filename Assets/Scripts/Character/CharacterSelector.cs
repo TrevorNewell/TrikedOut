@@ -15,7 +15,7 @@ public class CharacterSelector : MonoBehaviour
     public GameObject[] bats;
     public Sprite[] minimapIcons;
     public Sprite[] winBanners;
-    public float modelOffset = -0.81f;
+    public float[] modelOffset;
 
 
     public GameObject emby;
@@ -77,7 +77,7 @@ public class CharacterSelector : MonoBehaviour
         character.name = characters[characterSelection].name;
         character.GetComponent<FollowGround>().castPoint = castPoint;
         character.transform.parent = gameObject.transform;
-        character.transform.localPosition = new Vector3(0f, modelOffset, 0f);
+        character.transform.localPosition = new Vector3(0f, modelOffset[characterSelection], 0f);
         character.transform.localRotation = Quaternion.Euler(Vector3.zero);
         
         //FIX THE PRINCESS RIG

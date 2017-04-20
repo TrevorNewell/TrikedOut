@@ -658,6 +658,7 @@ public class StateManager : MonoBehaviour
 
     public void LoadLevel(string name)
     {
+        if (Time.timeScale != 1.0f) Time.timeScale = 1.0f;
         SceneManager.LoadScene(name);
     }
 
