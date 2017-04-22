@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: db4b0dd24a7f8174da0373317394c236
-timeCreated: 1492815445
+guid: ef185b25ec771194d881aa6f0c6abf6e
+timeCreated: 1492823384
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface12
+    4300000: sbendLeft_ramp1
     9500000: //RootNode
   materials:
     importMaterials: 1
