@@ -246,7 +246,7 @@ ModelImporter:
     4300004: polySurface11
     4300006: polySurface14
     4300008: polySurface13
-    7400000: Take 001
+    7400000: Ramone_lose
     9500000: //RootNode
     13700000: RamonRigComplete:polySurface1
   materials:
@@ -269,7 +269,263 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Ramone_lose
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: back1
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: imagePlane3
+        weight: 1
+      - path: imagePlane4
+        weight: 1
+      - path: MainHandle
+        weight: 1
+      - path: MainHandle/PELVIS
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip/l_knee
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip/l_knee/l_ankle
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip/l_knee/l_ankle/l_ball
+        weight: 1
+      - path: MainHandle/PELVIS/l_hip/l_knee/l_ankle/l_ball/l_toe
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip/r_knee
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip/r_knee/r_ankle
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip/r_knee/r_ankle/r_ball
+        weight: 1
+      - path: MainHandle/PELVIS/r_hip/r_knee/r_ankle/r_ball/r_toe
+        weight: 1
+      - path: MainHandle/PELVIS/spine1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2/l_mid3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_mid1/l_mid2/l_mid3/l_midtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1/l_pinky2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1/l_pinky2/l_pinky3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_pinky1/l_pinky2/l_pinky3/l_pinkytip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1/l_ring2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1/l_ring2/l_ring3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_ringpinkhelper/l_ring1/l_ring2/l_ring3/l_ringtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1/l_index2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1/l_index2/l_index3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_index1/l_index2/l_index3/l_indextip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_thumb1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_thumb1/l_thumb2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/l_clavicle/l_shoulder/l_elbow/l_wrist/l_thumbhelper/l_thumb1/l_thumb2/l_thumbtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/neckbase
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/neckbase/necktop
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/neckbase/necktop/midhead
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/neckbase/necktop/midhead/headtop
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/neckbase/necktop/midhead/jawbase
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2/r_mid3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_mid1/r_mid2/r_mid3/r_midtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1/r_pinky2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1/r_pinky2/r_pinky3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_pinky1/r_pinky2/r_pinky3/r_pinkytip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1/r_ring2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1/r_ring2/r_ring3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_ringpinkhelper/r_ring1/r_ring2/r_ring3/r_ringtip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1/r_index2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1/r_index2/r_index3
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_index1/r_index2/r_index3/r_indextip
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_thumb1
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_thumb1/r_thumb2
+        weight: 1
+      - path: MainHandle/PELVIS/spine1/spine2/spine3/spine4/spineend/r_clavicle/r_shoulder/r_elbow/r_wrist/r_thumbhelper/r_thumb1/r_thumb2/r_thumbtip
+        weight: 1
+      - path: pCube5
+        weight: 1
+      - path: pCube5/polySurface3
+        weight: 1
+      - path: pCube5/polySurface3/transform4
+        weight: 1
+      - path: pCube5/polySurface4
+        weight: 1
+      - path: pCube5/polySurface4/transform6
+        weight: 1
+      - path: pCube5/polySurface5
+        weight: 1
+      - path: pCube5/polySurface5/transform5
+        weight: 1
+      - path: pCube5/polySurface6
+        weight: 1
+      - path: pCube5/polySurface6/transform2
+        weight: 1
+      - path: pCube5/polySurface7
+        weight: 1
+      - path: pCube5/polySurface7/transform3
+        weight: 1
+      - path: pCube5/transform1
+        weight: 1
+      - path: polySurface13
+        weight: 1
+      - path: RamonRigComplete:polySurface1
+        weight: 1
+      - path: Ramons_Trike_back1
+        weight: 1
+      - path: Ramons_Trike_imagePlane3
+        weight: 1
+      - path: Ramons_Trike_imagePlane4
+        weight: 1
+      - path: Ramons_Trike_pCube5
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface8
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface8/polySurface11 1
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface8/polySurface14 1
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface8/polySurface15
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface8/polySurface15/transform13
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface9
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface9/transform11
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface10
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface10/transform10
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface11
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface11/transform12
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface12
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface12/transform8
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface13 1
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface13 1/transform9
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface14
+        weight: 1
+      - path: Ramons_Trike_pCube5/polySurface14/transform14
+        weight: 1
+      - path: Ramons_Trike_pCube5/transform7
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

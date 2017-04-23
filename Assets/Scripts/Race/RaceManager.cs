@@ -352,6 +352,7 @@ public class RaceManager : MonoBehaviour
             {
                 psp.Victory();
                 player.GetComponent<CharacterSelector>().WinBanner();
+                player.GetComponentInChildren<Animator>().SetBool("Win", true);
                 foreach (GameObject g in fireworks)
                 {
                     g.SetActive(true);
@@ -361,6 +362,7 @@ public class RaceManager : MonoBehaviour
             {
                 psp.Loss();
                 Image i = GameObject.Find(player.name + "_Image").GetComponent<Image>();
+                player.GetComponentInChildren<Animator>().SetBool("Lose", true);
                 if (i.sprite == null) i.sprite = placeImages[pm.GetPlace(GetID()) - 1];
                 i.color = Color.white;
                 placeImage.sprite = null;
