@@ -80,13 +80,7 @@ public class CharacterSelector : MonoBehaviour
         character.transform.localPosition = new Vector3(0f, modelOffset[characterSelection], 0f);
         character.transform.localRotation = Quaternion.Euler(Vector3.zero);
         
-        //FIX THE PRINCESS RIG
-        if (characterSelection == 1)
-        {
-            character.transform.localRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
-        }
-
-        if (characterSelection == 3)
+        if (characterSelection == 2)
         {
             character.transform.localRotation = Quaternion.Euler(new Vector3(0f, -90f, 0f));
         }
